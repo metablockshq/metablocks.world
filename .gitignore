@@ -1,0 +1,5 @@
+node_modules
+.shadow-cljs
+yarn-error.log
+.DS_Store
+build

@@ -1,0 +1,34 @@
+{
+    "name": "krimlabs.com",
+    "version": "1.0.0",
+    "description": "Static website for Krim.",
+    "main": "index.js",
+    "author": "Shivek Khurana",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+	"shadow-cljs": "^2.8.10"
+    },
+    "scripts": {
+	"start": "yarn clean && yarn copy-resources && shadow-cljs watch app",
+	"clean": "rm -rf build",
+	"purge-cache": "sed -i '.bak' \"s/main.js/main.js?v=$(shasum ./build/main.js | awk '{print $1}')/g\" build/index.html",
+	"copy-resources": "mkdir -p build && cp -R public/* build/",
+	"release": "yarn clean && yarn copy-resources && shadow-cljs release app",
+	"postrelease": "react-snap && yarn purge-cache",
+	"setup-server": "ssh root@94.237.88.245 'cd /root/krimlabs.com/deployment; chmod +x setup.sh; ./setup.sh'",
+	"deploy-prod": "rsync -avz  --exclude node_modules --exclude public --exclude src --exclude build/cljs-runtime --exclude 'yarn*' ./* root@94.237.88.245:/root/krimlabs.com"
+    },
+    "dependencies": {
+	"react": "^16.8.3",
+	"react-dom": "^16.8.3",
+	"react-router-dom": "^4.3.1",
+	"react-snap": "^1.23.0"
+    },
+    "reactSnap": {
+	"viewport": {
+	    "width": 1400,
+	    "height": 900
+	}
+    }
+}

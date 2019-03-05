@@ -1,0 +1,8 @@
+{:source-paths ["src/cljs"]
+ :dependencies [[lilactown/hx "0.3.2"]]
+ :dev-http {8088 "build/"}
+ :builds {:app {:target :browser
+                :output-dir "build/"
+                :asset-path "."
+                :modules {:main {:init-fn main/main!}}
+                :devtools {:after-load main/main!}}}}
