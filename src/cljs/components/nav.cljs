@@ -5,7 +5,7 @@
             [utils.colors :refer [colors]]))
 
 (hx/defnc Nav []
-  [:div {:class "w-100 fixed pa2 pv3 pv4-ns top-0"
+  [:div {:class "w-100 fixed pa2 pv3 pv4-ns top-0 z-1"
          :style {:background-color (:krim-yellow colors)}}
    [:div {:class "bg-white shadow-5 br2 pv2 pv3-ns w-100 w-50-ns center nb5 cf"}
     [Link {:to "/"}

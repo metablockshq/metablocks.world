@@ -1,10 +1,12 @@
 (ns pages.about
   (:require [hx.react :as hx]
+            ["react-helmet" :refer (Helmet)]
             [components.nav :refer [Nav]]
             [components.banner :refer [Banner]]))
 
 (hx/defnc About []
   [:<>
+   [Helmet {:title "About Krim Labs"}]
    [Nav]
    [Banner
     {:title "About us"
