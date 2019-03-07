@@ -21,4 +21,4 @@
     [:li "Relocation support and guidance."]
     [:li "Anything else? Just ask. We might say no, but you have a no already if you don't ask."]]
 
-   [:p {:class "b"} "We have a open positions in New Delhi and look forward to hearing from you."]])
+   [:p {:class "b"} "We have open positions in New Delhi and look forward to hearing from you."]])
