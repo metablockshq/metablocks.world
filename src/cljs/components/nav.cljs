@@ -16,7 +16,7 @@
       [:span {:class "b f3 ml1"} "Krim."]]]
 
     [:div {:class "w-70 tr pr3 b f6 fr mt1"}
-     (let [links ["About" "Careers"]]
+     (let [links ["Clients" "Careers"]]
        (for [link links]
          [Link {:to (str "/" (lower-case link)) :class "ml2" :key link}
           link

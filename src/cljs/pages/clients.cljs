@@ -1,18 +1,19 @@
-(ns pages.about
+(ns pages.clients
   (:require [hx.react :as hx]
             ["react-helmet" :refer (Helmet)]
             [components.nav :refer [Nav]]
-            [components.banner :refer [Banner]]))
+            [components.banner :refer [Banner]]
+            [pages.clients.copy :refer [Copy]]))
 
-(hx/defnc About []
+(hx/defnc Clients []
   [:<>
-   [Helmet {:title "About Krim Labs"}]
+   [Helmet {:title "Krim Labs' Clients"}]
    [Nav]
    [Banner
-    {:title "About us"
+    {:title "Clients"
      :illustration-src "/img/illustrations/man-and-woman-handshake.svg"}]
 
-
+   [Copy]
    [:div {:class "w-100 word-wrap w-40-ns center mt4"}
     ]])
 

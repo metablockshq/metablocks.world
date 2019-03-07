@@ -19,7 +19,7 @@
                :style {:height 40}}]
         [:span {:class "f3 f2-ns black-80 absolute"} "Krim."]]
        [:div {:class "fl w-50 tr mt1 mt3-ns"}
-        (let [links ["About" "Careers"]]
+        (let [links ["Clients" "Careers"]]
           (for [link links]
             [Link {:to (str "/" (lower-case link)) :class "ml2" :key link}
              link

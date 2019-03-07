@@ -5,7 +5,7 @@
             ["react-router-dom" :refer (Switch BrowserRouter Route)]
             [components.nav :refer [Nav]]
             [pages.careers :refer [Careers]]
-            [pages.about :refer [About]]
+            [pages.clients :refer [Clients]]
             [pages.landing :refer [Landing]]))
 
 (hx/defnc App []
@@ -14,7 +14,7 @@
     [Switch
      [Route {:path "/" :exact true :component Landing}]
      [Route {:path "/careers" :exact true :component Careers}]
-     [Route {:path "/about" :exact true :component About}]]]])
+     [Route {:path "/clients" :exact true :component Clients}]]]])
 
 (defn- main! []
   (let [root (.getElementById js/document "root")]
