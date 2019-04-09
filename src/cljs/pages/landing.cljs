@@ -20,7 +20,7 @@
                :class "mr2"
                :style {:height 40}}]
         [:span {:class "f3 f2-ns black-80 absolute mt1 mt0-ns"} "Krim."]]
-       [:div {:class "fl w-50 tr mt1 mt3-ns"}
+       [:div {:class "fl w-50 tr mt1 mt3-ns z-1"}
         (let [links ["Clients" "Careers"]]
           (for [link links]
             [Link {:to (str "/" (lower-case link)) :class "ml2" :key link}
@@ -56,6 +56,6 @@
 
      [:div {:class "w-100 w-60-ns center f6 black-50 cf pt2 pb3 ph3 ph0-ns mt4 mt3-ns"}
       [:div {:class "w-100 fl-ns w-50-ns b"}
-       "sales@krimlabs.com | +91 8700 79 8503"]
+       "sales at krimlabs dot com"]
       [:div {:class "w-100 fl-ns w-50-ns tl tr-ns mt1 mt0-ns"}
        " B1/638 A, 2nd Floor, Janakpuri, New Delhi- 110058"]]]))

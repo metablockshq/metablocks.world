@@ -13,7 +13,7 @@
    [BrowserRouter
     [Switch
      [Route {:path "/" :exact true :component Landing}]
-     [Route {:path "/careers" :exact true :component Careers}]
+     [Route {:path "/careers" :component Careers}]
      [Route {:path "/clients" :exact true :component Clients}]]]])
 
 (defn- main! []
