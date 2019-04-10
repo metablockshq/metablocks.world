@@ -25,6 +25,6 @@
     (for [r req]
       [:div {:class "pl1"} r])
     [:div {:class "mt4 pb6"}
-     "To apply, send your CV, Github and a cover letter to "
+     "To apply, send your CV, Github and cover letter to "
      [:span {:class "b"} "careers at krimlabs dot com"]
      "."]]])

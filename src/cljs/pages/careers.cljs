@@ -38,7 +38,7 @@
    {:id :fullstack-clojure-javascript-developer
     :title "Full Stack Clojure/Javascript Developer"
     :job-location "New Delhi"
-    :body "Krim Labs is a software development studio based in New Delhi. We are looking for a full stack develop to work with our functional stack."
+    :body "Krim Labs is a software development studio based in New Delhi. We are looking for a full stack developer to work with our functional stack."
     :req
     ["A Hacker's mindset"
      "Minimum 3 years of work experience in building web and mobile apps"
