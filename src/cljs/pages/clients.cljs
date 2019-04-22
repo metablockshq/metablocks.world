@@ -7,7 +7,7 @@
 
 (hx/defnc Clients []
   [:<>
-   [Helmet {:title "Krim Labs' Clients"}]
+   [Helmet {:title "Clients - Krim Labs"}]
    [Nav]
    [Banner
     {:title "Clients"
