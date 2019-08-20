@@ -7,9 +7,4 @@
                 :dev {:closure-defines {main/IS_DEV true}}
                 :asset-path "."
                 :modules {:main {:init-fn main/main!}}
-                :devtools {:after-load main/main!}}
-          :neon {:target :node-script
-                 :main neon/start!
-                 :output-to "build/neon.node.js"
-                 :devtools {:before-load neon/stop!
-                            :after-load neon/start!}}}}
+                :devtools {:after-load main/main!}}}}

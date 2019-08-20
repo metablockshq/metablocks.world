@@ -31,6 +31,6 @@
 	    "width": 1400,
 	    "height": 900
 	},
-	"removeScriptTags": true
+	"removeScriptTags": false
     }
 }
