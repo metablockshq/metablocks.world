@@ -1,8 +1,15 @@
 {:source-paths ["src/cljs"]
- :dependencies [[lilactown/hx "0.3.2"]]
+ :dependencies [[lilactown/hx "0.5.3"]
+                [cljs-http "0.1.46"]]
  :dev-http {8088 "build/"}
  :builds {:app {:target :browser
                 :output-dir "build/"
+                :dev {:closure-defines {main/IS_DEV true}}
                 :asset-path "."
                 :modules {:main {:init-fn main/main!}}
-                :devtools {:after-load main/main!}}}}
+                :devtools {:after-load main/main!}}
+          :neon {:target :node-script
+                 :main neon/start!
+                 :output-to "build/neon.node.js"
+                 :devtools {:before-load neon/stop!
+                            :after-load neon/start!}}}}

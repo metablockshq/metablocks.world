@@ -86,15 +86,7 @@
                       [Copy]
                       [:div {:class "w-90 word-wrap w-50-ns ph3 pv1 br3 bg-washed-yellow center mb4"}
                        (for [role roles]
-                         [Career (assoc role :match match)])
-                       ;; [Career {:title "Product Designer (Contract)"
-                       ;;          :location "India/Remote"
-                       ;;          :apply-link "/"}]
-
-                       ;; [Career {:title "Software Developer (Intern)"
-                       ;;          :location "New Delhi"
-                       ;;          :apply-link "/"}]
-                       ]]))}]
+                         [Career (assoc role :match match)])]]))}]
      (for [role roles]
        [Route {:path (str (get match "path") "/" (name (:id role)))
                :exact true

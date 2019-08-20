@@ -1,6 +1,5 @@
 (ns main
   (:require [hx.react :as hx]
-            [hx.hiccup :as hiccup]
             ["react-dom" :refer (render hydrate)]
             ["react-router-dom" :refer (Switch BrowserRouter Route)]
             [components.nav :refer [Nav]]
@@ -19,6 +18,6 @@
 (defn- main! []
   (let [root (.getElementById js/document "root")]
     (if (.hasChildNodes root)
-      (hydrate (hiccup/parse [App]) root)
-      (render (hiccup/parse [App]) root))))
+      (hydrate (hx/f [App]) root)
+      (render (hx/f [App]) root))))
 

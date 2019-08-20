@@ -18,6 +18,6 @@
     [:div {:class "w-70 tr pr3 b f6 fr mt1"}
      (let [links ["Clients" "Careers"]]
        (for [link links]
-         [Link {:to (str "/" (lower-case link)) :class "ml2" :key link}
+         [Link {:to (str "/" (lower-case link)) :className "ml2" :key link}
           link
           (when (= link "Careers") [:span {:class "red"} "°"])]))]]])

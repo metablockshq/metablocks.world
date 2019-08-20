@@ -15,7 +15,7 @@
     [:div {:class "mt3 f4"} body]
     [:div {:class "mt2 f4"}
      "We value work life balance and religiously avoid meetings, bureaucracy and office politics. We are fans of Basecamp and get sh#t done. You can read more about our "
-     [Link {:to "/work"} "work"] " and check (our biased) views about our "
+     [Link {:to "/clients"} "work"] " and check (our biased) views about our "
      [Link {:to "/careers"} "culture"] "."]
     [:div {:class "mt3"} "We expect you to take on the following responsibilties and meet some basic requirements:"]
     [:div {:class "f4 b mt3"} "Responsibilities"]
