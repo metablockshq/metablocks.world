@@ -15,7 +15,7 @@
 	"purge-cache": "sed -i '.bak' \"s/main.js/main.js?v=$(shasum ./build/main.js | awk '{print $1}')/g\" build/index.html",
 	"copy-resources": "mkdir -p build && cp -R public/* build/",
 	"release": "yarn clean && yarn copy-resources && shadow-cljs release app",
-	"postrelease": "react-snap && yarn purge-cache",
+	"postrelease": "react-snap",
 	"setup-server": "ssh root@94.237.88.245 'cd /root/krimlabs.com/deployment; chmod +x setup.sh; ./setup.sh'",
 	"deploy-prod": "rsync -avz  --exclude node_modules --exclude public --exclude src --exclude build/cljs-runtime --exclude 'yarn*' ./* root@94.237.88.245:/root/krimlabs.com"
     },
