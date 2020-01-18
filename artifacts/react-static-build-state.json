@@ -1,0 +1,60 @@
+{
+  "prefetchRate": 5,
+  "maxThreads": null,
+  "disableRoutePrefixing": false,
+  "outputFileRate": 100,
+  "extensions": [
+    ".js",
+    ".jsx"
+  ],
+  "minLoadTime": 200,
+  "disablePreload": false,
+  "disableRuntime": false,
+  "preloadPollInterval": 300,
+  "productionSourceMaps": false,
+  "entry": "index.js",
+  "plugins": [
+    "react-static-plugin-react-router",
+    [
+      "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/node_modules/react-static-plugin-source-filesystem/node.api.js",
+      {
+        "location": "src/pages"
+      }
+    ],
+    "/Users/shivekkhurana/WIP/Krim/eiphop.js.org"
+  ],
+  "paths": {
+    "ROOT": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org",
+    "SRC": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/src",
+    "DIST": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/dist",
+    "ASSETS": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/dist",
+    "PLUGINS": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/plugins",
+    "TEMP": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/tmp",
+    "ARTIFACTS": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/artifacts",
+    "PUBLIC": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/public",
+    "NODE_MODULES": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/node_modules",
+    "EXCLUDE_MODULES": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/node_modules",
+    "PACKAGE": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/package.json",
+    "HTML_TEMPLATE": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/dist/index.html",
+    "STATIC_DATA": "/Users/shivekkhurana/WIP/Krim/eiphop.js.org/dist/staticData"
+  },
+  "siteRoot": "/",
+  "basePath": "",
+  "publicPath": "/",
+  "assetsPath": "",
+  "extractCssChunks": false,
+  "inlineCss": false,
+  "babelExcludes": [],
+  "devServer": {
+    "host": "localhost",
+    "port": 3000
+  },
+  "terser": {
+    "terserOptions": {
+      "mangle": {},
+      "parse": {},
+      "compress": {},
+      "output": {}
+    }
+  }
+}
