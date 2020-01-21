@@ -33,8 +33,13 @@ a {
 	margin: 24px 0;
 	display: block;
 	padding: 16px;
+	overflow-wrap: break-word;
 }
 
 .fromMarkdown a {
 	text-decoration: underline;
+}
+
+.fromMarkdown blockquote {
+	font-size: 24px;
 }

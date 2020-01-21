@@ -1,9 +1,9 @@
-const slugify = (s) => {
-  return s.toLowerCase().replace(/ /g, '-');
-};
+const slugify = (s) => s.toLowerCase().replace(/ /g, '-');
 
-const capitalise = (s) => {
-  return s[0].toUpperCase() + s.substring(1);
-}
+const capitalise = (s) => s[0].toUpperCase() + s.substring(1);
 
-export default {slugify, capitalise};
+const humanReadableDate = (dateStr) => (new Date(dateStr))
+  .toLocaleDateString('en-us', {year: 'numeric', month: 'long', day: 'numeric'})
+;
+
+export default {slugify, capitalise, humanReadableDate};
