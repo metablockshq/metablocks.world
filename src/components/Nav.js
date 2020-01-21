@@ -9,7 +9,7 @@ const Nav = ({small}) => {
   return (<div className={`flex ph2 justify-between white items-center ${small && "f6"}`}>
     <div className="w-30">
       <NavLink className={className} to="/blog">Blog</NavLink>
-      <NavLink className={className} to="/philosophy">Philosophy</NavLink>
+      {/*<NavLink className={className} to="/philosophy">Philosophy</NavLink>*/}
     </div>
     <div>
       <NavLink to="/"><img className={`${small ? "h1" : "h2"} pv2`} src={logo} alt="Krim Labs Logo" /></NavLink>

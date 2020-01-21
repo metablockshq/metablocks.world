@@ -7,7 +7,15 @@ import R from 'ramda';
 
 
 const contentDir = './src/content';
-chokidar.watch(contentDir).on('all', () => rebuildRoutes());
+if (process.env.REACT_STATIC_ENV === 'development') {
+  chokidar.watch(contentDir).on('all', () => {
+    try {
+      rebuildRoutes()
+    } catch(e) {
+      // it's okay
+    }
+  });
+}
 
 // individual post page
 const postPages = (content) => Object.keys(content.posts).map(k => ({
@@ -15,7 +23,6 @@ const postPages = (content) => Object.keys(content.posts).map(k => ({
   template: 'src/templates/blog/Post',
   getData: () => content.posts[k]
 }));
-
 
 // individual site page
 const sitePages = (content) => Object.keys(content.pages).map(k => ({
