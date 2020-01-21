@@ -28,14 +28,18 @@ a {
 	text-decoration: none;
 }
 
-code {
+.fromMarkdown code {
 	background-color: #17223b;
 	border-radius: 8px;
 	padding: 4px;
 }
 
-pre code {
+.fromMarkdown pre code {
 	margin: 24px 0;
 	display: block;
 	padding: 16px;
+}
+
+.fromMarkdown a {
+	text-decoration: underline;
 }

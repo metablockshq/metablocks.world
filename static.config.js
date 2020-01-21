@@ -1,36 +1,60 @@
 import path from 'path';
 import jdown from 'jdown';
-import {rebuildRoutes} from 'react-static/node'
+import {rebuildRoutes} from 'react-static/node';
+import chokidar from 'chokidar';
+import {paramCase} from 'change-case';
+import R from 'ramda';
 
-const docsDir = 'src/docs';
 
-const docRoutes = docsContent => Object.keys(docsContent).map(parentKey => {
-  return Object.keys(docsContent[parentKey]).map(childKey => {
-    const parent = docsContent[parentKey];
-    const child = docsContent[parentKey][childKey];
-    return {
-      path: `${parentKey}/${child.slug}`,
-      template: 'src/templates/Docs',
-      getData: () => ({docsContent, doc: child})
-    }
-  })
-}).reduce((acc, next) => ([...acc, ...next]), []);
+const contentDir = './src/content';
+chokidar.watch(contentDir).on('all', () => rebuildRoutes());
+
+// individual post page
+const postPages = (content) => Object.keys(content.posts).map(k => ({
+  path: content.posts[k].slug || `${paramCase(k)}`,
+  template: 'src/templates/blog/Post',
+  getData: () => content.posts[k]
+}));
+
+
+// individual site page
+const sitePages = (content) => Object.keys(content.pages).map(k => ({
+  path: `/${k}`,
+  template: 'src/templates/Page',
+  getData: () => content.pages[k]
+}));
+
+// cumulative list for /blog
+const postList = (content) => {
+  const byPublishedOnDesc = R.comparator((a, b) => a.publishedOn > b.publishedOn);
+  const pickRequiredKeys = (obj) => R.pick(['title', 'subTitle', 'heroImg', 'publishedOn', 'tags', 'slug'], obj);
+  const convertTagsToArray = (obj) => R.mapObjIndexed((val, key, obj) => key !== 'tags' ? val : R.split(', ', val), obj);
+
+  const list = Object.keys(content.posts).map(k => ({
+    path: `/blog/${content.posts[k].slug || paramCase(k)}`,
+    ...R.compose(convertTagsToArray, pickRequiredKeys)(content.posts[k])
+  }));
+
+  // reuturn after sorting by publish date
+  return R.sort(byPublishedOnDesc, list);
+}
 
 export default {
   plugins: [
     'react-static-plugin-react-router',
-    [require.resolve('react-static-plugin-source-filesystem'), {
-      location: 'src/pages'
-    }]
   ],
   getRoutes: async () => {
-    const docsContent = await jdown(docsDir);
+    const content = await jdown(contentDir);
 
     return [{
-      path: '/docs',
-      template: 'src/templates/Docs',
-      getData: () => ({}),
-      children: docRoutes(docsContent)
-    }];
+      path: '/', 
+      template: 'src/templates/Landing'
+    }, {
+      path: '/blog', 
+      template: 'src/templates/Blog',
+      getData: () => ({postList: postList(content)}),
+      children: postPages(content)
+    }, 
+    ...sitePages(content)];
   }
 }
