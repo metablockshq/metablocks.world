@@ -5,6 +5,7 @@ import convert from 'htmr';
 import LayeredContainer from '../../components/LayeredContainer';
 import str from '../../utils/string';
 import './post.css';
+import Follow from '../../components/Follow';
 
 const Post = () => {
   const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl} = useRouteData();
@@ -30,7 +31,9 @@ const Post = () => {
       <div className="b mt2 f6 white-80">By {author || "Shivek Khurana"}</div>
       <hr/>
       <div className="lh-copy f4">{contents && convert(contents)}</div>
-      {canonicalUrl && <div className="mv3 i">This blog was originally published on <a href={canonicalUrl}>Medium</a></div>}
+      {canonicalUrl && <div className="mv3 bg-white-10 pa2 br2 o-50">This blog was originally published on <a href={canonicalUrl}>Medium</a></div>}
+
+      <Follow />
     </div>
   </LayeredContainer>);
 };

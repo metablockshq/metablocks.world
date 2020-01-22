@@ -8,7 +8,7 @@ import colors from '../utils/colors';
 
 
 const PostCard = ({post}) => {
-  return (<div className="mb4 ba pa2 br2 b--white-10">
+  return (<div className="mb4">
     <Link to={post.path} className="">
       <div className="f6">{str.humanReadableDate(post.publishedOn)}</div>
       {post.heroImg && <img className="mt2 br2 shadow-1" src={post.heroImg} alt={`${post.title} - cover`}/>}
@@ -32,23 +32,14 @@ const Blog = () => {
     <Head>
       <title>Krim. / Blog</title>
     </Head>
-    <div className="white pa3 w-90 w-80-m w-50-l cf center mt4 overflow-y-scroll">
-      <div className="fl w-70 pr4">
+    <div className="white w-90 w-90-m w-50-l center mt4 flex">
+      <div className="w-90 center w-70-ns pr0 pr3-ns overflow-y-scroll" style={{height: "86vh"}}>
         <div className="ttu f7 b mb3">Latest</div>
         {postList.map((p, i) => <PostCard key={i} post={p} />)}
       </div>
-      <div className="fl w-30">
+      <div className="dn dib-ns w-30 pl2">
         <div className="ttu f7 b mb3">Top Hits</div>
         {postList.filter(p => p.featured).map((p, i) => <FeaturedPostCard key={i} post={p} />)}
-
-        {/*<div className="ttu f7 b mt4 mb3">Subscribe</div>
-        <form>
-          <label className="f7 o-50 mb1 dib ttu b" for="name">Full Name</label>
-          <input id="name" type="text" className="white pa1 ba b--black br2 f6" style={{background: colors.BLACK}}/>
-
-          <label className="f7 o-50 mb1 dib ttu b" for="email">Email</label>
-          <input id="email" type="text" className="white pa1 ba b--black br2 f6" style={{background: colors.BLACK}}/>
-        </form>*/}
       </div>
     </div>
   </LayeredContainer>);
