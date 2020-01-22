@@ -1,0 +1,52 @@
+.markdown code {
+	background-color: #10161A;
+	border-radius: 8px;
+	padding: 4px;
+}
+
+.markdown pre code {
+	margin: 24px 0;
+	display: block;
+	font-size: 16px;
+	padding: 16px;
+	overflow-x: scroll;
+}
+
+.markdown a {
+	text-decoration: underline;
+}
+
+.markdown blockquote {
+	font-size: 24px;
+}
+
+/*<img> followed by <em> is always an attribution*/
+.markdown img + em {
+	opacity: 60%;
+	font-size: 14px;
+	display: block;
+}
+
+.markdown img {
+	border-radius: 4px;
+}
+
+.markdown hr {
+	border: 0;
+	border-top: 1px solid #30404D;
+	height: 0px;
+}
+
+/*Maje shitz rekponsive*/
+
+@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* portrait phones */
+}

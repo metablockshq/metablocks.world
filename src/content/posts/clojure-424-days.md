@@ -4,6 +4,7 @@ subTitle: Ok, not every day, but most working days
 slug: clojure-424-days
 canonicalUrl: https://medium.com/@shivekkhurana/what-i-learned-after-writing-clojure-for-424-days-straight-8884ec471f8e
 publishedOn: 2019-05-07
+heroImg: https://miro.medium.com/max/6000/1*XEPPU9coPaUidehQiAl63A.jpeg
 tags: clojure, clojurescript, clojure 424
 ---
 

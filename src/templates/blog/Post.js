@@ -4,6 +4,7 @@ import convert from 'htmr';
 
 import LayeredContainer from '../../components/LayeredContainer';
 import str from '../../utils/string';
+import './post.css';
 
 const Post = () => {
   const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl} = useRouteData();
@@ -22,11 +23,13 @@ const Post = () => {
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {heroImg && <meta property="og:image" content={`https://krimlabs.com/${heroImg}`} />}
     </Head>
-    <div className="white w-90 w-80-m w-40-l mt3 center fromMarkdown">
+    <div className="white w-90 w-80-m w-50-l mt3 center markdown">
       <div className="f6 mv2">{str.humanReadableDate(publishedOn)}</div>
       <div className="f1">{title}</div>
-      <div className="b mt2 mb4 f6 white-80">By {author || "Shivek Khurana"}</div>
-      <div className="lh-copy">{contents && convert(contents)}</div>
+      <hr/>
+      <div className="b mt2 f6 white-80">By {author || "Shivek Khurana"}</div>
+      <hr/>
+      <div className="lh-copy f4">{contents && convert(contents)}</div>
       {canonicalUrl && <div className="mv3 i">This blog was originally published on <a href={canonicalUrl}>Medium</a></div>}
     </div>
   </LayeredContainer>);
