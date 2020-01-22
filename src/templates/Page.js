@@ -19,7 +19,7 @@ const Page = () => {
     >
       {title}
     </div>}
-    <div className="white w-90 w-80-m w-40-ns lh-copy center mt5 fromMarkdown">
+    <div className="white w-90 w-80-m w-40-ns lh-copy center mt5 markdown">
       {contents && convert(contents)}
     </div>
   </LayeredContainer>);
