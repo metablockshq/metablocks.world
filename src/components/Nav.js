@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {NavLink, useLocation} from 'react-router-dom';
+import {NavLink, useLocation, useHistory} from 'react-router-dom';
 
 import logo from '../images/logo.svg';
 import LayeredContainer from '../components/LayeredContainer';
@@ -28,18 +28,24 @@ const links = [{
   position: 'right' 
 }];
 
+const activeClassName = "o-50";
 const Nav = () => {
   const {pathname} = useLocation();
+  const history = useHistory();
   const mobileAnchorLabel = pathname === "/mobile-nav" ? "✕" : "• • •";
-  const mobileAnchorPath = pathname === "/mobile-nav" ? "/" : "/mobile-nav";
+  const onMobileAnchorClick = () => pathname === "/mobile-nav" ? history.goBack() : history.push("/mobile-nav");
 
   return (<div className={`flex ph2 justify-between white items-center`}>
     <div className="w-30 dn dib-ns">
-      {links.filter(l => l.position === "left").map(l => (<NavLink key={l.title} className={"mr3"} to={l.path}>{l.title}</NavLink>))}
+      {links.filter(l => l.position === "left").map(l => (<NavLink
+        key={l.title} activeClassName={activeClassName} className={"mr3"} to={l.path}
+      >
+        {l.title}
+      </NavLink>))}
     </div>
-    
+
     <div className="w-30 dib dn-ns">
-      <NavLink to={mobileAnchorPath}>{mobileAnchorLabel}</NavLink>
+      <div onClick={onMobileAnchorClick}>{mobileAnchorLabel}</div>
     </div>
 
     <div>
@@ -47,7 +53,11 @@ const Nav = () => {
     </div>
     
     <div className="w-30 flex-ns justify-end dn">
-      {links.filter(l => l.position === "right").map(l => (<NavLink key={l.title} className={"ml3"} to={l.path}>{l.title}</NavLink>))}
+      {links.filter(l => l.position === "right").map(l => (<NavLink
+        key={l.title} activeClassName={activeClassName} className={"ml3"} to={l.path}
+      >
+        {l.title}
+      </NavLink>))}
     </div>
     <div className="w-30 dib dn-ns">
       {/*Hoax div for responsiveness purpose*/}

@@ -6,6 +6,7 @@ canonicalUrl: https://medium.com/@shivekkhurana/what-i-learned-after-writing-clo
 publishedOn: 2019-05-07
 heroImg: https://miro.medium.com/max/6000/1*XEPPU9coPaUidehQiAl63A.jpeg
 tags: clojure, clojurescript, clojure 424
+featured: true
 ---
 
 

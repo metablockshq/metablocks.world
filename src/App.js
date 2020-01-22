@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Root, Routes} from 'react-static';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import './app.css';
 import colors from './utils/colors';
@@ -15,8 +15,10 @@ const Loading = () => {
 const App = () => {
   return (<Root>
     <React.Suspense fallback={<Loading />}>
-      <Route exact path="/mobile-nav" component={MobileNav} />
-      <Route render={() => <Routes />} />
+      <Switch>
+        <Route exact path="/mobile-nav" component={MobileNav} />
+        <Route component={Routes} />
+      </Switch>
     </React.Suspense>
   </Root>)
 };

@@ -24,8 +24,8 @@ const Post = () => {
       {heroImg && <meta property="og:image" content={`https://krimlabs.com/${heroImg}`} />}
     </Head>
     <div className="white w-90 w-80-m w-50-l mt3 center markdown">
-      <div className="f6 mv2">{str.humanReadableDate(publishedOn)}</div>
-      <div className="f1">{title}</div>
+      <div className="f6 mb2 mt4">{str.humanReadableDate(publishedOn)}</div>
+      <div className="f1 b mv4">{title}</div>
       <hr/>
       <div className="b mt2 f6 white-80">By {author || "Shivek Khurana"}</div>
       <hr/>

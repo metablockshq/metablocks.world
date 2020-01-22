@@ -34,7 +34,7 @@ const sitePages = (content) => Object.keys(content.pages).map(k => ({
 // cumulative list for /blog
 const postList = (content) => {
   const byPublishedOnDesc = R.comparator((a, b) => a.publishedOn > b.publishedOn);
-  const pickRequiredKeys = (obj) => R.pick(['title', 'subTitle', 'heroImg', 'publishedOn', 'tags', 'slug'], obj);
+  const pickRequiredKeys = (obj) => R.pick(['title', 'subTitle', 'heroImg', 'publishedOn', 'tags', 'slug', 'featured'], obj);
   const convertTagsToArray = (obj) => R.mapObjIndexed((val, key, obj) => key !== 'tags' ? val : R.split(', ', val), obj);
 
   const list = Object.keys(content.posts).map(k => ({
