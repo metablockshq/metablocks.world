@@ -17,12 +17,17 @@ if (process.env.REACT_STATIC_ENV === 'development') {
 
 const contentDir = './src/content';
 
+const isPublished = (post) => post.publishedOn !== null;
+
 // individual post page
-const postPages = (content) => Object.keys(content.posts).map(k => ({
-  path: content.posts[k].slug || `${paramCase(k)}`,
-  template: 'src/templates/blog/Post',
-  getData: () => content.posts[k]
-}));
+const postPages = (content) => Object.keys(content.posts)
+  .filter(k => isPublished(content.posts[k]))
+  .map(k => ({
+    path: content.posts[k].slug || `${paramCase(k)}`,
+    template: 'src/templates/blog/Post',
+    getData: () => content.posts[k]
+  }))
+;
 
 // individual site page
 const sitePages = (content) => Object.keys(content.pages).map(k => ({
@@ -37,10 +42,13 @@ const postList = (content) => {
   const pickRequiredKeys = (obj) => R.pick(['title', 'subTitle', 'heroImg', 'publishedOn', 'tags', 'slug', 'featured'], obj);
   const convertTagsToArray = (obj) => R.mapObjIndexed((val, key, obj) => key !== 'tags' ? val : R.split(', ', val), obj);
 
-  const list = Object.keys(content.posts).map(k => ({
-    path: `/blog/${content.posts[k].slug || paramCase(k)}`,
-    ...R.compose(convertTagsToArray, pickRequiredKeys)(content.posts[k])
-  }));
+  const list = Object.keys(content.posts)
+    .filter(k => isPublished(content.posts[k]))
+    .map(k => ({
+      path: `/blog/${content.posts[k].slug || paramCase(k)}`,
+      ...R.compose(convertTagsToArray, pickRequiredKeys)(content.posts[k])
+    }))
+  ;
 
   // reuturn after sorting by publish date
   return R.sort(byPublishedOnDesc, list);

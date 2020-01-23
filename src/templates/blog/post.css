@@ -22,7 +22,6 @@
 
 /*<img> followed by <em> is always an attribution*/
 .markdown img + em {
-	opacity: 64%;
 	font-size: 14px;
 	display: block;
 }
