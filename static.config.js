@@ -5,17 +5,17 @@ import chokidar from 'chokidar';
 import {paramCase} from 'change-case';
 import R from 'ramda';
 
-
-const contentDir = './src/content';
+// chokidari keval dev mode main
 if (process.env.REACT_STATIC_ENV === 'development') {
   chokidar.watch(contentDir).on('all', () => {
-    try {
-      rebuildRoutes()
-    } catch(e) {
+    try {rebuildRoutes()} 
+    catch(e) {
       // it's okay
     }
   });
 }
+
+const contentDir = './src/content';
 
 // individual post page
 const postPages = (content) => Object.keys(content.posts).map(k => ({
@@ -47,8 +47,10 @@ const postList = (content) => {
 }
 
 export default {
+  siteRoot: 'https://krimlabs.com',
   plugins: [
     'react-static-plugin-react-router',
+    'react-static-plugin-sitemap'
   ],
   getRoutes: async () => {
     const content = await jdown(contentDir);
