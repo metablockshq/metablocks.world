@@ -4,11 +4,11 @@ canonicalUrl: https://medium.com/@shivekkhurana/ethical-open-sourced-and-profita
 publishedOn: 2019-04-13
 tags: interview, open source, culture, erpnext, frappe, business
 heroImg: https://miro.medium.com/max/1167/1*b6fCxwMBepVjSuxtvsLokA.jpeg
+featured: true
 ---
-Over my recent vacation, I got a chance to meet Rushabh Mehta, Founder, and CEO of [Frappe Technologies](https://frappe.io/) & [ERPNext Foundation](https://erpnext.com/).
-
-![Frappe Team](https://miro.medium.com/max/1167/1*b6fCxwMBepVjSuxtvsLokA.jpeg)
 *The team behind Frappe & ERPNext*
+
+Over my recent vacation, I got a chance to meet Rushabh Mehta, Founder, and CEO of [Frappe Technologies](https://frappe.io/) & [ERPNext Foundation](https://erpnext.com/).
 
 Frappe is a unique company run by a smart and courageous founder and his team. I discovered them while building an ERP system and used a part of their code to manage taxes.
 

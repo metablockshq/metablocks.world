@@ -6,9 +6,8 @@ canonicalUrl: https://medium.com/@shivekkhurana/what-i-learned-after-writing-clo
 publishedOn: 2019-05-07
 heroImg: https://miro.medium.com/max/6000/1*XEPPU9coPaUidehQiAl63A.jpeg
 tags: clojure, clojurescript, clojure 424
-featured: true
 ---
-
+*Cover Photo by [CoWomen](https://unsplash.com/photos/7Zy2KV76Mts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 I’ve been working on Clojure projects at Juxt for more than a year now, but have never written about my experiences because:
 
@@ -38,8 +37,6 @@ When considering a new addition to the stack, it’s important to consider long 
 
 Not many people code Clojure and this comes up as a regular concern when I talk to someone about it.
 
-![Women sitting around a table](https://miro.medium.com/max/6000/1*XEPPU9coPaUidehQiAl63A.jpeg)
-*Photo by [CoWomen](https://unsplash.com/photos/7Zy2KV76Mts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 This also seems to be the norm for other companies that rely on Clojure. Compared to Node.js or Python, the demand and supply for Clojure resources are minuscule. It’s hard to find Clojure jobs for the same reason.
 

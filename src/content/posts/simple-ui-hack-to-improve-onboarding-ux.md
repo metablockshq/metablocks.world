@@ -5,11 +5,9 @@ publishedOn: 2018-10-09
 tags: saas, design, onboarding
 heroImg: https://miro.medium.com/max/1152/1*a1Tpc-t8BBCU62Bx6ezsBA.png
 ---
+*Messenger ui built using this [free sketch resource](https://www.sketchappsources.com/free-source/2262-ios-messenger-ui-kit-sketch-freebie-resource.html)*
 
 UI Mockups and sketches assume that user data is already present. For example, the mockup below assumes that the user will have contacts to chat with, notifications and even chat threads.
-
-![](https://miro.medium.com/max/1152/1*a1Tpc-t8BBCU62Bx6ezsBA.png)
-*Simple messenger ui built using this [free sketch resource](https://www.sketchappsources.com/free-source/2262-ios-messenger-ui-kit-sketch-freebie-resource.html)*
 
 But this is never the case when a user signs up. In the beginning, there is no data, so an empty contacts column and an empty chat window.
 

@@ -21,7 +21,8 @@
 }
 
 /*<img> followed by <em> is always an attribution*/
-.markdown img + em {
+/*first <em> is always cover attribution*/
+.markdown img + em, .markdown p:first-child > em {
 	font-size: 14px;
 	display: block;
 }
