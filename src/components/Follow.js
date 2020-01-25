@@ -3,7 +3,7 @@ import React from 'react';
 import plant from '../images/plant.png';
 
 const Follow = () => {
-  return (<div className="mv5">
+  return (<div className="mt3 mb5">
     <div className="ba br2 bw2 b--white flex pt0 pt1-m pt3-l pl2 pl3-ns">
       <div className="flex items-end nb2">
         <img src={plant} />

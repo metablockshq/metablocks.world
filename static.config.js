@@ -5,6 +5,9 @@ import chokidar from 'chokidar';
 import {paramCase} from 'change-case';
 import R from 'ramda';
 
+
+const contentDir = './src/content';
+
 // chokidari keval dev mode main
 if (process.env.REACT_STATIC_ENV === 'development') {
   chokidar.watch(contentDir).on('all', () => {
@@ -15,43 +18,45 @@ if (process.env.REACT_STATIC_ENV === 'development') {
   });
 }
 
-const contentDir = './src/content';
+const getSitePages = (content) => {
+  const sitePagesObj = R.mapObjIndexed((val, key, obj) => ({
+    path: `/${key}`,
+    template: 'src/templates/Page',
+    getData: () => val
+  }), content.pages);
 
-const isPublished = (post) => post.publishedOn !== null;
+  return R.values(sitePagesObj);
+}
 
-// individual post page
-const postPages = (content) => Object.keys(content.posts)
-  .filter(k => isPublished(content.posts[k]))
-  .map(k => ({
-    path: content.posts[k].slug || `${paramCase(k)}`,
-    template: 'src/templates/blog/Post',
-    getData: () => content.posts[k]
-  }))
-;
-
-// individual site page
-const sitePages = (content) => Object.keys(content.pages).map(k => ({
-  path: `/${k}`,
-  template: 'src/templates/Page',
-  getData: () => content.pages[k]
-}));
-
-// cumulative list for /blog
-const postList = (content) => {
-  const byPublishedOnDesc = R.comparator((a, b) => a.publishedOn > b.publishedOn);
-  const pickRequiredKeys = (obj) => R.pick(['title', 'subTitle', 'heroImg', 'publishedOn', 'tags', 'slug', 'featured'], obj);
+const getProcessedPosts = (content) => {
   const convertTagsToArray = (obj) => R.mapObjIndexed((val, key, obj) => key !== 'tags' ? val : R.split(', ', val), obj);
+  const isPublished = (post) => post.publishedOn !== null;
 
-  const list = Object.keys(content.posts)
-    .filter(k => isPublished(content.posts[k]))
-    .map(k => ({
-      path: `/blog/${content.posts[k].slug || paramCase(k)}`,
-      ...R.compose(convertTagsToArray, pickRequiredKeys)(content.posts[k])
-    }))
-  ;
+  const publishedPosts = R.filter(isPublished, content.posts);
+  const processedPostsObj = R.mapObjIndexed((val, key, obj) => ({
+    path: `/${val.slug || paramCase(key)}`,
+    template: 'src/templates/blog/Post',
+    data: convertTagsToArray(val)
+  }), publishedPosts);
+  return R.values(processedPostsObj);
+};
 
-  // reuturn after sorting by publish date
-  return R.sort(byPublishedOnDesc, list);
+const getPostPages = (processedPosts) => {
+  return R.map(({path, template, data}) => ({
+    path,
+    template,
+    getData: () => data
+  }), processedPosts)
+};
+
+const getBlogPostsData = (processedPosts) => {
+  // used to render the blog post list, remove content and sort by date desc
+  const withoutContent = R.map(post => R.dissocPath(['data', 'contents'], post), processedPosts);
+  const byPublishedOnDesc = R.comparator((a, b) => {
+    return a.data.publishedOn > b.data.publishedOn;
+  });
+  
+  return R.sort(byPublishedOnDesc, withoutContent);
 }
 
 export default {
@@ -63,15 +68,27 @@ export default {
   getRoutes: async () => {
     const content = await jdown(contentDir);
 
+    const processedPosts = getProcessedPosts(content);
+    
+    const postPages = getPostPages(processedPosts);
+    const blogPosts = getBlogPostsData(processedPosts);
+
+    const featuredPosts = R.filter(p => p.data.featured, blogPosts);
+    const latestPosts = R.take(2, blogPosts);
+
+    const sitePages = getSitePages(content);
+    
+
     return [{
       path: '/', 
-      template: 'src/templates/Landing'
+      template: 'src/templates/Landing',
+      getData: () => ({featuredPosts, latestPosts})
     }, {
       path: '/blog', 
       template: 'src/templates/Blog',
-      getData: () => ({postList: postList(content)}),
-      children: postPages(content)
-    }, 
-    ...sitePages(content)];
+      getData: () => ({blogPosts, featuredPosts})
+    },
+    ...postPages,
+    ...sitePages];
   }
 }

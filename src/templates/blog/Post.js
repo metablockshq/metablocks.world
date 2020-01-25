@@ -24,16 +24,23 @@ const Post = () => {
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {heroImg && <meta property="og:image" content={`https://krimlabs.com/${heroImg}`} />}
     </Head>
-    <div className="white w-90 w-80-m w-50-l mt3 center markdown">
-      <div className="f6 mb2 mt4">{str.humanReadableDate(publishedOn)}</div>
-      <div className="f1 b mv4">{title}</div>
-      <hr/>
-      <div className="b mt2 f6 white-80">By {author || "Shivek Khurana"}</div>
-      <hr/>
-      <div className="lh-copy f4">{contents && convert(contents)}</div>
-      {canonicalUrl && <div className="mv3 bg-white-10 pa2 br2 o-50">This blog was originally published on <a href={canonicalUrl}>Medium</a></div>}
+    <div className="white mt3">
+      <div className="center w-90 w-80-m w-50-l">
+        <div className="f6 mb2 mt4">{str.humanReadableDate(publishedOn)}</div>
+        <div className="f1 b">{title}</div>
+        {subTitle && <div className="f2 mt1 mb2 o-60">{subTitle}</div>}
+        <div className="b mt2 f6 white-80">By {author || "Shivek Khurana"}</div>
+      </div>
+      
+      {heroImg && <div className="center w-90 w-80-m w-60-l mv4">
+        <img src={heroImg} className="br2"/>
+      </div>}
 
-      <Follow />
+      <div className="lh-copy center w-90 w-80-m w-50-l f4 markdown">
+        {contents && convert(contents)}
+        {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">This blog was originally published on <a href={canonicalUrl}>Medium</a></div>}
+        <Follow />
+      </div>      
     </div>
   </LayeredContainer>);
 };
