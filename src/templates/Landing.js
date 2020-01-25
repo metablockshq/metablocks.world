@@ -31,11 +31,11 @@ const Landing = () => {
     <div className="w-90 w-80-ns flex flex-column flex-column-m flex-row-l center white">
       <Letter className="pt3"/>
       <div className="flex mt4 mt4-m mt0-l pa0 pa0-m pa4-l" style={{flex: 1}}>
-        <div className="flex flex-column pr4" style={{flex: 1}}>
+        <div className="flex flex-column pr2 pr2-m pr4-l" style={{flex: 1}}>
           <div className="ttu f7 mb3 b">Latest Posts</div>
           <div>{latestPosts.map((p, i) => <PostCard key={i} post={p} small={true} />)}</div>
         </div>     
-        <div className="flex flex-column pl4" style={{flex: 1}}>
+        <div className="flex flex-column pl2 pl2-m pl4-l" style={{flex: 1}}>
           <div className="ttu f7 mb3 b">Featured Posts</div>
           <div>{featuredPosts.map((p, i) => <PostCard key={i} post={p} small={true} />)}</div>
         </div>   
