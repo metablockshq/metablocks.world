@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {NavLink, useLocation, useHistory} from 'react-router-dom';
 
-import logo from '../images/logo.svg';
+import logo from '../images/logo-white.svg';
 import LayeredContainer from '../components/LayeredContainer';
 
 const links = [{

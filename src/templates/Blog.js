@@ -27,9 +27,9 @@ const Blog = () => {
         <div className="ttu f7 b mb3">Latest</div>
         {blogPosts.map((p, i) => <PostCard key={i} post={p} />)}
       </div>
-      <div className="dn dib-ns w-30 pl2">
+      <div className="dn dib-ns w-30 pl3">
         <div className="ttu f7 b mb3">Top Hits</div>
-        {featuredPosts.map((p, i) => <FeaturedPostCard key={i} post={p} />)}
+        {featuredPosts.map((p, i) => <PostCard key={i} post={p} small />)}
       </div>
     </div>
   </LayeredContainer>);

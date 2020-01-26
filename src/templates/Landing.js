@@ -6,8 +6,8 @@ import colors from 'utils/colors';
 import PostCard from '../components/PostCard';
 
 const Letter = ({className}) => {
-  return (<div className={`f4 lh-copy pr0 pr0-m pr4-l ${className}`} style={{flex: 1}}>
-    <p className="b">Hi Stranger !</p>
+  return (<div className={`f4 o-90 lh-copy pr0 pr0-m pr4-l eb-garamond ${className}`} style={{flex: 1}}>
+    <p className="b sans-serif o-100">Hi Stranger !</p>
 
     <p>My name is Shivek Khurana and Krim Labs is a canopy for my consultancy, products and ideas.</p>
 
@@ -22,12 +22,22 @@ const Letter = ({className}) => {
   </div>);
 };
 
+const Meta = () => {
+  return (<Head>
+    <title>Krim Labs</title>
+    <meta name="keywords" content="shivek khurana, krim labs, clojure, india, new delhi, javascript, react, shivek, krim" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="My name is Shivek Khurana and Krim Labs is a canopy for my consultancy, products and ideas." />
+    <meta property="og:title" content="Krim Labs" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`https://krimlabs.com/img/og.png`} />
+  </Head>);
+}
+
 const Landing = () => {
   const {latestPosts, featuredPosts} = useRouteData();
   return (<LayeredContainer>
-    <Head>
-      <title>Krim Labs</title>
-    </Head>
+    <Meta />
     <div className="w-90 w-80-ns flex flex-column flex-column-m flex-row-l center white">
       <Letter className="pt3"/>
       <div className="flex mt4 mt4-m mt0-l pa0 pa0-m pa4-l" style={{flex: 1}}>

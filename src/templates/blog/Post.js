@@ -7,6 +7,11 @@ import str from '../../utils/string';
 import './post.css';
 import Follow from '../../components/Follow';
 
+const transform = {
+  p: ({children}) => <p className="eb-garamond">{children}</p>,
+  li: ({children}) => <li className="eb-garamond">{children}</li>
+}
+
 const Post = () => {
   const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl} = useRouteData();
 
@@ -22,7 +27,7 @@ const Post = () => {
       <meta property="article:author" content={author || "Shivek Khurana"} />
       <meta property="article:tag" content={tags} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      {heroImg && <meta property="og:image" content={`https://krimlabs.com/${heroImg}`} />}
+      {heroImg && heroImg.indexOf('https://') === -1 && <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}
     </Head>
     <div className="white mt3">
       <div className="center w-90 w-80-m w-50-l">
@@ -37,7 +42,7 @@ const Post = () => {
       </div>}
 
       <div className="lh-copy center w-90 w-80-m w-50-l f4 markdown">
-        {contents && convert(contents)}
+        {contents && convert(contents, {transform})}
         {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">This blog was originally published on <a href={canonicalUrl}>Medium</a></div>}
         <Follow />
       </div>      
