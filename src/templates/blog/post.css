@@ -2,6 +2,7 @@
 	background-color: #10161A;
 	border-radius: 8px;
 	padding: 4px;
+	font-size: 16px;
 }
 
 .markdown pre code {
@@ -16,14 +17,10 @@
 	text-decoration: underline;
 }
 
-.markdown blockquote {
-	font-size: 24px;
-}
-
 /*<img> followed by <em> is always an attribution*/
 /*first <em> is always cover attribution*/
 .markdown img + em, .markdown p:first-child > em {
-	font-size: 14px;
+	font-size: 16px;
 	display: block;
 }
 

@@ -6,7 +6,7 @@ import colors from 'utils/colors';
 import PostCard from '../components/PostCard';
 
 const Letter = ({className}) => {
-  return (<div className={`f4 o-90 lh-copy pr0 pr0-m pr4-l eb-garamond ${className}`} style={{flex: 1}}>
+  return (<div className={`f4 o-90 lh-copy pr0 pr0-m pr4-l georgia ${className}`} style={{flex: 1}}>
     <p className="b sans-serif o-100">Hi Stranger !</p>
 
     <p>My name is Shivek Khurana and Krim Labs is a canopy for my consultancy, products and ideas.</p>

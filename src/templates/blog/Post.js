@@ -8,8 +8,10 @@ import './post.css';
 import Follow from '../../components/Follow';
 
 const transform = {
-  p: ({children}) => <p className="eb-garamond">{children}</p>,
-  li: ({children}) => <li className="eb-garamond">{children}</li>
+  p: ({children}) => <p className="georgia">{children}</p>,
+  li: ({children}) => <li className="georgia mb3">{children}</li>,
+  blockquote: ({children}) => <blockquote className="georgia i f3">{children}</blockquote>,
+
 }
 
 const Post = () => {
@@ -44,7 +46,9 @@ const Post = () => {
 
       <div className="lh-copy center w-90 w-80-m w-50-l f4 markdown">
         {contents && convert(contents, {transform})}
-        {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">This blog was originally published on <a href={canonicalUrl}>Medium</a></div>}
+        {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">
+          This blog was originally published on <a href={canonicalUrl}>Medium</a>
+        </div>}
         <Follow />
       </div>      
     </div>

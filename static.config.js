@@ -45,6 +45,7 @@ const getPostPages = (processedPosts) => {
   return R.map(({path, template, data}) => ({
     path,
     template,
+    // assoc related posts to data
     getData: () => data
   }), processedPosts)
 };
