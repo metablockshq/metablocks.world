@@ -27,7 +27,9 @@ const Meta = () => {
     <title>Krim Labs</title>
     <meta name="keywords" content="shivek khurana, krim labs, clojure, india, new delhi, javascript, react, shivek, krim" />
     <meta name="robots" content="index, follow" />
-    <meta name="description" content="My name is Shivek Khurana and Krim Labs is a canopy for my consultancy, products and ideas." />
+    <meta name="description" content="A canopy for my consultancy, products and ideas." />
+    <meta property="og:url" content="https://krimlabs.com" />
+    <meta property="og:description" content="A canopy for my consultancy, products and ideas." />
     <meta property="og:title" content="Krim Labs" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={`https://krimlabs.com/img/og.png`} />

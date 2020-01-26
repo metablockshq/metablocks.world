@@ -21,6 +21,7 @@ const Post = () => {
       <meta name="keywords" content={tags} />
       <meta name="robots" content="index, follow" />
       {subTitle && <meta name="description" content={subTitle} />}
+      {subTitle && <meta name="og:description" content={subTitle} />}
       <meta property="og:title" content={title} />
       <meta property="og:type" content="article" />
       <meta property="article:published_time" content={publishedOn} />
