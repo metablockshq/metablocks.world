@@ -11,7 +11,6 @@ const transform = {
   p: ({children}) => <p className="georgia">{children}</p>,
   li: ({children}) => <li className="georgia mb3">{children}</li>,
   blockquote: ({children}) => <blockquote className="georgia i f3">{children}</blockquote>,
-
 }
 
 const Post = () => {

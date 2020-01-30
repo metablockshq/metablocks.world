@@ -50,7 +50,10 @@ const getPostPages = (processedPosts) => {
   }), processedPosts)
 };
 
-const getBlogPostsData = (processedPosts) => {
+const getBlogPosts = (processedPosts) => {
+  // const stripContents = post => R.dissocPath(['data', 'contents'], post);
+  // const injectRelatedPosts = post => 
+  // const transform = R.compose(stripContents, injectRelatedPosts)
   // used to render the blog post list, remove content and sort by date desc
   const withoutContent = R.map(post => R.dissocPath(['data', 'contents'], post), processedPosts);
   const byPublishedOnDesc = R.comparator((a, b) => {
@@ -72,7 +75,7 @@ export default {
     const processedPosts = getProcessedPosts(content);
     
     const postPages = getPostPages(processedPosts);
-    const blogPosts = getBlogPostsData(processedPosts);
+    const blogPosts = getBlogPosts(processedPosts);
 
     const featuredPosts = R.filter(p => p.data.featured, blogPosts);
     const latestPosts = R.take(2, blogPosts);

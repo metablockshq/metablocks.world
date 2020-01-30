@@ -10,7 +10,7 @@ slug: clojure-drug-dealer-part-3
 ---
 *Photo by [Jose Antonio Gallego Vázquez](https://unsplash.com/@joseantoniogall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/drug-store?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
-In [part 1](https://krimlabs.com/clojure-drug-dealer-api-part-1) and [part 2](https://krimlabs.com/clojure-drug-dealer-api-part-2) of the series, we walked through setting up a Clojure application from scratch. Part two ended with a working GET route.In this part, we’ll upgrade our developer experience, introduce REPL and implement the POST route.
+In [part 1](https://krimlabs.com/clojure-drug-dealer-part-1) and [part 2](https://krimlabs.com/clojure-drug-dealer-part-2) of the series, we walked through setting up a Clojure application from scratch. Part two ended with a working GET route. In this part, we’ll upgrade our developer experience, introduce REPL and implement the POST route.
 
 ![](https://miro.medium.com/max/128/0*xoJ6PI84nnxxpT-k.png)
 *Source code available at [https://github.com/krimlabs/workshops](https://github.com/krimlabs/workshops) (branch [snapshot/dealer-api-part-3](https://github.com/krimlabs/workshops/tree/snapshot/dealer-api-part-3))*

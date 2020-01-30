@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Root, Routes} from 'react-static';
+import {Root, Routes, Head} from 'react-static';
 import {Route, Switch} from 'react-router-dom';
 
 import './app.css';
 import colors from './utils/colors';
 import {MobileNav} from './components/Nav';
+import useScript from './utils/hooks/useScript';
 import './tachyons.min.css';
 
 const Loading = () => {
@@ -14,6 +15,10 @@ const Loading = () => {
 
 const App = () => {
   return (<Root>
+    <Head>
+      <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101233643);</script>
+      <script async src="https://static.getclicky.com/js"></script>
+    </Head>
     <React.Suspense fallback={<Loading />}>
       <Switch>
         <Route exact path="/mobile-nav" component={MobileNav} />
