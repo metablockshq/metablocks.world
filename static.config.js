@@ -28,34 +28,49 @@ const getSitePages = (content) => {
   return R.values(sitePagesObj);
 }
 
-const getProcessedPosts = (content) => {
-  const convertTagsToArray = (obj) => R.mapObjIndexed((val, key, obj) => key !== 'tags' ? val : R.split(', ', val), obj);
-  const isPublished = (post) => post.publishedOn !== null;
+const commaSeperatedToArray = str => str ? R.split(', ', str) : [];
 
+const getProcessedPosts = (content) => {
+  const convertTagsAndRelatedPostsToArray = obj => R.mapObjIndexed(
+    (val, key, obj) => (key === 'tags' || key === 'relatedSlugs') ? commaSeperatedToArray(val) : val, 
+    obj);
+
+  const injectSlug = slug => obj => R.assoc('slug', slug, obj);
+
+  const isPublished = (post) => post.publishedOn !== null;
   const publishedPosts = R.filter(isPublished, content.posts);
-  const processedPostsObj = R.mapObjIndexed((val, key, obj) => ({
-    path: `/${val.slug || paramCase(key)}`,
-    template: 'src/templates/blog/Post',
-    data: convertTagsToArray(val)
-  }), publishedPosts);
+
+  const processedPostsObj = R.mapObjIndexed((val, key, obj) => {
+    const slug = val.slug || paramCase(key);
+    const transform = R.compose(convertTagsAndRelatedPostsToArray, injectSlug(slug));
+    
+    return {
+      path: `/blog/${slug}`,
+      template: 'src/templates/blog/Post',
+      data: transform(val)
+    }
+  }, publishedPosts);
+
   return R.values(processedPostsObj);
 };
 
 const getPostPages = (processedPosts) => {
+  const relatedSlugs = data => R.pathOr([], ['relatedSlugs'], data);
+  const postBySlug = slug => R.dissocPath(['data', 'contents'], R.find(p => p.data.slug === slug, processedPosts));
+  const relatedPosts = data => R.map(postBySlug, relatedSlugs(data));
+  const injectRelatedPosts = data => R.assoc('relatedPosts', relatedPosts(data), data);
+  
   return R.map(({path, template, data}) => ({
     path,
     template,
     // assoc related posts to data
-    getData: () => data
+    getData: () => injectRelatedPosts(data)
   }), processedPosts)
 };
 
 const getBlogPosts = (processedPosts) => {
-  // const stripContents = post => R.dissocPath(['data', 'contents'], post);
-  // const injectRelatedPosts = post => 
-  // const transform = R.compose(stripContents, injectRelatedPosts)
-  // used to render the blog post list, remove content and sort by date desc
-  const withoutContent = R.map(post => R.dissocPath(['data', 'contents'], post), processedPosts);
+  const stripContents = post => R.dissocPath(['data', 'contents'], post);
+  const withoutContent = R.map(stripContents, processedPosts);
   const byPublishedOnDesc = R.comparator((a, b) => {
     return a.data.publishedOn > b.data.publishedOn;
   });
@@ -75,14 +90,13 @@ export default {
     const processedPosts = getProcessedPosts(content);
     
     const postPages = getPostPages(processedPosts);
-    const blogPosts = getBlogPosts(processedPosts);
+    const allPosts = getBlogPosts(processedPosts);
 
-    const featuredPosts = R.filter(p => p.data.featured, blogPosts);
-    const latestPosts = R.take(2, blogPosts);
+    const featuredPosts = R.filter(p => p.data.featured, allPosts);
+    const latestPosts = R.take(2, allPosts);
 
     const sitePages = getSitePages(content);
     
-
     return [{
       path: '/', 
       template: 'src/templates/Landing',
@@ -90,7 +104,7 @@ export default {
     }, {
       path: '/blog', 
       template: 'src/templates/Blog',
-      getData: () => ({blogPosts, featuredPosts})
+      getData: () => ({allPosts, featuredPosts})
     },
     ...postPages,
     ...sitePages];

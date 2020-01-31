@@ -4,6 +4,7 @@ canonicalUrl: https://medium.com/@shivekkhurana/a-simple-ui-hack-to-improve-onbo
 publishedOn: 2018-10-09
 tags: saas, design, onboarding
 heroImg: https://miro.medium.com/max/1152/1*a1Tpc-t8BBCU62Bx6ezsBA.png
+relatedSlugs: handle-js-data-structures-with-map-reduce
 ---
 *Messenger ui built using this [free sketch resource](https://www.sketchappsources.com/free-source/2262-ios-messenger-ui-kit-sketch-freebie-resource.html)*
 

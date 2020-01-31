@@ -6,6 +6,7 @@ publishedOn: 2019-08-27
 heroImg: https://miro.medium.com/max/4928/1*ZigE5BeEaXIfx2_FnP4UWg.png
 featured: false
 slug: clojure-drug-dealer-part-1
+relatedSlugs: clojure-424-days, clojure-drug-dealer-part-2, clojure-drug-dealer-part-3
 ---
 
 *Base Photo by [Jose Antonio Gallego Vázquez](https://unsplash.com/@joseantoniogall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*

@@ -1,20 +1,59 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useRouteData, Head} from 'react-static';
+import {Link, useLocation} from 'react-router-dom';
 import convert from 'htmr';
 
 import LayeredContainer from '../../components/LayeredContainer';
+import PostCard from '../../components/PostCard';
 import str from '../../utils/string';
+import plant from '../../images/plant.png';
 import './post.css';
-import Follow from '../../components/Follow';
+
+const Related = ({relatedPosts}) => {
+  return (<div>
+    <div className="f6 ttu b pt2">Related Posts</div>
+    <div className="flex flex-wrap justify-between mt4">
+      {relatedPosts.map(p => <div key={p.data.slug} className="w-100 w-30-ns">
+        <PostCard post={p} small={true}/>
+      </div>)}
+    </div>
+  </div>);
+}
+
+const Follow = () => {
+  return (<div className="mt3 mb5">
+    <div className="ba br2 bw2 b--white flex pt0 pt1-m pt3-l pl2 pl3-ns">
+      <div className="flex items-end nb2">
+        <img src={plant} />
+      </div>
+      <div className="pa3 f4 f3-ns">
+        If you liked this post and want to stay updated, follow me on <a href="https://twitter.com/shivek_khurana">Twitter</a> or <a href="https://github.com/shivekkhurana">Github</a>  
+      </div>    
+    </div>
+    <div className="mt2 f7 o-30">
+      Plant image illustration designed by <a href="http://www.freepik.com">rawpixel.com at Freepik</a>
+    </div>
+  </div>);
+}
 
 const transform = {
   p: ({children}) => <p className="georgia">{children}</p>,
   li: ({children}) => <li className="georgia mb3">{children}</li>,
   blockquote: ({children}) => <blockquote className="georgia i f3">{children}</blockquote>,
+  a: ({href, children}) => <a href={href} target="_blank">{children}</a>,
+  img: ({src, alt}) => <img src={src} className="" alt={String(alt)}/>
 }
 
+
 const Post = () => {
-  const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl} = useRouteData();
+  const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl, relatedPosts} = useRouteData();
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    // this id is defined in LayerdContainer Component
+    const lc = document.getElementById('layeredContainerScrollDiv');
+    lc.scrollTop = 0;
+  }, [pathname]);
 
   return (<LayeredContainer level={1}>
     <Head>
@@ -43,13 +82,17 @@ const Post = () => {
         <img src={heroImg} className="br2"/>
       </div>}
 
-      <div className="lh-copy center w-90 w-80-m w-50-l f4 markdown">
-        {contents && convert(contents, {transform})}
-        {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">
-          This blog was originally published on <a href={canonicalUrl}>Medium</a>
-        </div>}
-        <Follow />
-      </div>      
+      <div className="center w-90 w-80-m w-50-l">
+        <div className="lh-copy f4 markdown">
+          {contents && convert(contents, {transform})}
+          {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">
+            This blog was originally published on <a href={canonicalUrl}>Medium</a>
+          </div>}
+
+          <Follow />
+        </div>
+        {relatedPosts.length > 0 && <Related relatedPosts={relatedPosts} />}
+      </div>
     </div>
   </LayeredContainer>);
 };

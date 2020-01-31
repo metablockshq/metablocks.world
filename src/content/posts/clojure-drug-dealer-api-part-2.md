@@ -7,11 +7,12 @@ publishedOn: 2019-09-03
 heroImg: https://miro.medium.com/max/2957/1*4vZebt3dYv_HSlHwNGC-1A.png
 featured: false
 slug: clojure-drug-dealer-part-2
+relatedSlugs: clojure-424-days, clojure-drug-dealer-part-1, clojure-drug-dealer-part-3
 ---
 
 *Base Photo by [Jose Antonio Gallego Vázquez](https://unsplash.com/@joseantoniogall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
-[You have built a simple app](https://krimlabs.com/clojure-drug-dealer-part-1). Now you want it to be a little more useful. You want to ultimately push it to prod right?In this part, we’d connect to a database and handle CRUD.
+[You have built a simple app](https://krimlabs.com/blog/clojure-drug-dealer-part-1). Now you want it to be a little more useful. You want to ultimately push it to prod right?In this part, we’d connect to a database and handle CRUD.
 
 ## What’s up with the Drug Dealer title?
 
@@ -19,7 +20,7 @@ Drug  Dealer is a better click bait than a medical store. In the language of  th
 
 ---
 
-In the [last part](https://krimlabs.com/clojure-drug-dealer-part-1)  we created a simple app structure to handle a drug store. A drug store  had an inventory, each drug had a price, procurement was via offline  sources and there was a retail window.
+In the [last part](https://krimlabs.com/blog/clojure-drug-dealer-part-1)  we created a simple app structure to handle a drug store. A drug store  had an inventory, each drug had a price, procurement was via offline  sources and there was a retail window.
 
 I  carefully crafted a situation that had only one domain entity: The  drug. Each drug has a price and availability. Procurement is offline, so  we don’t care. Sale would just reduce the inventory size.
 

@@ -5,6 +5,7 @@ publishedOn: 2019-04-13
 tags: interview, open source, culture, erpnext, frappe, business
 heroImg: https://miro.medium.com/max/1167/1*b6fCxwMBepVjSuxtvsLokA.jpeg
 featured: true
+relatedSlugs: imitate
 ---
 *The team behind Frappe & ERPNext*
 

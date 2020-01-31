@@ -4,6 +4,7 @@ canonicalUrl: https://medium.com/@shivekkhurana/5-internet-people-i-follow-for-a
 publishedOn: 2018-07-09
 heroImg: https://miro.medium.com/max/6048/1*DKiWBCAiuib33nVatd6aFA.png
 tags: saas, canva, basecamp
+relatedSlugs: imitate
 ---
 
 The internet is full of gems, gold and scrum. There is a lot to learn and a bigger lot to avoid. Here’s my list of goto people, who shaped my thought processes. In no particular order :

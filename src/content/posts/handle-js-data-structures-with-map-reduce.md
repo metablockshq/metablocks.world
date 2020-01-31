@@ -5,7 +5,7 @@ canonicalUrl: https://codeburst.io/writing-javascript-with-map-reduce-980602ff2f
 publishedOn: 2018-01-31
 heroImg: https://miro.medium.com/max/1191/1*hgBLGPibHyM4oSjjASJtSA.png
 tags: functional programming, lambda, js, es6, javascript, map, reduce, filter
-featured: true
+relatedSlugs: clojure-424-days
 ---
 
 Javascript has its problems, but syntax is not one of them. The ternary operator, the es6 map/reduce and the spread operator are powerful constructs.

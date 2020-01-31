@@ -13,6 +13,7 @@ const LayeredContainer = ({level, children}) => {
     }}/>}
     <div 
       className="mh2 overflow-y-scroll overflow-x-hidden" 
+      id={"layeredContainerScrollDiv"}
       style={{
         background: colors.DARK_GRAY2, borderRadius: "16px 16px 0 0",
         boxShadow: level > 0 && "2px -8px 32px rgba(0, 0, 0, 0.5)",

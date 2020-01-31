@@ -6,6 +6,8 @@ canonicalUrl: https://medium.com/@shivekkhurana/what-i-learned-after-writing-clo
 publishedOn: 2019-05-07
 heroImg: https://miro.medium.com/max/6000/1*XEPPU9coPaUidehQiAl63A.jpeg
 tags: clojure, clojurescript, clojure 424
+featured: true
+relatedSlugs: clojure-drug-dealer-part-1, clojure-drug-dealer-part-2, clojure-drug-dealer-part-3
 ---
 *Cover Photo by [CoWomen](https://unsplash.com/photos/7Zy2KV76Mts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
