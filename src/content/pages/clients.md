@@ -3,7 +3,7 @@ title: Clients
 heroImg: /img/content/site/man-and-woman-handshake.svg 
 ---
 
-[The best code is no code at all](https://blog.codinghorror.com/the-best-code-is-no-code-at-all/).
+[*The best code is no code at all*](https://blog.codinghorror.com/the-best-code-is-no-code-at-all/).
 
 As a software development company, our job is to understand your idea, align it with available technologies and suggest a solution that involves the least amount of code.
 

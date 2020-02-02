@@ -7,7 +7,7 @@ heroImg: /img/content/site/working.svg
 We help build applications that you can run your business on. With expertise in Web Technologies and Cloud Native infrastructure, we can streamline your processes and increase efficiency.
 
 ## Analytics & Data Processing
-Do you have data coming in from all directions? We help you make sense of it.
+Do you have data coming in from all directions?
 Our bespoke solutions will help you collect and combine data from multiple sources to a consumeable dashboard.
 
 ## React & Clojure Training

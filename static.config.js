@@ -35,15 +35,15 @@ const getProcessedPosts = (content) => {
     (val, key, obj) => (key === 'tags' || key === 'relatedSlugs') ? commaSeperatedToArray(val) : val, 
     obj);
 
-  const injectSlug = slug => obj => R.assoc('slug', slug, obj);
+  const injectSlugFn = slug => obj => R.assoc('slug', slug, obj);
 
   const isPublished = (post) => post.publishedOn !== null;
   const publishedPosts = R.filter(isPublished, content.posts);
 
   const processedPostsObj = R.mapObjIndexed((val, key, obj) => {
     const slug = val.slug || paramCase(key);
-    const transform = R.compose(convertTagsAndRelatedPostsToArray, injectSlug(slug));
-    
+    const transform = R.compose(convertTagsAndRelatedPostsToArray, injectSlugFn(slug));
+
     return {
       path: `/blog/${slug}`,
       template: 'src/templates/blog/Post',

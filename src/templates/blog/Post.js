@@ -7,7 +7,7 @@ import LayeredContainer from '../../components/LayeredContainer';
 import PostCard from '../../components/PostCard';
 import str from '../../utils/string';
 import plant from '../../images/plant.png';
-import './post.css';
+import Markdown from '../../components/Markdown';
 
 const Related = ({relatedPosts}) => {
   return (<div>
@@ -83,8 +83,9 @@ const Post = () => {
       </div>}
 
       <div className="center w-90 w-80-m w-50-l">
-        <div className="lh-copy f4 markdown">
-          {contents && convert(contents, {transform})}
+        <div className="f4">
+          <Markdown contents={contents} />
+
           {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">
             This blog was originally published on <a href={canonicalUrl}>Medium</a>
           </div>}

@@ -3,6 +3,7 @@ import {useRouteData, Head} from 'react-static';
 import convert from 'htmr';
 
 import LayeredContainer from '../components/LayeredContainer';
+import Markdown from '../components/Markdown';
 import colors from '../utils/colors';
 
 const Page = () => {
@@ -19,8 +20,8 @@ const Page = () => {
     >
       {title}
     </div>}
-    <div className="white w-90 w-80-m w-40-ns lh-copy center mt5 markdown">
-      {contents && convert(contents)}
+    <div className="white w-90 w-80-m w-40-ns center mt5">
+      <Markdown contents={contents} />
     </div>
   </LayeredContainer>);
 };

@@ -1,13 +1,18 @@
 import React, {useState} from 'react';
 import {NavLink, useLocation, useHistory} from 'react-router-dom';
 
-import logo from '../images/logo-white.svg';
+import logo from '../images/logo-white-with-wolf.svg';
 import LayeredContainer from '../components/LayeredContainer';
+import mailIcon from '../images/mail.svg';
+import briefcaseIcon from '../images/briefcase.svg';
+import packageIcon from '../images/package.svg';
+import bookIcon from '../images/book-open.svg';
 
 const links = [{
   title: 'Blog',
   path: '/blog',
-  position: 'left' 
+  position: 'left',
+  icon: bookIcon
 }, 
 // {
 //   title: 'Philosophy',
@@ -17,18 +22,31 @@ const links = [{
 {
   title: 'Clients',
   path: '/clients',
-  position: 'right' 
+  position: 'right',
+  icon: briefcaseIcon
 }, {
   title: 'Services',
   path: '/services',
-  position: 'right' 
+  position: 'right',
+  icon: packageIcon
 }, {
   title: 'Contact',
   path: '/contact',
-  position: 'right' 
+  position: 'right',
+  icon: mailIcon
 }];
 
 const activeClassName = "o-50";
+
+const NavItem = ({l}) => {
+  return (<div className="flex items-center">
+    {/*<div className="pt1 o-80">
+      <img src={l.icon} className="mr1" style={{height: 16}}/>
+    </div>*/}
+    <div className="">{l.title}</div>
+  </div>);
+};
+
 const Nav = () => {
   const {pathname} = useLocation();
   const history = useHistory();
@@ -36,11 +54,11 @@ const Nav = () => {
   const onMobileAnchorClick = () => pathname === "/mobile-nav" ? history.goBack() : history.push("/mobile-nav");
 
   return (<div className={`flex ph2 justify-between white items-center`}>
-    <div className="w-30 dn dib-ns">
+    <div className="w-30 dn flex-ns">
       {links.filter(l => l.position === "left").map(l => (<NavLink
         key={l.title} activeClassName={activeClassName} className={"mr3"} to={l.path}
       >
-        {l.title}
+        <NavItem l={l} />
       </NavLink>))}
     </div>
 
@@ -56,7 +74,7 @@ const Nav = () => {
       {links.filter(l => l.position === "right").map(l => (<NavLink
         key={l.title} activeClassName={activeClassName} className={"ml3"} to={l.path}
       >
-        {l.title}
+        <NavItem l={l} />
       </NavLink>))}
     </div>
     <div className="w-30 dib dn-ns">
