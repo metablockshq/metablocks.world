@@ -17,6 +17,11 @@ Juxt is a UK based product development studio that works exclusively with Clojur
 
 Most Juxt clients are tier 1 banks, financial services, and publishing companies. We help the Juxt team deliver solutions to some of these companies.
 
+## [Veriscript](https://veriscript.io)
+Veriscript is an e-signing and document management startup. It allows organisations to create documents and get legally binding signatures in the Cloud.
+
+We helped Veriscript build the first iteration of their product. Veriscript is a Node and React based system, integrated with Goverment of India's, Aadhar E-Sign API. It feautures multiple security layers and encryption at various storage levels to ensure privacy and security of a user's documents.
+
 ## [PFRepo](https://pfrepo.me)
 
 PFRepo is a portal for creating and maintaining a private digital career repository. The career profile is a chronologically arranged recorded events that make up the academic and professional career of the user. This career profile can be used to generate Resumes, CVs and Cover Letters and their one-click apply makes the job application process frictionless.

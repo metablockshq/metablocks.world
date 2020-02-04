@@ -23,12 +23,15 @@ const Related = ({relatedPosts}) => {
 const Follow = () => {
   return (<div className="mt3 mb5">
     <div className="ba br2 bw2 b--white flex pt0 pt1-m pt3-l pl2 pl3-ns">
-      <div className="flex items-end nb2">
+      <div className="flex items-end nb2" style={{flex: 1}}>
         <img src={plant} />
       </div>
-      <div className="pa3 f4 f3-ns">
-        If you liked this post and want to stay updated, follow me on <a href="https://twitter.com/shivek_khurana">Twitter</a> or <a href="https://github.com/shivekkhurana">Github</a>  
-      </div>    
+      <div className="pa3 f4 f3-ns" style={{flex: 3}}>
+        <div className="ttu f7 b mb2">Keep in touch</div>
+        <div>
+          Follow Shivek Khurana on <a className="underline" href="https://twitter.com/shivek_khurana">Twitter</a> or <a className="underline" href="https://github.com/shivekkhurana">Github</a>  
+        </div>
+      </div>
     </div>
     <div className="mt2 f7 o-30">
       Plant image illustration designed by <a href="http://www.freepik.com">rawpixel.com at Freepik</a>
