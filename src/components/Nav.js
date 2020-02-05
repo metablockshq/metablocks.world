@@ -3,10 +3,10 @@ import {NavLink, useLocation, useHistory} from 'react-router-dom';
 
 import logo from '../images/logo-white-with-wolf.svg';
 import LayeredContainer from '../components/LayeredContainer';
-import mailIcon from '../images/mail.svg';
-import briefcaseIcon from '../images/briefcase.svg';
-import packageIcon from '../images/package.svg';
-import bookIcon from '../images/book-open.svg';
+import mailIcon from '../images/icons/mail.svg';
+import briefcaseIcon from '../images/icons/briefcase.svg';
+import packageIcon from '../images/icons/package.svg';
+import bookIcon from '../images/icons/book-open.svg';
 
 const links = [{
   title: 'Blog',

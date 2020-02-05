@@ -5,7 +5,7 @@ import Nav from './Nav'
 
 const LayeredContainer = ({level, children}) => {
 
-  return (<div className="vh-100 w-100 flex flex-column" style={{background: colors.DARK_GRAY1}}>
+  return (<div className="vh-100 w-100 flex flex-column bp3-dark" style={{background: colors.DARK_GRAY1}}>
     <Nav />
     {level > 0 && <div className="mh3" style={{
       background: colors.DARK_GRAY2, borderRadius: "16px 16px 0 0",
