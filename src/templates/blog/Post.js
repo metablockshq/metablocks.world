@@ -7,12 +7,14 @@ import LayeredContainer from '../../components/LayeredContainer';
 import PostCard from '../../components/PostCard';
 import str from '../../utils/string';
 import plant from '../../images/plant.png';
+import fbIcon from '../../images/icons/fb.svg';
+import twitterIcon from '../../images/icons/twitter.svg';
 import Markdown from '../../components/Markdown';
 
 const Related = ({relatedPosts}) => {
   return (<div>
-    <div className="f6 ttu b pt2">Related Posts</div>
-    <div className="flex flex-wrap justify-between mt4">
+    <div className="f6 ttu b pt2 mt4">Related Posts</div>
+    <div className="flex flex-wrap justify-between mt3">
       {relatedPosts.map(p => <div key={p.data.slug} className="w-100 w-30-ns">
         <PostCard post={p} small={true}/>
       </div>)}
@@ -37,6 +39,40 @@ const Follow = () => {
       Plant image illustration designed by <a href="http://www.freepik.com">rawpixel.com at Freepik</a>
     </div>
   </div>);
+};
+
+const shareUrls = {
+  twitter: (link='', message='') =>
+    `https://twitter.com/intent/tweet/?text=${encodeURIComponent(message)}&url=${encodeURIComponent(link)}`,
+  facebook: (link='') =>
+    `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`,
+  linkedin: (link='', message='') =>
+    `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(link)}
+    &title=${encodeURIComponent(message)}&summary=${encodeURIComponent(message)}&source=${encodeURIComponent(link)}`,
+  mail: (link='', subject, body) =>
+    `mailto:?subject=${encodeURIComponent(subject || '')}&body=${encodeURIComponent((body && `${body}\n\n${link}`) || link)}`,
+  whatsapp: (link='', message='') =>
+    `whatsapp://send?text=${encodeURIComponent(message)}%20${encodeURIComponent(link)}`,
+  telegram: (link='', message='') =>
+    `https://telegram.me/share/url?text=${encodeURIComponent(message)}&url=${encodeURIComponent(link)}`,
+  hn: (link='', message='') =>
+    `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(link)}&t=${encodeURIComponent(message)}`,
+};
+
+const Share = ({title, url}) => {
+  return (<div className="flex">
+    <div>
+      <a href={shareUrls.twitter(url, `${title} by @shivek_khurana`)} target="_blank">
+        <img src={twitterIcon} alt=""/>
+      </a>
+    </div>
+
+    <div className="pl2">
+      <a href={shareUrls.facebook(url, title)} target="_blank">
+        <img src={fbIcon} alt=""/>
+      </a>
+    </div>
+  </div>);
 }
 
 const transform = {
@@ -49,7 +85,7 @@ const transform = {
 
 
 const Post = () => {
-  const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl, relatedPosts} = useRouteData();
+  const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl, relatedPosts, slug} = useRouteData();
   const {pathname} = useLocation();
 
   useEffect(() => {
@@ -73,12 +109,26 @@ const Post = () => {
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {heroImg && heroImg.indexOf('https://') === -1 && <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}
     </Head>
-    <div className="white mt3">
+
+    <div className="white mt3 pb5">
       <div className="center w-90 w-80-m w-50-l">
-        <div className="f6 mb2 mt4">{str.humanReadableDate(publishedOn)}</div>
         <div className="f1 b">{title}</div>
-        {subTitle && <div className="f2 mt1 mb2 o-60">{subTitle}</div>}
-        <div className="b mt2 f6 white-80">By {author || "Shivek Khurana"}</div>
+        {subTitle && <div className="f2 mt1 mb2 bp3-text-muted">{subTitle}</div>}
+
+        <div className="flex mt4 items-center justify-between">
+          <div className="flex items-center">
+            <div>
+              <img src="/img/authors/shivekkhurana/micro.jpeg" className="br-100" />
+            </div>
+            <div className="pl2">
+              <div className="b f6 white-80">{author || "Shivek Khurana"}</div>
+              <div className="f7 mt1 bp3-text-muted mb2">{str.humanReadableDate(publishedOn)}</div>
+            </div>
+          </div>
+          <div className="">
+            <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
+          </div>
+        </div>
       </div>
       
       {heroImg && <div className="center w-90 w-80-m w-60-l mv4">
@@ -94,6 +144,13 @@ const Post = () => {
           </div>}
 
           <Follow />
+
+          <div>
+            <div className="ttu f6 b mb3">
+              Share this post
+            </div>
+            <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
+          </div>
         </div>
         {relatedPosts.length > 0 && <Related relatedPosts={relatedPosts} />}
       </div>
