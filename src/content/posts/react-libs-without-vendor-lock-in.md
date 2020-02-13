@@ -1,9 +1,9 @@
 ---
-title: Use 3rd party React Components without vendor lockin
+title: Use 3rd party React Components without vendor lock-in
 tags: react, software development
 publishedOn: 2020-02-13
 featured: false
-heroImg: /img/content/posts/react-libs-without-vendor-lockin.png
+heroImg: /img/content/posts/react-libs-without-vendor-lock-in.png
 relatedSlugs: startup-ideas-from-feb-2020, clojure-424-days, simple-ui-hack-to-improve-onboarding-ux
 ---
 
@@ -81,5 +81,5 @@ Notice how our Modal interface didn't accept a `large` prop, instead set it to `
 
 # Conclusion
 
-Component interfaces help circumvent vendor lockin and allow for easy updates. They also help simplify the actual API and give an ability to set sane defaults. 
+Component interfaces help circumvent vendor lock-in and allow for easy updates. They also help simplify the actual API and give an ability to set sane defaults. 
 
