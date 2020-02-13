@@ -17,7 +17,7 @@ const Letter = ({className}) => {
  
     <p>On the spectrum of OOP and Functional Programming Paradigms, I find home on the Functional Side.</p>
 
-    <p>Currently based in New Delhi, I’m working with Juxt as a remote contractor. Juxt is a UK based Clojure Consultancy firm. My day job includes building and maintaining a set of services for a large telecom company, handling over 10 million users.</p>
+    <p>Currently based in New Delhi, I’m working at <a href="https://juxt.pro" target="_blank" className="underline">Juxt</a> as a remote contractor. Juxt is a UK based Clojure Consultancy firm. My day job includes building and maintaining a set of services for a large telecom company, handling over 10 million users.</p>
 
   </div>);
 };

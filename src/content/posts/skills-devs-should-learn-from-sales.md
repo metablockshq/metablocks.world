@@ -4,6 +4,7 @@ heroImg: /img/content/posts/skills-devs-should-learn-from-sales.jpg
 tags: work, sales, devs
 publishedOn: 2020-02-04
 relatedSlugs: clojure-424-days, imitate, ethical-open-sourced-and-profitable
+featured: true
 ---
 *Photo by [Kaleidico](https://unsplash.com/@kaleidico) on [Unsplash](https://unsplash.com/)*
 
