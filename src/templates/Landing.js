@@ -14,10 +14,7 @@ const Letter = ({className}) => {
     <p>Over the last 10 years, I have worked with startups, enterprises and SMEs. And have built Web Apps, Mobile Apps, NLP and Data Processing pipelines.</p>
 
     <p>I like working on frontends, infra, identity and backends, in that order. Clojure, React and JavaScript are my weapons of choice.</p>
- 
-    <p>On the spectrum of OOP and Functional Programming Paradigms, I find home on the Functional Side.</p>
 
-    <p>Currently based in New Delhi, I’m working at <a href="https://juxt.pro" target="_blank" className="underline">Juxt</a> as a remote contractor. Juxt is a UK based Clojure Consultancy firm. My day job includes building and maintaining a set of services for a large telecom company, handling over 10 million users.</p>
 
   </div>);
 };
