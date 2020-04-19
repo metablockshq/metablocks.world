@@ -29,9 +29,9 @@ const Follow = () => {
         <img src={plant} />
       </div>
       <div className="pa3 f4 f3-ns" style={{flex: 3}}>
-        <div className="ttu f7 b mb2">Keep in touch</div>
+        <div className="f5 mb2">If you liked this post and want to stay updated, you can follow Shivek Khurana on:</div>
         <div>
-          Follow Shivek Khurana on <a className="underline" href="https://twitter.com/shivek_khurana">Twitter</a> or <a className="underline" href="https://github.com/shivekkhurana">Github</a>  
+         <a className="underline" href="https://twitter.com/shivek_khurana">Twitter</a>, <a className="underline" href="https://github.com/shivekkhurana">Github</a> or <a className="underline" href="https://airtable.com/shrvdZbevPVW8fhRP">Mailing List</a>
         </div>
       </div>
     </div>

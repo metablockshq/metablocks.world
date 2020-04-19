@@ -40,14 +40,14 @@ Instead of importing `Modal` directly, we create an interface component.
 ```
 import Modal as BaseModal from '@demo/Modal';
 
-const Modal = ({children, open, title}) => {
+const Modal = ({children, open, title}) => (
     < BaseModal
         large={false}
         title={title}
         open={open}
         contents={children}
     />
-};
+);
 
 export default Modal;
 
