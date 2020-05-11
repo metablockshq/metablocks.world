@@ -2,6 +2,7 @@ import React from 'react';
 import {Head, useRouteData} from 'react-static';
 
 import Shell from "../components/Shell";
+import OpenForProjects from "../components/OpenForProjects";
 import colors from 'utils/colors';
 import PostCard from '../components/PostCard';
 
@@ -11,14 +12,13 @@ const Letter = ({className}) => {
 		 style={{flex:1}}>
 
 	      <div className="w-20 mt2">
-		<img src="/img/brown-boy.svg" alt="Illustration of a brown boy" className="bb pl3 b--white-20"/>
-	      </div>
-	      <div className="w-70">
-		<p className="b sans-serif o-100">Hi Stranger !</p>
-
-		<p>My name is Shivek Khurana and <span className="i">Krim Labs is a canopy for my consultancy, products and ideas</span>.</p>
-
-	      </div>
+      		<img src="/img/brown-boy.svg" alt="Illustration of a brown boy" className="bb pl3 b--white-20"/>
+      	</div>
+      	<div className="w-70">
+      		<p className="b sans-serif o-100">Hi Stranger !</p>
+      		<p>My name is Shivek Khurana and <span className="i">Krim Labs is a canopy for my consultancy, products and ideas</span>.</p>
+           <OpenForProjects />
+ 	      </div>
 	    </div>
 	  </div>);
 };

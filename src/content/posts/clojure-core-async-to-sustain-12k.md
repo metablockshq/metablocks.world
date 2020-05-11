@@ -1,15 +1,17 @@
 ---
-title: How we used Clojure's concurrency model to help 12000 people sustain the pandemic
-tags: clojure, karuna 2020, pandemic, concurrency
+title: How Clojure's concurrency model helped us feed 12000 people
+tags: clojure, karuna 2020, pandemic, concurrency, core.async
 publishedOn: 2020-05-10
 featured: false
 heroImg: /img/content/posts/clojure-async-karuna-banner.png
 slug: clojure-core-async-to-sustain-12k
 ---
 
-On March 4, 2020, I saw that my friend Anand was building an open platform to help an NGO. This group had designed a [Food and Health Kit](https://karuna2020.org/guides/ration-and-safety-kit-assembly/) and established safety protocols. I called him up and found myself at a conference the next day. 
+On March 4, 2020, I saw that my friend [Anand](https://anandchowdhary.com/) was building an [open platform](https://github.com/Karuna2020) to help an NGO. This group had designed a [Food and Health Kit](https://karuna2020.org/guides/ration-and-safety-kit-assembly/) and had established safety protocols. I called him up and found myself at a conference the next day. 
 
-15 odd people, whom I had never met before were trying to serve the community. They had already raised Rs. 700,000 (~ $ 9,000) and had partnered with an NGO to handle on-ground distribution. The group was big on not letting any volunteer go on-ground due to safety risks.
+15 odd people, whom I had never met before were trying to feed the marginalised. They had already raised Rs. 700,000 (~ $ 9,000) and had partnered with an NGO to handle on-ground distribution. 
+
+> I was told that the our kit was designed to sustain a small family for 1 month.
 
 The optimist in me saw a set of volunteers with good intentions, trying to do their best to support the community.
 The pessimist in me saw the restrictions due to lockdown and  the general fear in the air.

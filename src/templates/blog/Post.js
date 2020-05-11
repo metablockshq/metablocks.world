@@ -15,6 +15,7 @@ import fbIcon from '../../images/icons/fb.svg';
 import twitterIcon from '../../images/icons/twitter.svg';
 import Markdown from '../../components/Markdown';
 
+
 const Related = ({relatedPosts}) => {
   return (<div>
 	    <div className="f6 ttu b pt2 mt4">Related Posts</div>
