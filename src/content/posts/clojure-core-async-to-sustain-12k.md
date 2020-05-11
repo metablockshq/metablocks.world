@@ -1,7 +1,7 @@
 ---
 title: How we used Clojure's concurrency model to help 12000 people sustain the pandemic
 tags: clojure, karuna 2020, pandemic, concurrency
-publishedOn: 2020-04-30
+publishedOn: 2020-05-10
 featured: false
 heroImg: /img/content/posts/clojure-async-karuna-banner.png
 slug: clojure-core-async-to-sustain-12k

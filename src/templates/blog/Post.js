@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react';
 import {useRouteData, Head} from 'react-static';
 import {Link, useLocation} from 'react-router-dom';
+import Prism from "prismjs";
 import convert from 'htmr';
 
+import "./prism.css";
 import colors from '../../utils/colors';
 import Shell from '../../components/Shell';
 import Nav from '../../components/Nav';
@@ -92,7 +94,7 @@ const Post = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
-
+    setTimeout(() => Prism.highlightAll(), 0);
   }, [pathname]);
 
   return (<Shell>
@@ -110,10 +112,6 @@ const Post = () => {
 	      <meta property="article:tag" content={tags} />
 	      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 	      {heroImg && heroImg.indexOf('https://') === -1 && <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}
-
-	      {/*Syntax Highlight*/}
-	      <link rel="stylesheet" href="/prism.css" />
-	      <script src="/prism.js"></script>
 	    </Head>
 
 
