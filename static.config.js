@@ -11,7 +11,7 @@ const contentDir = './src/content';
 // chokidari keval dev mode main
 if (process.env.REACT_STATIC_ENV === 'development') {
   chokidar.watch(contentDir).on('all', () => {
-    try {rebuildRoutes()} 
+    try {rebuildRoutes()}
     catch(e) {
       // it's okay
     }
@@ -59,7 +59,7 @@ const getPostPages = (processedPosts) => {
   const postBySlug = slug => R.dissocPath(['data', 'contents'], R.find(p => p.data.slug === slug, processedPosts));
   const relatedPosts = data => R.map(postBySlug, relatedSlugs(data));
   const injectRelatedPosts = data => R.assoc('relatedPosts', relatedPosts(data), data);
-  
+
   return R.map(({path, template, data}) => ({
     path,
     template,
@@ -74,7 +74,7 @@ const getBlogPosts = (processedPosts) => {
   const byPublishedOnDesc = R.comparator((a, b) => {
     return a.data.publishedOn > b.data.publishedOn;
   });
-  
+
   return R.sort(byPublishedOnDesc, withoutContent);
 }
 
@@ -88,21 +88,21 @@ export default {
     const content = await jdown(contentDir);
 
     const processedPosts = getProcessedPosts(content);
-    
+
     const postPages = getPostPages(processedPosts);
     const allPosts = getBlogPosts(processedPosts);
 
     const featuredPosts = R.filter(p => p.data.featured, allPosts);
-    const latestPosts = R.take(2, allPosts);
+    const latestPosts = R.take(3, allPosts);
 
     const sitePages = getSitePages(content);
-    
+
     return [{
-      path: '/', 
+      path: '/',
       template: 'src/templates/Landing',
       getData: () => ({featuredPosts, latestPosts})
     }, {
-      path: '/blog', 
+      path: '/blog',
       template: 'src/templates/Blog',
       getData: () => ({allPosts, featuredPosts})
     },

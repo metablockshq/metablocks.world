@@ -77,7 +77,7 @@ The goal of each state is to progress the user to the next state. When the user 
 
 The mockup below has just one call to action, the blue plus button that lets the user add a new contact. The graphics and the text both prime the user to take that action.
 
-![](https://miro.medium.com/max/1152/1*VK6RMIEemBMLG2kEMrmg1Q.png)
+![](https://miro.medium.com/max/1152/1*VK6RMIEemBMLG2kEMrmg1Q.png?large)
 *State 1 — Prime the user to add contacts (illustration by undraw.co)*
 
 Once a contact has been added, we can start the second goal.
@@ -86,7 +86,7 @@ Once a contact has been added, we can start the second goal.
 
 The mockup below shows has a graphical primer to start a chat. It explicitly outlines the features available. Again, there is only one thing you can do now, i.e. send a message. You can also make a call in this UI, but both these actions serve the same purpose. They take your user to step 3.
 
-![](https://miro.medium.com/max/1152/1*TBYDdUW4Hr_D-nA3cwzr_Q.png)
+![](https://miro.medium.com/max/1152/1*TBYDdUW4Hr_D-nA3cwzr_Q.png?large)
 *State 2 — Contact added, prime to start a chat*
 
 
@@ -94,7 +94,7 @@ The mockup below shows has a graphical primer to start a chat. It explicitly out
 
 And finally, when your user has repeated the process a few times, her UI will start looking the way we originally intended.
 
-![](https://miro.medium.com/max/1152/1*a1Tpc-t8BBCU62Bx6ezsBA.png)
+![](https://miro.medium.com/max/1152/1*a1Tpc-t8BBCU62Bx6ezsBA.png?large)
 *State 3 — The user is successfully on boarded*
 
 ## Benefits of this approach

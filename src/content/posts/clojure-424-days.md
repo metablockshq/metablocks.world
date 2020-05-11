@@ -48,6 +48,7 @@ It’s hard to label this as a pro or con. Rich Hickey is a fantastic thinker an
 ## (It’s (flooded with (parenthesis)))
 
 This XKCD is only accurate if you don’t have an insider perspective.
+
 ![XKCD Comic 297](https://miro.medium.com/max/640/1*3AOKcFB_vJM5oTrS7VO1cw.png)
 *https://xkcd.com/297/*
 
@@ -149,7 +150,7 @@ It’s perfectly OK to use libraries that are not updated for the past 2 years i
 
 Clojure lets you extend the syntax with first class support for macros. Consider the following example:
 
-```
+```clojure
 (if something-is-true
   (do
     (something-else))
@@ -157,7 +158,7 @@ Clojure lets you extend the syntax with first class support for macros. Consider
 
 This can be converted into a `when` macro as follows:
 
-```
+```clojure
 ;; actual when source(defmacro when
   "Evaluates test. If logical true, evaluates body in an implicit   do."
   {:added "1.0"}
@@ -167,7 +168,7 @@ This can be converted into a `when` macro as follows:
 
 and can now be used as:
 
-```
+```clojure
 (when something-is-true 
   (something-else))
 ```

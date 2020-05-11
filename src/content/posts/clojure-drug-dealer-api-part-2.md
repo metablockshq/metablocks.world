@@ -35,7 +35,7 @@ We will have 5 routes on the drug model.
 - PUT /drugs/:id — Update a drug by id
 - DELETE /drugs/:id — Delete a drug by id
 
-![](https://miro.medium.com/max/128/1*kT1mZwyxUce_RQ4vfu3sCw.png)
+![](https://miro.medium.com/max/128/1*kT1mZwyxUce_RQ4vfu3sCw.png?original)
 *Source code available at [https://github.com/krimlabs/workshops](https://github.com/krimlabs/workshops) (branch [snapshot/dealer-api-part-2](https://github.com/krimlabs/workshops/tree/snapshot/dealer-api-part-2))*
 
 
@@ -45,7 +45,7 @@ We first need to create a new namespace to handle interactions with the database
 
 In your `deps.edn` file add the following:
 
-```
+```clojure
 com.layerware/hugsql {:mvn/version "0.4.9"}
 org.postgresql/postgresql {:mvn/version "42.1.4"}
 ```
@@ -54,7 +54,7 @@ org.postgresql/postgresql {:mvn/version "42.1.4"}
 
 HugSQL  works by converting SQL definitions to Clojure functions. It requires  us to define a source file and a Clojure namespace where the functions  will be added.
 
-```
+```bash
 $ mkdir -p src/dealer_api/sql
 $ touch src/dealer_api/sql/drugs.sql
 $ touch src/dealer_api/sql/drugs.clj
@@ -64,18 +64,18 @@ $ touch src/dealer_api/sql/drugs.clj
 
 We’ll also create a new namespace to hold this model. Let’s call it `dealer-api.drugs`. For this, we need to create a new file `src/dealer_api/drugs.clj`.
 
-```
+```bash
 $ touch src/dealer_api/drugs.clj
 ```
 
-![](https://miro.medium.com/max/229/1*s1-JdZSaisRvh7q6nnYOOw.png)
+![](https://miro.medium.com/max/229/1*s1-JdZSaisRvh7q6nnYOOw.png?original)
 *Your directory structure after all files have been created*
 
 ## Create initial table structure
 
 Since  we are not using a migration system, you can run the following commands  directly in PSQL. This tutorial assumes that the name of your database  is `dealer_dev`.
 
-```
+```sql
 CREATE TABLE drugs (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
@@ -87,7 +87,8 @@ CREATE TABLE drugs (
 ## Add seed data
 
 Here’s a list of [10 most prescribed drugs from 2017](https://www.beckershospitalreview.com/supply-chain/10-most-popular-prescription-drugs-for-2017.html):
-```
+
+```sql
 INSERT INTO drugs (name, availability, price)
 VALUES
   ('Vicodin, Norco, Xodol (hydrocodone, acetaminophen)', 100, 14),
@@ -106,12 +107,12 @@ VALUES
 
 Setup `src/dealer_api/config.clj` with a db definition. This will be used when we query the database using HugSQL.
 
-```
+```bash
 $ touch src/dealer_api/config.clj
 ```
 
 In this config, define the database you want to connect to:
-```
+```clojure
 (ns dealer-api.config)
 
 (def db
@@ -140,8 +141,7 @@ This  tells the logger to not care about debug log and logs from outside our  na
 
 We can make it available by adding `resources` to classpath. Update the `:src` key in your `deps.edn` to include resources on the classpath:
 
-```
-
+```clojure
 {:paths ["src" "resources"]
 ...
 }
@@ -157,7 +157,7 @@ The request cycle of Pedestal is similar to that of Node’s Express. A  handler
 
 In `src/dealer_api/sql/drugs.sql` add the following query:
 
-```
+```sql
 -- :name drugs :? :*
 -- :doc Get all drugs
 SELECT * FROM drugs;
@@ -171,7 +171,7 @@ SELECT * FROM drugs;
 
 Setup `src/dealer_api/sql/drugs.clj` as follows:
 
-```
+```clojure
 (ns dealer-api.sql.drugs
   (:require [hugsql.core :as hugsql]))
 
@@ -182,7 +182,8 @@ Setup `src/dealer_api/sql/drugs.clj` as follows:
 ## Create a handler to get all drugs
 
 Setup `src/dealer_api/drugs.clj` as to handle get-all route:
-```
+
+```clojure
 (ns dealer-api.drugs
   (:require [dealer-api.sql.drugs :as sql]
             [dealer-api.config :refer [db]]
@@ -198,7 +199,8 @@ Setup `src/dealer_api/drugs.clj` as to handle get-all route:
 ## Assign handler to GET /drugs route
 
 You handler and db interactions are all ready. We just need to bind it to a route. In `dealer-api.core` namespace, add the following require, and binding:
-```
+
+```clojure
 (ns dealer-api.core
   (:require [io.pedestal.http :as http]
             [clojure.tools.namespace.repl :refer [refresh]]
@@ -220,7 +222,7 @@ You  can go ahead, open a REPL, and start a server as we did in the last  post. 
 ## Require namespaces you need
 
 In the REPL, require the db config, sql function and route handler (you don’t even need to start the server):
-```
+```bash
 $ clj
 Clojure 1.10.1
 user=> (require '[dealer-api.config :refer [db]])
@@ -238,7 +240,7 @@ nil
 
 At the bottom of `dealer-api.drugs` ns, add the following Rich Comment:
 
-```
+```clojure
 (comment 
   (do 
     (require '[dealer-api.config :refer [db]])
@@ -251,14 +253,14 @@ When you have the REPL integrated with your editor, you can directly send this c
 ## Verify if db is present and correct ✅
 
 You might have to change the database name, user and password.
-```
+```clojure
 user=> db
 {:classname "org.postgresql.Driver", :subprotocol "postgresql", :subname "//localhost:5432/dealer_dev", :user "shivekkhurana", :password ""}
 ```
 
 ## Verify the sql function ✅
 
-```
+```clojure
 user=> sd/drugs
 #object[hugsql.core$db\_fn\_STAR\_$y\_\_1922 0x2af6b556 "hugsql.core$db\_fn\_STAR\_$y\_\_1922@2af6b556"]user=> (sd/drugs db)
 ({:id 1, :name "Vicodin, Norco, Xodol (hydrocodone, acetaminophen)", :availability 100, :price 14.0} {:id 3, :name "Synthroid, Levoxyl, Unithroid (levothyroxine)", :availability 200, :price 11.0} {:id 4, :name "Delasone, Sterapred (prednisone)", :availability 150, :price 5.0} {:id 5, :name "Amoxil (amoxicillin)", :availability 200, :price 9.0} {:id 6, :name "Neurontin (gabapentin)", :availability 50, :price 13.0} {:id 7, :name "Prinivil, Zestril (lisinopril)", :availability 60, :price 7.0} {:id 8, :name "Lipitor (atorvastatin)", :availability 78, :price 12.0} {:id 9, :name "Glucophage (metformin)", :availability 180, :price 8.0} {:id 10, :name "Zofran (ondansetron)", :availability 40, :price 17.0} {:id 11, :name "Motrin (ibuprofen)", :availability 70, :price 12.0})
@@ -266,7 +268,7 @@ user=> sd/drugs
 If you find there is an issue in sql query, you can change the file, re-require it and test this function again.
 
 ## Verify the handler ✅
-```
+```clojure
 user=> d/all-drugs
 #object[dealer_api.drugs$all\_drugs 0x728c3a0e "dealer_api.drugs$all\_drugs@728c3a0e"]user=> (d/all-drugs {})
 {:status 200, :headers {"Content-Type" "application/json;charset=UTF-8"}, :body #object[io.pedestal.http$print\_fn$fn\_\_16848 0x485c8d5e "io.pedestal.http$print\_fn$fn\_\_16848@485c8d5e"]}
@@ -278,7 +280,7 @@ The handler seems to work correctly, and a json body with the correct status is 
 ## Finally test the route in the browser ✅
 
 When you are happy that all your functions are working, we can start the server and make a sanity check in the browser:
-```
+```clojure
 user=> (require '[dealer-api.core :refer [go reset]])
 nil
 user=> (go)
@@ -287,7 +289,8 @@ user=> (go)
 :started)
 ```
 Now visit localhost:8890 and you should see the list of drugs being returned.
-![](https://miro.medium.com/max/1596/1*X1TZaQzReFaJVO9LuaoyrA.png)
+
+![](https://miro.medium.com/max/1596/1*X1TZaQzReFaJVO9LuaoyrA.png?large)
 *Our GET /drugs route is working !*
 
 # Part 2 — Conclusion

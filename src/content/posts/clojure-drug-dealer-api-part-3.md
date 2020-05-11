@@ -13,7 +13,7 @@ relatedSlugs: clojure-424-days, clojure-drug-dealer-part-1, clojure-drug-dealer-
 
 In [part 1](https://krimlabs.com/blog/clojure-drug-dealer-part-1) and [part 2](https://krimlabs.com/blog/clojure-drug-dealer-part-2) of the series, we walked through setting up a Clojure application from scratch. Part two ended with a working GET route. In this part, we’ll upgrade our developer experience, introduce REPL and implement the POST route.
 
-![](https://miro.medium.com/max/128/0*xoJ6PI84nnxxpT-k.png)
+![](https://miro.medium.com/max/128/0*xoJ6PI84nnxxpT-k.png?original) 
 *Source code available at [https://github.com/krimlabs/workshops](https://github.com/krimlabs/workshops) (branch [snapshot/dealer-api-part-3](https://github.com/krimlabs/workshops/tree/snapshot/dealer-api-part-3))*
 
 # Updating the editor workflow
@@ -22,7 +22,7 @@ Till  now, we have been copy-pasting the code from editor to the REPL running  i
 
 To start the REPL server, install the nREPL (short for Network REPL) package. In your `deps.edn`, add the following top-level key:
 
-```
+```clojure
 :aliases
 {:nREPL
  {:extra-deps
@@ -32,15 +32,17 @@ To start the REPL server, install the nREPL (short for Network REPL) package. In
 
 To start the nREPL, run the following command in the root of your project:
 
-```
+```bash
 clj -R:nREPL -m nrepl.cmdline
 ```
 
 You should see a REPL running as follows:
-![](https://miro.medium.com/max/910/1*u_TN5C7-OuYe8vrKCVrWmw.png)
+
+![](https://miro.medium.com/max/910/1*u_TN5C7-OuYe8vrKCVrWmw.png?medium)
+
 It  might be hard to remember the command to start the REPL, so we can  create a bash script to start the nREPL for us. Create a file called `repl` and place it in the `bin` folder in the root of the directory:
 
-```
+```bash
 $ ls
 deps.edn  resources src test.log
 $ mkdir bin$ cd bin$ touch repl
@@ -51,7 +53,7 @@ $ chmod +x repl$ cd ..
 
 Now, you can start the REPL by executing the newly created file:
 
-```
+```bash
 $ bin/repl
 nREPL server started on port 57764 on host localhost - nrepl://localhost:57764
 ```
@@ -75,7 +77,7 @@ VS Code users can use [this guide](https://spin.atomicobject.com/2017/06/22/cloj
 
 I  must tell you, that there is no going back after this point. If you  want, stop now. But what you are about to witness might just get to  addicted.Inline evaluation means executing a piece of code inside your editor.
 
-![](https://miro.medium.com/max/1028/1*jmhsR0JUfkDppTutdIydPQ.gif)
+![](https://miro.medium.com/max/1028/1*jmhsR0JUfkDppTutdIydPQ.gif?medium)
 *Inline Evaluation Demo*
 
 By evaluating code inline, you can skip `(reset)` and just eval the updated form inline. You can also test the functions you are writing without leaving your editor.
@@ -85,7 +87,8 @@ By evaluating code inline, you can skip `(reset)` and just eval the updated form
 We have the `go` and `reset` methods defined in core.clj but by default, the REPL is started in the `user`  namespace. If we want some functions to be available in the REPl, we  can define it in that namespace. It’s also handy to define dev  functionality like migrations, rollbacks, seeds etc.
 
 Create a file called `user.clj` in `src` directory. Note that this file can be anywhere on the classpath defined in `deps.edn` . Notice how we have copied the `go` , `halt` and `reset` functions here (from `core.clj` ). It makes more sense since it’s not directly related to the application. You can go ahead and delete these functions from `core.clj` .
-```
+
+```clojure
 ;; In src/user.clj
 (ns user
   (:require [dealer-api.core :refer [start-server]]
@@ -119,7 +122,8 @@ The process is the same as the GET route. Write SQL, write a handler, connect th
 ## Write SQL to insert a new post
 
 In `src/dealer_api/sql/drugs.sql` add the following:
-```
+
+```sql
 -- :name new-drug :insert :1
 INSERT INTO
 drugs(name, availability, price)
@@ -132,7 +136,7 @@ The `:name, :availability and :price` signify variables. These are provided by t
 
 The POST route consumes data sent using an API. It’s a good practice to validate the shape of the data. To do this, we can use [Clojure’s spec](https://clojure.org/guides/spec) as follows.
 
-```
+```clojure
 ;; (:require [clojure.spec.alpha :as s])
 (s/def ::name string?)
 (s/def ::availability int?)
@@ -142,13 +146,14 @@ The POST route consumes data sent using an API. It’s a good practice to valida
 ```
 We’ll not dive deeper in the world of spec in this post.
 
-![](https://miro.medium.com/max/1028/1*tlq2P9AvC26NwyGTpSyyiQ.gif)
+![](https://miro.medium.com/max/1028/1*tlq2P9AvC26NwyGTpSyyiQ.gif?medium)
 *Checking that spec works with inline eval*
 
 ## Write the handler
 
 Unlike GET route, this route depends on request, so instead of using a `_` we’ll accept the request as the first parameter:
-```
+
+```clojure
 (defn create-drug [request]
   (let [new-drug (select-keys (-> request :json-params)
                               [:name :availability :price])]    
@@ -164,7 +169,7 @@ Unlike GET route, this route depends on request, so instead of using a `_` we’
 - If the drug is valid, `sql/new-drug` data creates a new record in the db and returns 200 OK.
 
 ## Connect the handler to the POST route
-```
+```clojure
 ;; (:require [io.pedestal.http.body-params :refer [body-params]])
 (def routes
   #{["/drugs" :post 
@@ -177,7 +182,7 @@ Here,  instead of passing a single handler as we did for the get route, we  pass
 ## Test the post route
 
 You might have to `(reset)` to get all your changes in the build.
-```
+```bash
 // Test if route throws 400 if bad data is sent
 
 $ curl -X POST -H 'Content-Type: application/json' -i http://localhost:8890/drugs --data '{"name": "Non"}'_HTTP/1.1 400 Bad Request

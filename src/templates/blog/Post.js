@@ -3,7 +3,9 @@ import {useRouteData, Head} from 'react-static';
 import {Link, useLocation} from 'react-router-dom';
 import convert from 'htmr';
 
-import LayeredContainer from '../../components/LayeredContainer';
+import colors from '../../utils/colors';
+import Shell from '../../components/Shell';
+import Nav from '../../components/Nav';
 import PostCard from '../../components/PostCard';
 import str from '../../utils/string';
 import plant from '../../images/plant.png';
@@ -13,66 +15,66 @@ import Markdown from '../../components/Markdown';
 
 const Related = ({relatedPosts}) => {
   return (<div>
-    <div className="f6 ttu b pt2 mt4">Related Posts</div>
-    <div className="flex flex-wrap justify-between mt3">
-      {relatedPosts.map(p => <div key={p.data.slug} className="w-100 w-30-ns">
-        <PostCard post={p} small={true}/>
-      </div>)}
-    </div>
-  </div>);
+	    <div className="f6 ttu b pt2 mt4">Related Posts</div>
+	    <div className="flex flex-wrap justify-between mt3">
+	      {relatedPosts.map(p => <div key={p.data.slug} className="w-100 w-30-ns">
+				       <PostCard post={p} small={true}/>
+				     </div>)}
+	    </div>
+	  </div>);
 }
 
 const Follow = () => {
   return (<div className="mt3 mb5">
-    <div className="ba br2 bw2 b--white flex pt0 pt1-m pt3-l pl2 pl3-ns">
-      <div className="flex items-end nb2" style={{flex: 1}}>
-        <img src={plant} />
-      </div>
-      <div className="pa3 f4 f3-ns" style={{flex: 3}}>
-        <div className="f5 mb2">If you liked this post and want to stay updated, you can follow Shivek Khurana on:</div>
-        <div>
-         <a className="underline" href="https://twitter.com/shivek_khurana">Twitter</a>, <a className="underline" href="https://github.com/shivekkhurana">Github</a> or <a className="underline" href="https://airtable.com/shrvdZbevPVW8fhRP">Mailing List</a>
-        </div>
-      </div>
-    </div>
-    <div className="mt2 f7 o-30">
-      Plant image illustration designed by <a href="http://www.freepik.com">rawpixel.com at Freepik</a>
-    </div>
-  </div>);
+	    <div className="ba br2 bw2 b--white flex pt0 pt1-m pt3-l pl2 pl3-ns">
+	      <div className="flex items-end nb2" style={{flex: 1}}>
+		<img src={plant} />
+	      </div>
+	      <div className="pa3 f4 f3-ns" style={{flex: 3}}>
+		<div className="f5 mb2">If you liked this post and want to stay updated, you can follow Shivek Khurana on:</div>
+		<div>
+		  <a className="underline" href="https://twitter.com/shivek_khurana">Twitter</a>, <a className="underline" href="https://github.com/shivekkhurana">Github</a> or <a className="underline" href="https://airtable.com/shrvdZbevPVW8fhRP">Mailing List</a>
+		</div>
+	      </div>
+	    </div>
+	    <div className="mt2 f7 o-30">
+	      Plant image illustration designed by <a href="http://www.freepik.com">rawpixel.com at Freepik</a>
+	    </div>
+	  </div>);
 };
 
 const shareUrls = {
   twitter: (link='', message='') =>
-    `https://twitter.com/intent/tweet/?text=${encodeURIComponent(message)}&url=${encodeURIComponent(link)}`,
+  `https://twitter.com/intent/tweet/?text=${encodeURIComponent(message)}&url=${encodeURIComponent(link)}`,
   facebook: (link='') =>
-    `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`,
+  `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`,
   linkedin: (link='', message='') =>
-    `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(link)}
+  `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(link)}
     &title=${encodeURIComponent(message)}&summary=${encodeURIComponent(message)}&source=${encodeURIComponent(link)}`,
   mail: (link='', subject, body) =>
-    `mailto:?subject=${encodeURIComponent(subject || '')}&body=${encodeURIComponent((body && `${body}\n\n${link}`) || link)}`,
+  `mailto:?subject=${encodeURIComponent(subject || '')}&body=${encodeURIComponent((body && `${body}\n\n${link}`) || link)}`,
   whatsapp: (link='', message='') =>
-    `whatsapp://send?text=${encodeURIComponent(message)}%20${encodeURIComponent(link)}`,
+  `whatsapp://send?text=${encodeURIComponent(message)}%20${encodeURIComponent(link)}`,
   telegram: (link='', message='') =>
-    `https://telegram.me/share/url?text=${encodeURIComponent(message)}&url=${encodeURIComponent(link)}`,
+  `https://telegram.me/share/url?text=${encodeURIComponent(message)}&url=${encodeURIComponent(link)}`,
   hn: (link='', message='') =>
-    `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(link)}&t=${encodeURIComponent(message)}`,
+  `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(link)}&t=${encodeURIComponent(message)}`,
 };
 
 const Share = ({title, url}) => {
   return (<div className="flex">
-    <div>
-      <a href={shareUrls.twitter(url, `${title} by @shivek_khurana`)} target="_blank">
-        <img src={twitterIcon} alt=""/>
-      </a>
-    </div>
+	    <div>
+	      <a href={shareUrls.twitter(url, `${title} by @shivek_khurana`)} target="_blank">
+		<img src={twitterIcon} alt=""/>
+	      </a>
+	    </div>
 
-    <div className="pl2">
-      <a href={shareUrls.facebook(url, title)} target="_blank">
-        <img src={fbIcon} alt=""/>
-      </a>
-    </div>
-  </div>);
+	    <div className="pl2">
+	      <a href={shareUrls.facebook(url, title)} target="_blank">
+		<img src={fbIcon} alt=""/>
+	      </a>
+	    </div>
+	  </div>);
 }
 
 const transform = {
@@ -89,73 +91,77 @@ const Post = () => {
   const {pathname} = useLocation();
 
   useEffect(() => {
-    // this id is defined in LayerdContainer Component
-    const lc = document.getElementById('layeredContainerScrollDiv');
-    lc.scrollTop = 0;
+    window.scroll(0, 0);
+
   }, [pathname]);
 
-  return (<LayeredContainer level={1}>
-    <Head>
-      <title>{title}</title>
-      <meta name="keywords" content={tags} />
-      <meta name="robots" content="index, follow" />
-      {subTitle && <meta name="description" content={subTitle} />}
-      {subTitle && <meta name="og:description" content={subTitle} />}
-      <meta property="og:title" content={title} />
-      <meta property="og:type" content="article" />
-      <meta property="article:published_time" content={publishedOn} />
-      <meta property="article:author" content={author || "Shivek Khurana"} />
-      <meta property="article:tag" content={tags} />
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      {heroImg && heroImg.indexOf('https://') === -1 && <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}
-    </Head>
+  return (<Shell>
+	    <Head>
+	      {/*SEO*/}
+	      <title>{title}</title>
+	      <meta name="keywords" content={tags} />
+	      <meta name="robots" content="index, follow" />
+	      {subTitle && <meta name="description" content={subTitle} />}
+	      {subTitle && <meta name="og:description" content={subTitle} />}
+	      <meta property="og:title" content={title} />
+	      <meta property="og:type" content="article" />
+	      <meta property="article:published_time" content={publishedOn} />
+	      <meta property="article:author" content={author || "Shivek Khurana"} />
+	      <meta property="article:tag" content={tags} />
+	      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+	      {heroImg && heroImg.indexOf('https://') === -1 && <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}
 
-    <div className="white mt3 pb5">
-      <div className="center w-90 w-80-m w-50-l">
-        <div className="f1 b">{title}</div>
-        {subTitle && <div className="f2 mt1 mb2 bp3-text-muted">{subTitle}</div>}
+	      {/*Syntax Highlight*/}
+	      <link rel="stylesheet" href="/prism.css" />
+	      <script src="/prism.js"></script>
+	    </Head>
 
-        <div className="flex mt4 items-center justify-between">
-          <div className="flex items-center">
-            <div>
-              <img src="/img/authors/shivekkhurana/micro.jpeg" className="br-100" />
-            </div>
-            <div className="pl2">
-              <div className="b f6 white-80">{author || "Shivek Khurana"}</div>
-              <div className="f7 mt1 bp3-text-muted mb2">{str.humanReadableDate(publishedOn)}</div>
-            </div>
-          </div>
-          <div className="">
-            <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
-          </div>
-        </div>
-      </div>
-      
-      {heroImg && <div className="center w-90 w-80-m w-60-l mv4">
-        <img src={heroImg} className="br2"/>
-      </div>}
 
-      <div className="center w-90 w-80-m w-50-l">
-        <div className="f4">
-          <Markdown contents={contents} />
+	    <article className="mt3 pb5">
+	      <div className="center w-90 w-80-m w-50-l">
+		<div className="f3 f2-m f1-l b mt5">{title}</div>
+		{subTitle && <div className="f2 mt1 mb2 bp3-text-muted">{subTitle}</div>}
 
-          {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">
-            This blog was originally published on <a href={canonicalUrl}>Medium</a>
-          </div>}
+		<div className="flex mt4 items-center justify-between">
+		  <div className="flex items-center">
+		    <div>
+		      <img src="/img/authors/shivekkhurana/micro.jpeg" className="br-100" />
+		    </div>
+		    <div className="pl2">
+		      <div className="b f6 white-80">{author || "Shivek Khurana"}</div>
+		      <div className="f7 mt1 bp3-text-muted mb2">{str.humanReadableDate(publishedOn)}</div>
+		    </div>
+		  </div>
+		  <div className="">
+		    <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
+		  </div>
+		</div>
+	      </div>
 
-          <Follow />
+	      {heroImg && <div className="center w-90 w-80-m w-60-l mv4">
+			    <img src={heroImg} className="br2"/>
+			  </div>}
 
-          <div>
-            <div className="ttu f6 b mb3">
-              Share this post
-            </div>
-            <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
-          </div>
-        </div>
-        {relatedPosts.length > 0 && <Related relatedPosts={relatedPosts} />}
-      </div>
-    </div>
-  </LayeredContainer>);
+	      <Markdown contents={contents} />
+
+	      <div className="center w-90 w-80-m w-50-l">
+		<div className="f4">
+		  {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">
+				     This blog was originally published on <a href={canonicalUrl}>Medium</a>
+				   </div>}
+
+		  <Follow />
+		  <div>
+		    <div className="ttu f6 b mb3">
+		      Share this post
+		    </div>
+		    <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
+		  </div>
+		</div>
+		{relatedPosts.length > 0 && <Related relatedPosts={relatedPosts} />}
+	      </div>
+	    </article>
+	  </Shell>);
 };
 
 export default Post;

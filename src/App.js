@@ -21,7 +21,6 @@ const App = () => {
     </Head>
     <React.Suspense fallback={<Loading />}>
       <Switch>
-        <Route exact path="/mobile-nav" component={MobileNav} />
         <Route component={Routes} />
       </Switch>
     </React.Suspense>

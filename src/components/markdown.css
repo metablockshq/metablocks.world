@@ -6,10 +6,8 @@
 }
 
 .markdown pre code {
-	margin: 24px 0;
 	display: block;
 	font-size: 16px;
-	padding: 16px;
 	overflow-x: scroll;
 }
 

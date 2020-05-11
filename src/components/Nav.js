@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {NavLink, useLocation, useHistory} from 'react-router-dom';
+import Dropdown from 'react-dropdown';
+import Headroom from 'react-headroom';
 
 import logo from '../images/logo-white-with-wolf.svg';
 import LayeredContainer from '../components/LayeredContainer';
@@ -7,32 +9,15 @@ import mailIcon from '../images/icons/mail.svg';
 import briefcaseIcon from '../images/icons/briefcase.svg';
 import packageIcon from '../images/icons/package.svg';
 import bookIcon from '../images/icons/book-open.svg';
+import colors from '../utils/colors.js';
 
 const links = [{
-  title: 'Blog',
+  label: 'Blog',
   path: '/blog',
-  position: 'left',
   icon: bookIcon
-}, 
-// {
-//   title: 'Philosophy',
-//   path: '/philosophy',
-//   position: 'left' 
-// }, 
-{
-  title: 'Clients',
-  path: '/clients',
-  position: 'right',
-  icon: briefcaseIcon
 }, {
-  title: 'Services',
-  path: '/services',
-  position: 'right',
-  icon: packageIcon
-}, {
-  title: 'Contact',
+  label: 'Contact',
   path: '/contact',
-  position: 'right',
   icon: mailIcon
 }];
 
@@ -40,57 +25,46 @@ const activeClassName = "o-50";
 
 const NavItem = ({l}) => {
   return (<div className="flex items-center">
-    {/*<div className="pt1 o-80">
-      <img src={l.icon} className="mr1" style={{height: 16}}/>
-    </div>*/}
-    <div className="">{l.title}</div>
-  </div>);
+	    {/*<div className="pt1 o-80">
+	       <img src={l.icon} className="mr1" style={{height: 16}}/>
+	       </div>*/}
+	    <div className="">{l.label}</div>
+	  </div>);
 };
 
 const Nav = () => {
   const {pathname} = useLocation();
   const history = useHistory();
-  const mobileAnchorLabel = pathname === "/mobile-nav" ? "✕" : "• • •";
-  const onMobileAnchorClick = () => pathname === "/mobile-nav" ? history.goBack() : history.push("/mobile-nav");
 
-  return (<div className={`flex ph2 justify-between white items-center`}>
-    <div className="w-30 dn flex-ns">
-      {links.filter(l => l.position === "left").map(l => (<NavLink
-        key={l.title} activeClassName={activeClassName} className={"mr3"} to={l.path}
-      >
-        <NavItem l={l} />
-      </NavLink>))}
-    </div>
+  return (<Headroom>
+	    <div className={`white flex ph2 ph4-ns justify-between items-center`}
+		 style={{background: colors.DARK_GRAY1,
+			 opacity: 0.96,
+			 backdropFilter: "blur(6px)"}}>
+	      <div>
+		<NavLink to="/"><img className="h2 pv2" src={logo} alt="Krim Labs Logo" /></NavLink>
+	      </div>
 
-    <div className="w-30 dib dn-ns">
-      <div onClick={onMobileAnchorClick}>{mobileAnchorLabel}</div>
-    </div>
+	      <div className="w-30 dn flex-ns justify-end">
+		{links.map(l => (<NavLink
+				   key={l.label} activeClassName={activeClassName} className={"ml3"} to={l.path}
+				 >
+				   <NavItem l={l} />
+				 </NavLink>))}
+	      </div>
 
-    <div>
-      <NavLink to="/"><img className="h2 pv2" src={logo} alt="Krim Labs Logo" /></NavLink>
-    </div>
-    
-    <div className="w-30 flex-ns justify-end dn">
-      {links.filter(l => l.position === "right").map(l => (<NavLink
-        key={l.title} activeClassName={activeClassName} className={"ml3"} to={l.path}
-      >
-        <NavItem l={l} />
-      </NavLink>))}
-    </div>
-    <div className="w-30 dib dn-ns">
-      {/*Hoax div for responsiveness purpose*/}
-    </div>
-
-  </div>);
+	      <div className="flex dn-ns white">
+		<Dropdown
+		  // adds optionClassName
+		  options={links.map(l => ({...l, className: "mv3", value: l.path}))}
+		  placeholder="• • •"
+		  placeholderClassName="db pointer mr3"
+		  menuClassName="fixed right-0 mr3 ph2 bg-black br3 mt2"
+		  onChange={selected => history.push(selected.value)}
+		/>
+	      </div>
+	    </div>
+	  </Headroom>);
 };
-
-
-export const MobileNav = () => {
-  return (<LayeredContainer level={1} >
-    {links.map(l => (<div key={l.title} className="f2 white pa3 mv3 tc">
-      <NavLink className={""} to={l.path}>{l.title}</NavLink>
-    </div>))}
-  </LayeredContainer>);
-}
 
 export default Nav;
