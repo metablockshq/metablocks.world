@@ -1,16 +1,15 @@
 ---
 title: How we used Clojure's concurrency model to help 12000 people sustain the pandemic
-subTitle:
 tags: clojure, karuna 2020, pandemic, concurrency
 publishedOn: 2020-04-30
 featured: false
-heroImg:
+heroImg: /img/content/posts/clojure-async-karuna-banner.png
 slug: clojure-core-async-to-sustain-12k
 ---
 
 On March 4, 2020, I saw that my friend Anand was building an open platform to help an NGO. This group had designed a [Food and Health Kit](https://karuna2020.org/guides/ration-and-safety-kit-assembly/) and established safety protocols. I called him up and found myself on a conference the next day. 
 
-15 odd people, whom I had never met before were trying to serve the community. They had already raised Rs. 700000 (~ $ 9000) in personal capacity and had partnered with an NGO to handle on ground distribution. The group was big on not letting any volunteer go on ground due to safety risks. 
+15 odd people, whom I had never met before were trying to serve the community. They had already raised Rs. 700,000 (~ $ 9,000) in personal capacity and had partnered with an NGO to handle on ground distribution. The group was big on not letting any volunteer go on ground due to safety risks. 
 
 The optimist in me saw a set of volunteers with good intentions, trying to do their best to support the community. 
 The pessimist in me saw the restrictions due to lockdown and  the general fear in the air.
@@ -140,7 +139,7 @@ We delivered kits to these families within 72 hours of receving the request. The
 Our process was to [capture pictures of beneficiaries and post them publicly](https://karuna2020.org/updates/500-kits-to-womens-collective-gulmeher/). We made sure to blur faces. This transparency led to more donations.
 
 # Our impact
-We raised almost 2000000 INR ($ 27000) in less than 35 days, in cash and kind. We estimate that we have helped over 10000 people with food and health supplies for 1 month and another 20000 with masks. 
+We raised almost 2,000,000 INR ($ 27,000) in less than 35 days, in cash and kind. We estimate that we have helped over 10000 people with food and health supplies for 1 month and another 20000 with masks. 
 
 We are happy with the impact we made, but also realise that our relief work is peanuts compared to the damaged caused by the disease.
 

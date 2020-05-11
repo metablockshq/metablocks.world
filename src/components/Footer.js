@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import colors from "../utils/colors";
 
 const Column = ({header, links}) => {
-  return (<div className="ph3">
+  return (<div className="ph3 mt3 mt0-ns">
 	    <div className="mb3 o-40">{header}</div>
 	    {links.map((l, i) => {
 	      return (<div key={`${l.label}-${i}`} className="mt2">
@@ -51,8 +51,8 @@ const siteLinks = [{
 
 const Footer = () => {
   return (<div className="w-100 pv3 bg-black-20">
-	    <div className="flex w-90 w-70-ns center justify-between">
-	      <div>
+	    <div className="flex flex-column flex-row-ns w-90 w-70-ns center justify-between">
+	      <div className="ph3">
 		<div className="mb2">Krim Labs</div>
 		<div className="o-80 f6">© 2017-2020 </div>
 		<div className="o-80 f6">All rights reserved</div>
