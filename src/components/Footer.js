@@ -14,7 +14,6 @@ const Column = ({header, links}) => {
 			}
 		      </div>);
 	    })}
-
 	  </div>);
 };
 
@@ -24,12 +23,6 @@ const socialLinks = [{
 }, {
   label: "LinkedIn",
   url: "https://www.linkedin.com/company/krimlabs"
-}, {
-  label: "Twitter <personal>",
-  url: "https://twitter.com/shivek_khurana"
-}, {
-  label: "Github <personal>",
-  url: "https://github.com/shivekkhurana"
 }];
 
 const siteLinks = [{
