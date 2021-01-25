@@ -3,6 +3,7 @@ import {useRouteData, Head} from 'react-static';
 import {Link, useLocation} from 'react-router-dom';
 import Prism from "prismjs";
 import convert from 'htmr';
+import {parse} from 'tldts';
 
 import "./prism.css";
 import colors from '../../utils/colors';
@@ -145,8 +146,8 @@ const Post = () => {
 
 	      <div className="center w-90 w-80-m w-50-l">
 		<div className="f4">
-		  {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 o-50">
-				     This blog was originally published on <a href={canonicalUrl}>Medium</a>
+		  {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 white-60">
+				     This blog was originally published on <a href={canonicalUrl} className="white">{str.capitalise(parse(canonicalUrl).domainWithoutSuffix)}.</a>
 				   </div>}
 
 		  <Follow />
