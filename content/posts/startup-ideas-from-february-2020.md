@@ -1,7 +1,7 @@
 ---
 title: Startup Ideas from February 2020
 tags: ideas
-heroImg: /img/content/posts/startup-ideas-from-feb-2020/cover.png
+heroImg: /img/content/posts/ideas-feb-2020-cover.png
 publishedOn: 2020-02-07
 slug: startup-ideas-from-feb-2020
 relatedSlugs: startup-ideas-from-jan-2020, skills-devs-should-learn-from-sales, clojure-424-days
@@ -66,10 +66,10 @@ What if we can reach every clickable thing on the screen without using the mouse
 For a power user like a developer, it could mean saving a lot of time that was used to drag the mouse.
 The following images explain the idea better.
 
-![](/img/content/posts/startup-ideas-from-feb-2020/default.png)
+![](/img/content/posts/mouseless-default.png)
 *The screen as we see it*
 
-![](/img/content/posts/startup-ideas-from-feb-2020/on-cmd-press.png)
+![](/img/content/posts/mouseless-on-cmd-press.png)
 *On pressing Command, every clickable is given an address so it could be accessed instantly*
 
 In the case above, pressing `Cmd + A` will click the blog link.

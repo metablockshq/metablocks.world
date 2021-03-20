@@ -6,7 +6,7 @@ import {paramCase} from 'change-case';
 import R from 'ramda';
 
 
-const contentDir = './src/content';
+const contentDir = './content';
 
 // chokidari keval dev mode main
 if (process.env.REACT_STATIC_ENV === 'development') {
