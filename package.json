@@ -6,7 +6,8 @@
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000",
+    "local-cms": "npx netlify-cms-proxy-server"
   },
   "dependencies": {
     "change-case": "^4.1.1",

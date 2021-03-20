@@ -1,12 +1,15 @@
 ---
-title: 
-subTitle: 
-tags: 
-canonicalUrl: 
-publishedOn:
+publishedOn: null
+title: A time machine inside your database
+subTitle: null
+canonicalUrl: null
 featured: false
-heroImg: 
-slug:
+heroImg: null
+slug: null
+tags:
+  - growth
+  - life-lessons
+author: shivekkhurana
 ---
 Immutable constructs provided by Clojure (or any other language) are just runtime guarantees.
 But most applications sit on top of some form of database, like Postgres, which is nothing but an extremely efficient, mutable store.

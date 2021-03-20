@@ -1,10 +1,15 @@
 ---
+publishedOn: 2018-10-09
 title: A simple UI hack to improve Onboarding UX [OCD]
 canonicalUrl: https://medium.com/@shivekkhurana/a-simple-ui-hack-to-improve-onboarding-ux-ocd-93ed5d77247
-publishedOn: 2018-10-09
-tags: saas, design, onboarding
 heroImg: https://miro.medium.com/max/1152/1*a1Tpc-t8BBCU62Bx6ezsBA.png
-relatedSlugs: handle-js-data-structures-with-map-reduce
+relatedSlugs:
+  - handle-js-data-structures-with-map-reduce
+tags:
+  - saas
+  - design
+  - onboarding
+author: shivekkhurana
 ---
 *Messenger ui built using this [free sketch resource](https://www.sketchappsources.com/free-source/2262-ios-messenger-ui-kit-sketch-freebie-resource.html)*
 

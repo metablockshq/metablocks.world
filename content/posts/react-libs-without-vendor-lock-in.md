@@ -1,10 +1,16 @@
 ---
-title: Use 3rd party React Components without vendor lock-in
-tags: react, software development
 publishedOn: 2020-02-13
+title: Use 3rd party React Components without vendor lock-in
 featured: false
 heroImg: /img/content/posts/react-libs-without-vendor-lock-in.png
-relatedSlugs: startup-ideas-from-feb-2020, clojure-424-days, simple-ui-hack-to-improve-onboarding-ux
+relatedSlugs:
+  - startup-ideas-from-feb-2020
+  - clojure-424-days
+  - simple-ui-hack-to-improve-onboarding-ux
+tags:
+  - react
+  - software-dev
+author: shivekkhurana
 ---
 
 *Photo by [chris panas](https://unsplash.com/@chrispanas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/lock?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*

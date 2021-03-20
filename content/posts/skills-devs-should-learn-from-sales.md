@@ -1,10 +1,17 @@
 ---
-title: Skills Developers should learn from Sales Teams
-heroImg: /img/content/posts/skills-devs-should-learn-from-sales.jpg
-tags: work, sales, devs
 publishedOn: 2020-02-04
-relatedSlugs: clojure-424-days, imitate, ethical-open-sourced-and-profitable
+title: Skills Developers should learn from Sales Teams
 featured: true
+heroImg: /img/content/posts/skills-devs-should-learn-from-sales.jpg
+relatedSlugs:
+  - clojure-424-days
+  - imitate
+  - ethical-open-sourced-and-profitable
+tags:
+  - work
+  - sales
+  - developer
+author: shivekkhurana
 ---
 *Photo by [Kaleidico](https://unsplash.com/@kaleidico) on [Unsplash](https://unsplash.com/)*
 

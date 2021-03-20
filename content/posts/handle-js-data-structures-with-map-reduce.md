@@ -4,10 +4,17 @@ subTitle: A cheatsheet for writing beautiful, concise and functional es6
 canonicalUrl: https://codeburst.io/writing-javascript-with-map-reduce-980602ff2f2f
 publishedOn: 2018-01-31
 heroImg: https://miro.medium.com/max/1191/1*hgBLGPibHyM4oSjjASJtSA.png
-tags: functional programming, lambda, js, es6, javascript, map, reduce, filter
-relatedSlugs: clojure-424-days
+relatedSlugs:
+  - clojure-424-days
+tags:
+  - functional-programming
+  - lambda
+  - js
+  - es6
+  - javascript
+  - map-reduce-filter
+author: shivekkhurana
 ---
-
 Javascript has its problems, but syntax is not one of them. The ternary operator, the es6 map/reduce and the spread operator are powerful constructs.
 
 Apart from readability and precision, these constructs also help enforce loose immutability because the original data structure is never modified. This style fits fairly well with redux and our [Fractal](https://hackernoon.com/fractal-a-react-app-structure-for-infinite-scale-4dab943092af) approach.
@@ -37,6 +44,7 @@ The reducer function is also provided with two additional arguments :
 2. The entire collection (as argument 4)
 
 So a complete reducer function should look like:
+
 ```
 collection.reduce(
   (accumulator, currentElement, currentIndex, collectionCopy) => 
@@ -57,7 +65,8 @@ const twoXIntegers = integers.map(i => i*2);// twoXIntegers are now [2, 4, 6, 8,
 ## A simple find
 
 This helps pin point elements inside an array (stream like data structure).
-```
+
+```javascript
 const posts = [
   {id: 1, title: 'Title 1'},
   {id: 2, title: 'Title 2'}
@@ -70,7 +79,7 @@ const title = posts.find(p => p.id === 1).title;
 
 Filter creates views of array like data structures.
 
-```
+```javascript
 const integers = [1, 2, 3, 4, 6, 7];
 const evenIntegers = integers.filter(i => i%2 === 0);// evenIntegers are [2, 4, 6]
 ```
@@ -78,7 +87,8 @@ const evenIntegers = integers.filter(i => i%2 === 0);// evenIntegers are [2, 4, 
 ## Adding an element to an array
 
 Useful while creating infinite scroll ui (there is an example further below which uses real world array of objects).
-```
+
+```javascript
 const books = ['Positioning by Trout', 'War by Green'];
 const newBooks = [...books, 'HWFIF by Carnegie'];// newBooks are now ['Positioning by Trout', 'War by Green', 'HWFIF // by Carnegie']
 ```
@@ -87,7 +97,7 @@ const newBooks = [...books, 'HWFIF by Carnegie'];// newBooks are now ['Positioni
 
 Useful when there is a need to remove something from a list, example a user deleted an item from the cart.
 
-```
+```javascript
 const myId = 6;
 const userIds = [1, 5, 7, 3, 6];
 const allButMe = userIds.filter(id => id !== myId);
@@ -122,6 +132,7 @@ const updatedUser = {...user, [dynamicKey]: true};
 ```
 
 ## Find and replace key value pair in array of objects:
+
 ```
 const posts = [
   {id: 1, title: 'Title 1'},
@@ -137,6 +148,7 @@ const updatedPosts = posts.map(p => p.id !== 1 ?
   {id: 2, title: 'Title 2'}
 ];*/
 ```
+
 ## Find an element inside an array of objects
 
 ```
@@ -195,6 +207,7 @@ const userWithoutPasswordAndAge = Object.keys(user)
     {}
   );
 ```
+
 ## Encode an object into query string
 
 You’ll hardly need this specific use case, but it might help you create something.

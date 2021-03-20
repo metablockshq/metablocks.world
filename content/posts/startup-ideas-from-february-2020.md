@@ -1,10 +1,15 @@
 ---
-title: Startup Ideas from February 2020
-tags: ideas
-heroImg: /img/content/posts/ideas-feb-2020-cover.png
 publishedOn: 2020-02-07
+title: Startup Ideas from February 2020
+heroImg: /img/content/posts/ideas-feb-2020-cover.png
 slug: startup-ideas-from-feb-2020
-relatedSlugs: startup-ideas-from-jan-2020, skills-devs-should-learn-from-sales, clojure-424-days
+relatedSlugs:
+  - startup-ideas-from-jan-2020
+  - skills-devs-should-learn-from-sales,
+  - clojure-424-days
+tags:
+  - ideas
+author: shivekkhurana
 ---
 
 This month's startup ideas have 3 offerings:

@@ -2,10 +2,18 @@
 title: Ethical, open sourced and profitable at the same time
 canonicalUrl: https://medium.com/@shivekkhurana/ethical-open-sourced-and-profitable-at-the-same-time-16c53efdfe5a
 publishedOn: 2019-04-13
-tags: interview, open source, culture, erpnext, frappe, business
 heroImg: https://miro.medium.com/max/1167/1*b6fCxwMBepVjSuxtvsLokA.jpeg
 featured: true
-relatedSlugs: imitate
+relatedSlugs:
+  - imitate
+tags:
+  - interview
+  - open-source
+  - culture
+  - erpnext
+  - frappe
+  - business
+author: shivekkhurana
 ---
 *The team behind Frappe & ERPNext*
 

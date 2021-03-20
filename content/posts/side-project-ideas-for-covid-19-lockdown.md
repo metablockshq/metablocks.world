@@ -1,10 +1,16 @@
 ---
-title: 5 side project ideas to work on during the COVID-19 lockdowns
-slug: side-project-ideas-for-lockdown
-tags: ideas
 publishedOn: 2020-04-19
+title: 5 side project ideas to work on during the COVID-19 lockdowns
 heroImg: /img/content/posts/covid-19-lockdown-side-project-ideas.png
-relatedSlugs: startup-ideas-from-feb-2020, clojure-424-days, startup-ideas-from-jan-2020, ethical-open-sourced-and-profitable
+slug: side-project-ideas-for-lockdown
+relatedSlugs:
+  - startup-ideas-from-feb-2020
+  - clojure-424-days,
+  - startup-ideas-from-jan-2020
+  - ethical-open-sourced-and-profitable
+tags:
+  - ideas
+author: shivekkhurana
 ---
 *Pre Script*
 The virus has stretched the world's resources and has put us in a dire situation. I'm currently working with a group of friends and family to help the marginalized and the daily wagers in India. We provide them with Health and Ration Kits that can sustain a family of 4 for 1 month. In the past 20 days, we have raised over 20000 USD and are on track to reach 2500 families. You can check our transparent systems and learn more at [Karuna 2020](https://karuna2020.org).

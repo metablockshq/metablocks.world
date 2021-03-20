@@ -1,10 +1,12 @@
 ---
+publishedOn: 2020-01-24
 title: Startup Ideas from January 2020
 subTitle: With focus on the content creation domain
-tags: ideas
-publishedOn: 2020-01-24
 heroImg: /img/content/posts/product-ideas-jan-2020.png
 slug: startup-ideas-from-jan-2020
+tags:
+  - ideas
+author: shivekkhurana
 ---
 
 *Cover Photo by [Stoica Ionela](https://unsplash.com/@pupile_gustative?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/idea?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*

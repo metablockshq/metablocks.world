@@ -1,10 +1,16 @@
 ---
 title: How Clojure's concurrency model helped us feed 12000 people
-tags: clojure, karuna 2020, pandemic, concurrency, core.async
 publishedOn: 2020-05-10
 featured: false
 heroImg: /img/content/posts/clojure-async-karuna-banner.png
 slug: clojure-core-async-to-sustain-12k
+tags:
+  - clojure
+  - karuna-2020
+  - pandemic
+  - concurrency
+  - core-async
+author: shivekkhurana
 ---
 
 On March 4, 2020, I saw that my friend [Anand](https://anandchowdhary.com/) was building an [open platform](https://github.com/Karuna2020) to help an NGO. This group had designed a [Food and Health Kit](https://karuna2020.org/guides/ration-and-safety-kit-assembly/) and had established safety protocols. I called him up and found myself at a conference the next day. 

@@ -4,10 +4,11 @@ subTitle: Uncovering parts of the universe hidden from you
 canonicalUrl: https://medium.com/@shivekkhurana/imitate-21478b27377f
 publishedOn: 2018-05-12
 heroImg: https://source.unsplash.com/0GBxtiFvzXE
-tags: personal growth, life lesson
+tags:
+  - personal-growth
+  - life-lessons
+author: shivekkhurana
 ---
-
-
 **🥤JUICE of the story**
 
 Successful people around me know wayyyyyy more stuff than I do. By imitating them, I get to uncover my hidden potential.

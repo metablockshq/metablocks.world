@@ -1,10 +1,15 @@
 ---
-title: 14 life lessons learnt after 1 year of graduation
-slug: 14-life-lessons-learnt-after-1-year-of-graduation
-canonicalUrl: https://medium.com/@shivekkhurana/14-life-lessons-learnt-after-1-year-of-graduation-423de966c4a0
 publishedOn: 2017-05-15
+title: 14 life lessons learnt after 1 year of graduation
+canonicalUrl: https://medium.com/@shivekkhurana/14-life-lessons-learnt-after-1-year-of-graduation-423de966c4a0
 heroImg: https://miro.medium.com/max/4000/1*55SBmroKHsSa-m6E9Asy4g.jpeg
-tags: personal growth, life lesson
+slug: 14-life-lessons-learnt-after-1-year-of-graduation
+tags:
+  - personal-growth
+  - life-lessons
+relatedSlugs:
+  - imitate
+author: shivekkhurana
 ---
 
 It was around the same time that I left my college, last year, and it has been a heck of a ride. I’m grateful that I finished college, I never thought I would, but there is so much that I’ve learnt, and here is a little attempt to sum it up.

@@ -1,12 +1,17 @@
 ---
-title: Reaching flow state with Clojure's REPL
-subTitle: 
-tags: clojure, repl, feedback loop, development process
-canonicalUrl:  https://www.newline.co/@shivekkhurana/reaching-flow-state-with-clojures-repl--14018b04
 publishedOn: 2021-01-29
+title: Reaching flow state with Clojure's REPL
+subTitle: null
+canonicalUrl: https://www.newline.co/@shivekkhurana/reaching-flow-state-with-clojures-repl--14018b04
 featured: false
 heroImg: /img/content/posts/repl-flow-cover.png
 slug: clojure-repl-flow-state
+tags:
+  - clojure
+  - repl
+  - feedback-loop
+  - dev-tools
+author: shivekkhurana
 ---
 
 *Photo by <a href="https://unsplash.com/@jeremybishop?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jeremy Bishop</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>*

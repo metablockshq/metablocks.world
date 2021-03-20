@@ -1,9 +1,11 @@
 ---
+publishedOn: 2017-10-18
 title: Blockchain is like the transistor of the main frame Financial System
 canonicalUrl: https://medium.com/hackernoon/blockchain-is-like-the-transistor-of-the-main-frame-financial-system-b77034c2762e
 heroImg: https://miro.medium.com/max/1280/1*pdccLDWNFcgPJDUwWeQJvg.jpeg
-publishedOn: 2017-10-18
-tags: blockchain
+tags:
+  - blockchain
+author: shivekkhurana
 ---
 
 There was a time when every government and university had their personal main frame computers. It was extremely expensive to own and maintain one. When geeks had to pay for time bound terminal access. The connections were subjected to the tyranny of the administrator.
