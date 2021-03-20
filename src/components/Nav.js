@@ -1,23 +1,23 @@
-import React, {useState} from 'react';
-import {NavLink, useLocation, useHistory} from 'react-router-dom';
-import Dropdown from 'react-dropdown';
-import Headroom from 'react-headroom';
+import React, {useState} from "react";
+import {NavLink, useLocation, useHistory} from "react-router-dom";
+import Dropdown from "react-dropdown";
+import Headroom from "react-headroom";
 
-import logo from '../images/logo-white-with-wolf.svg';
-import LayeredContainer from '../components/LayeredContainer';
-import mailIcon from '../images/icons/mail.svg';
-import briefcaseIcon from '../images/icons/briefcase.svg';
-import packageIcon from '../images/icons/package.svg';
-import bookIcon from '../images/icons/book-open.svg';
-import colors from '../utils/colors.js';
+import logo from "../images/logo-white-with-wolf.svg";
+import LayeredContainer from "../components/LayeredContainer";
+import mailIcon from "../images/icons/mail.svg";
+import briefcaseIcon from "../images/icons/briefcase.svg";
+import packageIcon from "../images/icons/package.svg";
+import bookIcon from "../images/icons/book-open.svg";
+import colors from "../utils/colors.js";
 
 const links = [{
-  label: 'Blog',
-  path: '/blog',
+  label: "Blog",
+  path: "/blog",
   icon: bookIcon
 }, {
-  label: 'Contact',
-  path: '/contact',
+  label: "Contact",
+  path: "/contact",
   icon: mailIcon
 }];
 
@@ -36,11 +36,10 @@ const Nav = () => {
   const {pathname} = useLocation();
   const history = useHistory();
 
-  return (<Headroom>
+  return (<div className="fixed w-100">
 	    <div className={`white flex ph2 ph4-ns justify-between items-center`}
-		 style={{background: colors.DARK_GRAY1,
-			 opacity: 0.96,
-			 backdropFilter: "blur(6px)"}}>
+		 style={{background: "rgba(0, 25, 25, 0.5)",
+			 backdropFilter: "saturate(180%) blur(5px)"}}>
 	      <div>
 		<NavLink to="/"><img className="h2 pv2" src={logo} alt="Krim Labs Logo" /></NavLink>
 	      </div>
@@ -64,7 +63,7 @@ const Nav = () => {
 		/>
 	      </div>
 	    </div>
-	  </Headroom>);
+	  </div>);
 };
 
 export default Nav;

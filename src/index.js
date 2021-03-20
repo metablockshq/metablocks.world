@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
+import {AppContainer} from 'react-hot-loader'
 
 // Your top level component
 import App from './App'
@@ -13,8 +13,9 @@ if (typeof document !== 'undefined') {
   const target = document.getElementById('root')
 
   const renderMethod = target.hasChildNodes()
-    ? ReactDOM.hydrate
-    : ReactDOM.render
+	? ReactDOM.hydrate
+	: ReactDOM.render
+  ;
 
   const render = Comp => {
     renderMethod(
