@@ -9,6 +9,7 @@ tags:
   - basecamp
 relatedSlugs:
   - imitate
+slug: 5-internet-people-i-follow
 author: shivekkhurana
 ---
 

@@ -14,6 +14,7 @@ tags:
   - javascript
   - map-reduce-filter
 author: shivekkhurana
+slug: handle-js-data-structures-with-map-reduce
 ---
 Javascript has its problems, but syntax is not one of them. The ternary operator, the es6 map/reduce and the spread operator are powerful constructs.
 

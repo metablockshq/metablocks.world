@@ -10,6 +10,7 @@ tags:
   - design
   - onboarding
 author: shivekkhurana
+slug: simple-ui-hack-to-improve-onboarding-ux
 ---
 *Messenger ui built using this [free sketch resource](https://www.sketchappsources.com/free-source/2262-ios-messenger-ui-kit-sketch-freebie-resource.html)*
 
