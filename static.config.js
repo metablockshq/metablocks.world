@@ -28,54 +28,61 @@ const getSitePages = (content) => {
   return R.values(sitePagesObj);
 }
 
-const commaSeperatedToArray = str => str ? R.split(', ', str) : [];
 
-const getProcessedPosts = (content) => {
-  const injectSlugFn = slug => obj => R.assoc('slug', slug, obj);
+// need weak inequality check so objects with no `publishedOn` key return false
+const isPublished = (post) => post.publishedOn != null;
 
-  const isPublished = (post) => post.publishedOn !== null;
-  const publishedPosts = R.filter(isPublished, content.posts);
+const postsToPostPages = (posts) => {
+  return R.map(post => ({
+    path: `/blog/${post.slug}`,
+    template: 'src/templates/blog/Post',
+    rawData: post,
+    getData: () => post
+  }), posts)
+}
 
-  const processedPostsObj = R.mapObjIndexed((val, key, obj) => {
-    const slug = val.slug || paramCase(key);
-    const transform = R.compose(
-      // can add more transformations here
-      injectSlugFn(slug)
-    );
-
-    return {
-      path: `/blog/${slug}`,
-      template: 'src/templates/blog/Post',
-      data: transform(val)
-    }
-  }, publishedPosts);
-
-  return R.values(processedPostsObj);
-};
-
-const getPostPages = (processedPosts) => {
-  const relatedSlugs = data => R.pathOr([], ['relatedSlugs'], data);
-  const postBySlug = slug => R.dissocPath(['data', 'contents'], R.find(p => p.data.slug === slug, processedPosts));
-  const relatedPosts = data => R.map(postBySlug, relatedSlugs(data));
-  const injectRelatedPosts = data => R.assoc('relatedPosts', relatedPosts(data), data);
-
-  return R.map(({path, template, data}) => ({
-    path,
-    template,
-    // assoc related posts to data
-    getData: () => injectRelatedPosts(data)
-  }), processedPosts)
-};
-
-const getBlogPosts = (processedPosts) => {
-  const stripContents = post => R.dissocPath(['data', 'contents'], post);
-  const withoutContent = R.map(stripContents, processedPosts);
+const sortByPublishDate = (postPages) => {
   const byPublishedOnDesc = R.comparator((a, b) => {
     return a.data.publishedOn > b.data.publishedOn;
   });
 
-  return R.sort(byPublishedOnDesc, withoutContent);
+  return R.sort(byPublishedOnDesc, postPages);
 }
+
+const relatedSlugs = post => R.pathOr([], ["rawData", "relatedSlugs"], post);
+
+/**
+   - for a given list of posts and a specific post,
+   - find all posts related to this specific post,
+   - by reading the `relatedSlugs` on the post
+*/
+const relatedPosts = (posts, post) => {
+  const postRelatedSlugs = relatedSlugs(post)
+  return R.filter(p => R.contains(p.slug, postRelatedSlugs), posts);
+}
+
+const injectRelatedPosts = posts => post =>
+      R.assocPath(["rawData", "relatedPosts"], relatedPosts(posts, post), post);
+
+const rawDataToGetData = post =>
+      R.assoc("getData", () => R.clone(post.rawData), post);
+
+const dissocRawData = post => R.dissoc("rawData", post)
+
+/**
+   - take an initial value of postPages and
+   - transform it to the required form
+ */
+const transformPostPages = postPages => post => {
+  const transform = R.compose(
+    dissocRawData,
+    rawDataToGetData,
+    injectRelatedPosts(postPages),
+  );
+
+  return transform(post);
+}
+
 
 export default {
   siteRoot: 'https://krimlabs.com',
@@ -85,27 +92,27 @@ export default {
   ],
   getRoutes: async () => {
     const content = await jdown(contentDir);
-
-    const processedPosts = getProcessedPosts(content);
-
-    const postPages = getPostPages(processedPosts);
-    const allPosts = getBlogPosts(processedPosts);
-
-    const featuredPosts = R.filter(p => p.data.featured, allPosts);
-    const latestPosts = R.take(3, allPosts);
+    const publishedPosts = R.filter(isPublished, R.values(content.posts));
+    const rawPostPages = postsToPostPages(publishedPosts);
+    const txfmFn = transformPostPages(rawPostPages)
+    const postPages = R.map(txfmFn, rawPostPages)
+    const featuredPosts = []
+    // const featuredPosts = R.filter(p => p.getData().featured, postPages);
+    // const latestPosts = R.take(3, sortByPublishDate(postPages));
 
     const sitePages = getSitePages(content);
-
     return [{
       path: '/',
       template: 'src/templates/Landing',
-      getData: () => ({featuredPosts, latestPosts})
+      getData: () => ({featuredPosts, latestPosts: []})
     }, {
       path: '/blog',
       template: 'src/templates/Blog',
-      getData: () => ({allPosts, featuredPosts})
+      getData: () => ({allPosts: postPages, featuredPosts})
     },
     ...postPages,
     ...sitePages];
   }
 }
+
+export {contentDir, isPublished, relatedSlugs, relatedPosts, injectRelatedPosts, postsToPostPages}
