@@ -51,7 +51,7 @@ const shareUrls = {
   twitter: (link='', message='') =>
   `https://twitter.com/intent/tweet/?text=${encodeURIComponent(message)}&url=${encodeURIComponent(link)}`,
   facebook: (link='') =>
-  `https://facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`,
+  `https://facebook.com/sharer/sharer.php?u=${link}`,
   linkedin: (link='', message='') =>
   `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(link)}
     &title=${encodeURIComponent(message)}&summary=${encodeURIComponent(message)}&source=${encodeURIComponent(link)}`,
@@ -65,21 +65,28 @@ const shareUrls = {
   `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(link)}&t=${encodeURIComponent(message)}`,
 };
 
+const openAndFocus = (link) => {
+  // https://stackoverflow.com/questions/4907843/open-a-url-in-a-new-tab-and-not-a-new-window
+
+  return () => {
+    const openedWin = window.open(link, "_blank");
+    openedWin.focus();
+  }
+};
+
+// Need this trickery because Adblock blocks links to twitter and facebook
+const ShareButton = ({link, children}) =>
+      (<div onClick={openAndFocus(link)} className="pointer">
+	 {children}
+       </div>);
+
 const Share = ({title, url}) => {
   return (<div className="flex">
-	    <div>
-	      <a href={shareUrls.twitter(url, `${title} by @shivek_khurana`)} target="_blank">
-		<img src={twitterIcon} alt=""/>
-	      </a>
-	    </div>
-
-	    <div className="pl2">
-	      <a href={shareUrls.facebook(url, title)} target="_blank">
-		<img src={fbIcon} alt=""/>
-	      </a>
-	    </div>
+	    <ShareButton link={shareUrls.twitter(url, `${title} by @shivek_khurana`)}>
+	      <img className="block" src={twitterIcon} alt=""/>
+	    </ShareButton>
 	  </div>);
-}
+};
 
 const transform = {
   p: ({children}) => <p className="georgia">{children}</p>,
@@ -87,7 +94,7 @@ const transform = {
   blockquote: ({children}) => <blockquote className="georgia i f3">{children}</blockquote>,
   a: ({href, children}) => <a href={href} target="_blank">{children}</a>,
   img: ({src, alt}) => <img src={src} className="" alt={String(alt)}/>
-}
+};
 
 
 const Post = () => {
@@ -132,9 +139,9 @@ const Post = () => {
 		      <div className="f7 mt1 bp3-text-muted mb2">{str.humanReadableDate(publishedOn)}</div>
 		    </div>
 		  </div>
-		  <div className="">
-		    <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
-		  </div>
+
+		  <Share title={title} url={`https://krimlabs.com/blog/${slug}`}/>
+
 		</div>
 	      </div>
 

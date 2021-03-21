@@ -31,10 +31,6 @@ const getSitePages = (content) => {
 const commaSeperatedToArray = str => str ? R.split(', ', str) : [];
 
 const getProcessedPosts = (content) => {
-  const convertTagsAndRelatedPostsToArray = obj => R.mapObjIndexed(
-    (val, key, obj) => (key === 'tags' || key === 'relatedSlugs') ? commaSeperatedToArray(val) : val, 
-    obj);
-
   const injectSlugFn = slug => obj => R.assoc('slug', slug, obj);
 
   const isPublished = (post) => post.publishedOn !== null;
@@ -42,7 +38,10 @@ const getProcessedPosts = (content) => {
 
   const processedPostsObj = R.mapObjIndexed((val, key, obj) => {
     const slug = val.slug || paramCase(key);
-    const transform = R.compose(convertTagsAndRelatedPostsToArray, injectSlugFn(slug));
+    const transform = R.compose(
+      // can add more transformations here
+      injectSlugFn(slug)
+    );
 
     return {
       path: `/blog/${slug}`,

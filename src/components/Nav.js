@@ -38,7 +38,7 @@ const Nav = () => {
 
   return (<div className="fixed w-100">
 	    <div className={`white flex ph2 ph4-ns justify-between items-center`}
-		 style={{background: "rgba(0, 25, 25, 0.5)",
+		 style={{background: "rgba(16, 22, 26, 0.5)",
 			 backdropFilter: "saturate(180%) blur(5px)"}}>
 	      <div>
 		<NavLink to="/"><img className="h2 pv2" src={logo} alt="Krim Labs Logo" /></NavLink>

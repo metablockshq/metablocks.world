@@ -28,6 +28,7 @@ collections:
     folder: "content/authors"
     create: true
     slug: "{{name}}"
+    summary: "{{name}} - T:{{twitter}}"
     fields:
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Name", name: "name", widget: "string"}
@@ -38,7 +39,7 @@ collections:
       - {label: "GPG Key", name: "gpgKey", widget: "string", required: false}
       - {label: "Clubhouse", name: "clubhouse", widget: "string", required: false}
       - {label: "YouTube", name: "youtube", widget: "string", required: false}
-      - {label: "Profile picture", name: "profilePicture", widget: "image", required: true}
+      - {label: "Profile picture", name: "profilePicture", widget: "image", required: true, media_folder: "public/img/content/authors", public_folder: "img/content/authors"}
       - {label: "Short bio", name: "shortBio", widget: "string", require: true}
       - {label: "Body", name: "body", widget: "markdown"}
 
@@ -48,6 +49,7 @@ collections:
     create: true
     slug: "{{year}}-{{slug}}"
     sortable_fields: ["publishedOn", "title"]
+    summary: "{{publishedOn}} - {{title}}"
     fields:
     - {label: "Published on", name: "publishedOn", widget: "date", required: false}
     - {label: "Title", name: "title", widget: "string"}
