@@ -5,6 +5,11 @@ subTitle: check post
 featured: false
 heroImg: https://i.ytimg.com/vi/3BNqSd576iM/maxresdefault.jpg
 slug: site-netlify
+tags:
+  - business
+  - clojurescript
+relatedSlugs:
+  - 5-internet-people-i-follow
 author: shivekkhurana
 ---
 Here is some body
