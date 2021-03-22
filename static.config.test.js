@@ -37,7 +37,7 @@ describe("relatedSlugs()", () => {
 
   it("returns og array if `relatedSlugs` are present", () => {
     expect(relatedSlugs({
-      rawData: {
+      data: {
 	relatedSlugs: ["s1", "s2"]
       }
     })).toEqual(["s1", "s2"])
@@ -46,16 +46,13 @@ describe("relatedSlugs()", () => {
 
 describe("relatedPosts()", () => {
   const posts = [{
-    slug: 1,
-    rawData: {
+    data: {
+      slug: 1,
       relatedSlugs:[2]
     }
   }, {
-    slug: 2
-  }, {
-    slug: 3,
-    rawData: {
-      relatedSlugs: [1, 2]
+    data: {
+      slug: 2
     }
   }]
 
@@ -73,18 +70,20 @@ describe("relatedPosts()", () => {
 
     expect(related).toBeInstanceOf(Array)
     expect(related).toHaveLength(1)
-    expect(related[0]).toHaveProperty("slug", 2)
+    expect(related[0]).toHaveProperty("data.slug", 2)
   })
 })
 
 describe("injectRelatedPosts()", () => {
   const posts = [{
-    slug: 1,
-    rawData: {
+    data: {
+      slug: 1,
       relatedSlugs:[2]
     }
   }, {
-    slug: 2
+    data: {
+      slug: 2
+    }
   }]
 
   const injectFn = injectRelatedPosts(posts)
@@ -93,23 +92,23 @@ describe("injectRelatedPosts()", () => {
     const post = posts[1]
     const injected = injectFn(post)
 
-    expect(injected.rawData.relatedPosts).toEqual([])
+    expect(injected.data.relatedPosts).toEqual([])
   })
 
   it("injects related array of related slugs exist", () => {
     const post = posts[0]
     const injected = injectFn(post)
 
-    expect(injected.rawData.relatedPosts).toBeInstanceOf(Array)
-    expect(injected.rawData.relatedPosts).toHaveLength(1)
-    expect(injected.rawData.relatedPosts[0]).toHaveProperty("slug", 2)
+    expect(injected.data.relatedPosts).toBeInstanceOf(Array)
+    expect(injected.data.relatedPosts).toHaveLength(1)
+    expect(injected.data.relatedPosts[0]).toHaveProperty("data.slug", 2)
   })
 
-  it("maintains exisiting rawData post injection", () => {
+  it("maintains exisiting data post injection", () => {
     const post = posts[0]
     const injected = injectFn(post)
 
-    expect(injected.rawData.relatedSlugs).toEqual([2])
+    expect(injected.data.relatedSlugs).toEqual([2])
   })
 
 })
@@ -176,7 +175,7 @@ describe("postsToPostPages()", () => {
     const first = postPages[0]
     expect(first).toHaveProperty("path", "/blog/test-slug")
     expect(first).toHaveProperty("template", "src/templates/blog/Post")
-    expect(first).toHaveProperty("rawData")
-    expect(first.rawData).toHaveProperty("flag", "x")
+    expect(first).toHaveProperty("data")
+    expect(first.data).toHaveProperty("flag", "x")
   })
 })

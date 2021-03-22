@@ -36,20 +36,11 @@ const postsToPostPages = (posts) => {
   return R.map(post => ({
     path: `/blog/${post.slug}`,
     template: 'src/templates/blog/Post',
-    rawData: post,
-    getData: () => post
+    data: post
   }), posts)
 }
 
-const sortByPublishDate = (postPages) => {
-  const byPublishedOnDesc = R.comparator((a, b) => {
-    return a.data.publishedOn > b.data.publishedOn;
-  });
-
-  return R.sort(byPublishedOnDesc, postPages);
-}
-
-const relatedSlugs = post => R.pathOr([], ["rawData", "relatedSlugs"], post);
+const relatedSlugs = post => R.pathOr([], ["data", "relatedSlugs"], post);
 
 /**
    - for a given list of posts and a specific post,
@@ -58,31 +49,53 @@ const relatedSlugs = post => R.pathOr([], ["rawData", "relatedSlugs"], post);
 */
 const relatedPosts = (posts, post) => {
   const postRelatedSlugs = relatedSlugs(post)
-  return R.filter(p => R.contains(p.slug, postRelatedSlugs), posts);
+  return R.filter(p => R.contains(p.data.slug, postRelatedSlugs), posts);
 }
 
 const injectRelatedPosts = posts => post =>
-      R.assocPath(["rawData", "relatedPosts"], relatedPosts(posts, post), post);
+      R.assocPath(["data", "relatedPosts"], relatedPosts(posts, post), post);
 
-const rawDataToGetData = post =>
-      R.assoc("getData", () => R.clone(post.rawData), post);
+// todo: Test
+const rawDataToGetData = post => {
+  // this has to be a constant to prevent it from being passed as a value
+  // which causes a problem when data is stripped
+  const postDataCopy = R.clone(post.data)
+  return R.assoc("getData", () => postDataCopy, post);
+}
 
-const dissocRawData = post => R.dissoc("rawData", post)
+const stripPostContents = post => R.dissocPath(["data", "contents"], post);
+
+// todo: Test
+const stripRelatedPostsContent = post =>
+      R.assocPath(["data", "relatedPosts"],
+		  R.map(stripPostContents, post.data.relatedPosts),
+		  post);
+
+const stripRelatedPosts = post => R.dissocPath(["data","relatedPosts"], post);
 
 /**
    - take an initial value of postPages and
    - transform it to the required form
  */
 const transformPostPages = postPages => post => {
+  // R.compose works right to left, i.e.
+  // the last fn will be applied first, followed by second last until first
   const transform = R.compose(
-    dissocRawData,
     rawDataToGetData,
+    stripRelatedPostsContent,
     injectRelatedPosts(postPages),
   );
 
   return transform(post);
 }
 
+const sortByPublishDateDesc = (postPages) => {
+  const dateDiff = (a, b) => {
+    return new Date(b.data.publishedOn).getTime() - new Date(a.data.publishedOn).getTime()
+  }
+
+  return R.sort(dateDiff, postPages);
+}
 
 export default {
   siteRoot: 'https://krimlabs.com',
@@ -96,19 +109,23 @@ export default {
     const rawPostPages = postsToPostPages(publishedPosts);
     const txfmFn = transformPostPages(rawPostPages)
     const postPages = R.map(txfmFn, rawPostPages)
-    const featuredPosts = []
-    // const featuredPosts = R.filter(p => p.getData().featured, postPages);
-    // const latestPosts = R.take(3, sortByPublishDate(postPages));
+    const sortedPostPages = sortByPublishDateDesc(postPages);
+
+    const allPosts = R.map(
+      R.compose(stripPostContents, stripRelatedPosts),
+      sortedPostPages);
+    const featuredPosts = R.filter(p => p.data.featured, allPosts);
+    const latestPosts = R.take(5, allPosts);
 
     const sitePages = getSitePages(content);
     return [{
       path: '/',
       template: 'src/templates/Landing',
-      getData: () => ({featuredPosts, latestPosts: []})
+      getData: () => ({featuredPosts, latestPosts})
     }, {
       path: '/blog',
       template: 'src/templates/Blog',
-      getData: () => ({allPosts: postPages, featuredPosts})
+      getData: () => ({allPosts, featuredPosts})
     },
     ...postPages,
     ...sitePages];
