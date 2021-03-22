@@ -5,7 +5,7 @@ subTitle: null
 canonicalUrl: null
 featured: false
 heroImg: null
-slug: null
+slug: a-time-machine-inside-your-db
 tags:
   - growth
   - life-lessons

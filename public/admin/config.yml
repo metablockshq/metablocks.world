@@ -39,7 +39,7 @@ collections:
       - {label: "GPG Key", name: "gpgKey", widget: "string", required: false}
       - {label: "Clubhouse", name: "clubhouse", widget: "string", required: false}
       - {label: "YouTube", name: "youtube", widget: "string", required: false}
-      - {label: "Profile picture", name: "profilePicture", widget: "image", required: true, media_folder: "public/img/content/authors", public_folder: "img/content/authors"}
+      - {label: "Profile picture", name: "profilePicture", widget: "image", required: true, media_folder: "/public/img/content/authors", public_folder: "/img/content/authors"}
       - {label: "Short bio", name: "shortBio", widget: "string", require: true}
       - {label: "Body", name: "body", widget: "markdown"}
 
@@ -57,7 +57,7 @@ collections:
     - {label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false}
     - {label: "Featured?", name: "featured", widget: "boolean", default: false, required: false}
     - {label: "Hero image", name: "heroImg", widget: "image", required: false}
-    - {label: "Slug", name: "slug", widget: "string", required: false}
+    - {label: "Slug", name: "slug", widget: "string"}
     - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
     - {label: "Related posts", name: "relatedSlugs", widget: "relation", collection: "posts", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true, required: false}
     - {label: "Author", name: "author", widget: "relation", collection: "authors", search_fields: ["name"], value_field: "slug", display_fields: ["name"]}

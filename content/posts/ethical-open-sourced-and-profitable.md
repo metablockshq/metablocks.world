@@ -14,6 +14,7 @@ tags:
   - frappe
   - business
 author: shivekkhurana
+slug: ethical-open-sourced-and-profitable
 ---
 *The team behind Frappe & ERPNext*
 

@@ -6,6 +6,7 @@ heroImg: https://miro.medium.com/max/1280/1*pdccLDWNFcgPJDUwWeQJvg.jpeg
 tags:
   - blockchain
 author: shivekkhurana
+slug: block-chain-is-like-a-transistor
 ---
 
 There was a time when every government and university had their personal main frame computers. It was extremely expensive to own and maintain one. When geeks had to pay for time bound terminal access. The connections were subjected to the tyranny of the administrator.

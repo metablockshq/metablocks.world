@@ -7,6 +7,7 @@
     "build": "react-static build",
     "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
+    "test": "ls | entr jest -- static.config",
     "local-cms": "npx netlify-cms-proxy-server"
   },
   "dependencies": {
@@ -30,8 +31,12 @@
     "tldts": "^5.7.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "babel-eslint": "^10.0.2",
+    "babel-jest": "^26.6.3",
     "eslint": "^6.1.0",
+    "jest": "^26.6.3",
     "serve": "^11.1.0"
   }
 }

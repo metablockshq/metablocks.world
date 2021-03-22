@@ -28,53 +28,73 @@ const getSitePages = (content) => {
   return R.values(sitePagesObj);
 }
 
-const commaSeperatedToArray = str => str ? R.split(', ', str) : [];
 
-const getProcessedPosts = (content) => {
-  const injectSlugFn = slug => obj => R.assoc('slug', slug, obj);
+// need weak inequality check so objects with no `publishedOn` key return false
+const isPublished = (post) => post.publishedOn != null;
 
-  const isPublished = (post) => post.publishedOn !== null;
-  const publishedPosts = R.filter(isPublished, content.posts);
+const postsToPostPages = (posts) => {
+  return R.map(post => ({
+    path: `/blog/${post.slug}`,
+    template: 'src/templates/blog/Post',
+    data: post
+  }), posts)
+}
 
-  const processedPostsObj = R.mapObjIndexed((val, key, obj) => {
-    const slug = val.slug || paramCase(key);
-    const transform = R.compose(
-      // can add more transformations here
-      injectSlugFn(slug)
-    );
+const relatedSlugs = post => R.pathOr([], ["data", "relatedSlugs"], post);
 
-    return {
-      path: `/blog/${slug}`,
-      template: 'src/templates/blog/Post',
-      data: transform(val)
-    }
-  }, publishedPosts);
+/**
+   - for a given list of posts and a specific post,
+   - find all posts related to this specific post,
+   - by reading the `relatedSlugs` on the post
+*/
+const relatedPosts = (posts, post) => {
+  const postRelatedSlugs = relatedSlugs(post)
+  return R.filter(p => R.contains(p.data.slug, postRelatedSlugs), posts);
+}
 
-  return R.values(processedPostsObj);
-};
+const injectRelatedPosts = posts => post =>
+      R.assocPath(["data", "relatedPosts"], relatedPosts(posts, post), post);
 
-const getPostPages = (processedPosts) => {
-  const relatedSlugs = data => R.pathOr([], ['relatedSlugs'], data);
-  const postBySlug = slug => R.dissocPath(['data', 'contents'], R.find(p => p.data.slug === slug, processedPosts));
-  const relatedPosts = data => R.map(postBySlug, relatedSlugs(data));
-  const injectRelatedPosts = data => R.assoc('relatedPosts', relatedPosts(data), data);
+// todo: Test
+const rawDataToGetData = post => {
+  // this has to be a constant to prevent it from being passed as a value
+  // which causes a problem when data is stripped
+  const postDataCopy = R.clone(post.data)
+  return R.assoc("getData", () => postDataCopy, post);
+}
 
-  return R.map(({path, template, data}) => ({
-    path,
-    template,
-    // assoc related posts to data
-    getData: () => injectRelatedPosts(data)
-  }), processedPosts)
-};
+const stripPostContents = post => R.dissocPath(["data", "contents"], post);
 
-const getBlogPosts = (processedPosts) => {
-  const stripContents = post => R.dissocPath(['data', 'contents'], post);
-  const withoutContent = R.map(stripContents, processedPosts);
-  const byPublishedOnDesc = R.comparator((a, b) => {
-    return a.data.publishedOn > b.data.publishedOn;
-  });
+// todo: Test
+const stripRelatedPostsContent = post =>
+      R.assocPath(["data", "relatedPosts"],
+		  R.map(stripPostContents, post.data.relatedPosts),
+		  post);
 
-  return R.sort(byPublishedOnDesc, withoutContent);
+const stripRelatedPosts = post => R.dissocPath(["data","relatedPosts"], post);
+
+/**
+   - take an initial value of postPages and
+   - transform it to the required form
+ */
+const transformPostPages = postPages => post => {
+  // R.compose works right to left, i.e.
+  // the last fn will be applied first, followed by second last until first
+  const transform = R.compose(
+    rawDataToGetData,
+    stripRelatedPostsContent,
+    injectRelatedPosts(postPages),
+  );
+
+  return transform(post);
+}
+
+const sortByPublishDateDesc = (postPages) => {
+  const dateDiff = (a, b) => {
+    return new Date(b.data.publishedOn).getTime() - new Date(a.data.publishedOn).getTime()
+  }
+
+  return R.sort(dateDiff, postPages);
 }
 
 export default {
@@ -85,17 +105,19 @@ export default {
   ],
   getRoutes: async () => {
     const content = await jdown(contentDir);
+    const publishedPosts = R.filter(isPublished, R.values(content.posts));
+    const rawPostPages = postsToPostPages(publishedPosts);
+    const txfmFn = transformPostPages(rawPostPages)
+    const postPages = R.map(txfmFn, rawPostPages)
+    const sortedPostPages = sortByPublishDateDesc(postPages);
 
-    const processedPosts = getProcessedPosts(content);
-
-    const postPages = getPostPages(processedPosts);
-    const allPosts = getBlogPosts(processedPosts);
-
+    const allPosts = R.map(
+      R.compose(stripPostContents, stripRelatedPosts),
+      sortedPostPages);
     const featuredPosts = R.filter(p => p.data.featured, allPosts);
-    const latestPosts = R.take(3, allPosts);
+    const latestPosts = R.take(5, allPosts);
 
     const sitePages = getSitePages(content);
-
     return [{
       path: '/',
       template: 'src/templates/Landing',
@@ -109,3 +131,5 @@ export default {
     ...sitePages];
   }
 }
+
+export {contentDir, isPublished, relatedSlugs, relatedPosts, injectRelatedPosts, postsToPostPages}

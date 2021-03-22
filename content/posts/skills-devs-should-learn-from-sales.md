@@ -12,6 +12,7 @@ tags:
   - sales
   - developer
 author: shivekkhurana
+slug: skills-devs-should-learn-from-sales
 ---
 *Photo by [Kaleidico](https://unsplash.com/@kaleidico) on [Unsplash](https://unsplash.com/)*
 

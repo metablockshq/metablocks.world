@@ -11,6 +11,7 @@ tags:
   - react
   - software-dev
 author: shivekkhurana
+slug: react-libs-without-vendor-lock-in
 ---
 
 *Photo by [chris panas](https://unsplash.com/@chrispanas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/lock?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*

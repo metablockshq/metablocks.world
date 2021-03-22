@@ -8,6 +8,7 @@ tags:
   - personal-growth
   - life-lessons
 author: shivekkhurana
+slug: imitate
 ---
 **🥤JUICE of the story**
 
