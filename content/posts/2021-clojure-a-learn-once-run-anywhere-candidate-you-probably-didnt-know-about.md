@@ -3,7 +3,7 @@ publishedOn: 2021-01-21T09:59:32.113Z
 title: Clojure - A "Learn once, run anywhere" candidate you probably didn't know about
 canonicalUrl: https://www.newline.co/@shivekkhurana/clojure-a-learn-once-run-anywhere-candidate-you-probably-didnt-know-about--9d1444c7
 featured: false
-heroImg: img/content/posts/20210105093343642_98-eames-chair-2-.jpeg
+heroImg: https://s3.amazonaws.com/assets.fullstack.io/n/20210105093343642_98%20EAMES%20CHAIR%20%282%29.jpg
 slug: clj-learn-once-run-anywhere
 tags:
   - clojure
