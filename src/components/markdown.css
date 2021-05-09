@@ -1,16 +1,4 @@
-/* .markdown code { */
-/*     background-color: #eee; */
-/*     border-radius: 8px; */
-/*     padding: 4px; */
-/*     font-size: 16px; */
-/* } */
-
-/* .markdown pre code { */
-/*     display: block; */
-/*     font-size: 16px; */
-/*     overflow-x: scroll; */
-/* } */
-
+/*Line Numbers --------------------*/
 .markdown code {
   counter-reset: step;
   counter-increment: step 0;
@@ -26,6 +14,7 @@
   color: rgba(115,138,148,.4)
 }
 
+/*----------------------------------*/
 .markdown pre.shiki {
     font-size: 16px;
     width: 90%;
@@ -63,7 +52,6 @@
     .markdown pre.shiki {
 	width: 80%;
     }
-
 }
 
 @media screen and (min-width: 60em) {
@@ -71,4 +59,11 @@
     .markdown pre.shiki {
 	width: 50%;
     }
+}
+
+/*inline code*/
+p code {
+    font-size: 16px;
+    background-color: #eee;
+    padding: 2px;
 }

@@ -1,9 +1,10 @@
-import React from 'react';
-import {Head, useRouteData} from 'react-static';
+import React from "react"
+import {Head, useRouteData} from "react-static"
 
-import Shell from "../components/Shell";
-import colors from 'utils/colors';
-import PostCard from '../components/PostCard';
+import Shell from "../components/Shell"
+import colors from "utils/colors"
+import Pinboard from "../components/Pinboard.js"
+import PostCard from "../components/PostCard"
 
 const Letter = ({className}) => {
     return (<div>
@@ -16,6 +17,7 @@ const Letter = ({className}) => {
       		    <div className="w-70">
       			<p className="b sans-serif o-100">Hi Stranger !</p>
       			<p>My name is Shivek Khurana and <span className="i">Krim Labs is a canopy for my consultancy, products and ideas</span>.</p>
+		      <Pinboard content={"The site is being upgraded. Everything should work fine but the styling might be off."} />
  		    </div>
 		</div>
 	    </div>);
