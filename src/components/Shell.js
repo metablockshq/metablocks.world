@@ -13,9 +13,9 @@ const Shell = ({children}) => {
     window.scrollTo(0, 0)
   }, [pathname]);
 
-  return (<div className="min-vh-100 white" style={{backgroundColor: colors.BLACK}}>
+  return (<div className="">
 	    <Nav />
-	    <div className="pt5">
+	    <div className="pt5" style={{minHeight: "90vh"}}>
 	      {children}
 	    </div>
 	    <Footer />

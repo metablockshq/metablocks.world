@@ -6,7 +6,7 @@ import colors from 'utils/colors';
 import PostCard from '../components/PostCard';
 
 const Letter = ({className}) => {
-    return (<div className="" style={{backgroundColor: colors.DARK_GRAY1}}>
+    return (<div>
 		<div className={`center w-90 w-70-m w-40-l f5 f4-ns lh-copy pr0 pr0-m pr4-l georgia flex justify-between ${className}`}
 		     style={{flex:1}}>
 

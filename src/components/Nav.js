@@ -4,7 +4,6 @@ import Dropdown from "react-dropdown";
 import Headroom from "react-headroom";
 
 import logo from "../images/logo-white-with-wolf.svg";
-import LayeredContainer from "../components/LayeredContainer";
 import mailIcon from "../images/icons/mail.svg";
 import briefcaseIcon from "../images/icons/briefcase.svg";
 import packageIcon from "../images/icons/package.svg";

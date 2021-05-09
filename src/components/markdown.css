@@ -1,47 +1,74 @@
+/* .markdown code { */
+/*     background-color: #eee; */
+/*     border-radius: 8px; */
+/*     padding: 4px; */
+/*     font-size: 16px; */
+/* } */
+
+/* .markdown pre code { */
+/*     display: block; */
+/*     font-size: 16px; */
+/*     overflow-x: scroll; */
+/* } */
+
 .markdown code {
-	background-color: #10161A;
-	border-radius: 8px;
-	padding: 4px;
-	font-size: 16px;
+  counter-reset: step;
+  counter-increment: step 0;
 }
 
-.markdown pre code {
-	display: block;
-	font-size: 16px;
-	overflow-x: scroll;
+.markdown code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115,138,148,.4)
 }
+
+.markdown pre.shiki {
+    font-size: 16px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 16px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
 
 .markdown a {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 /*<img> followed by <em> is always an attribution*/
 /*first <em> is always cover attribution*/
 .markdown img + em, .markdown p:first-child > em {
-	font-size: 16px;
-	display: block;
+    font-size: 16px;
+    display: block;
 }
 
 .markdown img {
-	border-radius: 4px;
+    border-radius: 4px;
 }
 
 .markdown hr {
-	border: 0;
-	border-top: 1px solid #30404D;
-	height: 0px;
+    border: 0;
+    border-top: 1px solid #30404D;
+    height: 0px;
 }
 
 /*Maje shitz rekponsive*/
+@media screen and (min-width: 30em) and (max-width: 60em) {
+    /*Tachyons Medium -m*/
+    .markdown pre.shiki {
+	width: 80%;
+    }
 
-@media only screen and (min-width: 768px) {
-    /* tablets and desktop */
 }
 
-@media only screen and (max-width: 767px) {
-    /* phones */
-}
-
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-    /* portrait phones */
+@media screen and (min-width: 60em) {
+    /*Tachyons large*/
+    .markdown pre.shiki {
+	width: 50%;
+    }
 }

@@ -31,10 +31,10 @@ To future proof our applications, we introduced the concept of Component Interfa
 # Component Interfaces
 Assume we want to import a modal library which has the following API:
 
-```
+```javascript
 import Modal from '@demo/Modal';
 
-< Modal
+<Modal
     open={true} // bool
     large={false} // bool
     title="Hello" // string
@@ -44,11 +44,11 @@ import Modal from '@demo/Modal';
 ### Define an interface over 3rd party Modal
 Instead of importing `Modal` directly, we create an interface component. 
 
-```
+```javascript
 import Modal as BaseModal from '@demo/Modal';
 
 const Modal = ({children, open, title}) => (
-    < BaseModal
+    <BaseModal
         large={false}
         title={title}
         open={open}
@@ -62,17 +62,18 @@ export default Modal;
 
 ### Use the lib via your instance
 Use this interface in place of the 3rd party library:
-```
+
+```javascript
 import Modal from '../components/interfaces/Modal';
 
 const Profile = () => {
     return (< div>
         ...
-        < Modal open={isModalOpen} title="Modal Via Interface">
+        <Modal open={isModalOpen} title="Modal Via Interface">
             < div>Modal Content</ div>
-        </ Modal>
+        </Modal>
         ...
-    </ div>)
+    </div>)
 }
 ```
 
@@ -88,5 +89,5 @@ Notice how our Modal interface didn't accept a `large` prop, instead set it to `
 
 # Conclusion
 
-Component interfaces help circumvent vendor lock-in and allow for easy updates. They also help simplify the actual API and give an ability to set sane defaults. 
+Component interfaces help circumvent vendor lock-in and allow for easy updates. They also help simplify the actual API and give an ability to set sane defaults.
 

@@ -159,13 +159,13 @@ In the `src/dealer_api` directory, create a file called `core.clj`.
 
 We have enough code for our server to start working. Go to the project’s root and start the repl using `clj` command:
 
-```
+```bash
 $ clj
 ```
 
 If everything works, you should be in a prompt called a REPL. Here you can import your namespace and start the server :
 
-```
+```clojure
 user=> (require '[dealer-api.core :as core])
 nil
 user=> (core/server)
@@ -211,7 +211,7 @@ We’ll also create a `reset` function that can be called to reload changes:
 
 Now close the repl using Ctrl+C. This is probably the last time you’ll shut it down. Now start it again using `$ clj`.Next import the required functions: `go` and `reset`
 
-```
+```clojure
 $ clj
 Clojure 1.9.0
 user=> (require '[dealer-api.core :refer [go reset]])
@@ -224,7 +224,7 @@ user=> (go)
 
 Now go back to localhost:8890/hello and you should see your message. Change your message and reset the code as follows:
 
-```
+```clojure
 user=> (go)
 ;; You'll see a ton of logs followed by"Server started on localhost:8890"
 "Enter (reset) to reload."

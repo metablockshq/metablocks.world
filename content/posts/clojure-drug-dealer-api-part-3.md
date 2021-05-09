@@ -74,7 +74,7 @@ Once you have it set up, you should be able to evaluate forms directly from your
 
 I’m an Emacs user and if you too happen to use it, you can connect to the REPL using:
 
-```
+```bash
 M x
 cider-connect
 ```

@@ -1,10 +1,10 @@
 import path from 'path';
 import jdown from 'jdown';
+import {getHighlighter} from 'shiki';
 import {rebuildRoutes} from 'react-static/node';
 import chokidar from 'chokidar';
 import {paramCase} from 'change-case';
 import R from 'ramda';
-
 
 const contentDir = './content';
 
@@ -28,6 +28,13 @@ const getSitePages = (content) => {
   return R.values(sitePagesObj);
 }
 
+const getAuthorPages = (content) => {
+  return R.map(a => ({
+    path: `/authors/${a.slug}`,
+    template: 'src/templates/Author',
+    getData: () => a
+  }), R.values(content.authors))
+}
 
 // need weak inequality check so objects with no `publishedOn` key return false
 const isPublished = (post) => post.publishedOn != null;
@@ -73,17 +80,26 @@ const stripRelatedPostsContent = post =>
 
 const stripRelatedPosts = post => R.dissocPath(["data","relatedPosts"], post);
 
+const injectAuthor = authors => post => {
+  return R.assocPath(
+    ["data", "author"],
+    R.find(R.propEq("slug", post.data.author))(R.values(authors)),
+    post
+  )
+}
+
 /**
    - take an initial value of postPages and
    - transform it to the required form
  */
-const transformPostPages = postPages => post => {
+const transformPostPages = (postPages, authors) => post => {
   // R.compose works right to left, i.e.
   // the last fn will be applied first, followed by second last until first
   const transform = R.compose(
     rawDataToGetData,
     stripRelatedPostsContent,
     injectRelatedPosts(postPages),
+    injectAuthor(authors)
   );
 
   return transform(post);
@@ -97,6 +113,13 @@ const sortByPublishDateDesc = (postPages) => {
   return R.sort(dateDiff, postPages);
 }
 
+// https://marked.js.org/using_advanced
+const markdownOptionsFactory = highlighter => ({
+  highlight: function (code, lang) {
+    return highlighter.codeToHtml(code, lang)
+  }
+})
+
 export default {
   siteRoot: 'https://krimlabs.com',
   plugins: [
@@ -104,10 +127,13 @@ export default {
     'react-static-plugin-sitemap'
   ],
   getRoutes: async () => {
-    const content = await jdown(contentDir);
+    const highlighter = await getHighlighter({theme: "monokai"})
+    const content = await jdown(contentDir, {
+      markdown: markdownOptionsFactory(highlighter)
+    });
     const publishedPosts = R.filter(isPublished, R.values(content.posts));
     const rawPostPages = postsToPostPages(publishedPosts);
-    const txfmFn = transformPostPages(rawPostPages)
+    const txfmFn = transformPostPages(rawPostPages, content.authors)
     const postPages = R.map(txfmFn, rawPostPages)
     const sortedPostPages = sortByPublishDateDesc(postPages);
 
@@ -118,6 +144,8 @@ export default {
     const latestPosts = R.take(5, allPosts);
 
     const sitePages = getSitePages(content);
+    const authorPages = getAuthorPages(content)
+
     return [{
       path: '/',
       template: 'src/templates/Landing',
@@ -128,7 +156,9 @@ export default {
       getData: () => ({allPosts, featuredPosts})
     },
     ...postPages,
-    ...sitePages];
+    ...sitePages,
+    ...authorPages
+   ];
   }
 }
 

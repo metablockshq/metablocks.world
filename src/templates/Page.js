@@ -16,13 +16,11 @@ const Page = () => {
 	    </Head>
 
 	    <Shell>
-	      {title && <div
-			  className="ttu f6 b tc pv2 w-100 bg-top"
-			  style={{ backgroundColor: colors.DARK_GRAY3}}
-			>
-			  {title}
-			</div>}
-	      <div className="pt5" style={{backgroundColor: colors.BLACK}}>
+	      {title &&
+	       <div className="ttu f6 b tc pv2 w-100 bg-top">
+		 {title}
+	       </div>}
+	      <div className="pt5">
 		<Markdown contents={contents} />
 	      </div>
 	    </Shell>

@@ -26,7 +26,7 @@ Without more yada yada, here’s the juice :
 
 Use a reducer when you need to combine data from multiple sources into one entity.
 
-```
+```javascript
 const posts = [
   {id: 1, upVotes: 2},
   {id: 2, upVotes: 89},
@@ -46,7 +46,7 @@ The reducer function is also provided with two additional arguments :
 
 So a complete reducer function should look like:
 
-```
+```javascript
 collection.reduce(
   (accumulator, currentElement, currentIndex, collectionCopy) => 
     {/*function body*/},
@@ -58,7 +58,7 @@ collection.reduce(
 
 Use a map for processing streams like data (examples array). It helps me to think of it as a transformation that will be applied to all the elements of a stream (array).
 
-```
+```javascript
 const integers = [1, 2, 3, 4, 6, 7];
 const twoXIntegers = integers.map(i => i*2);// twoXIntegers are now [2, 4, 6, 8, 12, 14]
 ```
@@ -107,7 +107,7 @@ const allButMe = userIds.filter(id => id !== myId);
 
 ## Adding an element to an array of objects
 
-```
+```javascript
 const books = [];
 const newBook = {title: 'Alice in wonderland', id: 1};
 const updatedBooks = [...books, newBook];
@@ -117,14 +117,14 @@ The books variable here might also be undefined. It doesn’t matter, the spread
 
 ## Adding a key value pair to an object
 
-```
+```javascript
 const user = {name: 'Shivek Khurana'};
 const updatedUser = {...user, age: 23};
 ```
 
 ## Adding a key value pair with dynamic key
 
-```
+```javascript
 const dynamicKey = 'wearsSpectacles';
 const user = {name: 'Shivek Khurana'};
 const updatedUser = {...user, [dynamicKey]: true};
@@ -134,7 +134,7 @@ const updatedUser = {...user, [dynamicKey]: true};
 
 ## Find and replace key value pair in array of objects:
 
-```
+```javascript
 const posts = [
   {id: 1, title: 'Title 1'},
   {id: 2, title: 'Title 2'}
@@ -152,7 +152,7 @@ const updatedPosts = posts.map(p => p.id !== 1 ?
 
 ## Find an element inside an array of objects
 
-```
+```javascript
 const posts = [
   {id: 1, title: 'Title 1'},
   {id: 2, title: 'Title 2'}
@@ -164,7 +164,7 @@ const postInQuestion = posts.find(p => p.id === 2);
 
 ### Delete a key value pair inside an object
 
-```
+```javascript
 const user = {name: 'Shivek Khurana', age: 23, password: 'SantaCl@use'};
 const userWithoutPassword = Object.keys(user)
   .filter(key => key !== 'password')
@@ -179,7 +179,7 @@ const userWithoutPassword = Object.keys(user)
 
 [Kevin Bradley](https://medium.com/u/fd4d4252179c) (thanks Kevin !) suggested a beautiful technique to delete a key value pair inside an object. Here it is :
 
-```
+```javascript
 const user = {name: 'Shivek Khurana', age: 23, password: 'SantaCl@use'};
 const userWithoutPassword = (({name, age}) => ({name, age}))(user);
 ```
@@ -188,7 +188,7 @@ He also mentioned that this example works fairly well when the number of keys in
 
 [Ivan Botnari](https://medium.com/u/2d62320f9947) suggested something, which according to me, is the best way to go about it (thank you Ivan):
 
-```
+```javascript
 const user = {name: 'Shivek Khurana', age: 23, password: 'SantaCl@use'};
 
 const userWithoutPassword = Object.keys(user)
@@ -200,7 +200,7 @@ const userWithoutPassword = Object.keys(user)
 
 Ivan’s brilliant approach can also be used to delete a collection of keys, like :
 
-```
+```javascript
 const user = {name: 'Shivek Khurana', age: 23, password: 'SantaCl@use'};
 const userWithoutPasswordAndAge = Object.keys(user)
   .reduce((acc, key) => ['password', 'age'].indexOf(key) > -1 ? 
@@ -213,7 +213,7 @@ const userWithoutPasswordAndAge = Object.keys(user)
 
 You’ll hardly need this specific use case, but it might help you create something.
 
-```
+```javascript
 const params = {color: 'red', minPrice: 8000, maxPrice: 10000};
 const query = '?' + Object.keys(params)
   .map(k =>   
@@ -228,7 +228,7 @@ const query = '?' + Object.keys(params)
 
 ## Find index of element in an array of objects
 
-```
+```javascript
 const posts = [
   {id: 13, title: 'Title 221'},
   {id: 5, title: 'Title 102'},

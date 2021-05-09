@@ -10,7 +10,7 @@ const transform = {
     const isElImg = el.props && el.props.hasOwnProperty('alt') && el.props.hasOwnProperty('src');
     return (<p className={`georgia center ${isElImg ? "tc" : "w-90 w-80-m w-50-l"}`}>{children}</p>);
   },
-  pre: ({children}) => <div className="w-90 w-80-m w-50-l center"><pre>{children}</pre></div>,
+  // pre: ({props, children}) => <div className="w-90 w-80-m w-50-l center"><pre {...props}>{children}</pre></div>,
   h1: ({children}) => <h1 className="w-90 w-80-m w-50-l center">{children}</h1>,
   h2: ({children}) => <h2 className="w-90 w-80-m w-50-l center">{children}</h2>,
   h3: ({children}) => <h3 className="w-90 w-80-m w-50-l center">{children}</h3>,
@@ -30,7 +30,7 @@ const transform = {
     const size = srcParts[1];
     const sizeClass = !size ? "w-90 w-80-m w-50-l" :
       size === "original" ? "w-auto" :
-      size === "medium" ? "w-90 w-80-m w-60-l" : 
+      size === "medium" ? "w-90 w-80-m w-60-l" :
       size === "large" ? "w-90 w-80-ns" : "w-90 w-80-m w-90-l"; // if it's not large, it's x-large
     return (
       <img src={src} className={`center ${sizeClass}`} alt={String(alt)} />);

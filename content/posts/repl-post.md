@@ -65,7 +65,7 @@ To understand the REPL and REPL driven development, we must first introduce Cloj
 
 Consider a function that takes a Hash Map like `{:a "b" :c "d"}` and returns a query string like `"a=b&c=d"`:
 
-```
+```clojure
 (defn map->query-string [m]
 	(reduce
 		(fn [acc [k v]]
