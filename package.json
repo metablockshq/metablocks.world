@@ -7,7 +7,8 @@
     "build": "react-static build",
     "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
-    "test": "ls | entr jest -- static.config",
+    "test:watch": "ls | entr jest -- static.config",
+    "test": "jest -- static.config",
     "local-cms": "npx netlify-cms-proxy-server"
   },
   "dependencies": {

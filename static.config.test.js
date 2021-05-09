@@ -2,7 +2,8 @@ const jdown = require("jdown")
 const R = require("ramda")
 
 const {contentDir, isPublished, relatedSlugs, relatedPosts,
-       injectRelatedPosts, postsToPostPages} = require("./static.config")
+       injectRelatedPosts, postsToPostPages, rawDataToGetData,
+       stripPostContents, stripRelatedPostsContent} = require("./static.config")
 
 // state to load content to
 let content;
@@ -110,7 +111,6 @@ describe("injectRelatedPosts()", () => {
 
     expect(injected.data.relatedSlugs).toEqual([2])
   })
-
 })
 
 describe("jdown()", () => {
@@ -169,7 +169,7 @@ describe("jdown()", () => {
 describe("postsToPostPages()", () => {
   const postPages = postsToPostPages([
     {slug: "test-slug", flag: "x"}
-  ]);
+  ])
 
   it("returns RS meta data", () => {
     const first = postPages[0]
@@ -177,5 +177,36 @@ describe("postsToPostPages()", () => {
     expect(first).toHaveProperty("template", "src/templates/blog/Post")
     expect(first).toHaveProperty("data")
     expect(first.data).toHaveProperty("flag", "x")
+  })
+})
+
+describe("stipPostContents()", () => {
+  const post = {data: {contents: "x"}}
+  it("strips contents from data", () => {
+    expect(stripPostContents(post)).not.toHaveProperty("data.contents")
+  })
+})
+
+describe("stripRelatedPostsContent()", () => {
+  const post = {data: {relatedPosts: [{
+    data: {contents: "x"}
+  }, {
+    data: {contents: "y"}
+  }]}}
+
+  it("strips contents of related posts", () => {
+    const stripped = stripRelatedPostsContent(post)
+    expect(stripped).not.toHaveProperty("data.relatedPosts.0.data.contents")
+    expect(stripped).not.toHaveProperty("data.relatedPosts.1.data.contents")
+  })
+})
+
+describe("rawDataToGetData()", () => {
+  const post = {data: "x"}
+  const withGetData = rawDataToGetData(post)
+
+  it("converts data to a getData fn", () => {
+    expect(withGetData.getData).toBeInstanceOf(Function)
+    expect(withGetData.getData()).toEqual(post.data)
   })
 })

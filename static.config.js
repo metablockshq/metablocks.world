@@ -62,7 +62,6 @@ const relatedPosts = (posts, post) => {
 const injectRelatedPosts = posts => post =>
       R.assocPath(["data", "relatedPosts"], relatedPosts(posts, post), post);
 
-// todo: Test
 const rawDataToGetData = post => {
   // this has to be a constant to prevent it from being passed as a value
   // which causes a problem when data is stripped
@@ -72,7 +71,6 @@ const rawDataToGetData = post => {
 
 const stripPostContents = post => R.dissocPath(["data", "contents"], post);
 
-// todo: Test
 const stripRelatedPostsContent = post =>
       R.assocPath(["data", "relatedPosts"],
 		  R.map(stripPostContents, post.data.relatedPosts),
@@ -115,9 +113,7 @@ const sortByPublishDateDesc = (postPages) => {
 
 // https://marked.js.org/using_advanced
 const markdownOptionsFactory = highlighter => ({
-  highlight: function (code, lang) {
-    return highlighter.codeToHtml(code, lang)
-  }
+  highlight: (code, lang) => highlighter.codeToHtml(code, lang)
 })
 
 export default {
@@ -162,4 +158,8 @@ export default {
   }
 }
 
-export {contentDir, isPublished, relatedSlugs, relatedPosts, injectRelatedPosts, postsToPostPages}
+export {
+  contentDir, isPublished, relatedSlugs, relatedPosts,
+  injectRelatedPosts, postsToPostPages, stripRelatedPostsContent,
+  stripPostContents, rawDataToGetData
+}
