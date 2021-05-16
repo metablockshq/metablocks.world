@@ -16,13 +16,15 @@ const Loading = () => {
 const App = () => {
   useEffect(() => {
     if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-	if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-	}
-      });
+      setTimeout(() => {
+	window.netlifyIdentity.on("init", user => {
+	  if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+	  }
+	});
+      }, 0)
     }
   });
 
