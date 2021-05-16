@@ -4,7 +4,6 @@ import {Route, Switch} from 'react-router-dom';
 ;
 import colors from './utils/colors';
 import {MobileNav} from './components/Nav';
-import useScript from './utils/hooks/useScript';
 import './app.css'
 import './tachyons.min.css';
 
@@ -16,15 +15,13 @@ const Loading = () => {
 const App = () => {
   useEffect(() => {
     if (window.netlifyIdentity) {
-      setTimeout(() => {
-	window.netlifyIdentity.on("init", user => {
-	  if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-	  }
-	});
-      }, 0)
+      window.netlifyIdentity.on("init", user => {
+	if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+	}
+      });
     }
   });
 

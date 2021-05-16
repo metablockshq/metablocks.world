@@ -9,7 +9,6 @@ import colors from '../utils/colors';
 const Li = ({href, title}) => <li><a className="blue" href={href}>{title}</a></li>
 
 const SocialLinks = ({twitter, youtube, github, medium}) => {
-  console.log(twitter, github, youtube, medium)
   return (<ul>
 	    {twitter && <Li title={"Twitter"} href={`https://twitter.com/${twitter}`}/>}
 	    {github && <Li title={"Github"} href={`https://github.com/${github}`}/>}
