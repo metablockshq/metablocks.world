@@ -3,7 +3,7 @@ title: Learn Clojure By Building a Drug Dealer API — Part 3 [Endgame]
 subTitle: git commit -am “Improve DX, Implement POST route”
 canonicalUrl: https://medium.com/@shivekkhurana/learn-clojure-by-building-a-drug-dealer-api-part-3-endgame-b12717164574
 publishedOn: 2020-01-15
-heroImg: https://miro.medium.com/max/4928/1*1NchAKno_QJ-Lm1m_qdzkw.png
+heroImg: /img/content/posts/11NchAKnoQJ-Lm1mqdzkw.png
 featured: false
 slug: clojure-drug-dealer-part-3
 relatedSlugs:

@@ -2,7 +2,7 @@
 title: Ethical, open sourced and profitable at the same time
 canonicalUrl: https://medium.com/@shivekkhurana/ethical-open-sourced-and-profitable-at-the-same-time-16c53efdfe5a
 publishedOn: 2019-04-13
-heroImg: https://miro.medium.com/max/1167/1*b6fCxwMBepVjSuxtvsLokA.jpeg
+heroImg: /img/content/posts/1b6fCxwMBepVjSuxtvsLokA.jpeg
 featured: true
 relatedSlugs:
   - imitate
