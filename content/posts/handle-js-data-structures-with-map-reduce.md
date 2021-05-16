@@ -3,7 +3,7 @@ title: Handle JavaScript data structures with map/reduce
 subTitle: A cheatsheet for writing beautiful, concise and functional es6
 canonicalUrl: https://codeburst.io/writing-javascript-with-map-reduce-980602ff2f2f
 publishedOn: 2018-01-31
-heroImg: https://miro.medium.com/max/1191/1*hgBLGPibHyM4oSjjASJtSA.png
+heroImg: /img/content/posts/hgBLGPibHyM4SjjASJtSA.png
 relatedSlugs:
   - clojure-424-days
 tags:

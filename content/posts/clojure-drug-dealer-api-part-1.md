@@ -1,5 +1,5 @@
 ---
-heroImg: https://miro.medium.com/max/4928/1*ZigE5BeEaXIfx2_FnP4UWg.png
+heroImg: /img/content/posts/ZigE5BeEaXIfx2FnP4UWg.png
 slug: clojure-drug-dealer-part-1
 publishedOn: 2019-08-27
 title: Learn Clojure by Building a Drug Dealer API - Part 1

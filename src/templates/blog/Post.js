@@ -1,19 +1,19 @@
-import React, {useEffect} from 'react';
-import {useRouteData, Head} from 'react-static';
-import {Link, useLocation} from 'react-router-dom';
-import convert from 'htmr';
-// import {parse} from 'tldts';
+import React, {useEffect} from "react";
+import {useRouteData, Head} from "react-static";
+import {Link, useLocation} from "react-router-dom";
+import convert from "htmr";
+import {parse} from "tldts";
 
-import colors from '../../utils/colors';
-import Shell from '../../components/Shell';
-import Nav from '../../components/Nav';
-import PostCard from '../../components/PostCard';
-import str from '../../utils/string';
-import plant from '../../images/plant.png';
-import fbIcon from '../../images/icons/fb.svg';
-import twitterIcon from '../../images/icons/twitter.svg';
-import Markdown from '../../components/Markdown';
-
+import colors from "../../utils/colors";
+import Shell from "../../components/Shell";
+import Nav from "../../components/Nav";
+import PostCard from "../../components/PostCard";
+import str from "../../utils/string";
+import img from "../../utils/image";
+import plant from "../../images/plant.png";
+import fbIcon from "../../images/icons/fb.svg";
+import twitterIcon from "../../images/icons/twitter.svg";
+import Markdown from "../../components/Markdown";
 
 const Related = ({relatedPosts}) => {
   return (<div>
@@ -86,15 +86,6 @@ const Share = ({title, url}) => {
 	  </div>);
 };
 
-const transform = {
-  p: ({children}) => <p className="georgia">{children}</p>,
-  li: ({children}) => <li className="georgia mb3">{children}</li>,
-  blockquote: ({children}) => <blockquote className="georgia i f3">{children}</blockquote>,
-  a: ({href, children}) => <a href={href} target="_blank">{children}</a>,
-  img: ({src, alt}) => <img src={src} className="" alt={String(alt)}/>
-};
-
-
 const SEO = ({title, subTitle, tags, publishedOn, author, canonicalUrl, heroImg}) => {
   return (<Head>
 	    {/*SEO*/}
@@ -113,11 +104,19 @@ const SEO = ({title, subTitle, tags, publishedOn, author, canonicalUrl, heroImg}
 	  </Head>);
 }
 
+const AuthorImage = ({profilePicture, name}) => {
+  const optimizedPaths = img.getOptimizedPaths(profilePicture)
+  return (<img src={optimizedPaths.w80}
+	       className="br-100"
+	       alt={name} />)
+}
+
 const Author = ({author, publishedOn}) => {
   return (<div className="flex mt4 items-center justify-between">
 	    <div className="flex items-center">
 	      <div className="w3">
-		<img src={author.profilePicture} className="br-100" />
+		<AuthorImage profilePicture={author.profilePicture}
+			     name={author.name}/>
 	      </div>
 	      <div className="pl2">
 		<div className="b f6">
@@ -155,12 +154,10 @@ const Post = () => {
 
 	      <div className="center w-90 w-80-m w-50-l">
 		<div className="f4">
-		  {/*
-		  {canonicalUrl && <div className="mt3 bg-white-10 pa2 br2 white-60">
-				     This blog was originally published on <a href={canonicalUrl} className="white">{str.capitalise(parse(canonicalUrl).domainWithoutSuffix)}.</a>
+		  {canonicalUrl && <div className="mt3 bg-black-10 pa2 br2 black-60">
+				     This blog was originally published on <a href={canonicalUrl} className="black">{str.capitalise(parse(canonicalUrl).domainWithoutSuffix)}.</a>
 				   </div>}
 
-		   */}
 		  <Follow />
 		  <div>
 		    <div className="ttu f6 b mb3">

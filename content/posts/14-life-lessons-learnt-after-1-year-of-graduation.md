@@ -2,7 +2,7 @@
 publishedOn: 2017-05-15
 title: 14 life lessons learnt after 1 year of graduation
 canonicalUrl: https://medium.com/@shivekkhurana/14-life-lessons-learnt-after-1-year-of-graduation-423de966c4a0
-heroImg: https://miro.medium.com/max/4000/1*55SBmroKHsSa-m6E9Asy4g.jpeg
+heroImg: /img/content/posts/1_55SBmroKHsSa-m6E9Asy4g.jpeg
 slug: 14-life-lessons-learnt-after-1-year-of-graduation
 tags:
   - personal-growth

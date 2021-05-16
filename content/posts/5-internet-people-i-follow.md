@@ -2,7 +2,7 @@
 title: 5 internet people I follow for advice
 canonicalUrl: https://medium.com/@shivekkhurana/5-internet-people-i-follow-for-advice-86ddcde35a08
 publishedOn: 2018-07-09
-heroImg: https://miro.medium.com/max/6048/1*DKiWBCAiuib33nVatd6aFA.png
+heroImg: /img/content/posts/DKiWBCAiuib33nVatd6aFA.png
 tags:
   - saas
   - canva

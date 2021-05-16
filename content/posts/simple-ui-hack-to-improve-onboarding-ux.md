@@ -2,7 +2,7 @@
 publishedOn: 2018-10-09
 title: A simple UI hack to improve Onboarding UX [OCD]
 canonicalUrl: https://medium.com/@shivekkhurana/a-simple-ui-hack-to-improve-onboarding-ux-ocd-93ed5d77247
-heroImg: https://miro.medium.com/max/1152/1*a1Tpc-t8BBCU62Bx6ezsBA.png
+heroImg: /img/content/posts/11Tpc-t8BBCU62Bx6ezsBA.png
 relatedSlugs:
   - handle-js-data-structures-with-map-reduce
 tags:

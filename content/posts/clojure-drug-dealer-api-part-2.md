@@ -3,7 +3,7 @@ title: Learn Clojure by Building a Drug Dealer API - Part 2
 subTitle: git commit -am “Add database using HugSQL and Postgres”
 canonicalUrl: https://medium.com/@shivekkhurana/learn-clojure-by-building-a-drug-dealer-api-part-2-de8c47512a71
 publishedOn: 2019-09-03
-heroImg: https://miro.medium.com/max/2957/1*4vZebt3dYv_HSlHwNGC-1A.png
+heroImg: /img/content/posts/4vZebt3dYvHSlHwNGC-1A.png
 featured: false
 slug: clojure-drug-dealer-part-2
 relatedSlugs:
