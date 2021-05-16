@@ -1,6 +1,5 @@
 import React from 'react';
 import convert from 'htmr';
-import Lightbox from 'react-image-lightbox';
 
 import './markdown.css';
 

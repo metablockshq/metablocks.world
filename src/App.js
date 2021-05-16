@@ -1,11 +1,11 @@
 import React, {Component, useEffect} from 'react';
 import {Root, Routes, Head} from 'react-static';
 import {Route, Switch} from 'react-router-dom';
-
-import './app.css';
+;
 import colors from './utils/colors';
 import {MobileNav} from './components/Nav';
 import useScript from './utils/hooks/useScript';
+import './app.css'
 import './tachyons.min.css';
 
 const Loading = () => {

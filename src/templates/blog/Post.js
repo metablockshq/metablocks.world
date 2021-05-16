@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import {useRouteData, Head} from "react-static";
 import {Link, useLocation} from "react-router-dom";
 import convert from "htmr";
-import {parse} from "tldts";
 
 import colors from "../../utils/colors";
 import Shell from "../../components/Shell";
@@ -128,6 +127,17 @@ const Author = ({author, publishedOn}) => {
 	  </div>)
 }
 
+const parse = url => {
+  if (url.includes("medium.com")) return "Medium"
+  else if (url.includes("newline.co")) return "Newline"
+  else return url
+}
+
+const CanonicalRef = ({canonicalUrl}) => {
+  return (<div className="mt3 bg-black-10 pa2 br2 black-60">
+	    This blog was originally published on <a href={canonicalUrl} className="black">{str.capitalise(parse(canonicalUrl))}.</a>
+	  </div>)
+}
 const Post = () => {
   const {contents, title, subTitle, heroImg, tags, publishedOn, author, canonicalUrl, relatedPosts, slug} = useRouteData();
   const {pathname} = useLocation();
@@ -154,9 +164,7 @@ const Post = () => {
 
 	      <div className="center w-90 w-80-m w-50-l">
 		<div className="f4">
-		  {canonicalUrl && <div className="mt3 bg-black-10 pa2 br2 black-60">
-				     This blog was originally published on <a href={canonicalUrl} className="black">{str.capitalise(parse(canonicalUrl).domainWithoutSuffix)}.</a>
-				   </div>}
+		  {canonicalUrl && <CanonicalRef canonicalUrl={canonicalUrl} />}
 
 		  <Follow />
 		  <div>
