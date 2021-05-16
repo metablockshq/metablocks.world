@@ -14,6 +14,7 @@ const getOptimizedPaths = path => {
     w240: base + "/w-240.webp",
     w480Blurred: base + "/w-480-blurred.webp",
     w480: base + "/w-480.webp",
+    w720: base + "/w-720.webp",
     w960: base + "/w-960.webp",
     w1440: base + "/w-1440.webp",
   }
@@ -22,7 +23,7 @@ const getOptimizedPaths = path => {
 const getOgSrc = path => `${getOptimizedBase(path)}/og.webp`
 
 const getSrcSet = path => {
-  const widths = [80, 240, 480, 960, 1440]
+  const widths = [80, 240, 480, 720, 960, 1440]
   const optimizedPaths = getOptimizedPaths(path)
 
   return widths

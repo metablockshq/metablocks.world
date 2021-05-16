@@ -74,8 +74,8 @@ const filesToProcess = (imgFiles, processedImgFiles) => {
   )
 }
 
-const widthsToGenerate = [80, 240, 480, 960, 1440]
-const widthsToBlur = [240, 480]
+const widthsToGenerate = [80, 240, 480, 720, 960, 1440]
+const widthsToBlur = [480, 960]
 
 const processFile = async component => {
   // create the folder
