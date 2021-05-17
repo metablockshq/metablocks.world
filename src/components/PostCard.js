@@ -18,7 +18,7 @@ const PostCard = ({post, small}) => {
 		<div className={`mb2 ${small ? 'f7' : 'f6'}`}>{str.humanReadableDate(publishedOn)}</div>
 		<div className={`${small ? 'f4' : 'f3'}`}>{title}</div>
 		{subTitle && <div className={`mt1 mb3 o-80 ${small ? 'f5' : 'f4'}`}>{subTitle}</div>}
-		{!small && <div className="f7 white-80 mt2">{tags.join(', ')}</div>}
+		{!small && <div className="f7 black-80 mt2">{tags.join(', ')}</div>}
 	      </div>
 	    </Link>
 	  </div>);
