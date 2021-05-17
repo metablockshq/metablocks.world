@@ -5,7 +5,7 @@
     "start": "react-static start",
     "stage": "react-static build --staging",
     "optimize:img": "node optimize-img.js",
-    "optimize:css": "purgecss --css dist/*.css --content dist/**/*.html --output dist/",
+    "optimize:css": "purgecss --css dist/*.css --content src/**/*.js --output dist/",
     "build": "react-static build",
     "postbuild": "npm run optimize:css && npm run optimize:img",
     "analyze": "react-static build --analyze",
