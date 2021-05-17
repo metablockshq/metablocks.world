@@ -18,7 +18,7 @@ const App = () => {
       window.netlifyIdentity.on("init", user => {
 	if (!user) {
           window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
+            document.location.href = "/admin/#/";
           });
 	}
       });
@@ -28,10 +28,11 @@ const App = () => {
   return (<Root>
 	    {process.env.NODE_ENV !== "development" &&
 	     <Head>
-	       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+	       <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 	       <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101233643);</script>
 	       <script async src="https://static.getclicky.com/js"></script>
-	     </Head>}
+	     </Head>
+	    }
 
 	    <React.Suspense fallback={<Loading />}>
 	      <Switch>
