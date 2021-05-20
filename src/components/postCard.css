@@ -1,0 +1,35 @@
+.postCard div.coverContainer {
+    flex: 0 0 80px;
+}
+
+.postCard img.cover {
+    width: 80px;
+    height: 45px;
+    object-fit: cover;
+}
+
+/*Maje shitz rekponsive*/
+@media screen and (min-width: 30em) and (max-width: 60em) {
+    /*Tachyons Medium -m*/
+    .postCard img.cover {
+	width: 120px;
+	height: 67.5px;
+    }
+
+    .postCard div.coverContainer {
+	flex: 0 0 120px;
+    }
+}
+
+@media screen and (min-width: 60em) {
+    /*Tachyons large*/
+    .postCard img.cover {
+	width: 160px;
+	height: 90px;
+    }
+
+    .postCard div.coverContainer {
+	flex: 0 0 160px;
+    }
+}
+

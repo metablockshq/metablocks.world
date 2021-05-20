@@ -6,4 +6,8 @@ const humanReadableDate = (dateStr) => (new Date(dateStr))
   .toLocaleDateString('en-us', {year: 'numeric', month: 'long', day: 'numeric'})
 ;
 
-export default {slugify, capitalise, humanReadableDate};
+const queryStringToObj = (queryString) => [...new URLSearchParams(queryString).entries()]
+  .reduce((prev, [key,val]) => {prev[key] = val; return prev}, {})
+;
+
+export default {slugify, capitalise, humanReadableDate, queryStringToObj};

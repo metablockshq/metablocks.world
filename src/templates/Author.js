@@ -23,7 +23,7 @@ const Author = () => {
 
   return (<React.Fragment>
 	    <Head>
-	      <title>Krim. / {name}</title>
+	      <title>Krim / {name}</title>
 	      <meta name="robots" content="index, follow" />
 	    </Head>
 

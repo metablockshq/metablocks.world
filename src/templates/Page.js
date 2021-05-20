@@ -11,7 +11,7 @@ const Page = () => {
 
   return (<React.Fragment>
 	    <Head>
-	      <title>Krim. / {title}</title>
+	      <title>Krim / {title}</title>
 	      <meta name="robots" content="index, follow" />
 	    </Head>
 

@@ -19,7 +19,7 @@ const Related = ({relatedPosts}) => {
 	    <div className="f6 ttu b pt2 mt4">Related Posts</div>
 	    <div className="flex flex-wrap justify-between mt3">
 	      {relatedPosts.map(p => <div key={p.data.slug} className="w-100 w-30-ns">
-				       <PostCard post={p} small={true}/>
+				       <PostCard post={p} />
 				     </div>)}
 	    </div>
 	  </div>);

@@ -103,7 +103,7 @@ const transformPostPages = (postPages, authors) => post => {
   return transform(post);
 }
 
-const sortByPublishDateDesc = (postPages) => {
+const sortByPublishDateDesc = postPages => {
   const dateDiff = (a, b) => {
     return new Date(b.data.publishedOn).getTime() - new Date(a.data.publishedOn).getTime()
   }
@@ -111,10 +111,25 @@ const sortByPublishDateDesc = (postPages) => {
   return R.sort(dateDiff, postPages);
 }
 
+const byPublishYear = R.groupBy(postPage =>
+  (new Date(postPage.data.publishedOn)).getFullYear())
+
 // https://marked.js.org/using_advanced
 const markdownOptionsFactory = highlighter => ({
   highlight: (code, lang) => highlighter.codeToHtml(code, lang)
 })
+
+const topTags = (postPages, n) => {
+  const tags = R.compose(
+    R.countBy(R.identity),
+    R.flatten
+  )(R.map(({data}) => data.tags, postPages))
+
+  const tagsList = R.zip(R.keys(tags), R.values(tags))
+  const sortedTagList = R.sortBy(R.prop(1))(tagsList)
+  const topNTags = R.takeLast(n)(sortedTagList)
+  return R.map(R.prop(0), topNTags)
+}
 
 export default {
   siteRoot: 'https://krimlabs.com',
@@ -136,8 +151,11 @@ export default {
     const allPosts = R.map(
       R.compose(stripPostContents, stripRelatedPosts),
       sortedPostPages);
-    const featuredPosts = R.filter(p => p.data.featured, allPosts);
-    const latestPosts = R.take(5, allPosts);
+
+    const allPostsByYear = byPublishYear(allPosts)
+
+    const recentPosts = R.take(8, allPosts);
+
 
     const sitePages = getSitePages(content);
     const authorPages = getAuthorPages(content)
@@ -145,11 +163,11 @@ export default {
     return [{
       path: '/',
       template: 'src/templates/Landing',
-      getData: () => ({featuredPosts, latestPosts})
+      getData: () => ({recentPosts, tags: topTags(allPosts, 5)})
     }, {
       path: '/blog',
       template: 'src/templates/Blog',
-      getData: () => ({allPosts, featuredPosts})
+      getData: () => ({allPostsByYear, allPosts, tags: topTags(allPosts, 10)})
     },
     ...postPages,
     ...sitePages,
