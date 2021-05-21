@@ -1,14 +1,14 @@
 ---
-heroImg: /img/content/posts/ZigE5BeEaXIfx2FnP4UWg.png
-slug: clojure-drug-dealer-part-1
 publishedOn: 2019-08-27
 title: Learn Clojure by Building a Drug Dealer API - Part 1
 canonicalUrl: https://medium.com/@shivekkhurana/learn-clojure-by-building-a-drug-dealer-api-part-1-83bd4adb9946
 featured: false
+heroImg: /img/content/posts/ZigE5BeEaXIfx2FnP4UWg.png
+slug: clojure-drug-dealer-part-1
 tags:
   - clojure-api
   - drug-dealer-api
-  - learn-clojure
+  - clojure
 relatedSlugs:
   - clojure-424-days
   - clojure-drug-dealer-part-2
