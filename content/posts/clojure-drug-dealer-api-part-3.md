@@ -1,19 +1,19 @@
 ---
+publishedOn: 2020-01-15
 title: Learn Clojure By Building a Drug Dealer API — Part 3 [Endgame]
 subTitle: git commit -am “Improve DX, Implement POST route”
 canonicalUrl: https://medium.com/@shivekkhurana/learn-clojure-by-building-a-drug-dealer-api-part-3-endgame-b12717164574
-publishedOn: 2020-01-15
-heroImg: /img/content/posts/11NchAKnoQJ-Lm1mqdzkw.png
 featured: false
+heroImg: /img/content/posts/11NchAKnoQJ-Lm1mqdzkw.png
 slug: clojure-drug-dealer-part-3
+tags:
+  - clojure-api
+  - drug-dealer-api
+  - clojure
 relatedSlugs:
   - clojure-424-days
   - clojure-drug-dealer-part-1
   - clojure-drug-dealer-part-2
-tags:
-  - clojure-api
-  - drug-dealer-api
-  - learn-clojure
 author: shivekkhurana
 ---
 *Photo by [Jose Antonio Gallego Vázquez](https://unsplash.com/@joseantoniogall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/drug-store?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
