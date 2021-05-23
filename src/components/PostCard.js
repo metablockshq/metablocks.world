@@ -7,10 +7,10 @@ import "./postCard.css"
 
 const AuthorBar = ({author, publishedOn}) => {
   const optimizedPaths = img.getOptimizedPaths(author.profilePicture)
-  return (<div className="flex flex-column flex-row-m flex-row-l justify-between items-center bt b--black-20 ph3 ph4-l mt3 pb2 pt1 f7 f6-l">
+  return (<div className="flex flex-column flex-row-m flex-row-l justify-between items-center bt b--black-20 ph3 ph4-l mt2 mt3-ns pb2 pt0 pt1-ns f7 f6-l">
 	    <div className="flex flex-column flex-row-m flex-row-l items-center">
 	      <img src={optimizedPaths.w80}
-		   className="br-100 mt1"
+		   className="br-100 mt1 dn dib-ns"
 		   alt={author.name}
 		   style={{height: 28,
 			   width: 28}}
@@ -39,24 +39,26 @@ const PostCard = ({post, leftTopTitle, stacked, containerClass}) => {
 	    <div className={`flex flex-column bg-white br4 postCard ${containerClass}`}
 		 style={{boxShadow: "0 2px 7px 0 rgba(0, 0, 0, 0.3)"}}
 	    >
-	      <div className="tl ttu f7 b black-40 ph3 ph4-l pt2">
+	      <div className="tl ttu f7 b black-40 ph3 ph4-ns pt2">
 		{leftTopTitle || computedLeftTopTitle}
 	      </div>
-	      <div className={`flex items-center pt3 ph3 ph4-l ${featured && "flex-column"}`}>
-		<div className={featured ? "mb3" : "coverContainer"} style={{}}>
-		  {heroImg && <img
-				loading="lazy"
-				className={!featured ? "cover" : ""}
-				srcSet={img.getSrcSet(heroImg)}
-				src={img.getOgSrc(heroImg)}
-				alt={`${title} - cover image`} />}
+	      <div className={`flex items-center pt2 ph3 ph4-ns ${featured && "flex-column"}`}>
+		<div className={featured ? "mb2 mb3-ns w-100" : "normalPostFlexBasis"}
+		     style={featured ? {minHeight: "10rem"} : {}}>
+		  {heroImg && <div className={`${featured ? "": "cover"}`}>
+                                <img
+				  loading="lazy"
+				  className={!featured ? "cover" : ""}
+				  srcSet={img.getSrcSet(heroImg)}
+				  src={img.getOgSrc(heroImg)}
+				  alt={`${title} - cover image`} />
+				</div>}
 		</div>
-		<div className={`pl3 ${featured && "tc"}`}>
-		  <div className="tl b f6 f5-m f4-l">{title}</div>
-		  {subTitle && <div className="mt1 black-80 f4">{subTitle}</div>}
+		<div className={`pl3 tl f6 f5-m f4-l ${featured && "tc"}`}>
+		  <div className="b">{title}</div>
+		  {subTitle && <div className="mt1 black-80">{subTitle}</div>}
 		</div>
 	      </div>
-
 	      {author.name && <AuthorBar author={author} publishedOn={publishedOn} />}
 	    </div>
 	  </Link>)

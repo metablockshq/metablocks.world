@@ -75,16 +75,16 @@ const Freepik = () =>
 	 Hat man graphic made by <a href="https://www.freepik.com/free-vector/people-avatar-collection_4501741.htm" className="underline">Freepik</a>.
        </div>)
 
-const Footer = () =>
-      (<div className="flex w-90 w-80-m justify-between w-60-ns center pv4 mt4">
+const Footer = ({attributeFreepik}) =>
+      (<div className="flex flex-column flex-row-ns w-90 w-80-m justify-between w-60-ns center pv4 mt4">
 	 <div>
 	   <div className="o-80 f6">© 2017</div>
 	   <div className="b f3 mt1">Krim Labs</div>
 	 </div>
-	 <div className="tr black-80">
+	 <div className="tl tr-ns mt4 mt0-ns black-80 f6 f5-ns">
 	   <OpenSite />
 	   <Netlify />
-	   <Freepik />
+	   {attributeFreepik && <Freepik />}
 	 </div>
        </div>)
 

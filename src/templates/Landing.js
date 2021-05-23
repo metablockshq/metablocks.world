@@ -22,14 +22,13 @@ import rightArrowDoodle from "../images/icons/right-arrow-doodle.png";
 import hatMan from "../images/hat-man.svg";
 
 const Block = ({backgroundColor, heading, headingColor, headingEmoji, children, childrenContainerClass}) => {
-  return (<section style={{backgroundColor,
-			   borderRadius: 16}}
-		   className="lh-copy tc w-90 w-80-m w-60-ns center pv4 mt4">
+  return (<section style={{backgroundColor}}
+		   className="lh-copy tc w-90 w-80-m w-60-ns center pv4 mt3 mt4-ns br4">
 	    <EmojiHeading title={heading}
 			  color={headingColor}
 			  emoji={headingEmoji}
 	    />
-	    <div className={`w-70 center f4 ${childrenContainerClass}`}>
+	    <div className={`w-90 w-70-ns center f5 f4-ns ${childrenContainerClass}`}>
 	      {children}
 	    </div>
 	  </section>)
@@ -101,8 +100,8 @@ const RecentPosts = ({posts, tags}) =>
 	      headingEmoji={writingHand}
 	      backgroundColor="#FFEEE6"
        >
-	 <div className="flex flex-wrap justify-between black-60 nt3 mb5 f6 f6-m f4-l">
-	   {tags.map(t => <Link key={t} to={`/blog?tag=${t}`} className="underline dib">#{t}</Link>)}
+	 <div className="black-60 nt3 mb3 mb4-m mb5-l f6 f6-m f4-l">
+	   {tags.map(t => <Link key={t} to={`/blog?tag=${t}`} className="underline dib pa2">#{t}</Link>)}
 	 </div>
 	 <div className="w-100 w-80-m w70-l center">
 	   {posts.map((p, i) =>
@@ -216,7 +215,7 @@ const SEO = () => {
 
 const Landing = () => {
   const {recentPosts, tags} = useRouteData();
-  return (<Shell>
+  return (<Shell attributeFreepik={true}>
    	    <SEO />
 	    <ThankYouInternet post={recentPosts[0]} />
 	    <div className="mt5">

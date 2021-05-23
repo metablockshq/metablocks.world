@@ -42,17 +42,17 @@ const Blog = () => {
 			      emoji={writingHand}
 		/>
 		<div className="flex flex-column flex-row-ns">
-		  <div className="w-100 w-20-ns tc tl-ns">
-		    <Link to="/blog" className={`f5 f4-ns underline black-60 ${!tag && pathname === "/blog" && "b black-80"}`}>All posts</Link>
+		  <div className="w-100 w-20-ns tc tl-ns f6 f5-m f4-ns black-60">
+		    <Link to="/blog" className={`dib db-ns underline ${!tag && pathname === "/blog" && "b black-80"}`}>All posts</Link>
 		    {tags.map(t =>
 		      (<Link to={`/blog?tag=${t}`}
 			     key={t}
-			     className={`dib pa2 db-ns pa0-ns underline black-60 mv0 mv3-ns f5 f4-ns ${tag === t && "b black-80"}`}
+			     className={`underline dib pa2 db-ns pa0-ns mv0 mv3-ns ${tag === t && "b black-80"}`}
 		       >
 			 #{t}
 		       </Link>))}
 		  </div>
-		  <div className="w-100 w-80-ns pl4">
+		  <div className="w-100 w-80-ns pl0 pl4-ns">
 		  {publishYears.map(y =>
 		    (<YearPosts key={y}
 				year={y}
