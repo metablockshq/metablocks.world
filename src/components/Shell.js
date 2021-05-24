@@ -5,7 +5,7 @@ import Nav from "./Nav.js";
 import Footer from "./Footer.js";
 import colors from "../utils/colors";
 
-const Shell = ({attributeFreepik, children}) => {
+const Shell = ({attributeFreepik, nav: NavComponent, children}) => {
   const {pathname} = useLocation()
 
   // scroll to top of page when pathname changes
@@ -17,7 +17,7 @@ const Shell = ({attributeFreepik, children}) => {
   }, [pathname]);
 
   return (<div className="">
-	    <Nav />
+	    {NavComponent ? <NavComponent /> : <Nav />}
 	    <div className="pt4" style={{minHeight: "90vh"}}>
 	      {children}
 	    </div>

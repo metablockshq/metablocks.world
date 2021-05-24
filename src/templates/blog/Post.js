@@ -96,7 +96,7 @@ const SEO = ({title, subTitle, tags, publishedOn, author, canonicalUrl, heroImg}
 	    <meta property="og:title" content={title} />
 	    <meta property="og:type" content="article" />
 	    <meta property="article:published_time" content={publishedOn} />
-	    <meta property="article:author" content={author || "Shivek Khurana"} />
+	    <meta property="article:author" content={author.name} />
 	    <meta property="article:tag" content={tags} />
 	    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 	    {heroImg && heroImg.indexOf('https://') === -1 && <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}

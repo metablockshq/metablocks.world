@@ -90,9 +90,9 @@ const ClosingTheLoop = () =>
        </Block>)
 
 const TextWithRightArrowDoodle = ({text}) =>
-      (<div className="flex justify-center items-center">
+      (<div className="flex justify-center items-center f5 f4-m f3-l b">
 	 {text}
-	 <img src={rightArrowDoodle} className="h2 pl3"/>
+	 <img src={rightArrowDoodle} className="h1 h2-ns pl1 pl3-ns"/>
        </div>)
 
 const RecentPosts = ({posts, tags}) =>
@@ -113,10 +113,11 @@ const RecentPosts = ({posts, tags}) =>
        </Block>)
 
 const HatManSpeaks = ({text}) =>
-      (<div className="flex justify-center">
-	 <img src={hatMan} alt="Man wearing a hat" className="mt4" />
-	 <div className="bg-left white pv5 ph4 w-80 w-60-m w-20-l"
-	      style={{backgroundImage: `url(${speechBubble})`,
+      (<div className="flex justify-center items-end w-80 center mt3">
+	 <img src={hatMan} alt="Man wearing a hat" className="dib h3 nb2" />
+	 <div className="bg-left white w-80 w-60-m w-20-l pa3"
+	      style={{backgroundColor: "#1B1B1B",
+		      borderRadius: "16px 16px 16px 4px",
 		      transform: "rotate(-2deg)"}}
 	 >
 	   {text}
@@ -124,7 +125,8 @@ const HatManSpeaks = ({text}) =>
        </div>)
 
 const LearnMoreButton = () =>
-      (<Link to="/tinycanva" className="bg-white black f3 b br2 pv2 ph3 link mt5 dib"
+      (<Link to="/courses/tinycanva-clojure-for-react-developers"
+	     className="bg-white black f5 f4-m f3-l b br2 pv2 ph3 link mt3 mt4-ns dib"
 	     style={{boxShadow: "0 0 4px 2px rgba(255, 255, 255, 0.4)"}}
        >
 	 Learn more
@@ -143,9 +145,6 @@ const ClojureCourse = () =>
 	   Focused at React.js developers, this course starts from setting up the editor and walks through building a Canva like graphics editor. Complete with authentication, state management, routing and API integration, for <span className="b">$49</span> only.
 	 </p>
 	 <LearnMoreButton />
-	 <Link to="/blog" className="f5 underline db mt3">
-	   <TextWithRightArrowDoodle text="or try the first module for free" />
-	 </Link>
        </Block>)
 
 
@@ -183,22 +182,6 @@ const Subscribe = () =>
 	 <Form />
        </Block>)
 
-const Letter = ({className}) => {
-  return (<div>
-	    <div className={`center w-90 w-70-m w-40-l f5 f4-ns lh-copy pr0 pr0-m pr4-l georgia flex justify-between ${className}`}
-		 style={{flex:1}}>
-	      <div className="w-20 mt2">
-      		<img src="/img/brown-boy.svg" alt="Illustration of a brown boy" className="bb pl3 b--white-20"/>
-      	      </div>
-      	      <div className="w-70">
-      		<p className="b sans-serif o-100">Hi Stranger !</p>
-      		<p>My name is Shivek Khurana and <span className="i">Krim Labs is a canopy for my consultancy, products and ideas</span>.</p>
-		<Pinboard content={"The site is being upgraded. Everything should work fine but the styling might be off."} />
- 	      </div>
-	    </div>
-	  </div>);
-}
-
 const SEO = () => {
   return (<Head>
 	    <title>Krim Labs</title>
@@ -209,7 +192,9 @@ const SEO = () => {
 	    <meta property="og:description" content="A canopy for my consultancy, products and ideas." />
 	    <meta property="og:title" content="Krim Labs" />
 	    <meta property="og:type" content="website" />
+	    {/*
 	    <meta property="og:image" content={`https://krimlabs.com/img/og.png`} />
+	     */}
 	  </Head>);
 }
 
@@ -224,9 +209,9 @@ const Landing = () => {
 	    <RecentPosts posts={recentPosts}
 			 tags={tags}
 	    />
-	    {/* Uncomment this when Clojure page and sub is ready
 	    <HatManSpeaks text={"We love Clojure so much that we made a course about it !!!"} />
 	    <ClojureCourse />
+	    {/* Uncomment this when Clojure page and sub is ready
 	    <Subscribe />
 	     */}
    	  </Shell>);

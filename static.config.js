@@ -132,10 +132,10 @@ const topTags = (postPages, n) => {
 }
 
 export default {
-  siteRoot: 'https://krimlabs.com',
+  siteRoot: "https://krimlabs.com",
   plugins: [
-    'react-static-plugin-react-router',
-    'react-static-plugin-sitemap'
+    "react-static-plugin-react-router",
+    "react-static-plugin-sitemap"
   ],
   getRoutes: async () => {
     const highlighter = await getHighlighter({theme: "monokai"})
@@ -161,13 +161,17 @@ export default {
     const authorPages = getAuthorPages(content)
 
     return [{
-      path: '/',
-      template: 'src/templates/Landing',
+      path: "/",
+      template: "src/templates/Landing",
       getData: () => ({recentPosts, tags: topTags(allPosts, 5)})
     }, {
-      path: '/blog',
-      template: 'src/templates/Blog',
+      path: "/blog",
+      template: "src/templates/Blog",
       getData: () => ({allPostsByYear, allPosts, tags: topTags(allPosts, 10)})
+    }, {
+      path: "/courses/tinycanva-clojure-for-react-developers",
+      template: "src/templates/Tinycanva",
+      getData: () => {}
     },
     ...postPages,
     ...sitePages,

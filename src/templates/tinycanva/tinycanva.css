@@ -1,0 +1,18 @@
+.QAndA {
+    width: 100%;
+}
+
+/*Maje shitz rekponsive*/
+@media screen and (min-width: 30em) and (max-width: 60em) {
+    /*Tachyons Medium -m*/
+    .QAndA {
+	width: calc(48% - 24px);
+    }
+}
+
+@media screen and (min-width: 60em) {
+    /*Tachyons large*/
+    .QAndA {
+	width: calc(48% - 24px);
+    }
+}
