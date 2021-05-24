@@ -162,7 +162,7 @@ const Tinycanva = () =>
       (<div className="white"
 	    style={{backgroundColor: "#1B1B1B"}}>
 	 <Shell nav={TinycanvaNav}>
-	   <SEO title="Krim / Tinycanva - Clojure for React developert"
+	   <SEO title="Krim / Tinycanva - Clojure for React developers"
 		tags="clojure,course,react,clojure app" />
 	   <div className="w-90 w-80-m w-60-ns center">
 	     <Header />
