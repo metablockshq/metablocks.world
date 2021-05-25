@@ -41,6 +41,7 @@ const scrollToId = id => () => {
 		   behaviour: "smooth"})
 }
 
+window.scrollToId = scrollToId
 const BaseNav = ({backgroundColor, leftItem, links}) => {
   const {pathname} = useLocation();
   const history = useHistory();
@@ -63,11 +64,14 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
 
 	      <div className="flex dn-l">
 		<Dropdown
-		  options={links.map(l => ({...l, className: "mv3", value: l.path}))}
+		  options={links.map(l => ({...l, className: "mv3", value: l.to}))}
 		  placeholder="• • •"
 		  placeholderClassName="db pointer mr3 mr0-ns"
 		  menuClassName="fixed right-0 mr3 pl3 pr4 white bg-black br3 mt2"
-		  onChange={selected => history.push(selected.value)}
+		  onChange={selected => {
+		    history.push(selected.value)
+		    if (selected.value.startsWith("#")) scrollToId(selected.value)();
+		  }}
 		/>
 	      </div>
 	    </div>
