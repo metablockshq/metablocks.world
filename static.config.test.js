@@ -3,7 +3,8 @@ const R = require("ramda")
 
 const {contentDir, isPublished, relatedSlugs, relatedPosts,
        injectRelatedPosts, postsToPostPages, rawDataToGetData,
-       stripPostContents, stripRelatedPostsContent} = require("./static.config")
+       stripPostContents, stripRelatedPostsContent,
+       injectRelatedPostAuthors} = require("./static.config")
 
 // state to load content to
 let content;
@@ -209,4 +210,39 @@ describe("rawDataToGetData()", () => {
     expect(withGetData.getData).toBeInstanceOf(Function)
     expect(withGetData.getData()).toEqual(post.data)
   })
+})
+
+describe("injectRelatedPostauthors()", () => {
+  const authors = {
+    x: {slug: "x", id: 1, data: "x-data"},
+    y: {slug: "y", id: 2, data: "y-data"}
+  }
+
+  const post = {
+    data: {
+      relatedPosts: [{
+	data: {
+	  author: "x"
+	}
+      }, {
+	data: {
+	  author: "y"
+	}
+      }]
+    }
+  }
+
+  const withAuthors = injectRelatedPostAuthors(authors)(post)
+
+  it("should inject author data in place of author slug", () => {
+    expect(withAuthors.data.relatedPosts).toBeInstanceOf(Array)
+    expect(withAuthors.data.relatedPosts).toHaveLength(2)
+
+    const first = withAuthors.data.relatedPosts[0]
+    const second = withAuthors.data.relatedPosts[1]
+
+    expect(first).toHaveProperty("data.author", authors.x)
+    expect(second).toHaveProperty("data.author", authors.y)
+  })
+
 })

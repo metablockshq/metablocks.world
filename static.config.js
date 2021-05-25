@@ -86,6 +86,12 @@ const injectAuthor = authors => post => {
   )
 }
 
+const injectRelatedPostAuthors = authors => post => {
+  const relatedPosts = R.pathOr([], ["data", "relatedPosts"], post)
+  const withAuthors = R.map(injectAuthor(authors), relatedPosts)
+  return R.assocPath(["data", "relatedPosts"], withAuthors, post)
+}
+
 /**
    - take an initial value of postPages and
    - transform it to the required form
@@ -96,6 +102,7 @@ const transformPostPages = (postPages, authors) => post => {
   const transform = R.compose(
     rawDataToGetData,
     stripRelatedPostsContent,
+    injectRelatedPostAuthors(authors),
     injectRelatedPosts(postPages),
     injectAuthor(authors)
   );
@@ -183,5 +190,5 @@ export default {
 export {
   contentDir, isPublished, relatedSlugs, relatedPosts,
   injectRelatedPosts, postsToPostPages, stripRelatedPostsContent,
-  stripPostContents, rawDataToGetData
+  stripPostContents, rawDataToGetData, injectRelatedPostAuthors
 }

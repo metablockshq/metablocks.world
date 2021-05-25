@@ -17,8 +17,8 @@ import Markdown from "../../components/Markdown";
 const Related = ({relatedPosts}) => {
   return (<div>
 	    <div className="f6 ttu b pt2 mt4">Related Posts</div>
-	    <div className="flex flex-wrap justify-between mt3">
-	      {relatedPosts.map(p => <div key={p.data.slug} className="w-100 w-30-ns">
+	    <div className="mt3">
+	      {relatedPosts.map(p => <div key={p.data.slug} className="mt4">
 				       <PostCard post={p} />
 				     </div>)}
 	    </div>
