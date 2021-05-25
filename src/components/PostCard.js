@@ -51,7 +51,7 @@ const PostCard = ({post, leftTopTitle, stacked, containerClass}) => {
 				  className={!featured ? "cover" : ""}
 				  srcSet={img.getSrcSet(heroImg)}
 				  sizes={featured ?
-					 "32vw":
+					 "100vw":
 					 "(max-width: 30em) 80px, (max-width: 60em) 120px, 160px"}
 				  src={img.getOgSrc(heroImg)}
 				  alt={`${title} - cover image`} />

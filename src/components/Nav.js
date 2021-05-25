@@ -8,6 +8,7 @@ import writingHand from "../images/emoji/writing-hand.png";
 import raisedHands from "../images/emoji/raised-hands.png";
 import robot from "../images/emoji/robot.png";
 import bankNote from "../images/emoji/dollar-banknote.png"
+import book from "../images/emoji/books.png"
 import womanRaisingHand from "../images/emoji/woman-raising-hand-medium-light-skin-tone.png"
 import speechBalloon from "../images/emoji/speech-balloon.png"
 
@@ -23,6 +24,11 @@ const baseLinks = [{
   to: "/contact",
   icon: telephone,
   activeClassName: "b--black-80"
+}, {
+  label: "Clojure Course",
+  to: "/courses/tinycanva-clojure-for-react-developers",
+  icon: book,
+  activeClassName: "b--black-80"
 }];
 
 const NavItem = ({l}) => {
@@ -35,13 +41,14 @@ const NavItem = ({l}) => {
 };
 
 const scrollToId = id => () => {
-  const $el = document.getElementById(id.substring(1))
-  window.scrollTo({left: 0,
-		   top: $el.offsetTop - 80,
-		   behaviour: "smooth"})
+  if (window && document) {
+    const $el = document.getElementById(id.substring(1))
+    window.scrollTo({left: 0,
+		     top: $el.offsetTop - 80,
+		     behaviour: "smooth"})
+  }
 }
 
-window.scrollToId = scrollToId
 const BaseNav = ({backgroundColor, leftItem, links}) => {
   const {pathname} = useLocation();
   const history = useHistory();
@@ -111,12 +118,12 @@ const tinycanvaLinks = [{
   to: "#pricing",
   icon: bankNote,
   activeClassName: ""
-}, {
+},/* {
   label: "Testimonies",
   to: "#testimonies",
   icon: speechBalloon,
   activeClassName: ""
-}];
+}*/];
 
 const TinycanvaNav = () =>
       (<BaseNav

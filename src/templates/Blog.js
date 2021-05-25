@@ -1,11 +1,11 @@
-import React from 'react';
-import {useRouteData, Head} from 'react-static';
-import {useParams, useLocation, Link} from 'react-router-dom';
+import React from "react";
+import {useRouteData, Head} from "react-static";
+import {useLocation, Link} from "react-router-dom";
 
-import Shell from '../components/Shell';
-import PostCard from '../components/PostCard';
+import Shell from "../components/Shell";
+import PostCard from "../components/PostCard";
 import EmojiHeading from "../components/EmojiHeading"
-import str from '../utils/string';
+import str from "../utils/string";
 
 import writingHand from "../images/emoji/writing-hand.png";
 
@@ -53,13 +53,12 @@ const Blog = () => {
 		       </Link>))}
 		  </div>
 		  <div className="w-100 w-80-ns pl0 pl4-ns">
-		  {publishYears.map(y =>
-		    (<YearPosts key={y}
-				year={y}
-				tag={tag}
-				posts={allPostsByYear[y]} />))}
+		    {publishYears.map(y =>
+		      (<YearPosts key={y}
+				  year={y}
+				  tag={tag}
+				  posts={allPostsByYear[y]} />))}
 		  </div>
-
 		</div>
 	      </div>
 	    </Shell>
