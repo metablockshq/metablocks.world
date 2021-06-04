@@ -1,6 +1,6 @@
 ---
 publishedOn: 2021-06-01T14:00:06.357Z
-title: Mysterious Clojure jobs and where to find them
+title: Clojure and egg problem
 subTitle: A small talent pool and job opportunities is flagged as a big concern
   while talking about Clojure, but is it really a big deal?
 featured: true
@@ -40,7 +40,7 @@ A small talent pool leads to a small open-source footprint, and prevents network
 
 ## When should you not adopt Clojure?
 
-You are short on time and in prototype stage, you can stop reading this article if you fit in this bucket.
+Any mainstream language in the market is good enough. 
 
 ## What is a good use case for Clojure?
 
