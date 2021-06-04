@@ -9,9 +9,6 @@ backend:
 # Allow drafts
 publish_mode: editorial_workflow
 
-media_folder: "public/img/content/posts"
-public_folder: "img/content/posts"
-
 collections:
   - name: "tags"
     label: "Tags"
@@ -56,7 +53,7 @@ collections:
     - {label: "Sub title", name: "subTitle", widget: "string", required: false}
     - {label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false}
     - {label: "Featured?", name: "featured", widget: "boolean", default: false, required: false}
-    - {label: "Hero image", name: "heroImg", widget: "image"}
+    - {label: "Hero image", name: "heroImg", widget: "image", required: true, media_folder: "/public/img/content/posts", public_folder: "/img/content/posts"}
     - {label: "Slug", name: "slug", widget: "string"}
     - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true}
     - {label: "Related posts", name: "relatedSlugs", widget: "relation", collection: "posts", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true, required: false}
