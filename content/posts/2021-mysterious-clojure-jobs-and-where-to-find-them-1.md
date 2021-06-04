@@ -4,7 +4,7 @@ title: Mysterious Clojure jobs and where to find them
 subTitle: My personal list of resources and techniques that might help you land
   your next job in Clojure
 featured: false
-heroImg: img/content/posts/clojure-jobs-cover.png
+heroImg: /img/content/posts/clojure-jobs-cover.png
 slug: clojure-jobs-and-where-to-find-them
 tags:
   - clojure
@@ -56,7 +56,7 @@ This is by far the best way in my opinion. Advertised Clojure jobs are visible t
 
 The idea is simple: Google indexes all pages on the internet. If there is a Clojure job, it'd be posted on some HR platform, and Google would index it. So if we can come up with a list of famous HR platforms, we can use the search operators like: "[clojure site:bamboohr.com](https://www.google.com/search?q=clojure+site%3Abamboohr.com)":
 
-![Google search for Clojure jobs on Bamboo HR](img/content/posts/screenshot-2021-06-04-at-10.21.51-pm.png)
+![Google search for Clojure jobs on Bamboo HR](/img/content/posts/screenshot-2021-06-04-at-10.21.51-pm.png)
 
 There are 5 famous HR platforms that I know of:
 
