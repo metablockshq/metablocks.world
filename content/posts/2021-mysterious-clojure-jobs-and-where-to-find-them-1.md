@@ -58,6 +58,8 @@ The idea is simple: Google indexes all pages on the internet. If there is a Cloj
 
 ![Google search for Clojure jobs on Bamboo HR](/img/content/posts/screenshot-2021-06-04-at-10.21.51-pm.png)
 
+*Google search for Clojure jobs on Bamboo HR*
+
 There are 5 famous HR platforms that I know of:
 
 1. Workable (https://workable.com)
