@@ -157,4 +157,26 @@ const features = [{
     free: false
 }]
 
-export {qAndAs, features, WeLoveClojure}
+const freeResources = [{
+  title: "Clojure for the brave and true",
+  subTitle: "The go-to book for learning to program in Clojure",
+  url: "https://www.braveclojure.com/clojure-for-the-brave-and-true/"
+}, {
+  title: "ClojureScript Unravelled",
+  subTitle: "An open source book about ClojureScript",
+  url: "https://funcool.github.io/clojurescript-unraveled/"
+}, {
+  title: "Purely Functional Guide",
+  subTitle: "An exhaustive collection of resources to learn Clojure",
+  url: "https://purelyfunctional.tv/mini-guide/the-ultimate-guide-to-learning-clojure-for-free/"
+}, {
+  title: "Drug Dealer API with Pedestal",
+  subTitle: "A three part series on how to build REST APIs with Clojure",
+  url: "https://krimlabs.com/blog/clojure-drug-dealer-part-1"
+}, {
+  title: "Know of more awesome resources?",
+  subTitle: "Send us a PR on Github",
+  url: "https://github.com/krimlabs/krimlabs.com/blob/master/src/templates/tinycanva/data.js#L161"
+}]
+
+export {qAndAs, features, WeLoveClojure, freeResources}

@@ -1,8 +1,9 @@
 import React from "react";
-import {useRouteData, Head} from "react-static";
+import {useRouteData} from "react-static";
 import {useLocation, Link} from "react-router-dom";
 
 import Shell from "../components/Shell";
+import SEO from "../components/SEO";
 import PostCard from "../components/PostCard";
 import EmojiHeading from "../components/EmojiHeading"
 import str from "../utils/string";
@@ -33,9 +34,10 @@ const Blog = () => {
 
   const publishYears = Object.keys(allPostsByYear).reverse()
   return (<div style={{backgroundColor: "#FFEEE6"}}>
-	    <Head>
-	      <title>Krim / Blog</title>
-	    </Head>
+	    <SEO title="Krim / Blog"
+		 subTitle="Posts about Clojure, Ethereum, Saas and open-source"
+		 tags="clojure, shivek khurana, tinycanva, ethereum, blockchain"
+	    />
 	    <Shell>
 	      <div className="w-90 center w-80-m w-60-l">
 		<EmojiHeading title={topHeading}

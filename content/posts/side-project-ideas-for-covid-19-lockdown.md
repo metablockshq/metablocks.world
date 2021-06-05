@@ -5,7 +5,7 @@ heroImg: /img/content/posts/covid-19-lockdown-side-project-ideas.png
 slug: side-project-ideas-for-lockdown
 relatedSlugs:
   - startup-ideas-from-feb-2020
-  - clojure-424-days,
+  - clojure-424-days
   - startup-ideas-from-jan-2020
   - ethical-open-sourced-and-profitable
 tags:

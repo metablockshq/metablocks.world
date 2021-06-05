@@ -1,8 +1,9 @@
 import React from 'react';
-import {useRouteData, Head} from 'react-static';
+import {useRouteData} from 'react-static';
 import convert from 'htmr';
 
 import Shell from '../components/Shell';
+import SEO from '../components/SEO';
 import Markdown from '../components/Markdown';
 import colors from '../utils/colors';
 
@@ -22,11 +23,7 @@ const Author = () => {
 	 twitter, github, youtube, medium} = useRouteData();
 
   return (<React.Fragment>
-	    <Head>
-	      <title>Krim / {name}</title>
-	      <meta name="robots" content="index, follow" />
-	    </Head>
-
+	    <SEO title={`Krim / ${name}`} />
 	    <Shell>
 	      <div className="w-90 w-70-m w-50-l center flex items-center">
 		<div>

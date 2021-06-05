@@ -57,9 +57,9 @@ const PostCard = ({post, leftTopTitle, stacked, containerClass}) => {
 				  alt={`${title} - cover image`} />
 				</div>}
 		</div>
-		<div className={`pl3 tl f6 f5-m f4-l ${featured && "tc"}`}>
-		  <div className="b">{title}</div>
-		  {subTitle && <div className="mt1 black-80">{subTitle}</div>}
+		<div className={`pl3 tl ${featured && "tc"}`}>
+		  <div className="b f6 f5-m f4-l">{title}</div>
+		  {subTitle && <div className="mt1 black-80 f5 black-80">{subTitle}</div>}
 		</div>
 	      </div>
 	      {author.name && <AuthorBar author={author} publishedOn={publishedOn} />}

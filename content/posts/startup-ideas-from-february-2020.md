@@ -5,7 +5,7 @@ heroImg: /img/content/posts/ideas-feb-2020-cover.png
 slug: startup-ideas-from-feb-2020
 relatedSlugs:
   - startup-ideas-from-jan-2020
-  - skills-devs-should-learn-from-sales,
+  - skills-devs-should-learn-from-sales
   - clojure-424-days
 tags:
   - ideas

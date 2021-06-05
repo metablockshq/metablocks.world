@@ -10,7 +10,7 @@ tags:
   - clojurescript
   - learn-clojure
 relatedSlugs:
-  - repl-post
+  - clojure-repl-flow-state
   - clojure-424-days
   - clojure-core-async-to-sustain-12k
 author: shivekkhurana

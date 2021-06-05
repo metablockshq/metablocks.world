@@ -7,7 +7,7 @@ import {TinycanvaNav} from "../components/Nav"
 import SEO from "../components/SEO"
 import array from "../utils/array"
 import YoutubeEmbed from "../components/YoutubeEmbed"
-import {qAndAs, features, WeLoveClojure} from "./tinycanva/data.js"
+import {qAndAs, features, WeLoveClojure, freeResources} from "./tinycanva/data.js"
 import "./tinycanva/tinycanva.css"
 
 import newlineLogo from "../images/newline-logo-white.svg"
@@ -158,18 +158,39 @@ const Pricing = () =>
 	 <Purchase />
        </section>)
 
+const FreeResource = ({resource}) =>
+      (<a href={resource.url} className="db FreeResource">
+	   <h3 className="underline f4 f5-ns">{resource.title}</h3>
+	   <p className="white-80 f6">{resource.subTitle}</p>
+       </a>)
+
+const FreeResources = () =>
+      (<section id="more-resources"
+		className="mt5 pb5">
+	 <h2 className="f4 f3-ns georgia">Can't commit to a coures?</h2>
+	 <p className="">We understand that everyone might not have the time or motivation to go through an extensive course. Here is our reccomendation on other free resources to jump-start your Clojure journey:</p>
+	 <div className="flex justify-between flex-wrap">
+	   {freeResources.map(r => <FreeResource key={r.url} resource={r} />)}
+	 </div>
+       </section>)
+
 const Tinycanva = () =>
-      (<div className="white"
-	    style={{backgroundColor: "#1B1B1B"}}>
-	 <Shell nav={TinycanvaNav}>
-	   <SEO title="Krim / Tinycanva - Clojure for React developers"
-		tags="clojure,course,react,clojure app" />
-	   <div className="w-90 w-80-m w-60-ns center">
-	     <Header />
-	     <QAndAGrid />
-	     <Pricing />
-	   </div>
-	 </Shell>
-       </div>)
+      (<>
+	 <SEO title="Tinycanva - Clojure for React developers"
+	      subTitle="A course on building a web-based graphics editor with Clojure."
+	      tags="clojure,course,react,clojure app,tinycanva course" />
+	 <div className="white"
+	      style={{backgroundColor: "#1B1B1B"}}
+	 >
+	   <Shell nav={TinycanvaNav}>
+	     <div className="w-90 w-80-m w-60-ns center">
+	       <Header />
+	       <QAndAGrid />
+	       <Pricing />
+	       <FreeResources />
+	     </div>
+	   </Shell>
+	 </div>
+       </>)
 
 export default Tinycanva

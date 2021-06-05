@@ -4,7 +4,7 @@ const R = require("ramda")
 const {contentDir, isPublished, relatedSlugs, relatedPosts,
        injectRelatedPosts, postsToPostPages, rawDataToGetData,
        stripPostContents, stripRelatedPostsContent,
-       injectRelatedPostAuthors} = require("./static.config")
+       injectRelatedPostAuthors, injectAuthor} = require("./static.config")
 
 // state to load content to
 let content;
@@ -244,5 +244,23 @@ describe("injectRelatedPostauthors()", () => {
     expect(first).toHaveProperty("data.author", authors.x)
     expect(second).toHaveProperty("data.author", authors.y)
   })
-
 })
+
+describe("injectAuthor()", () => {
+  const authors = [{slug: "x", contents: "x contents", name: "xname"},
+		   {slug: "y", contents: "yc"}]
+
+  const post = {data: {author: "x"}}
+  const injectFn = injectAuthor(authors)
+
+  const injectedPost = injectFn(post)
+
+  it("replaces author slug with author in post", () => {
+    expect(injectedPost).toHaveProperty("data.author.slug", "x")
+    expect(injectedPost).toHaveProperty("data.author.name", "xname")
+  })
+  it("strips author contents before injection", () => {
+    expect(injectedPost).not.toHaveProperty("data.author.contents")
+  })
+})
+

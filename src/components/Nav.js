@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {NavLink, useLocation, useHistory} from "react-router-dom";
 import Dropdown from "react-dropdown";
-import Headroom from "react-headroom";
 
 import telephone from "../images/emoji/telephone.png";
 import writingHand from "../images/emoji/writing-hand.png";
@@ -94,7 +93,8 @@ const Nav = () =>
       (<BaseNav
 	 backgroundColor="rgba(255, 255, 255, 0.5)"
 	 links={baseLinks}
-	 leftItem={<BaseLeftItem />} />)
+	 leftItem={<BaseLeftItem />}
+       />)
 
 const TinycanvaLeftItem = () =>
       (<div className="flex">
@@ -118,7 +118,7 @@ const tinycanvaLinks = [{
   to: "#pricing",
   icon: bankNote,
   activeClassName: ""
-},/* {
+}, /* {
   label: "Testimonies",
   to: "#testimonies",
   icon: speechBalloon,
