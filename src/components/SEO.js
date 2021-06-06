@@ -23,5 +23,23 @@ const SEO = ({title, subTitle, tags, type, publishedOn,
 	  <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}
        </Head>)
 
+const ArticleStructuredData = ({title, subTitle, heroImg, publishedOn, url, authorName, tags}) =>
+      (<Head>
+	 <script type="application/ld+json">
+	   {JSON.stringify({
+	     "@context": "https://schema.org",
+             "@type": "TechArticle",
+	     "headline": title,
+	     "image": "https://krimlabs.com"+heroImg,
+             "author": authorName,
+             "keywords": tags,
+             "publisher": "Krim Labs",
+             "url": url,
+ 	     "datePublished": publishedOn,
+             "description": subTitle || "",
+           })}
+	 </script>
+       </Head>)
 
 export default SEO
+export {ArticleStructuredData}

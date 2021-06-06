@@ -174,6 +174,18 @@ const freeResources = [{
   subTitle: "A three part series on how to build REST APIs with Clojure",
   url: "https://krimlabs.com/blog/clojure-drug-dealer-part-1"
 }, {
+  title: "It starts with Clojure",
+  subTitle: "Building a simple web application with Ring and Reitit",
+  url: "https://github.com/anan44/it-starts-with-clojure/tree/master/materials"
+}, {
+  title: "The ultimate guide to Clojure REPLs",
+  subTitle: "The REPL is central to Clojure workflow. This guide helps you learn some famous ones.",
+  url: "https://lambdaisland.com/guides/clojure-repls/"
+}, {
+  title: "Parens of the dead",
+  subTitle: "A screencast series of zombie-themed games written with Clojure and ClojureScript",
+  url: "http://www.parens-of-the-dead.com/"
+}, {
   title: "Know of more awesome resources?",
   subTitle: "Send us a PR on Github",
   url: "https://github.com/krimlabs/krimlabs.com/blob/master/src/templates/tinycanva/data.js#L161"

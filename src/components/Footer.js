@@ -59,8 +59,15 @@ const FooterLegacy = () =>
 	 </div>
        </div>)
 
+const Meta = () =>
+      (<div className="b">
+	 <a href="/sitemap.xml" className="dib mr2 underline">Sitemap</a>
+	 <a href="/rss.xml" className="dib mr2 underline">RSS</a>
+	 <a href="/feed.json" className="dib mr2 underline">JSON Feed</a>
+       </div>)
+
 const OpenSite = () =>
-      (<div>
+      (<div className="mt3">
 	 This <a href="https://github.com/krimlabs/krimlabs.com" className="underline">open-source</a> site was built with <a href="https://github.com/react-static/react-static" className="underline">React Static</a>.
        </div>)
 
@@ -82,6 +89,7 @@ const Footer = ({attributeFreepik}) =>
 	   <div className="b f3 mt1">Krim Labs</div>
 	 </div>
 	 <div className="tl tr-ns mt4 mt0-ns o-80 f6 f5-ns">
+	   <Meta />
 	   <OpenSite />
 	   <Netlify />
 	   {attributeFreepik && <Freepik />}

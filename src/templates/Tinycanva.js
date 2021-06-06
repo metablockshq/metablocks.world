@@ -159,9 +159,9 @@ const Pricing = () =>
        </section>)
 
 const FreeResource = ({resource}) =>
-      (<a href={resource.url} className="db FreeResource">
-	   <h3 className="underline f4 f5-ns">{resource.title}</h3>
-	   <p className="white-80 f6">{resource.subTitle}</p>
+      (<a href={resource.url} className="db w-100 w-33-m w-20-l pr2">
+	   <h3 className="underline f6 f5-ns mb0 mt2">{resource.title}</h3>
+	   <p className="white-80 f6 mv1">{resource.subTitle}</p>
        </a>)
 
 const FreeResources = () =>
@@ -169,7 +169,7 @@ const FreeResources = () =>
 		className="mt5 pb5">
 	 <h2 className="f4 f3-ns georgia">Can't commit to a coures?</h2>
 	 <p className="">We understand that everyone might not have the time or motivation to go through an extensive course. Here is our reccomendation on other free resources to jump-start your Clojure journey:</p>
-	 <div className="flex justify-between flex-wrap">
+	 <div className="flex flex-wrap">
 	   {freeResources.map(r => <FreeResource key={r.url} resource={r} />)}
 	 </div>
        </section>)

@@ -1,12 +1,12 @@
-import path from 'path';
-import jdown from 'jdown';
-import {getHighlighter} from 'shiki';
-import {rebuildRoutes} from 'react-static/node';
-import chokidar from 'chokidar';
-import {paramCase} from 'change-case';
-import R from 'ramda';
+import path from "path"
+import jdown from "jdown"
+import {getHighlighter} from "shiki"
+import {rebuildRoutes} from "react-static/node"
+import chokidar from "chokidar"
+import {paramCase} from "change-case"
+import R from "ramda"
 
-const contentDir = './content';
+const contentDir = "./content"
 
 // chokidari keval dev mode main
 if (process.env.REACT_STATIC_ENV === 'development') {
