@@ -5,7 +5,7 @@ subTitle: A small talent pool and job opportunities is flagged as a big concern
   while talking about Clojure, but is it really a big deal?
 featured: true
 heroImg: img/content/posts/clojure-jobs.png
-slug: clojure-jobs
+slug: making-clojure-jobs
 tags:
   - clojure
 relatedSlugs:
