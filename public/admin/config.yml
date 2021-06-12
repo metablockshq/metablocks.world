@@ -9,6 +9,9 @@ backend:
 # Allow drafts
 publish_mode: editorial_workflow
 
+media_folder: "/public/img/content/posts"
+public_folder: "/img/content/posts"
+
 collections:
   - name: "tags"
     label: "Tags"
