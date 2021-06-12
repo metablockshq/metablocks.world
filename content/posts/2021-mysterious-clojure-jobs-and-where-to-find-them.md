@@ -4,7 +4,7 @@ title: Clojure and egg problem
 subTitle: A small talent pool and job opportunities is flagged as a big concern
   while talking about Clojure, but is it really a big deal?
 featured: true
-heroImg: img/content/posts/clojure-jobs.png
+heroImg: /img/content/posts/making-clojure-jobs.png
 slug: making-clojure-jobs
 tags:
   - clojure
@@ -16,7 +16,7 @@ relatedSlugs:
   - clj-learn-once-run-anywhere
 author: shivekkhurana
 ---
-*Photo by <a href="https://unsplash.com/@chiichiinii?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Iman soleimany zadeh</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
+*Photo by [Matt Palmer](https://unsplash.com/@mattpalmer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/wizard?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
 I've been writing Clojure professionally for 5 years now, but still have a hard time recommending Clojure to friends and clients. My friend Anand, co-founder of [Koj](https://koj.co) aptly [said](https://youtu.be/O-bVJoWULBE?t=2228) that:
 
