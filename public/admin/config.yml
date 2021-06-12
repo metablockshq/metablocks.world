@@ -59,6 +59,6 @@ collections:
     - {label: "Hero image", name: "heroImg", widget: "image", required: true, media_folder: "/public/img/content/posts", public_folder: "/img/content/posts"}
     - {label: "Slug", name: "slug", widget: "string"}
     - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true}
-    - {label: "Related posts", name: "relatedSlugs", widget: "relation", collection: "posts", search_fields: ["title"], value_field: "{{slug}}", display_fields: ["title"], multiple: true, required: false}
+    - {label: "Related posts", name: "relatedSlugs", widget: "relation", collection: "posts", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
     - {label: "Author", name: "author", widget: "relation", collection: "authors", search_fields: ["name"], value_field: "slug", display_fields: ["name"]}
     - {label: "Body", name: "body", widget: "markdown"}
