@@ -8,7 +8,12 @@ heroImg: img/content/posts/clojure-jobs.png
 slug: making-clojure-jobs
 tags:
   - clojure
-relatedSlugs: []
+relatedSlugs:
+  - clojure-jobs-and-where-to-find-them
+  - clojure-424-days
+  - clojure-drug-dealer-part-1
+  - clojure-repl-flow-state
+  - clj-learn-once-run-anywhere
 author: shivekkhurana
 ---
 *Photo by <a href="https://unsplash.com/@chiichiinii?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Iman soleimany zadeh</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
