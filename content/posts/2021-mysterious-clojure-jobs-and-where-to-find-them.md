@@ -8,12 +8,7 @@ heroImg: img/content/posts/clojure-jobs.png
 slug: making-clojure-jobs
 tags:
   - clojure
-relatedSlugs:
-  - 2021-clojure-a-learn-once-run-anywhere-candidate-you-probably-didnt-know-about
-  - clojure-core-async-to-sustain-12k
-  - clojure-drug-dealer-api-part-1
-  - clojure-drug-dealer-api-part-2
-  - repl-post
+relatedSlugs: []
 author: shivekkhurana
 ---
 *Photo by <a href="https://unsplash.com/@chiichiinii?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Iman soleimany zadeh</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
