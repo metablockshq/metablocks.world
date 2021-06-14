@@ -142,3 +142,11 @@ At my company [Status](https://status.im), we hire regardless of Clojure experie
 [Anson MacKeracher](https://www.linkedin.com/in/amackera/?originalSubdomain=ca), CTO of [LegalMate](https://www.legalmate.co/) says:
 
 > I chose to use Clojure due to the incredible caliber of the average Clojure developer, because it's virtually perfect for web applications and data processing, and because developer productivity is much higher than in other languages I've used (Python, Perl, Ruby, JS).
+
+If you are a part of a big company, training talent internally too is a viable option. I have seen a company take-over a 5 year old codebase and develop a 20 person team around it. The entire transition took about 8 months.
+
+## Conclusion
+
+I'm a Clojure fan, but more than that I'm a problem solver. And Clojure is not the right tool for everything. If your problem involves handling a ton of data and building APIs and UIs, Clojure is a great system. If you want to quickly build a team around your project then probably not. Clojure is a super-power that enables you to better react to changes outside the system. 
+
+Recommending Clojure was hard because of lack of talent and resources. But I feel this is changing. To contribute to the change, I [built a course](https://krimlabs.com/courses/tinycanva-clojure-for-react-developers) about how to build React applications with Clojure. I also collected a [list of free-resources](https://krimlabs.com/courses/tinycanva-clojure-for-react-developers#more-resources) that you can use to jump-start your Clojure journey.
