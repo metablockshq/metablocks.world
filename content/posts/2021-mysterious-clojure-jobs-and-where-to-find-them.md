@@ -111,4 +111,34 @@ This is the trick question. There is no right answer but experiences and opinion
 
 In my opinion, you should not learn Clojure at your own expense. If you are building a company and have no prior Clojure experience, then it would be a terrible choice. It will slow you down and will hinder you from focusing on the market.
 
-But if you already know Clojure, then it becomes your super-power. It get's out of your way and helps you focus on the market. It may be hard to find Clojure talent, but it's not hard to nurture it. Clojure might not be the easiest language to get started with, but senior developers can pick it just like any other language. And if someone who already knows Clojure applies, then you know they are pre-q
+[Paul Lam](https://github.com/Quantisan)'s (VP Engineering at [Motiva AI)](https://www.motiva.ai/team/) comment on [this topic](https://www.reddit.com/r/Clojure/comments/nppafm/should_i_switch_frontend_of_my_startup_to/) captures the essence of this idea:
+
+> Are you building a startup or are you churning out code? If you have time to consider these questions then you're not selling enough. You need to stay focused on the business.
+>
+> If you want to tinker, then do that on other people's dime or save that for a hobby project.
+
+But if you already know Clojure, then it becomes your super-power. It get's out of your way and helps you focus on the market. It may be hard to find Clojure talent, but it's not hard to nurture it. Clojure might not be the easiest language to get started with, but senior developers can pick it just like any other language. [Here's what Reddit thinks](https://www.reddit.com/r/Clojure/comments/nrl64e/have_you_had_trouble_recruiting_clojure_developers/) about the Clojure hiring situation. From my personal experience, Clojure companies hire regardless of Clojure experience. 
+
+[u/bostonou](https://www.reddit.com/user/bostonou/) introduced Clojure at Vanderbilt university:
+
+> I helped introduce Clojure at Vanderbilt University working in genetics research. I then moved to a Clojure startup, did some Clojure consulting, and now do Clojure at CircleCI. Overall I’ve been doing Clojure professionally for ~8 years.
+
+[Adam Nielson](https://www.linkedin.com/in/aaneilson/?originalSubdomain=uk), CTO of [WeFarm](https://about.wefarm.com/) said:
+
+> We've used Clojure at the heart of our stack for the last five years and I consider it one of our superpowers.﻿
+>
+> It was less a leap of faith but a decision based on exceptionally positive previous experiences. I first trialled and adopted Clojure at a healthtech company back in 2013 and then built a marketplace startup for hobbyists and collectors with it in 2014. Both times were really productive and fast time to market. The composability of lisp and FP makes rapid reliable development not only achievable but the norm.
+
+## How tough is it to hire Clojure talent?
+
+Adam from WeFarm also has a unique perspective on hiring Clojure developers:
+
+> Over the years I’ve also discovered that hiring for Clojure is also different in a positive way. In more mainstream languages I’d get a huge stack of CVs. Amongst them would be great and not-so-great candidates and it’d be a lot of effort filtering wheat from chaff. With Clojure roles the pile of CVs is a fraction the size but you can guarantee 99% of the candidates have a curious and investigative character that enjoy learning new things. Exactly the characteristics I look for in candidates!
+
+The "curious investigative character" of people who write Clojure has held true in my personal experience. No one would take the trouble of learning a language like Clojure (or Haskell) unless they deeply care about their work. This property will hold true until Clojure jobs become as plenty as JS jobs.
+
+At my company [Status](https://status.im), we hire regardless of Clojure experience. Since we are an [open-source](https://github.com/status-im/status-react) company, we pick up simple issues that we believe any engineer should be able to solve regardless of the language. All perspective hires are expected to pick one issue and raise a PR as a coding challenge (candidates are compensated for their work). Status is hiring for its [React Native based app written in ClojureScript](https://status.im/our_team/jobs.html?gh_jid=3148270) if you are interested!
+
+[Anson MacKeracher](https://www.linkedin.com/in/amackera/?originalSubdomain=ca), CTO of [LegalMate](https://www.legalmate.co/) says:
+
+> I chose to use Clojure due to the incredible caliber of the average Clojure developer, because it's virtually perfect for web applications and data processing, and because developer productivity is much higher than in other languages I've used (Python, Perl, Ruby, JS).
