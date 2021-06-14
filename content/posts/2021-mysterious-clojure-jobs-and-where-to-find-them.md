@@ -1,8 +1,7 @@
 ---
 publishedOn: 2021-06-01T14:00:06.357Z
-title: Clojure and egg problem
-subTitle: A small talent pool and job opportunities is flagged as a big concern
-  while talking about Clojure, but is it really a big deal?
+title: Should you adopt Clojure at your company?
+subTitle: TL; DR; If you have already learnt it or have the time to do so, then yes
 featured: true
 heroImg: /img/content/posts/making-clojure-jobs.png
 slug: making-clojure-jobs
@@ -36,36 +35,80 @@ Despite the widespread praise about the Clojure language, we cannot refute the f
 
 The problem turns into a chicken and egg paradox. There won't be enough developers, until there are enough jobs, and there won't be enough jobs, until there is a big talent pool.
 
-A small talent pool leads to a small open-source footprint, and prevents network effects. If few developers write Clojure, fewer new developers will be introduced to the language, amplifying the chicken and egg problem.
+A small talent pool leads to a small open-source footprint, and prevents network effects. If few developers write Clojure, fewer new developers will be introduced to the language, amplifying the chicken and egg problem. This is countered to some extent because Clojure is hosted and can tap into vibrant eco-systems of JavaScript and Java.
 
-## When should you not adopt Clojure?
+## Writing software is the easy part of running a software company
 
-Any mainstream language in the market is good enough. 
+All software is a tool to solve a real-world problem. Companies and organisations exist to solve real world problems. Until 1950s, the real world problems were solved by war. Post the second world war, we shifted to data oriented solutions. 
 
-## What is a good use case for Clojure?
+As software developers, we concern ourselves with the issues pertaining to our domain. For a person who can code, every problem is an opportunity to make a SaaS company. But if we zoom out and look at some successful companies, we'd know that larger risks exist in the market. 
 
-5 teams, spread across timezones, serving 10m clients is not just a technical problem. It's also a database problem, it's a design problem, it's a political problem. You not only need to maintain a system, you also need to manage expectations, react to competition and experiment with new ideas.
+Markets change and we need to react. There is competition or lack of demand. There are legal issues and privacy issues. A bad culture could lead to people issues. And most of these our beyond our control. Looking at the full picture, we see that software is the most predictable and risk-free aspect of a software company. Since this blog's audience is mainly software developers, I usually don't talk beyond software. But this specific topic of basing your stack on Clojure requires me to address the other things that go into making good software. 
 
-## What do we gain by solving adoption?
+All good software companies starts with a strong grasp of the market and grow with a strong culture and the ability to react. If you have zero users, you will probably be solving technical problems. If you have hundreds or thousands of users (depending on your market) you'll be solving sales and marketing problems.
 
-Race car driver vs Sedan driver
+Once you have crossed maybe a million users mark, you step into the realm of people and culture problems. And post 10 million, you have to face political problems.
 
-Excellent vs good enough
+## All languages are tools and all tools are good-enough
 
-personal accounts of people and companies who did it
+From a zoomed out perspective, all languages are tools. And all mainstream tools like Java, JavaScript, TypeScript, Ruby etc are good-enough. An experienced JS developer is as effective as an experienced Clojure developer at building software.
 
-stable systems
+Although all languages are good-enough, some of them offer special capabilities. Like C++ and Rust are close to the metal. Go, Elixir and Clojure have excellent concurrency primitives. Java, JS have the largest talent pools. Python has the support of the ML community. TypeScript has Microsoft.
 
-software fatigue
+These are broad generalisations. Most languages have overlapping strong-points. Like Python has a large talent pool along with being the language of choice for data science. 
 
-## How do we solve adoption?
+Then how do you decide what tool to use? And when do you pick up something like Clojure? To answer these questions, we need to analyse the usefulness of tools from the perspective of a "software company".
 
-Upfront investment
+## Properties of good tools
 
-Clojure is easy, after you have put the time upfront
+We have already ascertained that writing software is the easy part and risks lie outside our servers: in the market, in the culture, in the political scenario. That being the lens of our camera's perspective, a good tool should have the following properties.
 
-Collecting resources
+### Make your process easy
 
-Marketing
+A table-saw makes it easier to cut wood. Hasura GraphQL engine makes it easier to ship APIs. Postgres makes it easy to store data. Functional languages make it easy to handle side-effects.
 
-## Conclusion
+### Be easy to comprehend
+
+Complicated concepts do not survive the test of time, and are eventually replaced with simpler alternatives. It's hard to find a counter example, because most tools that reach mainstream usage are easy to comprehend. 
+
+### Extend like legos
+
+Good tools are pluggable because an architect relies on multiple tools. REST APIs is a great concept. The SaaS community shifted radically from the server rendered MVC pattern to REST APIs. You can argue that the shift was due the explosion of clients (mobile, desktop, IOT), but it still serves the argument. A tool that can be modified and extended can serve more purposes.
+
+### Last for long, ideally forever
+
+There is a cost associated with mastering a tool. And if the tool dies before you have reaped significant return on investment, then you made a bad deal.
+
+### Get out of your way
+
+A tool is designed to ease your process, not dictate it. It's okay to have rules and limitations on what a tool can do, but it should never dictate the how. 
+
+### Make you feel confident about the work produced
+
+A tool is no good if you cannot be confident that your app will run. Tests, Types, Pure Functions and Side-Effect free systems are examples of tools that provide this confidence.
+
+### Enable you to react to market
+
+Ultimately, you survive because you adapt to market's condition. According to Rich Hickey, the single largest factor that decides how quick you can react is the code you have right now. He calls it the "elephant" in the room. I believe the same, but Rich Hickey saying this adds a lot more credibility:
+
+> Simplicity is hard work. But, there's a huge payoff. The person who has a genuinely simpler system - a system made out of genuinely simple parts, is going to be able to affect the greatest change with the least work. He's going to kick your ass. He's gonna spend more time simplifying things up front and in the long haul he's gonna wipe the plate with you because he'll have that ability to change things when you're struggling to push elephants around
+>
+> Rich Hickey [<https://www.infoq.com/presentations/Simple-Made-Easy/>]
+
+## Clojure is an exceptional tool
+
+Clojure is almost as pure and sophisticated as Haskell, and as easy as Python or JavaScript. The syntax might seem off, but the returns on learning the syntax are astronomical, because of the REPL. 
+
+It gets our our your way and lets you tap in rich library eco-systems of Java and JavaScript. Many functional languages suffer due to lack of open-source network effects. Clojure bypasses the issue by feeding off network effects of other eco-systems.
+
+And no praise is enough to describe the REPL. It accelerates development to an extent that most other languages can't even imagine. I always wondered if there was a REPL for other languages. There are simpler versions for JavaScript like [Quokka.js](https://quokkajs.com/). [u/didibus](https://www.reddit.com/user/didibus/) pointed out Clojure properties that enable the Clojure REPL on this [Reddit thread](https://www.reddit.com/r/Clojure/comments/mh4iau/does_jsgorust_or_any_other_famous_language_have_a/gtwojpl/?context=3).
+
+It would be unfair to say that Clojure is the only exceptional tool so please consider this to be a personal opinion. Clojure is balanced. It makes hardcore mathematical concepts, commercially feasible.
+
+## Should you choose Clojure?
+
+This is the trick question. There is no right answer but experiences and opinions to build on.
+
+In my opinion, you should not learn Clojure at your own expense. If you are building a company and have no prior Clojure experience, then it would be a terrible choice. It will slow you down and will hinder you from focusing on the market.
+
+But if you already know Clojure, then it becomes your super-power. It get's out of your way and helps you focus on the market. It may be hard to find Clojure talent, but it's not hard to nurture it. Clojure might not be the easiest language to get started with, but senior developers can pick it just like any other language. And if someone who already knows Clojure applies, then you know they are pre-q
