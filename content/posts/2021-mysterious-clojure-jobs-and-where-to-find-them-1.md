@@ -13,6 +13,7 @@ relatedSlugs:
   - clojure-drug-dealer-part-1
   - clojure-424-days
   - ethical-open-sourced-and-profitable
+  - making-clojure-jobs
 author: shivekkhurana
 ---
 *Photo by <a href="https://unsplash.com/@chiichiinii?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Iman soleimany zadeh</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
@@ -30,7 +31,7 @@ There are two broad ways by which you can start working with Clojure professiona
 1. Find a job at an established company
 2. Introduce Clojure to your team / Start a Clojure company
 
-Depending on your situation, one of the ways might be easier for you. In this article, I'll focus on the first path. In a future article, I'll talk about the pros and cons of the second path.
+Depending on your situation, one of the ways might be easier for you. In this article, I'll focus on the first path. To learn more about the second path, check out [Should you adopt Clojure at your company?](https://krimlabs.com/blog/making-clojure-jobs)
 
 ## Brave Clojure Jobs
 
