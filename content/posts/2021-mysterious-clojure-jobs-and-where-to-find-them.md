@@ -1,5 +1,5 @@
 ---
-publishedOn: 2021-06-01T14:00:06.357Z
+publishedOn: 2021-06-17T14:00:06.357Z
 title: Should you adopt Clojure at your company?
 subTitle: TL; DR; If you have already learnt it or have the time to do so, then yes
 featured: true
