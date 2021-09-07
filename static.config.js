@@ -167,20 +167,21 @@ export default {
 
     return [{
       path: "/",
-      template: "src/templates/Landing",
+      template: "src/templates/GenftLanding.js",
       getData: () => ({recentPosts, tags: topTags(allPosts, 5)})
-    }, {
-      path: "/blog",
-      template: "src/templates/Blog",
-      getData: () => ({allPostsByYear, allPosts, tags: topTags(allPosts, 10)})
-    }, {
-      path: "/courses/tinycanva-clojure-for-react-developers",
-      template: "src/templates/Tinycanva",
-      getData: () => {}
-    },
-    ...postPages,
-    ...sitePages,
-    ...authorPages
+     }, 
+    // {
+    //   path: "/blog",
+    //   template: "src/templates/Blog",
+    //   getData: () => ({allPostsByYear, allPosts, tags: topTags(allPosts, 10)})
+    // }, {
+    //   path: "/courses/tinycanva-clojure-for-react-developers",
+    //   template: "src/templates/Tinycanva",
+    //   getData: () => {}
+    // },
+    // ...postPages,
+    // ...sitePages,
+    // ...authorPages
    ];
   }
 }

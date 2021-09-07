@@ -1,0 +1,192 @@
+import React from "react"
+
+import heroIllustration from "../images/genft/hero-character-on-lounge-chair.svg";
+
+import howMint from "../images/genft/how-mint.png";
+import howDrop from "../images/genft/how-drop.png";
+import howGenerate from "../images/genft/how-generate.png";
+
+import contractBase from "../images/genft/contract-base.png";
+import contractShelf from "../images/genft/contract-shelf.png";
+
+import characterPresenting from "../images/genft/character-presenting.svg";
+import characterWaving from "../images/genft/character-waving.svg";
+import characterThinking from "../images/genft/character-thinking.svg";
+
+import roboVerse from "../images/genft/robot-verse.svg";
+import tigerCubVerse from "../images/genft/tiger-cub-verse.svg";
+
+import mountainFlag from "../images/genft/mountain-flag.svg";
+import hourGlass from "../images/genft/hour-glass.svg";
+import phoneChat from "../images/genft/phone-chat.svg";
+import moneyVault from "../images/genft/money-vault.svg";
+import tokenGraph from "../images/genft/token-graph.svg";
+import chartStats from "../images/genft/chart-stats.svg";
+
+
+const darkGreen = "#367856"
+const lightGreen = "#C8DCC6"
+const offWhite = "#FFF7D4"
+
+const Heading = ({title, subTitle}) =>
+      (<div>
+         <h1 className="f1">{title}</h1>
+         {subTitle && <h2 className="f4 black-80 normal nt1">{subTitle}</h2>}
+       </div>)
+
+const Hero = () =>
+      (<div className="vh-100 tc dt w-100" style={{backgroundColor: darkGreen, color: offWhite}}>
+	 <div className="dtc v-mid tc">
+	   <div className="w-90 w-40-ns center">
+	     GENFT by Krim Labs is a modified ERC-721 standard, that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
+	   </div>
+	   <h1 className="f-headline nb4 mt3">
+	     Unleash NFTs
+	   </h1>
+	   <img src={heroIllustration} alt="Character sitting on a lounge chair with laptop" />
+	 </div>
+       </div>)
+
+const HowImageColumn = ({imageSrc, imageAlt, imageClass, imageStyle, containerClass, containerStyle}) =>
+      (<div className={`overflow-hidden ${containerClass}`} style={{...containerStyle}}>
+	 <img className={imageClass} style={{...imageStyle}} src={imageSrc} alt={imageAlt} />
+       </div>)
+
+const HowTextColumn = ({title, description}) =>
+      (<div className={``} style={{...{}}}>
+	 <h3 className="">{title}</h3>
+	 <div className="ph5 black-80 tl">{description}</div>
+       </div>)
+
+const howCols = [{
+  imageSrc: howMint,
+  imgAlt: "",
+  imageClass: "",
+  imageStyle: {height: "33vh"},
+  containerClass: "mt4 w-33",
+  title: "1. Mint free base layer",
+  description: <p>
+		 The base layer defines your characters features like skin color, body structure, hair type and basic shoes. Minting also comes with an optional pair of clothing. <strong>Base layers are not-scarce hence not valuable</strong>.
+	       </p>
+}, {
+  imageSrc: howDrop,
+  imgAlt: "",
+  imageClass: "",
+  imageStyle: {height: "33vh"},
+  containerClass: "mt4 w-33",
+  title: "2. Participate in drops",
+  description: <p>
+		 Frequent drops introduce limited edition collectibles. These NFTs augment with your base layer to form a hybrid scene. Drops can happen at anytime. <strong>Drops can be collected and resold.</strong>
+	       </p>
+}, {
+  imageSrc: howGenerate,
+  imgAlt: "",
+  imageClass: "nr6",
+  imageStyle: {minHeight: "33vh", width: "100%", objectFit: "contain"},
+  containerClass: "w-50 nt4 nl6",
+  title: "3. Generate your(NFT)self",
+  description: <p>
+		 Generate multiple scenes that showcase one or more of your collectibles. Everything stays on-chain as a single token. Your GENFT. <strong>You can also create parallel-universe renders of your collection. </strong>
+	       </p>
+}]
+
+const HowItWorks = () =>
+      (<div className="pv6 tc" style={{backgroundColor: lightGreen}}>
+	 <Heading title={"How it works ?"} />
+	 <div className="flex flex-row justify-between mt5">
+	   {howCols.map(h => <HowImageColumn key={h.imageSrc} {...h} />)}
+	 </div>
+	 <div className="flex flex-row justify-between">
+	   {howCols.map(h => <HowTextColumn key={h.imageSrc} {...h} />)}
+	 </div>
+       </div>)
+
+
+const DataNotRenders = () =>
+      (<div className="pv4 tc" style={{backgroundColor: lightGreen}}>
+	 <Heading title={"Contract stores data not renders"}
+		  subTitle={"When you buy items, the new traits are added to your original NFT. The old NFT is either burnt or held in a contract for later release."}/> 
+
+	 <div className="w-70 center flex flex-row mt5">
+	   <div className="" style={{flex: 1}}>
+	     <img className="" src={howMint} style={{height: 380}}/>
+	     <img className="nt5" src={contractBase} style={{}}/>
+	   </div>
+
+	   <div style={{flex: 1.6}}>
+	     <img src={howGenerate} style={{height: 440}} />
+	     <img className="w-80 nt6 tc" src={contractShelf} style={{}}/>
+	   </div>
+	 </div>
+
+       </div>)
+
+const multiverseRenders = [{id: 1, title: "Presenting render", imageSrc: characterPresenting},
+			   {id: 2, title: "Waving render", imageSrc: characterWaving},
+			   {id: 3, title: "Thinking render", imageSrc: characterThinking}]
+
+const Multiverse = () =>
+      (<div className="tc pv4" style={{backgroundColor: lightGreen}}>
+	 <Heading title="GENFTs help form multiverses"
+		  subTitle="Since the render is the function of the properties of your NFT, the same NFT can be rendered in multiple scenes as images, videos or stickers."/>
+
+	 <div className="w-40 center flex flex-row justify-between mt5">
+	   {multiverseRenders.map(r =>
+	     (<div key={r.id} className="">
+		<img src={r.imageSrc} />
+		<div className="mt3 black-80">{r.title}</div>
+	      </div>))}
+	 </div>
+       </div>)
+
+const parallelUniverseCharacters = [{id: 1, title: "Human Verse", imageSrc: characterPresenting},
+				    {id: 2, title: "Tennis Ball Joint Robo Verse", imageSrc: roboVerse},
+				    {id: 3, title: "Tiger Cub Verse", imageSrc: tigerCubVerse}]
+const ParallelUniverse = () =>
+      (<div className="tc pv4" style={{backgroundColor: lightGreen}}>
+	 <Heading title="Parallel Universes"
+		  subTitle="GENFTs by design are formless. The form a GENFT takes depends on the context. This allows to reuse attributes across universes. Ahem ahem games." />
+
+	 <div className="w-40 center justify-between items-center flex flex-row mt5">
+	   {parallelUniverseCharacters.map(c =>
+	     (<div key={c.id} className="flex flex-row items-center">
+		<div>
+		  <img src={c.imageSrc} />
+		  <div className="mt3 black-80">{c.title}</div>
+		</div>
+		{c.id < 3 && <div className="f-headline">=</div>}
+	      </div>))}
+	 </div>
+       </div>)
+
+const links = [{id: 1, imageSrc: mountainFlag, title: "Aspiration"},
+	       {id: 2, imageSrc: hourGlass, title: "Timeline"},
+	       {id: 3, imageSrc: phoneChat, title: "Discord"},
+	       {id: 4, imageSrc: moneyVault, title: "Investors"},
+	       {id: 5, imageSrc: tokenGraph, title: "Tokenomics"},
+	       {id: 6, imageSrc: chartStats, title: "Whitepaper"}]
+
+const Links = () =>
+      (<div className="tc pv4" style={{backgroundColor: lightGreen}}>
+	 <div className="w-60 mt5 center flex justify-between">
+	   {links.map(l =>
+	     (<div key={l.id} className="pointer dim">
+		<img src={l.imageSrc} />
+		<div className="br-pill ph3 pv2 black-90 mt3 b f4" style={{backgroundColor: offWhite}}>
+		  {l.title}
+		</div>
+	      </div>))}
+	 </div>
+       </div>)
+
+const Landing = () =>
+      (<div>
+	 <Hero />
+	 <HowItWorks />
+	 <DataNotRenders />
+	 <Multiverse/>
+	 <ParallelUniverse />
+	 <Links />
+       </div>)
+
+export default Landing;
