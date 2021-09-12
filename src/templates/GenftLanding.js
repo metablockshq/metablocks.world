@@ -1,32 +1,34 @@
 import React from "react"
+import {Parallax, ParallaxLayer} from"@react-spring/parallax"
 
-import heroIllustration from "../images/genft/hero-character-on-lounge-chair.svg";
+import heroIllustration from "../images/genft/hero-character-on-lounge-chair.svg"
 
-import howMint from "../images/genft/how-mint.png";
-import howDrop from "../images/genft/how-drop.png";
-import howGenerate from "../images/genft/how-generate.png";
+import howMint from "../images/genft/how-mint.png"
+import howDrop from "../images/genft/how-drop.png"
+import howGenerate from "../images/genft/how-generate.png"
 
-import contractBase from "../images/genft/contract-base.png";
-import contractShelf from "../images/genft/contract-shelf.png";
+import contractBase from "../images/genft/contract-base.png"
+import contractShelf from "../images/genft/contract-shelf.png"
 
-import characterPresenting from "../images/genft/character-presenting.svg";
-import characterWaving from "../images/genft/character-waving.svg";
-import characterThinking from "../images/genft/character-thinking.svg";
+import characterPresenting from "../images/genft/character-presenting.svg"
+import characterWaving from "../images/genft/character-waving.svg"
+import characterThinking from "../images/genft/character-thinking.svg"
 
-import roboVerse from "../images/genft/robot-verse.svg";
-import tigerCubVerse from "../images/genft/tiger-cub-verse.svg";
+import roboVerse from "../images/genft/robot-verse.svg"
+import tigerCubVerse from "../images/genft/tiger-cub-verse.svg"
 
-import mountainFlag from "../images/genft/mountain-flag.svg";
-import hourGlass from "../images/genft/hour-glass.svg";
-import phoneChat from "../images/genft/phone-chat.svg";
-import moneyVault from "../images/genft/money-vault.svg";
-import tokenGraph from "../images/genft/token-graph.svg";
-import chartStats from "../images/genft/chart-stats.svg";
+import mountainFlag from "../images/genft/mountain-flag.svg"
+import hourGlass from "../images/genft/hour-glass.svg"
+import phoneChat from "../images/genft/phone-chat.svg"
+import moneyVault from "../images/genft/money-vault.svg"
+import tokenGraph from "../images/genft/token-graph.svg"
+import chartStats from "../images/genft/chart-stats.svg"
 
 
 const darkGreen = "#367856"
 const lightGreen = "#C8DCC6"
 const offWhite = "#FFF7D4"
+const peach = "#F1A889"
 
 const Heading = ({title, subTitle}) =>
       (<div>
@@ -38,7 +40,8 @@ const Hero = () =>
       (<div className="vh-100 tc dt w-100" style={{backgroundColor: darkGreen, color: offWhite}}>
 	 <div className="dtc v-mid tc">
 	   <div className="w-90 w-40-ns center">
-	     GENFT by Krim Labs is a modified ERC-721 standard, that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
+	     Krim Blocks is a modified ERC-721 like standard, that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
+	     <strong> Connect your wallet to get started</strong>
 	   </div>
 	   <h1 className="f-headline nb4 mt3">
 	     Unleash NFTs
@@ -62,17 +65,22 @@ const howCols = [{
   imageSrc: howMint,
   imgAlt: "",
   imageClass: "",
-  imageStyle: {height: "33vh"},
+  imageStyle: {maxHeight: "33vh"},
   containerClass: "mt4 w-33",
   title: "1. Mint free base layer",
-  description: <p>
-		 The base layer defines your characters features like skin color, body structure, hair type and basic shoes. Minting also comes with an optional pair of clothing. <strong>Base layers are not-scarce hence not valuable</strong>.
-	       </p>
+  description: <>
+		 <p>
+		   The base layer defines your characters features like skin color, body structure, hair type and basic shoes. Minting also comes with an optional pair of clothing. <strong>Base layers are not-scarce hence not valuable</strong>.
+		 </p>
+		 <p>
+		   Connect your wallet to mint base layer
+		 </p>
+	       </>
 }, {
   imageSrc: howDrop,
   imgAlt: "",
   imageClass: "",
-  imageStyle: {height: "33vh"},
+  imageStyle: {},
   containerClass: "mt4 w-33",
   title: "2. Participate in drops",
   description: <p>
@@ -91,7 +99,7 @@ const howCols = [{
 }]
 
 const HowItWorks = () =>
-      (<div className="pv6 tc" style={{backgroundColor: lightGreen}}>
+      (<div className="pv6 tc w-50" style={{backgroundColor: lightGreen}}>
 	 <Heading title={"How it works ?"} />
 	 <div className="flex flex-row justify-between mt5">
 	   {howCols.map(h => <HowImageColumn key={h.imageSrc} {...h} />)}
@@ -162,31 +170,36 @@ const ParallelUniverse = () =>
 const links = [{id: 1, imageSrc: mountainFlag, title: "Aspiration"},
 	       {id: 2, imageSrc: hourGlass, title: "Timeline"},
 	       {id: 3, imageSrc: phoneChat, title: "Discord"},
-	       {id: 4, imageSrc: moneyVault, title: "Investors"},
-	       {id: 5, imageSrc: tokenGraph, title: "Tokenomics"},
-	       {id: 6, imageSrc: chartStats, title: "Whitepaper"}]
+	       // {id: 4, imageSrc: moneyVault, title: "Investors"},
+	       // {id: 5, imageSrc: tokenGraph, title: "Tokenomics"},
+	       // {id: 6, imageSrc: chartStats, title: "Whitepaper"}
+	       {id: 7, imageSrc: moneyVault, title: "Connect wallet", primary: true},
+	      ]
 
 const Links = () =>
-      (<div className="tc pv4" style={{backgroundColor: lightGreen}}>
-	 <div className="w-60 mt5 center flex justify-between">
+      (<div className="tc pv4 fixed bottom-0 w-100" style={{}}>
+	 <div className="center flex justify-center" style={{}}>
 	   {links.map(l =>
-	     (<div key={l.id} className="pointer dim">
-		<img src={l.imageSrc} />
-		<div className="br-pill ph3 pv2 black-90 mt3 b f4" style={{backgroundColor: offWhite}}>
+	     (<div key={l.id} className="pointer dim ph3">
+		<img src={l.imageSrc} className="h3"/>
+		<div className="br-pill ph3 pv2 black-90 mt3 b f4" style={{backgroundColor: l.primary ? peach : offWhite}}>
 		  {l.title}
 		</div>
 	      </div>))}
 	 </div>
        </div>)
 
+const comps = [
+  <Hero />,
+  <HowItWorks />,
+  <DataNotRenders />,
+  <Multiverse/>,
+  <ParallelUniverse />,
+  <Links />,
+]
 const Landing = () =>
-      (<div>
-	 <Hero />
-	 <HowItWorks />
-	 <DataNotRenders />
-	 <Multiverse/>
-	 <ParallelUniverse />
-	 <Links />
-       </div>)
+      (<>
+	 {comps.map((c, i) => <React.Fragment key={i}>{c}</React.Fragment>)}
+       </>)
 
 export default Landing;

@@ -137,10 +137,10 @@ const topTags = (postPages, n) => {
 }
 
 export default {
-  siteRoot: "https://krimlabs.com",
+  // siteRoot: "https://krimlabs.com",
   plugins: [
     "react-static-plugin-react-router",
-    "react-static-plugin-sitemap"
+    // "react-static-plugin-sitemap"
   ],
   getRoutes: async () => {
     const highlighter = await getHighlighter({theme: "monokai"})
