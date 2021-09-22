@@ -32,9 +32,9 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
   const {pathname} = useLocation();
   const history = useHistory();
 
-  return (<nav className="fixed w-100 z-1 db">
+  return (<nav className="fixed w-90 ph3 z-1 db top-0" style={{left: "50%", transform: "translateX(-50%)"}}>
 	    <div className="flex pv2 ph2 ph4-ns justify-between items-center"
-		 style={{backgroundColor: backgroundColor || "rgba(255, 255, 255, 0.5)",
+		 style={{backgroundColor: backgroundColor || "rgba(0, 0, 0, 0.5)",
 			 backdropFilter: "saturate(180%) blur(5px)"}}>
 	      {leftItem}
 	      <div className="dn dn-m flex-ns justify-end">
@@ -70,12 +70,12 @@ const BaseLeftItem = () =>
        </NavLink>)
 
 const metaBlocksLinks = ({onConnectWalletClick}) => ([{
-  label: "Aspiration",
-  to: "/aspiration",
+  label: "Use cases",
+  to: "#use-cases",
   icon: mountainFlag
 }, {
   label: "Timeline",
-  to: "/timeline",
+  to: "#timeline",
   icon: hourGlass
 }, {
   label: "Tokenomics",

@@ -3,7 +3,6 @@ import {Parallax, ParallaxLayer} from"@react-spring/parallax"
 
 import {MetaBlocksNav} from "../components/Nav"
 import img from "../utils/image"
-import useWindowSize from "../utils/hooks/useWindowSize"
 
 import heroIllustration from "../images/genft/hero-character-on-lounge-chair.png"
 
@@ -28,7 +27,7 @@ import moneyVault from "../images/genft/money-vault.png"
 import tokenGraph from "../images/genft/token-graph.png"
 import chartStats from "../images/genft/chart-stats.png"
 
-
+const pastelBlue = "#D8E8EA"
 const darkGreen = "#367856"
 const lightGreen = "#C8DCC6"
 const offWhite = "#FFF7D4"
@@ -41,7 +40,7 @@ const Heading = ({title, subTitle}) =>
        </div>)
 
 const Hero = () =>
-      (<div className="pt6 tc dt w-100" style={{backgroundColor: darkGreen, color: offWhite}}>
+      (<div className="pt4 mt5 tc dt w-90 br3 center" style={{backgroundColor: darkGreen, color: offWhite}}>
 	 <div className="dtc v-mid tc">
 	   <div className="w-90 f5 f4-ns w-80m w-40-l center">
 	     Meta Blocks is a ERC-721 like standard that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
@@ -93,7 +92,7 @@ const howCols = [{
   imgAlt: "",
   imageClass: "",
   imageStyle: {},
-  containerClass: "mt4 w-100 w-100-m w-33-l",
+  containerClass: "mt4 w-100 w-100-m w-33-l nr6",
   title: "2. Participate in drops",
   description: <p>
 		 Frequent drops introduce limited edition collectibles. These NFTs augment with your base layer to form a hybrid scene. Drops can happen at anytime. <strong>Drops can be collected and resold.</strong>
@@ -111,7 +110,7 @@ const howCols = [{
 }]
 
 const HowItWorks = () =>
-      (<div className="pv3 tc w-100 mv2" style={{backgroundColor: lightGreen}}>
+      (<div className="pv3 mt4 tc w-90 center br3 mv3" style={{backgroundColor: lightGreen}}>
 	 <Heading title={"How it works ?"} />
 	 <div className="flex flex-column flex-column-m flex-row-l justify-between mt0 mt0-m mt5-l">
 	   {howCols.map(h => <HowImageColumn key={h.imageSrc} {...h} />)}
@@ -122,28 +121,24 @@ const HowItWorks = () =>
        </div>)
 
 
-const DataNotRenders = () => {
-  const windowSize = useWindowSize()
-  return (
-    <div className="pv3 mv2 tc ph3 ph2-m ph0-ns" style={{backgroundColor: lightGreen}}>
-     <Heading title={"Contract stores data not renders"}
-	      subTitle={"When you buy items, the new traits are added to your original NFT. The old NFT is either burnt or held in a contract for later release."}/> 
+const DataNotRenders = () =>
+      (<div className="w-90 center br3 pv3 mv2 tc ph3 ph2-m ph0-ns" style={{backgroundColor: pastelBlue}}>
+	 <Heading title={"Contract stores data not renders"}
+		  subTitle={"When you buy items, the new traits are added to your original NFT. The old NFT is either burnt or held in a contract for later release."}/> 
 
-     <div className="w-100 w-90-m w-70-l center flex flex-row mt5">
-       <div className="" style={{flex: 1}}>
-	 <img className="h5" src={howMint} />
-	 <img className="nt5" src={contractBase} style={{}}/>
-       </div>
+	 <div className="w-100 w-90-m w-70-l center flex flex-row mt5">
+	   <div className="" style={{flex: 1}}>
+	     <img className="h5" src={howMint} />
+	     <img className="nt5" src={contractBase} style={{}}/>
+	   </div>
 
-       <div style={{flex: 1.6}}>
-	 <img className="h5" src={howGenerate} />
-	 <img className="w-80 nt5 tc" src={contractShelf} style={{}}/>
-       </div>
-     </div>
+	   <div style={{flex: 1.6}}>
+	     <img className="h5" src={howGenerate} />
+	     <img className="w-80 nt5 tc" src={contractShelf} style={{}}/>
+	   </div>
+	 </div>
 
-    </div>
-  )
-}
+       </div>)
 
 const multiverseRenders = [{id: 1, title: "Presenting render", imageSrc: characterPresenting},
 			   {id: 2, title: "Waving render", imageSrc: characterWaving},
