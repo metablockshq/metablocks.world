@@ -32,7 +32,7 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
   const {pathname} = useLocation();
   const history = useHistory();
 
-  return (<nav className="fixed w-90 ph3 z-1 db top-0" style={{left: "50%", transform: "translateX(-50%)"}}>
+  return (<nav className="fixed w-100 z-1 db top-0" style={{left: "50%", transform: "translateX(-50%)"}}>
 	    <div className="flex pv2 ph2 ph4-ns justify-between items-center"
 		 style={{backgroundColor: backgroundColor || "rgba(0, 0, 0, 0.5)",
 			 backdropFilter: "saturate(180%) blur(5px)"}}>
@@ -65,7 +65,7 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
 };
 
 const BaseLeftItem = () =>
-      (<NavLink to="/" className="b f4 dib">
+      (<NavLink to="/" className="b f5 f4-ns dib">
 	 Meta Blocks
        </NavLink>)
 

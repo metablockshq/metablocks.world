@@ -3,6 +3,7 @@ import {Parallax, ParallaxLayer} from"@react-spring/parallax"
 
 import {MetaBlocksNav} from "../components/Nav"
 import img from "../utils/image"
+import useWindowSize from "../utils/hooks/useWindowSize"
 
 import heroIllustration from "../images/genft/hero-character-on-lounge-chair.png"
 
@@ -27,15 +28,20 @@ import moneyVault from "../images/genft/money-vault.png"
 import tokenGraph from "../images/genft/token-graph.png"
 import chartStats from "../images/genft/chart-stats.png"
 
+import whatsappSticker from "../images/genft/whatsapp-sticker.png"
+import instagramPost from "../images/genft/instagram-post.png"
+import podcast from "../images/genft/podcast.png"
+import minecraft from "../images/genft/minecraft.png"
+
 const pastelBlue = "#D8E8EA"
 const darkGreen = "#367856"
 const lightGreen = "#C8DCC6"
 const offWhite = "#FFF7D4"
 const peach = "#F1A889"
 
-const Heading = ({title, subTitle}) =>
+const Heading = ({title, subTitle, titleClassName = ""}) =>
       (<div>
-         <h1 className="f3 f2-m f1-ns">{title}</h1>
+         <h1 className={`f3 f2-m f1-ns ${titleClassName}`}>{title}</h1>
          {subTitle && <h2 className="f5 f5-m f4-l black-80 normal nt1">{subTitle}</h2>}
        </div>)
 
@@ -43,7 +49,7 @@ const Hero = () =>
       (<div className="pt4 mt5 tc dt w-90 br3 center" style={{backgroundColor: darkGreen, color: offWhite}}>
 	 <div className="dtc v-mid tc">
 	   <div className="w-90 f5 f4-ns w-80m w-40-l center">
-	     Meta Blocks is a ERC-721 like standard that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
+	     Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
 	   </div>
 	   <h1 className="f1 f-subheadline-m f-headline-l nb4 mt3">
 	     Unleash NFTs
@@ -61,7 +67,7 @@ const HowImageColumn = ({imageSrc, imageAlt, imageClass, imageStyle, containerCl
 
 	 <div className="dib dib-m dn-l mv3">
 	   <h3 className="mv0">{title}</h3>
-	   <div className="ph5 black-80 tl">{description}</div>
+	   <div className="ph3 black-80 tl">{description}</div>
 	 </div>
 
        </div>)
@@ -200,12 +206,54 @@ const Links = () =>
 	 </div>
        </div>)
 
+const useCases = [{
+  title: "Stickers only you own",
+  body: <p>Meta Blocks collectibles can be used to express yourself in your day to day communications. This brings <strong>real world utility</strong> to your digital assets.</p>,
+  image: whatsappSticker
+}, {
+  title: "Auto generated visual content",
+  body: <p>Auto generate visuals for any text input, like tweets. Visuals can be shared on various photo based social networks. The generated visuals are a function of your Meta Blocks. This <strong>unlocks a new wave of creative influencers</strong>.</p>,
+  image: instagramPost
+}, {
+  title: "Auto generated podcasts",
+  body: <p>With advances in text to speech specially with MelGans (et. al. Lyrebird AI), vocal footprint can be encoded as a trait and used to generate audio content from text. A <strong>user can encode their own voice or buy a unique voice</strong> from the market.</p>,
+  image: podcast
+}, {
+  title: "Gaming SDKs / 3D models",
+  body: <p>Open source 3d meshes and traits info will enable game developers to encode NFT traits into game characters.  We plan to build an open SDK for game studios and <strong>encode this character into Minecraft ourselves</strong>.</p>,
+  image: minecraft
+}]
+
+const UseCase = ({title, body, image, containerClass, containerStyle}) =>
+      (<div className={`br3 flex flex-column flex-row-ns items-center ph4 pv3 ${containerClass}`}
+	    style={{...containerStyle, ...{backgroundColor: "rgb(255, 230, 230)"}}}>
+	 <img src={image} alt={title} className="vh-25 vh-25-m vh-50-l mr4 br4 shadow-3" />
+	 <div>
+	   <div className="mt3 mt0-ns ttu f7 b black-60">Use Case</div>
+	   <Heading title={title} subTitle={body} titleClassName="mt2" />
+	 </div>
+       </div>)
+
+const UseCases = () =>{
+  const windowSize = useWindowSize()
+  return (<div className="w-90 flex-wrap center flex flex-row justify-between"
+	       id="use-cases">
+	    {useCases.map(u =>
+	      <UseCase key={u.title} containerClass={"mt3"}
+		       containerStyle={{width: windowSize.width > 1278 ? "49.2%" : "100%"}}
+		       {...u}
+	      />
+	    )}
+	  </div>)
+}
+
 const comps = [
   <Hero />,
   <HowItWorks />,
   <DataNotRenders />,
-  <Multiverse/>,
-  <ParallelUniverse />,
+  // <Multiverse/>,
+  // <ParallelUniverse />,
+  <UseCases />
 ]
 const Landing = () =>
       (<>
