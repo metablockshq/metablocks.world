@@ -1,41 +1,21 @@
-import React, {useState} from "react";
+import React from "react";
 import {NavLink, useLocation, useHistory} from "react-router-dom";
 import Dropdown from "react-dropdown";
 
-import telephone from "../images/emoji/telephone.png";
-import writingHand from "../images/emoji/writing-hand.png";
-import raisedHands from "../images/emoji/raised-hands.png";
-import robot from "../images/emoji/robot.png";
-import bankNote from "../images/emoji/dollar-banknote.png"
-import book from "../images/emoji/books.png"
-import womanRaisingHand from "../images/emoji/woman-raising-hand-medium-light-skin-tone.png"
-import speechBalloon from "../images/emoji/speech-balloon.png"
+import mountainFlag from "../images/genft/mountain-flag.png"
+import hourGlass from "../images/genft/hour-glass.png"
+import phoneChat from "../images/genft/phone-chat.png"
+import moneyVault from "../images/genft/money-vault.png"
+import tokenGraph from "../images/genft/token-graph.png"
+import chartStats from "../images/genft/chart-stats.png"
 
 import colors from "../utils/colors.js";
-
-const baseLinks = [{
-  label: "Blog",
-  to: "/blog",
-  icon: writingHand,
-  activeClassName: "b--black-80"
-}, {
-  label: "Contact",
-  to: "/contact",
-  icon: telephone,
-  activeClassName: "b--black-80"
-}, {
-  label: "Clojure Course",
-  to: "/courses/tinycanva-clojure-for-react-developers",
-  icon: book,
-  activeClassName: "b--black-80"
-}];
-
 const NavItem = ({l}) => {
   return (<div className="flex items-center">
 	    <div className="pt1 black-90">
-	      <img src={l.icon} className="mr1" style={{height: 20, width: 20}}/>
+	      <img src={l.icon} className="mr2" style={{height: 32}}/>
 	    </div>
-	    <div className="">{l.label}</div>
+	    <div className="f4">{l.label}</div>
 	  </div>);
 };
 
@@ -60,7 +40,7 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
 	      <div className="dn dn-m flex-ns justify-end">
 		{links.map(l => (<NavLink key={l.label}
 					  activeClassName={l.activeClassName}
-					  className={"ml4 bb bw2 b--white-05"}
+					  className={`ml4 bb bw2 b--white-05`}
 					  to={l.to}
 					  onClick={l.to.startsWith("#") ? scrollToId(l.to) : () => {}}
 				 >
@@ -85,52 +65,41 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
 };
 
 const BaseLeftItem = () =>
-      (<NavLink to="/" className="b dib">
-	 Krim Labs
+      (<NavLink to="/" className="b f4 dib">
+	 Meta Blocks
        </NavLink>)
 
-const Nav = () =>
+const metaBlocksLinks = ({onConnectWalletClick}) => ([{
+  label: "Aspiration",
+  to: "/aspiration",
+  icon: mountainFlag
+}, {
+  label: "Timeline",
+  to: "/timeline",
+  icon: hourGlass
+}, {
+  label: "Tokenomics",
+  to: "/tokenomics",
+  icon: tokenGraph,
+  hidden: true
+}, {
+  label: "Whitepaper",
+  to: "/whitepaper",
+  icon: chartStats,
+  hidden: true
+}, {
+  label: "Connect wallet",
+  icon: moneyVault,
+  to: "/",
+  onClick: onConnectWalletClick
+}])
+
+
+const MetaBlocksNav = ({onConnectWalletClick = () => {}}) =>
       (<BaseNav
-	 backgroundColor="rgba(255, 255, 255, 0.5)"
-	 links={baseLinks}
+	 backgroundColor="rgba(255, 255, 255, 0.8)"
+	 links={metaBlocksLinks({onConnectWalletClick}).filter(l => !l.hidden)}
 	 leftItem={<BaseLeftItem />}
        />)
 
-const TinycanvaLeftItem = () =>
-      (<div className="flex">
-	 <div className="white-70 mr2">
-	   <BaseLeftItem />
-	 </div>
-	 /
-	 <NavLink to="/courses/tinycanva-clojure-for-react-developers"
-		  className="ml2 white b">
-	   Tinycanva
-	 </NavLink>
-       </div>)
-
-const tinycanvaLinks = [{
-  label: "FAQs",
-  to: "#faq",
-  icon: womanRaisingHand,
-  activeClassName: ""
-}, {
-  label: "Pricing",
-  to: "#pricing",
-  icon: bankNote,
-  activeClassName: ""
-}, /* {
-  label: "Testimonies",
-  to: "#testimonies",
-  icon: speechBalloon,
-  activeClassName: ""
-}*/];
-
-const TinycanvaNav = () =>
-      (<BaseNav
-	 backgroundColor="rgba(27, 27, 27, 0.5)"
-	 links={tinycanvaLinks}
-	 leftItem={<TinycanvaLeftItem />}
-       />)
-
-export default Nav;
-export {TinycanvaNav}
+export {MetaBlocksNav}

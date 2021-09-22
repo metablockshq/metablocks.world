@@ -1,7 +1,11 @@
 import React from "react"
 import {Parallax, ParallaxLayer} from"@react-spring/parallax"
 
-import heroIllustration from "../images/genft/hero-character-on-lounge-chair.svg"
+import {MetaBlocksNav} from "../components/Nav"
+import img from "../utils/image"
+import useWindowSize from "../utils/hooks/useWindowSize"
+
+import heroIllustration from "../images/genft/hero-character-on-lounge-chair.png"
 
 import howMint from "../images/genft/how-mint.png"
 import howDrop from "../images/genft/how-drop.png"
@@ -10,19 +14,19 @@ import howGenerate from "../images/genft/how-generate.png"
 import contractBase from "../images/genft/contract-base.png"
 import contractShelf from "../images/genft/contract-shelf.png"
 
-import characterPresenting from "../images/genft/character-presenting.svg"
-import characterWaving from "../images/genft/character-waving.svg"
-import characterThinking from "../images/genft/character-thinking.svg"
+import characterPresenting from "../images/genft/character-presenting.png"
+import characterWaving from "../images/genft/character-waving.png"
+import characterThinking from "../images/genft/character-thinking.png"
 
-import roboVerse from "../images/genft/robot-verse.svg"
-import tigerCubVerse from "../images/genft/tiger-cub-verse.svg"
+import roboVerse from "../images/genft/robot-verse.png"
+import tigerCubVerse from "../images/genft/tiger-cub-verse.png"
 
-import mountainFlag from "../images/genft/mountain-flag.svg"
-import hourGlass from "../images/genft/hour-glass.svg"
-import phoneChat from "../images/genft/phone-chat.svg"
-import moneyVault from "../images/genft/money-vault.svg"
-import tokenGraph from "../images/genft/token-graph.svg"
-import chartStats from "../images/genft/chart-stats.svg"
+import mountainFlag from "../images/genft/mountain-flag.png"
+import hourGlass from "../images/genft/hour-glass.png"
+import phoneChat from "../images/genft/phone-chat.png"
+import moneyVault from "../images/genft/money-vault.png"
+import tokenGraph from "../images/genft/token-graph.png"
+import chartStats from "../images/genft/chart-stats.png"
 
 
 const darkGreen = "#367856"
@@ -32,31 +36,39 @@ const peach = "#F1A889"
 
 const Heading = ({title, subTitle}) =>
       (<div>
-         <h1 className="f1">{title}</h1>
-         {subTitle && <h2 className="f4 black-80 normal nt1">{subTitle}</h2>}
+         <h1 className="f3 f2-m f1-ns">{title}</h1>
+         {subTitle && <h2 className="f5 f5-m f4-l black-80 normal nt1">{subTitle}</h2>}
        </div>)
 
 const Hero = () =>
-      (<div className="vh-100 tc dt w-100" style={{backgroundColor: darkGreen, color: offWhite}}>
+      (<div className="pt6 tc dt w-100" style={{backgroundColor: darkGreen, color: offWhite}}>
 	 <div className="dtc v-mid tc">
-	   <div className="w-90 w-40-ns center">
-	     Krim Blocks is a modified ERC-721 like standard, that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
-	     <strong> Connect your wallet to get started</strong>
+	   <div className="w-90 f5 f4-ns w-80m w-40-l center">
+	     Meta Blocks is a ERC-721 like standard that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
 	   </div>
-	   <h1 className="f-headline nb4 mt3">
+	   <h1 className="f1 f-subheadline-m f-headline-l nb4 mt3">
 	     Unleash NFTs
 	   </h1>
-	   <img src={heroIllustration} alt="Character sitting on a lounge chair with laptop" />
+	   <img src={heroIllustration}
+		className="vh-50-l mt2 mt0-ns"
+		alt="Character sitting on a lounge chair with laptop" />
 	 </div>
        </div>)
 
-const HowImageColumn = ({imageSrc, imageAlt, imageClass, imageStyle, containerClass, containerStyle}) =>
+const HowImageColumn = ({imageSrc, imageAlt, imageClass, imageStyle, containerClass, containerStyle,
+			 title, description}) =>
       (<div className={`overflow-hidden ${containerClass}`} style={{...containerStyle}}>
-	 <img className={imageClass} style={{...imageStyle}} src={imageSrc} alt={imageAlt} />
+	 <img className={`${imageClass}`} style={{...imageStyle}} src={imageSrc} alt={imageAlt} />
+
+	 <div className="dib dib-m dn-l mv3">
+	   <h3 className="mv0">{title}</h3>
+	   <div className="ph5 black-80 tl">{description}</div>
+	 </div>
+
        </div>)
 
 const HowTextColumn = ({title, description}) =>
-      (<div className={``} style={{...{}}}>
+      (<div className={`dn dn-m db-l`} style={{...{}}}>
 	 <h3 className="">{title}</h3>
 	 <div className="ph5 black-80 tl">{description}</div>
        </div>)
@@ -66,7 +78,7 @@ const howCols = [{
   imgAlt: "",
   imageClass: "",
   imageStyle: {maxHeight: "33vh"},
-  containerClass: "mt4 w-33",
+  containerClass: "mt4 w-100 w-100-m w-33-l",
   title: "1. Mint free base layer",
   description: <>
 		 <p>
@@ -81,7 +93,7 @@ const howCols = [{
   imgAlt: "",
   imageClass: "",
   imageStyle: {},
-  containerClass: "mt4 w-33",
+  containerClass: "mt4 w-100 w-100-m w-33-l",
   title: "2. Participate in drops",
   description: <p>
 		 Frequent drops introduce limited edition collectibles. These NFTs augment with your base layer to form a hybrid scene. Drops can happen at anytime. <strong>Drops can be collected and resold.</strong>
@@ -91,7 +103,7 @@ const howCols = [{
   imgAlt: "",
   imageClass: "nr6",
   imageStyle: {minHeight: "33vh", width: "100%", objectFit: "contain"},
-  containerClass: "w-50 nt4 nl6",
+  containerClass: "w-100 w-100-m w-50-l nt0 nl0 nt0-m nl0-m nt4-l nl6-l",
   title: "3. Generate your(NFT)self",
   description: <p>
 		 Generate multiple scenes that showcase one or more of your collectibles. Everything stays on-chain as a single token. Your GENFT. <strong>You can also create parallel-universe renders of your collection. </strong>
@@ -99,9 +111,9 @@ const howCols = [{
 }]
 
 const HowItWorks = () =>
-      (<div className="pv6 tc w-50" style={{backgroundColor: lightGreen}}>
+      (<div className="pv3 tc w-100 mv2" style={{backgroundColor: lightGreen}}>
 	 <Heading title={"How it works ?"} />
-	 <div className="flex flex-row justify-between mt5">
+	 <div className="flex flex-column flex-column-m flex-row-l justify-between mt0 mt0-m mt5-l">
 	   {howCols.map(h => <HowImageColumn key={h.imageSrc} {...h} />)}
 	 </div>
 	 <div className="flex flex-row justify-between">
@@ -110,24 +122,28 @@ const HowItWorks = () =>
        </div>)
 
 
-const DataNotRenders = () =>
-      (<div className="pv4 tc" style={{backgroundColor: lightGreen}}>
-	 <Heading title={"Contract stores data not renders"}
-		  subTitle={"When you buy items, the new traits are added to your original NFT. The old NFT is either burnt or held in a contract for later release."}/> 
+const DataNotRenders = () => {
+  const windowSize = useWindowSize()
+  return (
+    <div className="pv3 mv2 tc ph3 ph2-m ph0-ns" style={{backgroundColor: lightGreen}}>
+     <Heading title={"Contract stores data not renders"}
+	      subTitle={"When you buy items, the new traits are added to your original NFT. The old NFT is either burnt or held in a contract for later release."}/> 
 
-	 <div className="w-70 center flex flex-row mt5">
-	   <div className="" style={{flex: 1}}>
-	     <img className="" src={howMint} style={{height: 380}}/>
-	     <img className="nt5" src={contractBase} style={{}}/>
-	   </div>
+     <div className="w-100 w-90-m w-70-l center flex flex-row mt5">
+       <div className="" style={{flex: 1}}>
+	 <img className="h5" src={howMint} />
+	 <img className="nt5" src={contractBase} style={{}}/>
+       </div>
 
-	   <div style={{flex: 1.6}}>
-	     <img src={howGenerate} style={{height: 440}} />
-	     <img className="w-80 nt6 tc" src={contractShelf} style={{}}/>
-	   </div>
-	 </div>
+       <div style={{flex: 1.6}}>
+	 <img className="h5" src={howGenerate} />
+	 <img className="w-80 nt5 tc" src={contractShelf} style={{}}/>
+       </div>
+     </div>
 
-       </div>)
+    </div>
+  )
+}
 
 const multiverseRenders = [{id: 1, title: "Presenting render", imageSrc: characterPresenting},
 			   {id: 2, title: "Waving render", imageSrc: characterWaving},
@@ -195,10 +211,10 @@ const comps = [
   <DataNotRenders />,
   <Multiverse/>,
   <ParallelUniverse />,
-  <Links />,
 ]
 const Landing = () =>
       (<>
+	 <MetaBlocksNav />
 	 {comps.map((c, i) => <React.Fragment key={i}>{c}</React.Fragment>)}
        </>)
 

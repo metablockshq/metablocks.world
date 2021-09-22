@@ -84,7 +84,7 @@ const processFile = async component => {
   // convert image to webp format in highest quality
   const inputSharp = sharp(path.join(component.filePath, component.name))
   const ogWebpPath = path.join(component.optimizedPath, "og.webp")
-  await inputSharp.toFile(ogWebpPath)
+  await inputSharp.toFormat("webp").webp({lossless: true}).toFile(ogWebpPath)
 
   // convert og.webp to desired widths
   const ogSharp = sharp(ogWebpPath)

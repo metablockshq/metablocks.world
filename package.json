@@ -1,13 +1,15 @@
 {
-  "name": "krimlabs.com",
-  "private": true,
+  "name": "metablocks.world",
+  "license": "MIT",
+  "author": "Shivek Khurana",
   "scripts": {
     "start": "react-static start",
     "stage": "react-static build --staging",
     "optimize:img": "node optimize-img.js",
     "optimize:css": "purgecss --config purgecss.config.js",
+    "prebuild": "npm run optimize:img",
     "build": "react-static build",
-    "postbuild": "npm run optimize:css && npm run optimize:img",
+    "postbuild": "npm run optimize:css",
     "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
     "test:watch:op-img": "ls | entr jest -- optimize-img",
