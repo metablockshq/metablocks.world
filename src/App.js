@@ -16,7 +16,7 @@ const App = () => {
   return (<Root>
 	    <React.Suspense fallback={<Loading />}>
 	      <Switch>
-			<Route component={Routes} />
+		<Route component={Routes} />
 	      </Switch>
 	    </React.Suspense>
 	  </Root>)

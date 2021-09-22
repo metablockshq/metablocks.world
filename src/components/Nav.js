@@ -11,10 +11,10 @@ import chartStats from "../images/genft/chart-stats.png"
 
 import colors from "../utils/colors.js";
 const NavItem = ({l}) => {
-  return (<div className="flex items-center">
-	    <div className="pt1 black-90">
-	      <img src={l.icon} className="mr2" style={{height: 32}}/>
-	    </div>
+  return (<div className="flex items-center" style={{height: 32}}>
+	    {l.icon && <div className="pt1 black-90">
+			 <img src={l.icon} className="mr2" style={{height: 32}}/>
+		       </div>}
 	    <div className="f4">{l.label}</div>
 	  </div>);
 };
@@ -33,19 +33,21 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
   const history = useHistory();
 
   return (<nav className="fixed w-100 z-1 db top-0" style={{left: "50%", transform: "translateX(-50%)"}}>
-	    <div className="flex pv2 ph2 ph4-ns justify-between items-center"
+	    <div className="flex pv2 justify-between items-center"
 		 style={{backgroundColor: backgroundColor || "rgba(0, 0, 0, 0.5)",
-			 backdropFilter: "saturate(180%) blur(5px)"}}>
+			 backdropFilter: "saturate(180%) blur(5px)",
+			 marginLeft: "5%", marginRight: "5%"}}>
 	      {leftItem}
 	      <div className="dn dn-m flex-ns justify-end">
-		{links.map(l => (<NavLink key={l.label}
-					  activeClassName={l.activeClassName}
-					  className={`ml4 bb bw2 b--white-05`}
-					  to={l.to}
-					  onClick={l.to.startsWith("#") ? scrollToId(l.to) : () => {}}
-				 >
-				   <NavItem l={l} />
-				 </NavLink>))}
+		{links.map(l =>
+		  (<NavLink key={l.label}
+			    activeClassName={l.activeClassName}
+			    className={`ml4 bb bw2 b--white-05 ${l.restingClassName || ""}`}
+			    to={l.to}
+			    onClick={l.onClick || (l.to.startsWith && l.to.startsWith("#") ? scrollToId(l.to) : () => {})}
+		   >
+		     <NavItem l={l} />
+		   </NavLink>))}
 	      </div>
 
 	      <div className="flex dn-l">
@@ -56,7 +58,7 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
 		  menuClassName="fixed right-0 mr3 pl3 pr4 white bg-black br3 mt2"
 		  onChange={selected => {
 		    history.push(selected.value)
-		    if (selected.value.startsWith("#")) scrollToId(selected.value)();
+		    if (selected.value.startsWith && selected.value.startsWith("#")) scrollToId(selected.value)();
 		  }}
 		/>
 	      </div>
@@ -74,9 +76,14 @@ const metaBlocksLinks = ({onConnectWalletClick}) => ([{
   to: "#use-cases",
   icon: mountainFlag
 }, {
+  label: "Discord",
+  to: {pathname: "https://discord.com"},
+  icon: phoneChat
+}, {
   label: "Timeline",
   to: "#timeline",
-  icon: hourGlass
+  icon: hourGlass,
+  hidden: true
 }, {
   label: "Tokenomics",
   to: "/tokenomics",
@@ -89,17 +96,18 @@ const metaBlocksLinks = ({onConnectWalletClick}) => ([{
   hidden: true
 }, {
   label: "Connect wallet",
-  icon: moneyVault,
   to: "/",
-  onClick: onConnectWalletClick
+  onClick: onConnectWalletClick,
+  restingClassName: "bg-light-red br-pill ph3 white b"
 }])
 
-
-const MetaBlocksNav = ({onConnectWalletClick = () => {}}) =>
-      (<BaseNav
-	 backgroundColor="rgba(255, 255, 255, 0.8)"
-	 links={metaBlocksLinks({onConnectWalletClick}).filter(l => !l.hidden)}
-	 leftItem={<BaseLeftItem />}
-       />)
+const MetaBlocksNav = ({signupDialogOpen, setSignupDialogOpen, onConnectWalletClick = () => {}}) =>
+      (<>
+	 <BaseNav
+	   backgroundColor="rgba(255, 255, 255, 0.8)"
+	   links={metaBlocksLinks({onConnectWalletClick}).filter(l => !l.hidden)}
+	   leftItem={<BaseLeftItem />}
+	 />
+       </>)
 
 export {MetaBlocksNav}

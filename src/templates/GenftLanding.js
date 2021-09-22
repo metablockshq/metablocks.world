@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {Parallax, ParallaxLayer} from"@react-spring/parallax"
 
 import {MetaBlocksNav} from "../components/Nav"
@@ -39,10 +39,29 @@ const lightGreen = "#C8DCC6"
 const offWhite = "#FFF7D4"
 const peach = "#F1A889"
 
+const Button = ({label, onClick = () => {}}) =>
+      (<a className="link br-pill ph3 pv2 mb2 dib white bg-light-red b f3" href="#" onClick={onClick}>{label}</a>)
+
+const CTA = ({containerClassName = ""}) =>
+      (<div className={`${containerClassName}`}>
+	 <div className="mb2 i">Get started now!</div>
+	 <Button label="Connect wallet" />
+       </div>)
+
+const FloatingBanner = () =>
+      (<div className="fixed w-100 z-1 db bottom-0" style={{left: "50%", transform: "translateX(-50%)"}}>
+	  <div className="flex pv2 justify-between items-center br3 mb3 ph3"
+		 style={{backgroundColor: "rgba(0, 0, 0, 0.5)",
+			 backdropFilter: "saturate(180%) blur(5px)",
+			 marginLeft: "5%", marginRight: "5%"}}>
+	    hello
+	  </div>
+       </div>)
+
 const Heading = ({title, subTitle, titleClassName = ""}) =>
       (<div>
          <h1 className={`f3 f2-m f1-ns ${titleClassName}`}>{title}</h1>
-         {subTitle && <h2 className="f5 f5-m f4-l black-80 normal nt1">{subTitle}</h2>}
+         {subTitle && <h2 className="f5 f5-m f4-l black-80 normal nt1 lh-copy">{subTitle}</h2>}
        </div>)
 
 const Hero = () =>
@@ -57,6 +76,7 @@ const Hero = () =>
 	   <img src={heroIllustration}
 		className="vh-50-l mt2 mt0-ns"
 		alt="Character sitting on a lounge chair with laptop" />
+	   <CTA containerClassName="nt2 mb3" />
 	 </div>
        </div>)
 
@@ -67,7 +87,7 @@ const HowImageColumn = ({imageSrc, imageAlt, imageClass, imageStyle, containerCl
 
 	 <div className="dib dib-m dn-l mv3">
 	   <h3 className="mv0">{title}</h3>
-	   <div className="ph3 black-80 tl">{description}</div>
+	   <div className="ph3 black-80 tl lh-copy">{description}</div>
 	 </div>
 
        </div>)
@@ -75,7 +95,7 @@ const HowImageColumn = ({imageSrc, imageAlt, imageClass, imageStyle, containerCl
 const HowTextColumn = ({title, description}) =>
       (<div className={`dn dn-m db-l`} style={{...{}}}>
 	 <h3 className="">{title}</h3>
-	 <div className="ph5 black-80 tl">{description}</div>
+	 <div className="ph5 black-80 tl lh-copy">{description}</div>
        </div>)
 
 const howCols = [{
@@ -88,9 +108,6 @@ const howCols = [{
   description: <>
 		 <p>
 		   The base layer defines your characters features like skin color, body structure, hair type and basic shoes. Minting also comes with an optional pair of clothing. <strong>Base layers are not-scarce hence not valuable</strong>.
-		 </p>
-		 <p>
-		   Connect your wallet to mint base layer
 		 </p>
 	       </>
 }, {
@@ -124,6 +141,7 @@ const HowItWorks = () =>
 	 <div className="flex flex-row justify-between">
 	   {howCols.map(h => <HowTextColumn key={h.imageSrc} {...h} />)}
 	 </div>
+	 <CTA containerClassName="mt4" />
        </div>)
 
 
@@ -144,6 +162,7 @@ const DataNotRenders = () =>
 	   </div>
 	 </div>
 
+	 <CTA containerClassName="mt4" />
        </div>)
 
 const multiverseRenders = [{id: 1, title: "Presenting render", imageSrc: characterPresenting},
@@ -224,13 +243,19 @@ const useCases = [{
   image: minecraft
 }]
 
+const UseCaseHeading = ({title, subTitle, titleClassName = ""}) =>
+      (<div>
+         <h1 className={`f4 f3-m f2-ns ${titleClassName}`}>{title}</h1>
+         {subTitle && <h2 className="f5 f5-m f4-l black-80 normal nt1 lh-copy">{subTitle}</h2>}
+       </div>)
+
 const UseCase = ({title, body, image, containerClass, containerStyle}) =>
       (<div className={`br3 flex flex-column flex-row-ns items-center ph4 pv3 ${containerClass}`}
 	    style={{...containerStyle, ...{backgroundColor: "rgb(255, 230, 230)"}}}>
 	 <img src={image} alt={title} className="vh-25 vh-25-m vh-50-l mr4 br4 shadow-3" />
 	 <div>
 	   <div className="mt3 mt0-ns ttu f7 b black-60">Use Case</div>
-	   <Heading title={title} subTitle={body} titleClassName="mt2" />
+	   <UseCaseHeading title={title} subTitle={body} titleClassName="mt2" />
 	 </div>
        </div>)
 
@@ -248,17 +273,25 @@ const UseCases = () =>{
 }
 
 const comps = [
-  <Hero />,
-  <HowItWorks />,
-  <DataNotRenders />,
+  Hero,
+  HowItWorks,
+  DataNotRenders,
   // <Multiverse/>,
   // <ParallelUniverse />,
-  <UseCases />
+  UseCases
 ]
-const Landing = () =>
-      (<>
-	 <MetaBlocksNav />
-	 {comps.map((c, i) => <React.Fragment key={i}>{c}</React.Fragment>)}
-       </>)
+const Landing = () => {
+  const [signupDialogOpen, setSignupDialogOpen] = useState(false)
+  return (<>
+	    <MetaBlocksNav
+	      signupDialogOpen={signupDialogOpen} setSignupDialogOpen={setSignupDialogOpen}
+	      onConnectWalletClick={() => setSignupDialogOpen(true)}
+	    />
+	    {comps.map((C, i) =>
+	      <React.Fragment key={i}>
+		<C setSignupDialogOpen={setSignupDialogOpen} />
+	      </React.Fragment>)}
+	  </>)
+}
 
 export default Landing;
