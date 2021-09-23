@@ -4,8 +4,8 @@ import {Route, Switch} from 'react-router-dom';
 ;
 import colors from './utils/colors';
 import {MobileNav} from './components/Nav';
-import './app.css'
 import './tachyons.min.css';
+import './app.css'
 
 const Loading = () => {
   // loading can be more juicy

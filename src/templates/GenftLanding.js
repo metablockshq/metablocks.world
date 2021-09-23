@@ -40,12 +40,19 @@ const offWhite = "#FFF7D4"
 const peach = "#F1A889"
 
 const Button = ({label, onClick = () => {}}) =>
-      (<a className="link br-pill ph3 pv2 mb2 dib white bg-light-red b f3" href="#" onClick={onClick}>{label}</a>)
+      (<a className="link br-pill ph3 pv2 mb2 dib white bg-light-red b f3" href="#"
+	  onClick={e => {
+	    e.preventDefault()
+	    onClick(e)
+	  }}
+       >
+	 {label}
+       </a>)
 
-const CTA = ({containerClassName = ""}) =>
+const CTA = ({containerClassName = "", onClick}) =>
       (<div className={`${containerClassName}`}>
 	 <div className="mb2 i">Get started now!</div>
-	 <Button label="Connect wallet" />
+	 <Button label="Connect wallet" onClick={onClick} />
        </div>)
 
 const FloatingBanner = () =>
@@ -64,7 +71,7 @@ const Heading = ({title, subTitle, titleClassName = ""}) =>
          {subTitle && <h2 className="f5 f5-m f4-l black-80 normal nt1 lh-copy">{subTitle}</h2>}
        </div>)
 
-const Hero = () =>
+const Hero = ({openSignupDialog}) =>
       (<div className="pt4 mt5 tc dt w-90 br3 center" style={{backgroundColor: darkGreen, color: offWhite}}>
 	 <div className="dtc v-mid tc">
 	   <div className="w-90 f5 f4-ns w-80m w-40-l center">
@@ -76,7 +83,7 @@ const Hero = () =>
 	   <img src={heroIllustration}
 		className="vh-50-l mt2 mt0-ns"
 		alt="Character sitting on a lounge chair with laptop" />
-	   <CTA containerClassName="nt2 mb3" />
+	   <CTA containerClassName="nt2 mb3" onClick={openSignupDialog} />
 	 </div>
        </div>)
 
@@ -132,7 +139,7 @@ const howCols = [{
 	       </p>
 }]
 
-const HowItWorks = () =>
+const HowItWorks = ({openSignupDialog}) =>
       (<div className="pv3 mt4 tc w-90 center br3 mv3" style={{backgroundColor: lightGreen}}>
 	 <Heading title={"How it works ?"} />
 	 <div className="flex flex-column flex-column-m flex-row-l justify-between mt0 mt0-m mt5-l">
@@ -141,11 +148,11 @@ const HowItWorks = () =>
 	 <div className="flex flex-row justify-between">
 	   {howCols.map(h => <HowTextColumn key={h.imageSrc} {...h} />)}
 	 </div>
-	 <CTA containerClassName="mt4" />
+	 <CTA containerClassName="mt4" onClick={openSignupDialog} />
        </div>)
 
 
-const DataNotRenders = () =>
+const DataNotRenders = ({openSignupDialog}) =>
       (<div className="w-90 center br3 pv3 mv2 tc ph3 ph2-m ph0-ns" style={{backgroundColor: pastelBlue}}>
 	 <Heading title={"Contract stores data not renders"}
 		  subTitle={"When you buy items, the new traits are added to your original NFT. The old NFT is either burnt or held in a contract for later release."}/> 
@@ -162,7 +169,7 @@ const DataNotRenders = () =>
 	   </div>
 	 </div>
 
-	 <CTA containerClassName="mt4" />
+	 <CTA containerClassName="mt4" onClick={openSignupDialog} />
        </div>)
 
 const multiverseRenders = [{id: 1, title: "Presenting render", imageSrc: characterPresenting},
@@ -280,16 +287,18 @@ const comps = [
   // <ParallelUniverse />,
   UseCases
 ]
+
 const Landing = () => {
   const [signupDialogOpen, setSignupDialogOpen] = useState(false)
+  const openSignupDialog = () => setSignupDialogOpen(true)
   return (<>
 	    <MetaBlocksNav
 	      signupDialogOpen={signupDialogOpen} setSignupDialogOpen={setSignupDialogOpen}
-	      onConnectWalletClick={() => setSignupDialogOpen(true)}
+	      onConnectWalletClick={openSignupDialog}
 	    />
-	    {comps.map((C, i) =>
+	    {comps.map((Comp, i) =>
 	      <React.Fragment key={i}>
-		<C setSignupDialogOpen={setSignupDialogOpen} />
+		<Comp openSignupDialog={openSignupDialog} />
 	      </React.Fragment>)}
 	  </>)
 }
