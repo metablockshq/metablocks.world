@@ -34,6 +34,8 @@ import instagramPost from "../images/genft/instagram-post.png"
 import podcast from "../images/genft/podcast.png"
 import minecraft from "../images/genft/minecraft.png"
 
+import solanaLogo from "../images/genft/solana.svg"
+
 const pastelBlue = "#D8E8EA"
 const darkGreen = "#367856"
 const lightGreen = "#C8DCC6"
@@ -267,7 +269,7 @@ const UseCase = ({title, body, image, containerClass, containerStyle}) =>
 	 </div>
        </div>)
 
-const UseCases = () =>{
+const UseCases = () => {
   const windowSize = useWindowSize()
   return (<div className="w-90 flex-wrap center flex flex-row justify-between"
 	       id="use-cases">
@@ -279,6 +281,21 @@ const UseCases = () =>{
 	    )}
 	  </div>)
 }
+
+const SolanaBadge = () =>
+      (<div className="fixed pa1 bottom-0"
+	    style={{
+	      backgroundColor: "rgba(0, 0, 0, 0.64)",
+	      backdropFilter: "saturate(180%) blur(5px)",
+	      borderRadius: "0 8px 0 0"
+	    }}
+       >
+	 <img src={solanaLogo} alt="Solana Logo" className="mr2"
+	      style={{height: 8}} />
+	 <span className="bl b--white-60 ph1 white b f7">
+	   Ignition Hackathon Project
+	 </span>
+       </div>)
 
 const comps = [
   Hero,
@@ -303,6 +320,8 @@ const Landing = () => {
 	      </React.Fragment>)}
 
 	    <Footer />
+
+	    <SolanaBadge />
 	  </>)
 }
 
