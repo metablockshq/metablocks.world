@@ -41,7 +41,8 @@ const App = () => {
 	      <meta name="robots" content="index, follow" />
 
 	      <meta property="og:title" content={"Meta Blocks"} />
-	      <meta property="og:description" content={"NFT Evolution Protocol"} />
+	      <meta property="og:description" content={"Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces."} />
+	      <meta name="twitter:card" content="summary_large_image">
 	    </Head>
 	    <React.Suspense fallback={<Loading />}>
 	      <Switch>
