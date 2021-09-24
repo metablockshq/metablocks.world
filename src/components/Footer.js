@@ -61,19 +61,19 @@ const FooterLegacy = () =>
 
 const Meta = () =>
       (<div className="b">
-	 <a href="/sitemap.xml" className="dib mr2 underline">Sitemap</a>
-	 <a href="/rss.xml" className="dib mr2 underline">RSS</a>
-	 <a href="/feed.json" className="dib mr2 underline">JSON Feed</a>
+	 <a href="https://twitter.com/MetaBlocksHQ" className="dib mr2 underline">Twitter</a>
+	 <a href="https://github.com/metablockshq" className="dib mr2 underline">Github</a>
+	 <a href="https://discord.gg/YUJq9kW3RV" className="dib mr2 underline">Discord</a>
        </div>)
 
 const OpenSite = () =>
       (<div className="mt3">
-	 This <a href="https://github.com/krimlabs/krimlabs.com" className="underline">open-source</a> site was built with <a href="https://github.com/react-static/react-static" className="underline">React Static</a>.
+	 This <a href="https://github.com/metablockshq/metablocks.world" className="underline">open-source</a> site was built with <a href="https://github.com/react-static/react-static" className="underline">React Static</a>.
        </div>)
 
-const Netlify = () =>
+const Cloudflare = () =>
       (<div className="mt1">
-	 Hosting and deployment courtesy of <a href="https://netlify.com" className="underline">Netlify</a>.
+	 Hosting and deployment courtesy of <a href="https://cloudflare.com" className="underline">Cloudflare</a>.
        </div>)
 
 const Freepik = () =>
@@ -83,16 +83,15 @@ const Freepik = () =>
        </div>)
 
 const Footer = ({attributeFreepik}) =>
-      (<div className="flex flex-column flex-row-ns w-90 w-80-m w-60-ns justify-between center pv4 mt4">
+      (<div className="flex flex-column flex-row-ns w-90 justify-between center pv4 mt4">
 	 <div>
-	   <div className="o-80 f6">© 2017</div>
-	   <div className="b f3 mt1">Krim Labs</div>
+	   <div className="o-80 f6">© 2021</div>
+	   <div className="b f3 mt1">Meta Blocks</div>
 	 </div>
 	 <div className="tl tr-ns mt4 mt0-ns o-80 f6 f5-ns">
 	   <Meta />
 	   <OpenSite />
-	   <Netlify />
-	   {attributeFreepik && <Freepik />}
+	   <Cloudflare />
 	 </div>
        </div>)
 

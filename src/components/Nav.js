@@ -15,7 +15,8 @@ import launch from "../images/genft/launch.png"
 
 import colors from "../utils/colors.js"
 
-const discordInviteLink = "https://discord.com"
+const discordInviteLink = "https://discord.gg/YUJq9kW3RV"
+const twitterLink = "https://twitter.com/MetaBlocksHQ"
 
 const NavItem = ({l}) => {
   return (<div className="flex items-center" style={{height: 32}}>
@@ -50,7 +51,7 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
 		  (<NavLink key={l.label}
 			    activeClassName={l.activeClassName}
 			    className={`ml4 bb bw2 b--white-05 ${l.restingClassName || ""}`}
-			    to={l.to}
+			    to={l.to} target={l.targetBlank && "_blank"}
 			    onClick={l.onClick || (l.to.startsWith && l.to.startsWith("#") ? scrollToId(l.to) : () => {})}
 		   >
 		     <NavItem l={l} />
@@ -64,8 +65,11 @@ const BaseNav = ({backgroundColor, leftItem, links}) => {
 		  placeholderClassName="db pointer mr3 mr0-ns"
 		  menuClassName="fixed right-0 mr3 pl3 pr4 white bg-black br3 mt2"
 		  onChange={selected => {
-		    history.push(selected.value)
+		    const onClickFn = links.find(l => l.label === selected.label).onClick
+		    if (onClickFn) onClickFn()
 		    if (selected.value.startsWith && selected.value.startsWith("#")) scrollToId(selected.value)();
+		    if (selected.value.pathname && window) window.location.replace(selected.value.pathname)
+		    else history.push(selected.value)
 		  }}
 		/>
 	      </div>
@@ -81,12 +85,18 @@ const BaseLeftItem = () =>
 const metaBlocksLinks = ({onConnectWalletClick}) => ([{
   label: "Use cases",
   to: "#use-cases",
-  icon: mountainFlag
+  // icon: mountainFlag
 }, {
   label: "Discord",
   to: {pathname: discordInviteLink},
-  icon: phoneChat
+  // icon: phoneChat,
+  targetBlank: true
 }, {
+  label: "Twitter",
+  to: {pathname: twitterLink},
+  // icon: phoneChat,
+  targetBlank: true
+} , {
   label: "Timeline",
   to: "#timeline",
   icon: hourGlass,
@@ -111,7 +121,7 @@ const metaBlocksLinks = ({onConnectWalletClick}) => ([{
 const signupFAQs = [{
   title: "How to get an item from the second drop?",
   body: <p>The second drop is reserved for community members who participate in the
-	Meta Blocks launch event on <strong>Twitter</strong>. Follow us <a className="blue b" target="_blank" href="https://twitter.com/MetaBlocksHQ">@MetaBlocksWorld</a> to stay in the loop.</p>
+	Meta Blocks launch event on <strong>Twitter</strong>. Follow us <a className="blue b" target="_blank" href={twitterLink}>@MetaBlockshHQ</a> to stay in the loop.</p>
 }, {
   title: "How to get an item from the first drop?",
   body: <p>The first drop will be sent to community members who vote for us at the Ignite Hackathon. Getting a project like this started entails a lot of work and enthusiasm. Sending the first drop to our first voters is our way of saying thank you. Join <a className="blue b" target="_blank" href={discordInviteLink}>our Discord</a> to get a ping when voting starts.</p>
@@ -179,7 +189,7 @@ const SignupDialog = ({open, onDismiss}) => {
 		       from="bottom" title={"hi"} width="100%"
 		       shouldCloseOnEsc={true} overlayClassName="z-2"
 		       hideHeader={true} className="sheet-border">
-	    <div className="ph4 pv4">
+	    <div className="ph0 ph3-m ph4-l pv4">
 	      <div className="pointer f6 black-80 fr dn dn-m dib-l" onClick={onDismiss}>⤬ close</div>
 	      <img src={launch} alt="Rocket launching" className="h3 h3-m h4-l mt3 mt3-m mt0-l ml2 fl" style={{}} />
 	      <h2 className="tc mv2 f4 f3-ns">We are not quite ready yet !</h2>

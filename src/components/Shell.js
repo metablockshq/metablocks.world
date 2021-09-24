@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 
-import Nav from "./Nav.js";
-import Footer from "./Footer.js";
+import Nav from "./Nav";
+import Footer from "./Footer";
 import colors from "../utils/colors";
 
 const Shell = ({attributeFreepik, nav: NavComponent, children}) => {

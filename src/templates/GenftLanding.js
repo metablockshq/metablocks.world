@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Parallax, ParallaxLayer} from"@react-spring/parallax"
 
+import Footer from "../components/Footer";
 import {MetaBlocksNav} from "../components/Nav"
 import img from "../utils/image"
 import useWindowSize from "../utils/hooks/useWindowSize"
@@ -300,6 +301,8 @@ const Landing = () => {
 	      <React.Fragment key={i}>
 		<Comp openSignupDialog={openSignupDialog} />
 	      </React.Fragment>)}
+
+	    <Footer />
 	  </>)
 }
 
