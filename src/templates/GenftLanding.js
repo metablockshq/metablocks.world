@@ -167,8 +167,8 @@ const DataNotRenders = ({openSignupDialog}) =>
 	   </div>
 
 	   <div style={{flex: 1.6}}>
-	     <img className="h5" src={howGenerate} />
-	     <img className="w-80 nt5 tc" src={contractShelf} style={{}}/>
+	     <img className="min-h5" src={howGenerate} />
+	     <img className="w-80 nt2 nt5-ns tc" src={contractShelf} style={{}}/>
 	   </div>
 	 </div>
 
@@ -262,7 +262,7 @@ const UseCaseHeading = ({title, subTitle, titleClassName = ""}) =>
 const UseCase = ({title, body, image, containerClass, containerStyle}) =>
       (<div className={`br3 flex flex-column flex-row-ns items-center ph4 pv3 ${containerClass}`}
 	    style={{...containerStyle, ...{backgroundColor: "rgb(255, 230, 230)"}}}>
-	 <img src={image} alt={title} className="vh-25 vh-25-m vh-50-l mr4 br4 shadow-3" />
+	 <img src={image} alt={title} className="vh-25 vh-25-m vh-50-l mr0 mr4-ns br4 shadow-3" />
 	 <div>
 	   <div className="mt3 mt0-ns ttu f7 b black-60">Use Case</div>
 	   <UseCaseHeading title={title} subTitle={body} titleClassName="mt2" />

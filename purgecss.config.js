@@ -10,7 +10,7 @@ module.exports = {
   output: "dist/" + cssFileName,
   safelist: {
     standard: ["html", "body", "pre", "code", "p", "pre"],
-    greedy: [/mt/, /br/, /shadow-/, /vh-/, /slide-pane/, /ReactModal/, /mv/]
+    greedy: [/mt/, /br/, /shadow-/, /vh-/, /slide-pane/, /ReactModal/, /mv/, /pa/]
   },
   // got default extractor from Tailwind
   defaultExtractor: content => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []
