@@ -138,7 +138,7 @@ const howCols = [{
   containerClass: "w-100 w-100-m w-50-l nt0 nl0 nt0-m nl0-m nt4-l nl6-l",
   title: "3. Generate your(NFT)self",
   description: <p>
-		 Generate multiple scenes that showcase one or more of your collectibles. Everything stays on-chain as a single token. Your GENFT. <strong>You can also create parallel-universe renders of your collection. </strong>
+		 Generate multiple scenes that showcase one or more of your collectibles. Everything stays on-chain as a single token. <strong>You can also create parallel-universe renders of your collection. </strong>
 	       </p>
 }]
 
