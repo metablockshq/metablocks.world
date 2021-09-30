@@ -155,21 +155,29 @@ export default {
 
     const allPosts = R.map(
       R.compose(stripPostContents, stripRelatedPosts),
-      sortedPostPages);
+      sortedPostPages
+    );
 
     const allPostsByYear = byPublishYear(allPosts)
 
     const recentPosts = R.take(8, allPosts);
-
 
     const sitePages = getSitePages(content);
     const authorPages = getAuthorPages(content)
 
     return [{
       path: "/",
-      template: "src/templates/GenftLanding.js",
+      template: "src/templates/MetaBlocksLanding.js",
       getData: () => ({recentPosts, tags: topTags(allPosts, 5)})
-     }, 
+    }, {
+      path: "/mint-inventory",
+      template: "src/templates/InventoryMinter.js",
+      getData: () => {}
+    }, {
+      path: "/dashboard",
+      template: "src/templates/Dashboard.js",
+      getData: () => {}
+    },
     // {
     //   path: "/blog",
     //   template: "src/templates/Blog",

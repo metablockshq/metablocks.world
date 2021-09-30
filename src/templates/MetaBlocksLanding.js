@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import {Parallax, ParallaxLayer} from"@react-spring/parallax"
 
 import Footer from "../components/Footer";
+import Shell from "../components/Shell";
 import {MetaBlocksNav} from "../components/Nav"
 import img from "../utils/image"
 import useWindowSize from "../utils/hooks/useWindowSize"
@@ -34,7 +35,6 @@ import instagramPost from "../images/genft/instagram-post.png"
 import podcast from "../images/genft/podcast.png"
 import minecraft from "../images/genft/minecraft.png"
 
-import solanaLogo from "../images/genft/solana.svg"
 
 const pastelBlue = "#D8E8EA"
 const darkGreen = "#367856"
@@ -75,7 +75,7 @@ const Heading = ({title, subTitle, titleClassName = ""}) =>
        </div>)
 
 const Hero = ({openSignupDialog}) =>
-      (<div className="pt4 mt5 tc dt w-90 br3 center" style={{backgroundColor: darkGreen, color: offWhite}}>
+      (<div className="pt4 dt w-90 br3 center" style={{backgroundColor: darkGreen, color: offWhite}}>
 	 <div className="dtc v-mid tc">
 	   <div className="w-90 f5 f4-ns w-80m w-40-l center">
 	     Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
@@ -282,21 +282,6 @@ const UseCases = () => {
 	  </div>)
 }
 
-const SolanaBadge = () =>
-      (<div className="fixed pa1 bottom-0"
-	    style={{
-	      backgroundColor: "rgba(0, 0, 0, 0.64)",
-	      backdropFilter: "saturate(180%) blur(5px)",
-	      borderRadius: "0 8px 0 0"
-	    }}
-       >
-	 <img src={solanaLogo} alt="Solana Logo" className="mr2"
-	      style={{height: 8}} />
-	 <span className="bl b--white-60 ph1 white b f7">
-	   Ignition Hackathon Project
-	 </span>
-       </div>)
-
 const comps = [
   Hero,
   HowItWorks,
@@ -309,20 +294,18 @@ const comps = [
 const Landing = () => {
   const [signupDialogOpen, setSignupDialogOpen] = useState(false)
   const openSignupDialog = () => setSignupDialogOpen(true)
-  return (<>
-	    <MetaBlocksNav
-	      signupDialogOpen={signupDialogOpen} setSignupDialogOpen={setSignupDialogOpen}
-	      onConnectWalletClick={openSignupDialog}
-	    />
+  const NavComponent = <MetaBlocksNav
+			 signupDialogOpen={signupDialogOpen}
+			 setSignupDialogOpen={setSignupDialogOpen}
+			 onConnectWalletClick={openSignupDialog}
+		       />
+
+  return (<Shell nav={NavComponent}>
 	    {comps.map((Comp, i) =>
 	      <React.Fragment key={i}>
 		<Comp openSignupDialog={openSignupDialog} />
 	      </React.Fragment>)}
-
-	    <Footer />
-
-	    <SolanaBadge />
-	  </>)
+	  </Shell>)
 }
 
 export default Landing;

@@ -19,8 +19,10 @@ const SEO = ({title, subTitle, tags, type, publishedOn,
 	 {tags && <meta property="article:tag" content={tags} />}
 
 	 {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+	 <meta name="twitter:card" content="summary_large_image" />
 	 {heroImg && heroImg.indexOf('https://') === -1 &&
-	  <meta property="og:image" content={`https://krimlabs.com${heroImg}`} />}
+	  <meta property="og:image" content={`https://metablocks.world${heroImg}`} />}
        </Head>)
 
 const ArticleStructuredData = ({title, subTitle, heroImg, publishedOn, url, authorName, tags}) =>

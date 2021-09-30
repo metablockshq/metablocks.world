@@ -20,6 +20,11 @@
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@react-spring/parallax": "^9.2.4",
+    "@solana/wallet-adapter-base": "^0.6.0",
+    "@solana/wallet-adapter-react": "^0.12.3",
+    "@solana/wallet-adapter-react-ui": "^0.5.0",
+    "@solana/wallet-adapter-wallets": "^0.10.0",
+    "@solana/web3.js": "^1.29.2",
     "axios-hooks": "^2.7.0",
     "change-case": "^4.1.1",
     "chokidar": "^3.3.1",

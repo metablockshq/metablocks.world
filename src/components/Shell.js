@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 
-import Nav from "./Nav";
 import Footer from "./Footer";
+import SolanaBadge from "./SolanaBadge";
 import colors from "../utils/colors";
 
 const Shell = ({attributeFreepik, nav: NavComponent, children}) => {
@@ -17,11 +17,12 @@ const Shell = ({attributeFreepik, nav: NavComponent, children}) => {
   }, [pathname]);
 
   return (<div className="">
-	    {NavComponent ? <NavComponent /> : <Nav />}
-	    <div className="pt4" style={{minHeight: "90vh"}}>
+	    {NavComponent}
+	    <div className="pt5" style={{minHeight: "90vh"}}>
 	      {children}
 	    </div>
-	    <Footer attributeFreepik={attributeFreepik} />
+	    <Footer />
+	    <SolanaBadge />
 	   </div>);
 };
 
