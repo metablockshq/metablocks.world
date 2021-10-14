@@ -3,7 +3,6 @@ import {Root, Routes, Head} from 'react-static';
 import {Route, Switch} from 'react-router-dom';
 
 import SEO from "./components/SEO"
-import {SolanaProviders} from "./components/SolanaWallet"
 
 import './tachyons.min.css';
 import './app.css'
@@ -36,21 +35,19 @@ const Favicons = () =>
 
 const App = () => {
   return (<Root>
-	    <SolanaProviders>
-	      <Favicons />
-	      <SEO
-		title="Meta Blocks - NFT Evolution Protocol"
-		subTitle="Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces."
-		heroImg="/img/genft/og.png"
-		tags="meta blocks, meta blocks world, solana, ignition hackathon, nfts, nft evolution"
-	      />
+	    <Favicons />
+	    <SEO
+	      title="Meta Blocks - NFT Evolution Protocol"
+	      subTitle="Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces."
+	      heroImg="/img/genft/og.png"
+	      tags="meta blocks, meta blocks world, solana, ignition hackathon, nfts, nft evolution"
+	    />
 
-	      <React.Suspense fallback={<Loading />}>
-		<Switch>
-		  <Route component={Routes} />
-		</Switch>
-	      </React.Suspense>
-	    </SolanaProviders>
+	    <React.Suspense fallback={<Loading />}>
+	      <Switch>
+		<Route component={Routes} />
+	      </Switch>
+	    </React.Suspense>
 	  </Root>)
 };
 
