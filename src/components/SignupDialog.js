@@ -84,7 +84,7 @@ const SignupDialog = ({open, onDismiss}) => {
 	      <div className="pointer f6 black-80 fr dn dn-m dib-l" onClick={onDismiss}>⤬ close</div>
 	      <img src={launch} alt="Rocket launching" className="h3 h3-m h4-l mt3 mt3-m mt0-l ml2 fl" style={{}} />
 	      <h2 className="tc mv2 f4 f3-ns">We are not quite ready yet !</h2>
-	      <div className="tc mt3 black-60">Check the devnet demo at: <a href="https://app.metablocks.world" target="_blank">app.metablocks.world</a> or signup for a free drop</div>
+	      <div className="tc mt3 black-60">Check the devnet demo at: <a className="blue underline pointer" href="https://app.metablocks.world" target="_blank">app.metablocks.world</a> or signup for a free drop</div>
 	      <div className="lh-copy f4 tc black-80 dn">But we can contact you as soon as base layers are ready to mint.</div>
 
 
