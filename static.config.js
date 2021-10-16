@@ -170,12 +170,8 @@ export default {
       template: "src/templates/MetaBlocksLanding.js",
       getData: () => ({recentPosts, tags: topTags(allPosts, 5)})
     }, {
-      path: "/mint-inventory",
-      template: "src/templates/InventoryMinter.js",
-      getData: () => {}
-    }, {
-      path: "/dashboard",
-      template: "src/templates/Dashboard.js",
+      path: "/gleam-thank-you",
+      template: "src/templates/GleamThankYou.js",
       getData: () => {}
     },
     // {
