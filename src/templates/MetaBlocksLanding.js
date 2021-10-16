@@ -6,6 +6,7 @@ import Shell from "../components/Shell";
 import {MetaBlocksNav} from "../components/Nav"
 import img from "../utils/image"
 import useWindowSize from "../utils/hooks/useWindowSize"
+import config from "../config"
 
 import heroIllustration from "../images/genft/hero-character-on-lounge-chair.png"
 
@@ -28,6 +29,8 @@ import instagramPost from "../images/genft/instagram-post.png"
 import podcast from "../images/genft/podcast.png"
 import minecraft from "../images/genft/minecraft.png"
 
+import loveSign from "../images/genft/love-sign.png"
+
 import "./yt.css"
 
 const pastelBlue = "#D8E8EA"
@@ -36,6 +39,8 @@ const lightGreen = "#C8DCC6"
 const offWhite = "#FFF7D4"
 const peach = "#F1A889"
 const lavendar = "#ebe5ff"
+
+const {gleamLink} = config
 
 const Button = ({label, onClick = () => {}}) =>
   (<a className="link br-pill ph3 pv2 mb2 dib white bg-light-red b f3" href="#"
@@ -284,8 +289,27 @@ const IntroAndDemo = () => (<div className="w-90 center flex flex-wrap justify-b
   />
 </div>)
 
+const GiveAway = () => (
+  <div className="w-90 center lh-copy mt3 br3 pv2 ph4"
+       style={{backgroundColor: "#C4E0FA"}}>
+    <div className="flex items-center flex-wrap justify-center">
+      <div className="tc ph3 pt1 w-100 w-auto-ns">
+	<img src={loveSign} className="h3 h4-ns" style={{objectFit: "cover"}} alt="Heart symbol" />
+      </div>
+      <div className="ml0 ml0-m ml3-l black-80 w-100 w-auto-ns tc tc-m tl-l mt3 mt2-m mt0-l">
+	<h2 className="mv0 f4 f3-ns">First drop giveaway</h2>
+	<p className="mt0 mb3 f6 f5-ns">Vote for us on the Solana Igntion Hackathon and get the first mainnet drop delivered to your wallet.</p>
+	<a href={gleamLink}
+	  className="link br-pill ph3 pv1 mb2 dib white bg-blue b f5"
+	   target="_blank">Enter giveaway</a>
+      </div>
+    </div>
+  </div>
+)
+
 const comps = [
   Hero,
+  GiveAway,
   IntroAndDemo,
   HowItWorks,
   DataNotRenders,

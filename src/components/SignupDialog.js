@@ -7,7 +7,7 @@ import config from "../config"
 
 import launch from "../images/genft/launch.png"
 
-const {discordInviteLink, twitterLink} = config
+const {discordInviteLink, twitterLink, gleamLink} = config
 
 const signupFAQs = [{
   title: "How to get an item from the second drop?",
@@ -15,7 +15,7 @@ const signupFAQs = [{
 	Meta Blocks launch event on <strong>Twitter</strong>. Follow us <a className="blue b" target="_blank" href={twitterLink}>@MetaBlockshHQ</a> to stay in the loop.</p>
 }, {
   title: "How to get an item from the first drop?",
-  body: <p>The first drop will be sent to community members who vote for us at the Ignite Hackathon. Getting a project like this started entails a lot of work and enthusiasm. Sending the first drop to our first voters is our way of saying thank you. Join <a className="blue b" target="_blank" href={discordInviteLink}>our Discord</a> to get a ping when voting starts.</p>
+  body: <p>The first drop will be sent to community members who vote for us at the Ignite Hackathon. Getting a project like this started entails a lot of work and enthusiasm. Sending our first mainnet drop to our first voters is our way of saying thank you. Vote for us using <a className="blue b" target="_blank" href={gleamLink}>Gleam</a> to get the first drop.</p>
 }, {
   title: "Can I get all three drops ?",
   body: <p>Yes! There is no restriction about that. Just add your email, follow us on Twitter and join our Discord to get notified about the drops.</p>
