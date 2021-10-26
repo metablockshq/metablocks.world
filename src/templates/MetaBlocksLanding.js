@@ -479,7 +479,6 @@ const GiveAway = () => (
 
 const comps = [
   Hero,
-  GiveAway,
   IntroAndDemo,
   HowItWorks,
   DataNotRenders,
