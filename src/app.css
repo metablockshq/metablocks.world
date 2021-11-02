@@ -28,39 +28,55 @@
 }*/
 
 body {
-	margin: 0;
-  	padding: 0;
-  	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    	sans-serif;
-	/* Adjust font size */
-	font-size: 100%;
-	-webkit-text-size-adjust: 100%;
-	/* Font varient */
-	font-variant-ligatures: none;
-	-webkit-font-variant-ligatures: none;
-	/* Smoothing */
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	font-smoothing: antialiased;
-	-webkit-font-smoothing: antialiased;
-	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  /* Adjust font size */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  /* Font varient */
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  /* Smoothing */
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 /*Love from Blueprint js*/
 .bp3-dark .bp3-text-muted {
-	color: #a7b6c2;
+  color: #a7b6c2;
 }
 
 .sheet-border {
-    border-radius: 16px 16px 0 0;
+  border-radius: 16px 16px 0 0;
 }
 
-textarea:focus, input:focus{
-    outline: none;
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+/*50% divs*/
+@media only screen and (max-width: 1278px) {
+  /* Styles here */
+  .fifty-hundred {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1278px) {
+  /* Styles here */
+  .fifty-hundred {
+    width: 49.2%;
+  }
 }

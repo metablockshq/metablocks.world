@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import Shell from "../components/Shell";
 import { MetaBlocksNav } from "../components/Nav";
 import img from "../utils/image";
-import useWindowSize from "../utils/hooks/useWindowSize";
 import config from "../config";
 
 import heroIllustration from "../images/genft/hero-character-on-lounge-chair.png";
@@ -375,31 +374,23 @@ const UseCase = ({ title, body, image, containerClass, containerStyle }) => (
 );
 
 const UseCases = () => {
-  const windowSize = useWindowSize();
   return (
     <div
       className="w-90 flex-wrap center flex flex-row justify-between"
       id="use-cases"
     >
       {useCases.map((u) => (
-        <UseCase
-          key={u.title}
-          containerClass={"mt3"}
-          containerStyle={{ width: windowSize.width > 1278 ? "49.2%" : "100%" }}
-          {...u}
-        />
+        <UseCase key={u.title} containerClass={"mt3 fifty-hundred"} {...u} />
       ))}
     </div>
   );
 };
 
 const Video = ({ ytId, title, subTitle, action }) => {
-  const windowSize = useWindowSize();
   return (
     <div
-      className="w-100 br3 ph4 pt4 pb3 mt3"
+      className="w-100 br3 ph4 pt4 pb3 mt3 fifty-hundred"
       style={{
-        width: windowSize.width > 1278 ? "49.2%" : "100%",
         backgroundColor: lavendar,
       }}
     >

@@ -49,6 +49,7 @@ const BaseNav = ({ backgroundColor, leftItem, links, rightItem }) => {
         style={{
           backgroundColor: backgroundColor || "rgba(255, 255, 255, 0.64)",
           backdropFilter: "saturate(180%) blur(5px)",
+          height: 52,
           paddingLeft: "5%",
           paddingRight: "5%",
         }}

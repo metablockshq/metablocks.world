@@ -31,7 +31,7 @@ const SolanaBadge = () => (
     <MqItem
       imgSrc={solanaLogo}
       imgAlt="Solana Logo"
-      title="Solana Ignition Hackathon Project"
+      title="Powered by Solana"
     />
   </div>
 );
