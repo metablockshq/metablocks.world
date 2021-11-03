@@ -62,6 +62,8 @@ The artists get to keep 95% of the sales amount. The artist can also add an addt
 ### 2. Stakeholder loop
 In order to create the platform, the investors supply with initial capital and know-how. This entails risk and the investors need to be remunerated in proportion of the risks they endure. Other stake holders like the advisors or marketing partners also partake in this risky endeveour and need to be remunerated accordingly. 
 
+![Stakeholder Loop Diagram](/img/content/pages/tokenomics/investor-loop.png?large)
+
 Each stakeholder is remunerated in Meta Blocks tokens. This tokens unlock on a schedule. The stakeholder can sell these tokens on secondary markets, or stake them in the Meta Blocks program to avail a share of the platoform fee collected on sales of the drops. Staking provides benefits in the form of dividends, appreciation and buy-backs. More on this in the Token Supply section.
 
 ## Meta Blocks token supply ($MBK / ᵯ)
@@ -116,4 +118,25 @@ Until the tokenomics schedule is tested and encoded on-chain, the platform plans
 The $MMBK tokens will be available only for a private sale and will be exchnged for $MBK tokens when the governance launches on-chain.
 
 ## Voting system
-### 51% voting attacks
+The voting program has the potential to determine two aspects of the platform:
+1. Program variables like primary and secondary sales fee percentage, dividend payout percentage and percentage of the profits to be used for buy-backs.
+2. Intangible decisions, for example changes to protocol, change in direction of the product or reacting to market
+
+The intagible decision could also include adding more tangible variables to the on-chain program.
+
+### Calling for a vote
+Any token holder can call for a vote by pleding to burn $MBK tokens (TODO: What's the minimum number of tokens required to call a vote?). Token holders vote by transferring tokens to the voting program. The votes are counted in accordance to with the Quadratic Voting pattern (TODO: Quadratic increases exposure to governance attacks).
+
+The caller can set the vote burn percentage (b%), ie. what percent of the tokens transferred as votes will be burnt. The burn ensures that the short-term and the long-term interest of the proposal is aligned with the interests of the community at large.
+
+If the proposal doesn't receive a minimum of x% of token supply as votes, then the proposal is dismissed as irrelevant. If the minimum threshold of votes is crossed, the onus is on the platform to implement the proposed changes or protest.
+
+### Governance attacks / 51% attacks
+A large proportion of $MBK token owners can collude to pass an unfavourable proposal. To prevent cases like these, every proposal will have a 7 day cool-down period in which it can be vetoed. A veto can be raised by passing the same amount of tokens to burn as the caller of the vote. If a veto is raised, the proposal goes back to voting phase, with the catch the the required vote percent (x%) and burn percent (2b%) is doubled.
+
+If the vote passes again, the veto pledge is burnt and the original voters only burn the original amount (b%) not 2b% of the votes. If the vote decsion is overturned, the veto pledge is reimbursed and voters end up buring (2b%) of their votes.
+
+TODO: Simulate ranges for b and x
+
+## Key Burning
+TODO: At what stage does Meta Blocks platform becomes truly community owned. What are the risks to this model. How can these risks be mitigate?
