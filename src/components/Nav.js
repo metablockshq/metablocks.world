@@ -6,13 +6,6 @@ import SignupDialog from "../components/SignupDialog";
 import config from "../config";
 import colors from "../utils/colors";
 
-import mountainFlag from "../images/genft/mountain-flag.png";
-import hourGlass from "../images/genft/hour-glass.png";
-import phoneChat from "../images/genft/phone-chat.png";
-import moneyVault from "../images/genft/money-vault.png";
-import tokenGraph from "../images/genft/token-graph.png";
-import chartStats from "../images/genft/chart-stats.png";
-
 const { discordInviteLink, twitterLink } = config;
 
 const NavItem = ({ l }) => {
@@ -49,7 +42,7 @@ const BaseNav = ({ backgroundColor, leftItem, links, rightItem }) => {
         style={{
           backgroundColor: backgroundColor || "rgba(255, 255, 255, 0.64)",
           backdropFilter: "saturate(180%) blur(5px)",
-          height: 52,
+          height: 48,
           paddingLeft: "5%",
           paddingRight: "5%",
         }}
@@ -59,7 +52,7 @@ const BaseNav = ({ backgroundColor, leftItem, links, rightItem }) => {
           {links.map((l) => (
             <NavLink
               key={l.label}
-              activeClassName={l.activeClassName}
+              activeClassName={l.activeClassName || "bb b--green"}
               className={`ml4 bb bw2 b--white-05 ${l.restingClassName || ""}`}
               to={l.to}
               target={l.targetBlank && "_blank"}
@@ -110,12 +103,7 @@ const BaseLeftItem = () => (
   </NavLink>
 );
 
-const metaBlocksLinks = ({ onConnectWalletClick }) => [
-  {
-    label: "Use cases",
-    to: "#use-cases",
-    // icon: mountainFlag
-  },
+const metaBlocksLinks = [
   {
     label: "Discord",
     to: { pathname: discordInviteLink },
@@ -131,7 +119,6 @@ const metaBlocksLinks = ({ onConnectWalletClick }) => [
   {
     label: "Timeline",
     to: "#timeline",
-    icon: hourGlass,
     hidden: true,
   },
   {
@@ -141,34 +128,29 @@ const metaBlocksLinks = ({ onConnectWalletClick }) => [
   {
     label: "Whitepaper",
     to: "/whitepaper",
-    icon: chartStats,
     hidden: true,
   },
   {
-    label: "Connect wallet",
-    to: "/",
-    onClick: onConnectWalletClick,
-    restingClassName: "bg-light-red br-pill ph3 white b",
+    label: "Blog",
+    to: "/blog",
+  },
+  {
+    label: "Join waitlist",
+    to: "/waitlist",
+    restingClassName: "br-pill bg-light-red white b ph3",
+    activeClassName: "x",
   },
 ];
 
-const MetaBlocksNav = ({
-  signupDialogOpen,
-  setSignupDialogOpen,
-  onConnectWalletClick = () => {},
-}) => (
-  <>
-    <SignupDialog
-      open={signupDialogOpen}
-      onDismiss={() => setSignupDialogOpen(false)}
-    />
+const MainNav = () => {
+  return (
     <BaseNav
       backgroundColor="rgba(255, 255, 255, 0.8)"
-      links={metaBlocksLinks({ onConnectWalletClick }).filter((l) => !l.hidden)}
+      links={metaBlocksLinks.filter((l) => !l.hidden)}
       leftItem={<BaseLeftItem />}
     />
-  </>
-);
+  );
+};
 
 const TokenomicsLeftItem = () => (
   <div className="flex f5 f4-ns">
@@ -186,4 +168,4 @@ const TokenomicsNav = ({ rightItem }) => (
   <BaseNav links={[]} leftItem={<TokenomicsLeftItem />} />
 );
 
-export { MetaBlocksNav, TokenomicsNav };
+export { MainNav, TokenomicsNav };

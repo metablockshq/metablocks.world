@@ -1,14 +1,20 @@
 import React, { useState } from "react";
+import { useRouteData } from "react-static";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import { useHistory, Link } from "react-router-dom";
 
+import PostCard from "../components/PostCard";
 import Footer from "../components/Footer";
 import Shell from "../components/Shell";
+import EmojiHeading from "../components/EmojiHeading";
 import { MetaBlocksNav } from "../components/Nav";
 import img from "../utils/image";
 import config from "../config";
 
 import heroIllustration from "../images/genft/hero-character-on-lounge-chair.png";
 
+import rightArrowDoodle from "../images/icons/right-arrow-doodle.png";
+import writingHand from "../images/emoji/writing-hand.png";
 import howMint from "../images/genft/how-mint.png";
 import howDrop from "../images/genft/how-drop.png";
 import howGenerate from "../images/genft/how-generate.png";
@@ -54,12 +60,15 @@ const Button = ({ label, onClick = () => {} }) => (
   </a>
 );
 
-const CTA = ({ containerClassName = "", onClick }) => (
-  <div className={`${containerClassName}`}>
-    <div className="mb2 i">Get started now!</div>
-    <Button label="Connect wallet" onClick={onClick} />
-  </div>
-);
+const CTA = ({ containerClassName = "", onClick }) => {
+  const history = useHistory();
+  return (
+    <div className={`${containerClassName}`}>
+      <div className="mb2 i">Get started now!</div>
+      <Button label="Join waitlist" onClick={() => history.push("/waitlist")} />
+    </div>
+  );
+};
 
 const FloatingBanner = () => (
   <div
@@ -220,7 +229,7 @@ const HowItWorks = ({ openSignupDialog }) => (
 
 const DataNotRenders = ({ openSignupDialog }) => (
   <div
-    className="w-90 center br3 pv3 mv2 tc ph3 ph2-m ph0-ns"
+    className="w-90 center br3 pv3 mv3 tc ph3 ph2-m ph0-ns"
     style={{ backgroundColor: pastelBlue }}
   >
     <Heading
@@ -389,7 +398,7 @@ const UseCases = () => {
 const Video = ({ ytId, title, subTitle, action }) => {
   return (
     <div
-      className="w-100 br3 ph4 pt4 pb3 mt3 fifty-hundred"
+      className="w-100 w-25-ns br3 ph4 pt4 pb3 mt3 fifty-hundred"
       style={{
         backgroundColor: lavendar,
       }}
@@ -417,7 +426,7 @@ const IntroAndDemo = () => (
     />
     <Video
       ytId="l3lO8yovRaU"
-      title="Solana: Ignition Hackathon Demo"
+      title="Minimum Viable Demo"
       subTitle={
         <>
           A walkthrough of the Meta Blocks app and the stickers Chrome
@@ -468,34 +477,16 @@ const GiveAway = () => (
   </div>
 );
 
-const comps = [
-  Hero,
-  IntroAndDemo,
-  HowItWorks,
-  DataNotRenders,
-  // <Multiverse/>,
-  // <ParallelUniverse />,
-  UseCases,
-];
-
 const Landing = () => {
-  const [signupDialogOpen, setSignupDialogOpen] = useState(false);
-  const openSignupDialog = () => setSignupDialogOpen(true);
-  const NavComponent = (
-    <MetaBlocksNav
-      signupDialogOpen={signupDialogOpen}
-      setSignupDialogOpen={setSignupDialogOpen}
-      onConnectWalletClick={openSignupDialog}
-    />
-  );
+  const { recentPosts, tags } = useRouteData();
 
   return (
-    <Shell nav={NavComponent}>
-      {comps.map((Comp, i) => (
-        <React.Fragment key={i}>
-          <Comp openSignupDialog={openSignupDialog} />
-        </React.Fragment>
-      ))}
+    <Shell>
+      <Hero openSignupDialog={() => {}} />
+      <IntroAndDemo posts={recentPosts} />
+      <HowItWorks />
+      <UseCases />
+      <DataNotRenders />
     </Shell>
   );
 };

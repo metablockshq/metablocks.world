@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+import { MainNav } from "./Nav";
 import Footer from "./Footer";
 import SolanaBadge from "./SolanaBadge";
 import colors from "../utils/colors";
 
-const Shell = ({ attributeFreepik, nav: NavComponent, children }) => {
+const Shell = ({ attributeFreepik, children }) => {
   const { pathname } = useLocation();
 
   // scroll to top of page when pathname changes
@@ -18,7 +19,7 @@ const Shell = ({ attributeFreepik, nav: NavComponent, children }) => {
 
   return (
     <div className="">
-      {NavComponent}
+      <MainNav />
       <div className="pt5" style={{ minHeight: "60vh" }}>
         {children}
       </div>

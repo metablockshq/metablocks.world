@@ -193,18 +193,24 @@ export default {
         template: "src/templates/GleamThankYou.js",
         getData: () => {},
       },
-      // {
-      //   path: "/blog",
-      //   template: "src/templates/Blog",
-      //   getData: () => ({allPostsByYear, allPosts, tags: topTags(allPosts, 10)})
-      // }, {
-      //   path: "/courses/tinycanva-clojure-for-react-developers",
-      //   template: "src/templates/Tinycanva",
-      //   getData: () => {}
-      // },
-      // ...postPages,
+      {
+        path: "/waitlist",
+        template: "src/templates/Waitlist.js",
+        getData: () => {},
+      },
+
+      {
+        path: "/blog",
+        template: "src/templates/Blog",
+        getData: () => ({
+          allPostsByYear,
+          allPosts,
+          tags: topTags(allPosts, 10),
+        }),
+      },
+      ...postPages,
       ...sitePages,
-      // ...authorPages
+      ...authorPages,
     ];
   },
 };

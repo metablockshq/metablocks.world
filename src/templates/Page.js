@@ -10,20 +10,11 @@ import colors from "../utils/colors";
 
 const Page = () => {
   const { contents, title, heroImg } = useRouteData();
-  const [signupDialogOpen, setSignupDialogOpen] = useState(false);
-  const openSignupDialog = () => setSignupDialogOpen(true);
-  const NavComponent = (
-    <TokenomicsNav
-      signupDialogOpen={signupDialogOpen}
-      setSignupDialogOpen={setSignupDialogOpen}
-      onConnectWalletClick={openSignupDialog}
-    />
-  );
 
   return (
     <React.Fragment>
       <SEO title={`Meta Blocks / ${title}`} />
-      <Shell nav={NavComponent}>
+      <Shell>
         {title && <div className="ttu f6 b tc pv4 w-100 bg-top">{title}</div>}
         <div className="pt5">
           <Markdown contents={contents} />
