@@ -140,17 +140,17 @@ This avatar will eventually be used for streaming and podcasting. The real world
 
 [Sol Army](https://www.solarmy.io/) is a collection of soldier NFTs with upgradeable attributes like weapons, clothing, strength etc. 
 
-A project like Sol Army can use the Meta Blocks upgrade standard to update their soldiers. In this case, since all parts are swappable, they can start with an empty base layer and drop other attributes as NFTs. As the use buys this drop, their soldiers will start evolving.
+A project like Sol Army can use the Meta Blocks upgrade standard to update their soldiers. In this case, since all parts are swappable, they can start with an empty base layer and drop other attributes as NFTs. As the user buys this drop, their soldiers will start evolving.
 
 ## Degen Apes and other PFP projects
 
 *Note: Meta Blocks is not affiliated to Degen Ape Academy in any way. This is only an opinion.*
 
-NFT collections with huge communities can partner with Meta Blocks, and bring their NFTs as drops in the Meta Blocks avatar universe. This will allow a user of an ape (or punk or penguin or whatever) to wear their ape as a mask or a jump suit and express themselves in the web2 space. 
+NFT collections with existing communities can partner with Meta Blocks, and bring their NFTs as drops in the Meta Blocks avatar universe. This will allow a user of an ape (or punk or penguin) to wear their ape as a mask or a jump suit in the Meta Blocks universe. And enable them to express themselves in the web2 space in the form of stickers.
 
 ## Conclusion
 
-Meta Blocks is the missing piece in making NFTs sustainable. The Meta Blocks protocol abstract the combination of NFTs and exposes it as a simple contract that can be used by other projects.
+Meta Blocks is the missing piece in making NFTs sustainable. The Meta Blocks protocol abstracts the combination of NFTs and exposes it as a simple open-source contract.
 
 It does so while maintaining all the properties of traditional NFTs and using all platforms that exist to support them. 
 
