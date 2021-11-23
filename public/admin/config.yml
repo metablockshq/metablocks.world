@@ -4,18 +4,20 @@ backend:
 
 # Develop on a local repo
 # Should be commented on master
-# local_backend: true
+local_backend: true
 
 # Allow drafts
 publish_mode: editorial_workflow
 
-media_folder: "/public/img/content/posts"
-public_folder: "/img/content/posts"
+
+media_folder: "/public/img/content"
 
 collections:
   - name: "tags"
     label: "Tags"
     folder: "content/tags"
+    media_folder: "/public/img/content/tags"
+    public_folder: "/img/content/tags"
     create: true
     fields:
       - {label: "Slug", name: "slug", widget: "string"}
@@ -29,6 +31,8 @@ collections:
     create: true
     slug: "{{name}}"
     summary: "{{name}} - T:{{twitter}}"
+    media_folder: "/public/img/content/authors"
+    public_folder: "/img/content/authors"
     fields:
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Name", name: "name", widget: "string"}
@@ -50,6 +54,8 @@ collections:
     slug: "{{year}}-{{slug}}"
     sortable_fields: ["publishedOn", "title"]
     summary: "{{publishedOn}} - {{title}}"
+    media_folder: "/public/img/content/posts"
+    public_folder: "/img/content/posts"
     fields:
     - {label: "Published on", name: "publishedOn", widget: "date", required: false}
     - {label: "Title", name: "title", widget: "string"}
@@ -61,4 +67,18 @@ collections:
     - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true}
     - {label: "Related posts", name: "relatedSlugs", widget: "relation", collection: "posts", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
     - {label: "Author", name: "author", widget: "relation", collection: "authors", search_fields: ["name"], value_field: "slug", display_fields: ["name"]}
+    - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    sortable_fields: ["title"]
+    summary: "{{title}}"
+    media_folder: "/public/img/content/pages"
+    public_folder: "/img/content/pages"
+    fields:
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Slug", name: "slug", widget: "string"}
     - {label: "Body", name: "body", widget: "markdown"}

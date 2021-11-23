@@ -22,7 +22,7 @@ if (process.env.REACT_STATIC_ENV === "development") {
 const getSitePages = (content) => {
   const sitePagesObj = R.mapObjIndexed(
     (val, key, obj) => ({
-      path: `/${key}`,
+      path: `/${val.slug}`,
       template: "src/templates/Page",
       getData: () => val,
     }),

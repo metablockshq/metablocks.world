@@ -1,5 +1,6 @@
 ---
 title: Careers
+slug: careers
 ---
 Most careers page start with a list of perks and pictures of team members playing football on a beach. But we believe that the ultimate satisfaction comes from the work we do.
 
