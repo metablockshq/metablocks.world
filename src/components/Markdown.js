@@ -72,7 +72,7 @@ const transform = {
     );
   },
   img: ({ src, alt }) => {
-    const srcParts = src.split("?");
+    const srcParts = src.split ? src.split("?") : [null];
     const size = srcParts[1];
     const sizeClass = !size
       ? "w-90 w-80-m w-50-l"
