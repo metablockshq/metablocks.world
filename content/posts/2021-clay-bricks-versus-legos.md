@@ -52,7 +52,7 @@ https://twitter.com/brianjcho/status/1460648264919699459
 
 This works by leveraging an escrow contract. All NFTs are sent to this escrow contract and the contract in turn returns a JSON object which lists all the NFTs held by a user. This JSON object is on-chain and can be read by applications in a permissionless way.
 
-There are four main components in this standard: universes, base layers, augmentation and reduction.
+There are four main components in this standard: universes, base layers, augmentation and retraction.
 
 ## Universes
 
@@ -87,9 +87,11 @@ Once you have a base layer, it's time for you to upgrade. In the Meta Blocks uni
 
 Augmentation locks the upgrade (NFT for skin, weapon etc) in the contract and updates the state of your base in a specific universe.
 
-## Reduction
+## Retraction
 
-If augmentation is buying new stuff, then reduction is selling what you already own. This is done by removing the NFT from escrow, and updating the JSON state of the universe.
+If augmentation is buying new stuff, then retraction is selling what you already own. This is done by removing the NFT from escrow, and updating the JSON state of the universe.
+
+![Meta Blocks Protocol Retraction flow](/img/content/posts/screenshot-2021-11-23-at-5.43.00-pm.png?medium)
 
 Once the NFT is out of the escrow, it shows up as a normal token in your wallet.
 In future, we might also have a combined representation of all NFTs stored on the escrow.
