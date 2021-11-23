@@ -4,12 +4,13 @@ backend:
 
 # Develop on a local repo
 # Should be commented on master
-local_backend: true
+# local_backend: true
 
 # Allow drafts
 publish_mode: editorial_workflow
 
 
+# Here only because it 
 media_folder: "/public/img/content"
 
 collections:
