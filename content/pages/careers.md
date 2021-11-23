@@ -21,15 +21,19 @@ We are not just about work. In fact, we are deeply inspired by the principles of
 If you are a fan of Basecamp, you'd feel like home at Krim.
 
 ### Every employee is entitled to:
-- A generous library and book budget. Read all you want to. We'd even buy you a Kindle if you prefer portability.
-- Weekly team lunches and movie screenings.
-- Premium health insurance (which we wish you never need to claim)
-- Informal work environment with minimal heirarchy.
-- Work retreats and recreational trips (this is the part where we go to a beach).
-- Relocation support and guidance.
-- Anything else? Just ask. We might say no, but you have a no already if you don't ask.
 
-~We have open positions in New Delhi and look forward to hearing from you.~
+* A generous library and book budget. Read all you want to. We'd even buy you a Kindle if you prefer portability.
+* Weekly team lunches and movie screenings.
+* Premium health insurance (which we wish you never need to claim)
+* Informal work environment with minimal hierarchy.
+* Work retreats and recreational trips (this is the part where we go to a beach).
+* Anything else? Just ask. We might say no, but you have a no already if you don't ask.
 
+### **Open Positions**
 
-**We don't have any positions open at the moment.**
+* Senior Full Stack Developer
+* Senior 3d Artist/ Character designer/  Animator
+* Rust/Anchor/Solana Blockchain developer
+* Community Manager
+* Inbound Marketing Specialist
+* Partnerships sales and account manager
