@@ -14,6 +14,7 @@ module.exports = {
       /mt/,
       /br/,
       /shadow-/,
+      /w-/,
       /vh-/,
       /slide-pane/,
       /ReactModal/,
