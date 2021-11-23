@@ -22,3 +22,7 @@ I'm 19 and I dropped out after high school to work full time in the blockchain i
 # Contact me
 
 The best way to reach out to me is on Twitter. You can also drop a line at Meta Block's Twitter and Discord to reach me.
+
+
+
+g
