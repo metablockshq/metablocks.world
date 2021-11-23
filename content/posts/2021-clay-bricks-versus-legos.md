@@ -12,6 +12,8 @@ relatedSlugs:
   - lets-start-with-blocks
 author: shivekkhurana
 ---
+*Lego blocks and clay bricks image courtesy of [Freepik](www.freepik.com)*
+
 # The rigidity of non fungible tokens
 
 The year 2021 saw the first bull run of digital collectibles. Digital ownership is a revolutionary concept, but we believe that we are not using it to its potential. Profile pictures are cool for sure, but what if you want to change the color of your ape's t-shirt?
