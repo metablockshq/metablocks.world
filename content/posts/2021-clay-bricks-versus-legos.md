@@ -24,7 +24,7 @@ This is similar to what happened when web2 came into being, and publishers start
 
 # Attribute based upgrades
 
-I lied when I said that NFTs don't evolve. A more true statement is that NFTs evolve but not predictably. Like clay brick structures can be modified to some extent at the cost, but the original structure gets compromised.
+Attribute based upgrades are clumsy and unpredictably. Like clay brick structures can be modified to some extent, but the original structure gets compromised.
 
 There are smart contracts that can be used to update the metadata or attributes of an NFT. One good example is [Genopets](https://www.genopets.me/) where your pet evolves over time by modifying attributes. 
 
