@@ -160,6 +160,6 @@ If you are a game or NFT project and want to use Meta Blocks you backend, please
 
 ## To stay updated on Meta Blocks 
 
-* Follow us on [Twitter ](https://twitter.com/MetaBlocksHQ)
+* Follow us on [Twitter](https://twitter.com/MetaBlocksHQ)
 * Join our [waitlist](https://metablocks.world/waitlist)
 * Hop on our [Discord server ](https://discord.com/invite/YUJq9kW3RV)to join the conversation
