@@ -158,4 +158,8 @@ It does so while maintaining all the properties of traditional NFTs and using al
 
 If you are a game or NFT project and want to use Meta Blocks you backend, please contact us. We are happy to chat!
 
-If you are a user of Bitmoji and are excited by the possibility of NFT avatars, join our waitlist. Can't control the excitement? Say "hi!" on discord and be a part of our community.
+## To stay updated on Meta Blocks 
+
+* Follow us on [Twitter ](https://twitter.com/MetaBlocksHQ)
+* Join our [waitlist](https://metablocks.world/waitlist)
+* Hop on our [Discord server ](https://discord.com/invite/YUJq9kW3RV)to join the conversation
