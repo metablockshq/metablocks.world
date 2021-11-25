@@ -1,5 +1,5 @@
 ---
-title: Senior 3d Artist/ Character designer/ Animator
+title: Senior 3d Artist/ Character Designer/ Animator
 slug: senior-3d-artist
 ---
 Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces.
