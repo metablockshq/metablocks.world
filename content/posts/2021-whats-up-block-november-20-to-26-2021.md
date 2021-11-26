@@ -1,9 +1,9 @@
 ---
 publishedOn: 2021-11-26T13:36:06.934Z
 title: What's up, Block? -  November 20 to 26, 2021
-subTitle: ""
+subTitle: Updates for partners and friends on building the Meta Blocks Protocol
 featured: false
-heroImg: /img/content/posts/5vm2lm.jpeg
+heroImg: /img/content/posts/updates.jpg
 slug: whats-up-block-november-20-to-26-2021
 tags:
   - product-update
