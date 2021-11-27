@@ -49,6 +49,8 @@ But we fear a new kind of lock in.
 
 When you are in a metaverse and meet your colleagues, you establish a relation with them. Avatars are not compatible across metaverses. This means that companies will have the ability to lock you in their universe, hence leading to the next iteration of data hoarding monopoly. 
 
-The friction of changing your avatar is directly proportional to the time you have used it for. Not being able to change your avatar leads to not being able to change your metaverse of choice. This sunk-cost-fallacy is something platforms like Facebook are optimized to cash on.
+The friction of changing your avatar is directly proportional to the time you have used it for. Not being able to change your avatar leads to not being able to change your metaverse of choice. 
+
+> This sunk-cost-fallacy is something platforms like Facebook are optimized to cash on.
 
 ## The owners of identity own the Metaverse
