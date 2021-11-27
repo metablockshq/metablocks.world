@@ -54,3 +54,7 @@ The friction of changing your avatar is directly proportional to the time you ha
 > This sunk-cost-fallacy is something platforms like Facebook are optimized to cash on.
 
 ## The owners of identity own the Metaverse
+
+Meta Blocks is an open source protocol and avatar system that stays on chain. Meta Blocks avatars are composed of NFTs and our protocol helps combine NFTs together. The combined NFT Avatars can be carried across universes. With Meta Blocks, your Avatar belongs to you. Truly. On-chain. 
+
+We have been folled many times by big tech companies. It's time that we take matter in our own wallet.
