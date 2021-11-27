@@ -77,7 +77,7 @@ const FAQS = ({ faqItems }) => {
   );
 };
 
-const SignupDialog = ({ open, onDismiss }) => {
+const SignupDialog = ({ open, onDismiss, showTitle }) => {
   const [email, setEmail] = useState("");
 
   const [{ data, loading }, execute] = useAxios(
@@ -102,28 +102,34 @@ const SignupDialog = ({ open, onDismiss }) => {
   };
 
   return (
-    <div className="ph0 ph3-m ph4-l pv4 pv6-ns w-90 w-90-m w-60-l center">
+    <>
       <img
         src={launch}
         alt="Rocket launching"
         className="h3 h3-m h4-l mt3 mt3-m mt0-l ml2 fl"
-        style={{}}
+        style={{ marginTop: showTitle ? 0 : -20 }}
       />
-      <h2 className="tc mv2 f4 f3-ns">We are not quite ready yet !</h2>
-      <div className="tc mt3 black-60">
-        Check the devnet demo at:{" "}
-        <a
-          className="blue underline pointer"
-          href="https://app.metablocks.world"
-          target="_blank"
-        >
-          app.metablocks.world
-        </a>{" "}
-        or signup for a free drop
-      </div>
-      <div className="lh-copy f4 tc black-80 dn">
-        But we can contact you as soon as base layers are ready to mint.
-      </div>
+      {showTitle && (
+        <h2 className="tc mv2 f4 f3-ns">We are not quite ready yet !</h2>
+      )}
+      {showTitle && (
+        <div className="tc mt3 black-60">
+          Check the devnet demo at:{" "}
+          <a
+            className="blue underline pointer"
+            href="https://app.metablocks.world"
+            target="_blank"
+          >
+            app.metablocks.world
+          </a>{" "}
+          or signup for a free drop
+        </div>
+      )}
+      {showTitle && (
+        <div className="lh-copy f4 tc black-80 dn">
+          But we can contact you as soon as base layers are ready to mint.
+        </div>
+      )}
 
       <div
         className="pv4 pv5-ns ph3 br2 mt4 tc"
@@ -157,10 +163,9 @@ const SignupDialog = ({ open, onDismiss }) => {
           <div className="">Email saved successfully, thanks!</div>
         )}
       </div>
-
-      <FAQS faqItems={signupFAQs} />
-    </div>
+    </>
   );
 };
 
 export default SignupDialog;
+export { FAQS, signupFAQs };

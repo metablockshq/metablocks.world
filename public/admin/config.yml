@@ -4,14 +4,14 @@ backend:
 
 # Develop on a local repo
 # Should be commented on master
-# local_backend: true
+local_backend: true
 
 # Allow drafts
 publish_mode: editorial_workflow
 
 
-# Here only because it 
-media_folder: "/public/img/content"
+# Here only because it is needed by netlify schema
+media_folder: "/public/img/content/posts"
 
 collections:
   - name: "tags"
@@ -82,4 +82,5 @@ collections:
     fields:
     - {label: "Title", name: "title", widget: "string"}
     - {label: "Slug", name: "slug", widget: "string"}
+    - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
     - {label: "Body", name: "body", widget: "markdown"}

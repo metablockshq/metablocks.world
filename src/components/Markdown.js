@@ -49,7 +49,8 @@ const transform = {
   a: ({ href, children }) => {
     if (href.startsWith("https://gist.github.com")) {
     }
-    if (href.startsWith("https://twitter.com")) {
+    // we only want to embed status, not twitter profiles
+    if (href.startsWith("https://twitter.com") && href.includes("/status/")) {
       const id = getId(href);
       return <TwitterVideoEmbed id={id} />;
     }

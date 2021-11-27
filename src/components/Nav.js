@@ -16,6 +16,7 @@ const NavItem = ({ l }) => {
           <img src={l.icon} className="mr2" style={{ height: 32 }} />
         </div>
       )}
+      {l.emoji && <span className="mr1">{l.emoji}</span>}
       <div className="f4">{l.label}</div>
     </div>
   );
@@ -109,12 +110,14 @@ const metaBlocksLinks = [
     to: { pathname: discordInviteLink },
     // icon: phoneChat,
     targetBlank: true,
+    emoji: "💬",
   },
   {
     label: "Twitter",
     to: { pathname: twitterLink },
     // icon: phoneChat,
     targetBlank: true,
+    emoji: "🐦",
   },
   {
     label: "Timeline",
@@ -124,6 +127,7 @@ const metaBlocksLinks = [
   {
     label: "Tokenomics",
     to: "/tokenomics",
+    emoji: "💹",
   },
   {
     label: "Whitepaper",
@@ -133,12 +137,25 @@ const metaBlocksLinks = [
   {
     label: "Blog",
     to: "/blog",
+    emoji: "✍🏻",
+  },
+  {
+    label: "Careers",
+    to: "/careers",
+    emoji: "💼",
+  },
+  {
+    label: "Contact",
+    to: "/contact",
+    emoji: "☎️",
   },
   {
     label: "Join waitlist",
     to: "/waitlist",
     restingClassName: "br-pill bg-light-red white b ph3",
+    // why is this needed?
     activeClassName: "x",
+    emoji: "🤍",
   },
 ];
 

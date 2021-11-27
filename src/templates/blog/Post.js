@@ -5,6 +5,7 @@ import convert from "htmr";
 
 import colors from "../../utils/colors";
 import Shell from "../../components/Shell";
+import Subscribe from "../../components/Susbscribe.js";
 import SEO, { ArticleStructuredData } from "../../components/SEO";
 import Nav from "../../components/Nav";
 import PostCard from "../../components/PostCard";
@@ -192,6 +193,9 @@ const Post = () => {
         <div className="center w-90 w-80-m w-50-l">
           <div className="f4">
             {canonicalUrl && <CanonicalRef canonicalUrl={canonicalUrl} />}
+          </div>
+          <div className="mt5">
+            <Subscribe />
           </div>
           {relatedPosts.length > 0 && <Related relatedPosts={relatedPosts} />}
         </div>

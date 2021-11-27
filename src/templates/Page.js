@@ -15,7 +15,6 @@ const Page = () => {
     <React.Fragment>
       <SEO title={`Meta Blocks / ${title}`} />
       <Shell>
-        {title && <div className="ttu f6 b tc pv4 w-100 bg-top">{title}</div>}
         <div className="pt5">
           <Markdown contents={contents} />
         </div>

@@ -157,9 +157,3 @@ Meta Blocks is the missing piece in making NFTs sustainable. The Meta Blocks pro
 It does so while maintaining all the properties of traditional NFTs and using all platforms that exist to support them. 
 
 If you are a game or NFT project and want to use Meta Blocks you backend, please contact us. We are happy to chat!
-
-## To stay updated on Meta Blocks 
-
-* Follow us on [Twitter](https://twitter.com/MetaBlocksHQ)
-* Join our [waitlist](https://metablocks.world/waitlist)
-* Hop on our [Discord server ](https://discord.com/invite/YUJq9kW3RV)to join the conversation
