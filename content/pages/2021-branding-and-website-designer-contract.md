@@ -26,6 +26,7 @@ We’re looking for a contract based branding and website designer to establish 
 
 * Design Meta Blocks logo and branding
 * Design Meta Blocks' online presence including the website, blog and social profiles
+* Design posts, featured image, partnerships and other templates for social media and blogs
 * Develop a design system (typography, colors etc) that can be used by the UI designers
 
 ## Perks include:
