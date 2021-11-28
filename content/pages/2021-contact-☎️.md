@@ -1,5 +1,5 @@
 ---
-title: Contact ☎️
+title: Contact
 slug: contact
 ---
 # Contact us
