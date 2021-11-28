@@ -2,11 +2,12 @@
 title: Careers
 slug: careers
 ---
-# Careers
+# Careers 💼
 
 ### Open Positions
 
 * [👩🏼‍🎨 Senior 3d Artist/ Character Designer/ Animator](/senior-3d-artist)
+* [✨ Branding and Website Designer - Contract](/branding-and-website-designer-contract)
 
 ### Benefits
 
