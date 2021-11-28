@@ -1,5 +1,5 @@
 ---
-title: Branding and Website Designer [Contract]
+title: ✨ Branding and Website Designer [Contract]
 slug: branding-and-website-designer-contract
 tags:
   - careers
