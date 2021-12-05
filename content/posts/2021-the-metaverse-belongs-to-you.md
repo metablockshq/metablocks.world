@@ -1,9 +1,9 @@
 ---
-publishedOn: 2021-11-27T17:29:06.562Z
+publishedOn: 2021-12-05T17:29:06.562Z
 title: The Metaverse belongs to you
 subTitle: Corporations will do their best to restrict you to their universe and
   it's time we start fighting to stay free
-featured: false
+featured: true
 heroImg: /img/content/posts/metaverse-belongs-to-you.jpg
 slug: the-metaverse-belongs-to-you
 tags:
