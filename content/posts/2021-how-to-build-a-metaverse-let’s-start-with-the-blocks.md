@@ -11,6 +11,7 @@ tags:
   - nft
 relatedSlugs:
   - clay-bricks-vs-legos
+  - the-metaverse-belongs-to-you
 author: sarthakkhurana
 ---
 NFTs took over the world by storm earlier this year. The booming bull market was the perfect incubator to test out the concept of digital ownership. 
