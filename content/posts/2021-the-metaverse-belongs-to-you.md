@@ -13,6 +13,8 @@ relatedSlugs:
   - lets-start-with-blocks
 author: shivekkhurana
 ---
+\*Photo by [愚木混株 cdd20](https://unsplash.com/@cdd20?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/shatter?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
+
 The world is unfair and full of monopolies. An invisible example is the passport. By being born in a certain country, your life expectancy, access to capital, sanitation and medical services goes up drastically. 
 
 There is nothing we can do about these physical constraints. The geographical division of countries have been in equilibrium for decades.
@@ -49,7 +51,7 @@ But we fear a new kind of lock in.
 
 When you are in a metaverse and meet your colleagues, you establish a relation with them. Avatars are not compatible across metaverses. This means that companies will have the ability to lock you in their universe, hence leading to the next iteration of data hoarding monopoly. 
 
-The friction of changing your avatar is directly proportional to the time you have used it for. Not being able to change your avatar leads to not being able to change your metaverse of choice. 
+The friction of changing your avatar is directly proportional to the time you have used it for. This is the classic sunk-cost fallacy that platforms like Facebook are optimised to cash on.
 
 > This sunk-cost-fallacy is something platforms like Facebook are optimized to cash on.
 
@@ -57,4 +59,6 @@ The friction of changing your avatar is directly proportional to the time you ha
 
 Meta Blocks is an open source protocol and avatar system that stays on chain. Meta Blocks avatars are composed of NFTs and our protocol helps combine NFTs together. The combined NFT Avatars can be carried across universes. With Meta Blocks, your Avatar belongs to you. Truly. On-chain. 
 
-We have been folled many times by big tech companies. It's time that we take matter in our own wallet.
+[Meta Blocks protocol](/blog/clay-bricks-vs-legos) can be used by games and other NFT projects to create NFT based upgradable characters, and move characters across universes.
+
+We have been fouled many times by big tech companies. It's time that we take matter in our own wallet.
