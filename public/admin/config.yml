@@ -4,7 +4,7 @@ backend:
 
 # Develop on a local repo
 # Should be commented on master
-# local_backend: true
+local_backend: true
 
 # Allow drafts
 publish_mode: editorial_workflow
@@ -84,3 +84,62 @@ collections:
     - {label: "Slug", name: "slug", widget: "string"}
     - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
     - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "jobs"
+    label: "Jobs"
+    folder: "content/jobs"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["title"]
+    summary: "{{title}}"
+    media_folder: "/public/img/content/jobs"
+    public_folder: "/img/content/jobs"
+    fields:
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Slug", name: "slug", widget: "string"}
+    - {label: "Published?", name: "isPublished", widget: "boolean", default: false}
+    - {label: "Full time?", name: "isFullTime", widget: "boolean", default: true}
+    - {label: "Emoji", name: "emoji", widget: "string", default: "👩🏼‍🎨"}
+    - {label: "Intro", name: "intro", widget: "markdown", required: false}
+    - {label: "Responsibilities", name: "responsibilities", widget: "markdown"}
+    - {label: "Requirements", name: "requirements", widget: "markdown"}
+    - {label: "Minimum Salary", name: "minSalary", widget: "number", required: false}
+    - {label: "Maximum Salary", name: "maxSalary", widget: "number", required: false}
+    - {label: "Application form link", name: "applyLink", widget: "string"}
+
+  - name: "guides"
+    label: "Guides"
+    folder: "content/guides"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["title"]
+    summary: "{{title}}"
+    media_folder: "/public/img/content/guides"
+    public_folder: "/img/content/guides"
+    fields:
+    - {label: "Hero image", name: "heroImg", widget: "image", required: false, media_folder: "/public/img/content/guides", public_folder: "/img/content/guides"}
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Slug", name: "slug", widget: "string"}
+    - {label: "Published?", name: "isPublished", widget: "boolean", default: false}
+    - {label: "Emoji", name: "emoji", widget: "string", default: "👩🏼‍🎨"}
+    - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "guidePages"
+    label: "Guide Pages"
+    folder: "content/guide-pages"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["title"]
+    summary: "{{title}}"
+    media_folder: "/public/img/content/guide-pages"
+    public_folder: "/img/content/guide-pages"
+    fields:
+    - {label: "Chapter number", name: "chapterNumber", widget: "number", required: true}
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Sub title", name: "subTitle", widget: "string", required: false}
+    - {label: "Slug", name: "slug", widget: "string"}
+    - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
+    - {label: "Guide", name: "guide", widget: "relation", collection: "guides", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: false, required: true}
+    - {label: "Body", name: "body", widget: "markdown"}
+
+

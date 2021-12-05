@@ -1,5 +1,6 @@
 import path from "path";
 import jdown from "jdown";
+import marked from "marked";
 import { getHighlighter } from "shiki";
 import { rebuildRoutes } from "react-static/node";
 import chokidar from "chokidar";
@@ -40,6 +41,36 @@ const getAuthorPages = (content) => {
       getData: () => a,
     }),
     R.values(content.authors)
+  );
+};
+
+const stripJobContents = (job) =>
+  R.omit(["requirements", "responsibilities", "intro"], job);
+
+const getPublishedJobs = (content) =>
+  R.filter((j) => j.isPublished, R.values(content.jobs));
+
+const jobsWithoutContents = (content) =>
+  R.map((j) => stripJobContents(j), getPublishedJobs(content));
+
+/* Takes an object and a list of keys containing markdown.
+ * Returns a new maps where values of the keys is converted from Markdown to Html.
+ */
+const convertMdKeysToHtml = (obj, keysToConvert) => {
+  return R.mapObjIndexed((value, key) => {
+    return R.contains(key, keysToConvert) ? marked.parse(value) : value;
+  }, obj);
+};
+
+const getJobPages = (content) => {
+  return R.map(
+    (j) => ({
+      path: `/jobs/${j.slug}`,
+      template: "src/templates/Job",
+      getData: () =>
+        convertMdKeysToHtml(j, ["requirements", "responsibilities", "intro"]),
+    }),
+    getPublishedJobs(content)
   );
 };
 
@@ -181,6 +212,7 @@ export default {
 
     const sitePages = getSitePages(content);
     const authorPages = getAuthorPages(content);
+    const jobPages = getJobPages(content);
 
     return [
       {
@@ -208,9 +240,16 @@ export default {
           tags: topTags(allPosts, 10),
         }),
       },
+      {
+        path: "/careers",
+        template: "src/templates/Careers",
+        getData: () => ({ jobs: jobsWithoutContents(content) }),
+      },
+
       ...postPages,
       ...sitePages,
       ...authorPages,
+      ...jobPages,
     ];
   },
 };
