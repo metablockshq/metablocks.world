@@ -2,7 +2,6 @@
 publishedOn: 2021-11-23T01:25:09.531Z
 title: Clay bricks versus Legos
 subTitle: NFTs are rigid because there is no standard for upgrading them
-canonicalUrl: ""
 featured: false
 heroImg: /img/content/posts/legos-vs-clay-bricks-hero.jpg
 slug: clay-bricks-vs-legos
@@ -10,7 +9,9 @@ tags:
   - nft
 relatedSlugs:
   - lets-start-with-blocks
+  - the-metaverse-belongs-to-you
 author: shivekkhurana
+canonicalUrl: ""
 ---
 *Lego blocks and clay bricks image courtesy of [Freepik](www.freepik.com)*
 
