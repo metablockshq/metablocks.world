@@ -15,9 +15,6 @@ const introMd = `
 
 
   Meta Blocks creates customizable NFTs that will act as the basis and bridge between all the multiverses in a metaverse and be your virtual identity on web2.
-
-
-  We’re looking for a contract based branding and website designer to establish the design language of our product.
 `;
 
 const whyUsMd = `
