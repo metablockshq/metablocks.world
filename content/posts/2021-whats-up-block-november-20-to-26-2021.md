@@ -16,7 +16,7 @@ Welcome to the first issue of “What’s up, block?”, our update aggregation 
 
 It has been a lovely last week for the Meta Blocks protocol.
 
-**Good:**
+## Good:
 
 * A fund closely connected to MonkeDAO 🦍and other famous NFT projects agreed to join the cap table 💫 (verbal commitment 🙊). Their support will make it easy to onboard existing projects as partners in the Meta Blocks universe
 * In terms of seed round, there is enough interest to close right now, but we think it’s important to bring a few more strategic partners 🤝
@@ -27,7 +27,7 @@ It has been a lovely last week for the Meta Blocks protocol.
 * Tweet to amplify: https://twitter.com/MetaBlocksHQ/status/1463580843012624388
 * We are hosting a 🐦Twitter Space with @solNFTradar on “The Metaverse belongs to YOU”.  Please join us and bring your friends 🤗. Sarthak will reach out with details.
 
-**Not Good:**
+## Not Good:
 
 * India is going to ban crypto (yet again 😅) but this time it’s a bill not a draft. This means that crypto businesses will face hurdles, so we decided against an Indian entity
 * We are in talks with a law firm 💼 in Singapore, a law firm in Mumbai and two online services that help setting up a crypto friendly entity. Figuring out liquidity and invoicing issues. Hope this will be done soon.
