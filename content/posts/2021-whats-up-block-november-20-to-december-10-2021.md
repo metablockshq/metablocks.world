@@ -19,7 +19,7 @@ The last two weeks have been hectic, but the progress has been good. Meta Blocks
 ## Good:
 
 * We've set up our legal entities and figured out our invoicing and liquidity issues, thanks to the law firms we spoke to in Singapore. 💼
-* We recieved our first tranch of liquidity from one of our investors 💵, so we're going in full build mode.
+* We recieved our first tranch of liquidity 💵, so we're going in buidl mode.
 * We've stopped actively seeking investors and strategic partners for our seed round, but there's still space for some "big dogs" that have shown their interest. 
 * Sarthak has shortlisted a handful of promising 3D artists and we'll close soon. 👩🏼‍🎨 
 * We've partnered with a digital fashion brand 👗 who'll release their clothing as drops for Meta Blocks avatar. 
