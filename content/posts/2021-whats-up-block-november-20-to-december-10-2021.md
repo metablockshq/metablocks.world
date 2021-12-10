@@ -4,11 +4,12 @@ title: What's up, Block? - November 20 to December 10, 2021
 subTitle: Updates for partners and friends on building the Meta Blocks Protocol
 featured: false
 heroImg: /img/content/posts/updates.jpg
-slug: Whats-up-Block-November-20-to-december-10-2021
+slug: whats-up-block-november-20-to-december-10-2021
 tags:
-  - blockchain
+  - product-update
 relatedSlugs:
   - whats-up-block-november-20-to-26-2021
+  - the-metaverse-belongs-to-you
 author: sarthakkhurana
 ---
 Welcome back to “What’s up, block?”, our update aggregation for partners and friends. 
