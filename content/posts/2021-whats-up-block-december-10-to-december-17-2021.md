@@ -15,11 +15,11 @@ author: shivekkhurana
 ---
 Welcome back to “What’s up, block?”, our update aggregation for partners and friends. 
 
-This week was our first product building week. We spent more time on the product that legals, fund-raising and finances. 
+This week was our first product building week. We spent more time on the product than legals, fund-raising and finances. 
 
 ## Good:
 * We have onboarded an experienced Solana Developer to help accelerate the protocol development. He has already started the research, but the formal start date is Monday, December 20, 2021 🥳
-* Sarthak also did a great job with the lead artist search. We have found an amazing artist who understands the composability aspect of our system. He too starts working full time from December 20, 2021 🔥
+* Sarthak did a great job with the lead artist search. We have found an amazing artist who understands the composability aspect of our system. He too starts working full time from December 20, 2021 🔥
 * We had our second Twitter Space. The attendance was a bit weak, but this was a controlled experiment. The next one will be in collaboration with some other accounts. We hope to get a pump in our following after that. 
 
 ## Not Good:
