@@ -20,7 +20,11 @@ const Join = () => (
 const Subscribe = () => {
   return (
     <div>
-      <SignupDialog />
+      <SignupDialog
+        subTitle="At Meta Blocks, we are building the NFT upgradation protocol. Drop your details to get notified when we launch 💁🏼‍♀️"
+        campaignId={"subscribe-via-post-page"}
+        emailLabel={"Enter your best email"}
+      />
 
       <div className="mt2">
         <Marquee gradientWidth={40}>

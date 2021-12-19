@@ -5,7 +5,9 @@ import config from "../config";
 
 import launch from "../images/genft/launch.png";
 
-const { discordInviteLink, twitterLink, gleamLink } = config;
+import "./signupDialog.css";
+
+const { discordInviteLink, twitterLink, gleamLink, campaignEndpoint } = config;
 
 const signupFAQs = [
   {
@@ -77,12 +79,12 @@ const FAQS = ({ faqItems }) => {
   );
 };
 
-const SignupDialog = ({ open, onDismiss, showTitle }) => {
+const SignupDialog = ({ title, subTitle, campaignId, bgColor, emailLabel }) => {
   const [email, setEmail] = useState("");
 
-  const [{ data, loading }, execute] = useAxios(
+  const [{ data, loading, error, response }, execute] = useAxios(
     {
-      url: "https://ennso0fjk7rokdz.m.pipedream.net",
+      url: campaignEndpoint,
       method: "POST",
     },
     {
@@ -94,8 +96,8 @@ const SignupDialog = ({ open, onDismiss, showTitle }) => {
     if (email.length > 6) {
       execute({
         data: {
-          email: email,
-          createdAt: new Date().toISOString(),
+          email,
+          campaignId: campaignId || false,
         },
       });
     }
@@ -107,39 +109,21 @@ const SignupDialog = ({ open, onDismiss, showTitle }) => {
         src={launch}
         alt="Rocket launching"
         className="h3 h3-m h4-l mt3 mt3-m mt0-l ml2 fl"
-        style={{ marginTop: showTitle ? 0 : -20 }}
+        style={{ marginTop: title ? 0 : -20 }}
       />
-      {showTitle && (
-        <h2 className="tc mv2 f4 f3-ns">We are not quite ready yet !</h2>
-      )}
-      {showTitle && (
-        <div className="tc mt3 black-60">
-          Check the devnet demo at:{" "}
-          <a
-            className="blue underline pointer"
-            href="https://app.metablocks.world"
-            target="_blank"
-          >
-            app.metablocks.world
-          </a>{" "}
-          or signup for a free drop
-        </div>
-      )}
-      {showTitle && (
-        <div className="lh-copy f4 tc black-80 dn">
-          But we can contact you as soon as base layers are ready to mint.
-        </div>
-      )}
+      {title && <h2 className="tc mv2 f4 f3-ns">{title}</h2>}
+      {subTitle && <div className="lh-copy f4 tc black-80">{subTitle}</div>}
 
       <div
         className="pv4 pv5-ns ph3 br2 mt4 tc"
-        style={{ backgroundColor: "#FFE9FB" }}
+        style={{ backgroundColor: bgColor || "#FFE9FB" }}
       >
         <form onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="email" className="db f4 f4-m f3-l">
-            Join waitlist to receive a free item from the{" "}
-            <strong>third drop</strong>
-          </label>
+          {emailLabel && (
+            <label htmlFor="email" className="db f4 f4-m f3-l">
+              {emailLabel}
+            </label>
+          )}
           <input
             id="email"
             placeholder="ex: john@icloud.com"
@@ -151,16 +135,20 @@ const SignupDialog = ({ open, onDismiss, showTitle }) => {
             className="w-90 w-40-m w-30-l db dib-ns input-reset center hover-bg-black hover-white mv3 pa2 ba b--black-20 br-pill mr0 mr2-ns"
           />
 
-          <input
+          <button
             className="w-auto link br-pill ph3 pv2 mb2 dib white bg-light-red b ba b--white"
             onClick={saveEmail}
             type="submit"
             disabled={loading}
-            value={loading ? "..." : "Join"}
-          />
+          >
+            {loading ? <div className="blink">...</div> : "Submit"}
+          </button>
         </form>
-        {data && data.success && (
+        {data && data.msg && !error && (
           <div className="">Email saved successfully, thanks!</div>
+        )}
+        {error && error.response && (
+          <div className="">Error: {error.response.data.msg}</div>
         )}
       </div>
     </>

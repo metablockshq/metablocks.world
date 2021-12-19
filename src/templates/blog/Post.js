@@ -167,7 +167,7 @@ const Post = () => {
         publishedOn={publishedOn}
         authorName={author.name}
         tags={tags}
-        url={`https://krimlabs.com/blog/${slug}`}
+        url={`https://metablocks.world/blog/${slug}`}
         subTitle={subTitle}
       />
 
