@@ -74,6 +74,20 @@ const getJobPages = (content) => {
   );
 };
 
+const getPublishedCampaigns = (content) =>
+  R.filter((j) => j.isPublished, R.values(content.campaigns));
+
+const getCampaignPages = (content) => {
+  return R.map(
+    (c) => ({
+      path: `/campaigns/${c.slug}`,
+      template: "src/templates/Campaign",
+      getData: () => c,
+    }),
+    getPublishedCampaigns(content)
+  );
+};
+
 // need weak inequality check so objects with no `publishedOn` key return false
 const isPublished = (post) => post.publishedOn != null;
 
@@ -213,6 +227,7 @@ export default {
     const sitePages = getSitePages(content);
     const authorPages = getAuthorPages(content);
     const jobPages = getJobPages(content);
+    const campaignPages = getCampaignPages(content);
 
     return [
       {
@@ -225,12 +240,6 @@ export default {
         template: "src/templates/GleamThankYou.js",
         getData: () => {},
       },
-      {
-        path: "/waitlist",
-        template: "src/templates/Waitlist.js",
-        getData: () => {},
-      },
-
       {
         path: "/blog",
         template: "src/templates/Blog",
@@ -250,6 +259,7 @@ export default {
       ...sitePages,
       ...authorPages,
       ...jobPages,
+      ...campaignPages,
     ];
   },
 };

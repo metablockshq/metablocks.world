@@ -3,7 +3,7 @@ backend:
   branch: master
 
 # Develop on a local repo
-# Should be commented on master
+# Should be commented on master, why?
 local_backend: true
 
 # Allow drafts
@@ -16,6 +16,7 @@ media_folder: "/public/img/content/posts"
 collections:
   - name: "tags"
     label: "Tags"
+    slug: "{{fields.slug}}"
     folder: "content/tags"
     media_folder: "/public/img/content/tags"
     public_folder: "/img/content/tags"
@@ -30,7 +31,7 @@ collections:
     label: "Authors"
     folder: "content/authors"
     create: true
-    slug: "{{name}}"
+    slug: "{{fields.slug}}"
     summary: "{{name}} - T:{{twitter}}"
     media_folder: "/public/img/content/authors"
     public_folder: "/img/content/authors"
@@ -52,7 +53,7 @@ collections:
     label: "Posts"
     folder: "content/posts"
     create: true
-    slug: "{{year}}-{{slug}}"
+    slug: "{{year}}-{{fields.slug}}"
     sortable_fields: ["publishedOn", "title"]
     summary: "{{publishedOn}} - {{title}}"
     media_folder: "/public/img/content/posts"
@@ -74,7 +75,7 @@ collections:
     label: "Pages"
     folder: "content/pages"
     create: true
-    slug: "{{year}}-{{slug}}"
+    slug: "{{year}}-{{fields.slug}}"
     sortable_fields: ["title"]
     summary: "{{title}}"
     media_folder: "/public/img/content/pages"
@@ -89,7 +90,7 @@ collections:
     label: "Jobs"
     folder: "content/jobs"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     sortable_fields: ["title"]
     summary: "{{title}}"
     media_folder: "/public/img/content/jobs"
@@ -111,7 +112,7 @@ collections:
     label: "Guides"
     folder: "content/guides"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     sortable_fields: ["title"]
     summary: "{{title}}"
     media_folder: "/public/img/content/guides"
@@ -128,7 +129,7 @@ collections:
     label: "Guide Pages"
     folder: "content/guide-pages"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     sortable_fields: ["title"]
     summary: "{{title}}"
     media_folder: "/public/img/content/guide-pages"
@@ -140,6 +141,24 @@ collections:
     - {label: "Slug", name: "slug", widget: "string"}
     - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
     - {label: "Guide", name: "guide", widget: "relation", collection: "guides", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: false, required: true}
+    - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "campaigns"
+    label: "Campaigns"
+    folder: "content/campaigns"
+    create: true
+    slug: "{{fields.slug}}"
+    sortable_fields: ["slug"]
+    summary: "{{fields.slug}}"
+    media_folder: "/public/img/content/campaigns"
+    public_folder: "/img/content/campaigns"
+    fields:
+    - {label: "Slug (campaign id)", name: "slug", widget: "string"}
+    - {label: "Page Title", name: "title", widget: "string"}
+    - {label: "Page Sub Title", name: "subTitle", widget: "string"}
+    - {label: "Published?", name: "isPublished", widget: "boolean", default: false}
+    - {label: "Email input title", name: "emailInputTitle", widget: "string"}
+    - {label: "Email input background color", name: "emailBgColor", widget: "color"}
     - {label: "Body", name: "body", widget: "markdown"}
 
 

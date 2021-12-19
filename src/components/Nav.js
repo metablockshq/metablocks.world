@@ -151,7 +151,7 @@ const metaBlocksLinks = [
   },
   {
     label: "Join waitlist",
-    to: "/waitlist",
+    to: "/campaigns/website-waitlist",
     restingClassName: "br-pill bg-light-red white b ph3",
     // why is this needed?
     activeClassName: "x",
