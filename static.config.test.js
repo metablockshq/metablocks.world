@@ -13,6 +13,9 @@ const {
   stripRelatedPostsContent,
   injectRelatedPostAuthors,
   injectAuthor,
+  generateGuideIndex,
+  generateGuideIndices,
+  injectGuideIndex,
 } = require("./static.config");
 
 // state to load content to
@@ -298,5 +301,150 @@ describe("injectAuthor()", () => {
   });
   it("strips author contents before injection", () => {
     expect(injectedPost).not.toHaveProperty("data.author.contents");
+  });
+});
+
+describe("generateGuideIndex()", () => {
+  const guidePages = [
+    {
+      path: "/guides/g1",
+      getData: () => ({
+        title: "g1",
+        slug: "g1",
+        emoji: "emoji",
+        heroImage: "img",
+        contents: "<h1>hello</h1>",
+      }),
+    },
+    {
+      path: "/guides/g2",
+      getData: () => ({
+        slug: "g2",
+      }),
+    },
+  ];
+
+  const guideChapterPages = [
+    {
+      path: "/guides/g1/c1",
+      getData: () => ({
+        guideSlug: "g1",
+        chapterNumber: 1,
+        contents: "<h2>c</h1>",
+      }),
+    },
+    {
+      path: "/guides/g1/c2",
+      getData: () => ({
+        guideSlug: "g1",
+        chapterNumber: 2,
+        contents: "<h2>c</h1>",
+      }),
+    },
+    {
+      path: "/guides/g2/c1",
+      getData: () => ({ guideSlug: "g2" }),
+    },
+  ];
+
+  const guideSlug = "g1";
+  const index = generateGuideIndex(guidePages, guideChapterPages, guideSlug);
+
+  it("should create index with guide intro and all guide chapters", () => {
+    expect(index).toHaveProperty("guide");
+    expect(index).toHaveProperty("guide.data");
+    expect(index).toHaveProperty("chapters");
+    expect(index).toHaveProperty("chapters.0.data");
+    expect(index).toHaveProperty("chapters.1.data");
+  });
+
+  it("index.guide.data should have a title, path, emoji and heroImg", () => {
+    expect(index.guide.path).toEqual(guidePages[0].path);
+    const sentData = guidePages[0].getData();
+    expect(index.guide.data.title).toEqual(sentData.title);
+    expect(index.guide.data.slug).toEqual(sentData.slug);
+    expect(index.guide.data.emoji).toEqual(sentData.emoji);
+    expect(index.guide.data.heroImage).toEqual(sentData.heroImage);
+  });
+
+  it("index.guide should not have contents", () => {
+    expect(index.guide.data).not.toHaveProperty("contents");
+  });
+
+  it("index.chapters should be an array with 2 children", () => {
+    expect(index.chapters).toBeInstanceOf(Array);
+    expect(index.chapters).toHaveLength(2);
+  });
+
+  it("index.chapters.data should not have contents", () => {
+    expect(index.chapters[0].data).not.toHaveProperty("contents");
+    expect(index.chapters[1].data).not.toHaveProperty("contents");
+  });
+
+  it("each element of index.chapters should have a path and associated data", () => {
+    R.forEach((c) => {
+      expect(c).toHaveProperty("path");
+      expect(c).toHaveProperty("data");
+
+      expect(c.data).toHaveProperty("guideSlug", guideSlug);
+      expect(c.data).toHaveProperty("chapterNumber");
+    }, index.chapters);
+  });
+
+  it("should return chapters in order of chapterNumber", () => {
+    expect(R.nth(0, index.chapters).data).toHaveProperty("chapterNumber", 1);
+    expect(R.nth(1, index.chapters).data).toHaveProperty("chapterNumber", 2);
+  });
+});
+
+describe("generateGuideIndices()", () => {
+  const guidePages = [
+    {
+      path: "/guides/g1",
+      getData: () => ({
+        slug: "g1",
+        title: "title g1",
+      }),
+    },
+    {
+      path: "/guides/g2",
+      getData: () => ({
+        title: "title g2",
+        slug: "g2",
+      }),
+    },
+  ];
+
+  const guideChapterPages = [
+    {
+      path: "/guides/g1/c1",
+      getData: () => ({ guideSlug: "g1", chapterNumber: 1, slug: "c1" }),
+    },
+    {
+      path: "/guides/g1/c2",
+      getData: () => ({ guideSlug: "g1", chapterNumber: 2, slug: "c2" }),
+    },
+    {
+      path: "/guides/g2/c1",
+      getData: () => ({ guideSlug: "g2", chapterNumber: 1, slug: "c1" }),
+    },
+  ];
+
+  const indices = generateGuideIndices(guidePages, guideChapterPages);
+
+  it("guide slugs should be keys in indices object", () => {
+    expect(indices).toHaveProperty("g1");
+    expect(indices).toHaveProperty("g2");
+  });
+});
+
+describe("injectGuideIndex()", () => {
+  const index = "indexval";
+  const page = { getData: () => ({ a: 1 }) };
+  const injected = injectGuideIndex(page, index);
+
+  it("should inject index to getData fn", () => {
+    expect(injected.getData()).toHaveProperty("index", "indexval");
+    expect(injected.getData()).toHaveProperty("a", 1);
   });
 });

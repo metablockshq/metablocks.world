@@ -8,14 +8,18 @@ import SEO from "../components/SEO";
 import Markdown from "../components/Markdown";
 import colors from "../utils/colors";
 
-const Page = () => {
-  const { contents, title, heroImg } = useRouteData();
+const Guide = () => {
+  const { title, slug, heroImg, emoji, index, contents } = useRouteData();
 
+  console.log(index);
   return (
     <React.Fragment>
-      <SEO title={`Meta Blocks / ${title}`} />
+      <SEO title={`Meta Blocks / Guide / ${title}`} />
       <Shell>
         <div className="pt5">
+          <img alt={`Hero image for ${title}`} src={heroImg} />
+          <p>{emoji}</p>
+          <h1>{title}</h1>
           <Markdown contents={contents} />
         </div>
       </Shell>
@@ -23,4 +27,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Guide;

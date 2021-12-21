@@ -125,22 +125,23 @@ collections:
     - {label: "Emoji", name: "emoji", widget: "string", default: "👩🏼‍🎨"}
     - {label: "Body", name: "body", widget: "markdown"}
 
-  - name: "guidePages"
-    label: "Guide Pages"
-    folder: "content/guide-pages"
+  - name: "guideChapters"
+    label: "Guide Chapters"
+    folder: "content/guideChapters"
     create: true
     slug: "{{fields.slug}}"
     sortable_fields: ["title"]
     summary: "{{title}}"
-    media_folder: "/public/img/content/guide-pages"
-    public_folder: "/img/content/guide-pages"
+    media_folder: "/public/img/content/guide-chapters"
+    public_folder: "/img/content/guide-chapters"
     fields:
     - {label: "Chapter number", name: "chapterNumber", widget: "number", required: true}
+    - {label: "Emoji", name: "emoji", widget: "string", default: "👩🏼‍🎨"}
     - {label: "Title", name: "title", widget: "string"}
     - {label: "Sub title", name: "subTitle", widget: "string", required: false}
     - {label: "Slug", name: "slug", widget: "string"}
     - {label: "Tags", name: "tags", widget: "relation", collection: "tags", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: true, required: false}
-    - {label: "Guide", name: "guide", widget: "relation", collection: "guides", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: false, required: true}
+    - {label: "Guide", name: "guideSlug", widget: "relation", collection: "guides", search_fields: ["title"], value_field: "slug", display_fields: ["title"], multiple: false, required: true}
     - {label: "Body", name: "body", widget: "markdown"}
 
   - name: "campaigns"
