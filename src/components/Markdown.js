@@ -66,6 +66,7 @@ const transform = {
         />
       );
     }
+    // TODO: Use react-router link for internal links
     return (
       <a href={href} target="_blank">
         {children}
