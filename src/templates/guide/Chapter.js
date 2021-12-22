@@ -7,7 +7,8 @@ import GuideContent from "../../components/GuideContent";
 import Markdown from "../../components/Markdown";
 
 const Chapter = () => {
-  const { chapterNumber, title, emoji, index, contents } = useRouteData();
+  const { chapterNumber, title, emoji, index, contents, guideSlug, slug } =
+    useRouteData();
 
   return (
     <React.Fragment>
@@ -17,6 +18,8 @@ const Chapter = () => {
           chapterNumber={chapterNumber}
           title={title}
           emoji={emoji}
+          slug={slug}
+          guideSlug={guideSlug}
           index={index}
           contents={contents}
         />

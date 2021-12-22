@@ -19,7 +19,9 @@ const Guide = () => {
         <GuideContent
           title={title}
           emoji={emoji}
+          slug={slug}
           index={index}
+          heroImg={heroImg}
           contents={contents}
         />
       </Shell>
