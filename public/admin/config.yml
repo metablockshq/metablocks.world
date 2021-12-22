@@ -114,7 +114,7 @@ collections:
     create: true
     slug: "{{fields.slug}}"
     sortable_fields: ["title"]
-    summary: "{{title}}"
+    summary: "{{emoji}} {{title}}"
     media_folder: "/public/img/content/guides"
     public_folder: "/img/content/guides"
     fields:
@@ -131,7 +131,7 @@ collections:
     create: true
     slug: "{{fields.slug}}"
     sortable_fields: ["title"]
-    summary: "{{title}}"
+    summary: "{{guideSlug}} - {{emoji}} {{chapterNumber}}. {{title}}"
     media_folder: "/public/img/content/guide-chapters"
     public_folder: "/img/content/guide-chapters"
     fields:
