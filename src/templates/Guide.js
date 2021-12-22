@@ -6,21 +6,27 @@ import { TokenomicsNav } from "../components/Nav";
 import Shell from "../components/Shell";
 import SEO from "../components/SEO";
 import Markdown from "../components/Markdown";
+import GuideContent from "../components/GuideContent";
 import colors from "../utils/colors";
 
-const Page = () => {
-  const { contents, title, heroImg } = useRouteData();
+const Guide = () => {
+  const { title, slug, heroImg, emoji, index, contents } = useRouteData();
 
   return (
     <React.Fragment>
-      <SEO title={`Meta Blocks / ${title}`} />
+      <SEO title={`Guide / ${emoji} ${title}`} />
       <Shell>
-        <div className="pt5">
-          <Markdown contents={contents} />
-        </div>
+        <GuideContent
+          title={title}
+          emoji={emoji}
+          slug={slug}
+          index={index}
+          heroImg={heroImg}
+          contents={contents}
+        />
       </Shell>
     </React.Fragment>
   );
 };
 
-export default Page;
+export default Guide;

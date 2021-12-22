@@ -88,6 +88,92 @@ const getCampaignPages = (content) => {
   );
 };
 
+/*********
+ * Guides
+ *********/
+const getGuideChapterPages = (content) => {
+  const guideChapterPagesObj = R.mapObjIndexed(
+    (val, key, obj) => ({
+      path: `/guides/${val.guideSlug}/${val.slug}`,
+      template: "src/templates/guide/Chapter",
+      getData: () => val,
+    }),
+    content.guidechapters // why no camelcasing? because jdown doesn't read camel casing on mac
+  );
+
+  return R.values(guideChapterPagesObj);
+};
+
+const getPublishedGuides = (content) =>
+  R.filter((j) => j.isPublished, R.values(content.guides));
+
+const getGuidePages = (content) => {
+  const guidePagesObj = R.mapObjIndexed(
+    (val, key, obj) => ({
+      path: `/guides/${val.slug}`,
+      template: "src/templates/Guide",
+      getData: () => val,
+    }),
+    getPublishedGuides(content)
+  );
+
+  return R.values(guidePagesObj);
+};
+
+const generateGuideIndex = (guidePages, guideChapterPages, guideSlug) => {
+  const guide = R.find(R.propEq("path", `/guides/${guideSlug}`))(guidePages);
+  const chapters = R.filter(
+    (cp) => cp.getData().guideSlug === guideSlug,
+    guideChapterPages
+  );
+
+  const sortedChapters = R.sortBy(R.prop("chapterNumber"), chapters);
+  const chaptersWithData = R.map(
+    (c) => ({
+      ...R.dissoc("getData", c),
+      data: R.dissoc("contents", c.getData()),
+    }),
+    sortedChapters
+  );
+
+  return {
+    guide: {
+      ...R.dissoc("getData", guide),
+      data: R.dissoc("contents", guide.getData()),
+    },
+    chapters: chaptersWithData,
+  };
+};
+
+const generateGuideIndices = (guidePages, guideChapterPages) => {
+  return R.reduce(
+    (acc, g) => {
+      const guideSlug = g.getData().slug;
+      return {
+        ...acc,
+        [guideSlug]: generateGuideIndex(
+          guidePages,
+          guideChapterPages,
+          guideSlug
+        ),
+      };
+    },
+    {},
+    guidePages
+  );
+};
+
+const injectGuideIndex = (page, index) => {
+  return {
+    ...page,
+    getData: () => ({ ...page.getData(), index }),
+  };
+};
+
+/********
+ * Posts
+ ********/
+
 // need weak inequality check so objects with no `publishedOn` key return false
 const isPublished = (post) => post.publishedOn != null;
 
@@ -209,6 +295,8 @@ export default {
     const content = await jdown(contentDir, {
       markdown: markdownOptionsFactory(highlighter),
     });
+
+    // posts
     const publishedPosts = R.filter(isPublished, R.values(content.posts));
     const rawPostPages = postsToPostPages(publishedPosts);
     const txfmFn = transformPostPages(rawPostPages, content.authors);
@@ -224,10 +312,26 @@ export default {
 
     const recentPosts = R.take(8, allPosts);
 
+    //
     const sitePages = getSitePages(content);
     const authorPages = getAuthorPages(content);
     const jobPages = getJobPages(content);
     const campaignPages = getCampaignPages(content);
+
+    const guidePagesWithoutIndex = getGuidePages(content);
+    const guideChapterPagesWithoutIndex = getGuideChapterPages(content);
+    const guideIndices = generateGuideIndices(
+      guidePagesWithoutIndex,
+      guideChapterPagesWithoutIndex
+    );
+    const guidePages = R.map(
+      (g) => injectGuideIndex(g, guideIndices[g.getData().slug]),
+      guidePagesWithoutIndex
+    );
+    const guideChapterPages = R.map(
+      (gc) => injectGuideIndex(gc, guideIndices[gc.getData().guideSlug]),
+      guideChapterPagesWithoutIndex
+    );
 
     return [
       {
@@ -260,6 +364,8 @@ export default {
       ...authorPages,
       ...jobPages,
       ...campaignPages,
+      ...guidePages,
+      ...guideChapterPages,
     ];
   },
 };
@@ -276,4 +382,7 @@ export {
   rawDataToGetData,
   injectRelatedPostAuthors,
   injectAuthor,
+  generateGuideIndex,
+  generateGuideIndices,
+  injectGuideIndex,
 };

@@ -78,6 +78,12 @@ const FooterLegacy = () => (
 
 const Meta = () => (
   <div className="b">
+    <Link to="/guides/handbook" className="dib mr2 underline">
+      Handbook
+    </Link>
+    <Link to="/guides/protocol" className="dib mr2 underline">
+      Protocol Guide
+    </Link>
     <a href="https://twitter.com/MetaBlocksHQ" className="dib mr2 underline">
       Twitter
     </a>
