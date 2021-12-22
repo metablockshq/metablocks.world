@@ -14,7 +14,7 @@ const Guide = () => {
 
   return (
     <React.Fragment>
-      <SEO title={`Meta Blocks / Guide / ${title}`} />
+      <SEO title={`Guide / ${emoji} ${title}`} />
       <Shell>
         <GuideContent
           title={title}

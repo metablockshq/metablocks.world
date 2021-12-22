@@ -12,7 +12,7 @@ const Chapter = () => {
 
   return (
     <React.Fragment>
-      <SEO title={`${title}`} />
+      <SEO title={`${index.guide.data.title} / ${emoji} ${title}`} />
       <Shell>
         <GuideContent
           chapterNumber={chapterNumber}
