@@ -127,13 +127,16 @@ const generateGuideIndex = (guidePages, guideChapterPages, guideSlug) => {
     guideChapterPages
   );
 
-  const sortedChapters = R.sortBy(R.prop("chapterNumber"), chapters);
   const chaptersWithData = R.map(
     (c) => ({
       ...R.dissoc("getData", c),
       data: R.dissoc("contents", c.getData()),
     }),
-    sortedChapters
+    chapters
+  );
+  const sortedChapters = R.sortBy(
+    R.path(["data", "chapterNumber"]),
+    chaptersWithData
   );
 
   return {
@@ -141,7 +144,7 @@ const generateGuideIndex = (guidePages, guideChapterPages, guideSlug) => {
       ...R.dissoc("getData", guide),
       data: R.dissoc("contents", guide.getData()),
     },
-    chapters: chaptersWithData,
+    chapters: sortedChapters,
   };
 };
 
