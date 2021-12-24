@@ -12,7 +12,7 @@ Your invoice should include:
 * Your legal name and address as per your agreement
 * A unique invoice number
 * The date the invoice is issued
-* Payment due date
+* Payment due date (Invoices are due on the last day of the month)
 * Meta Blocks legal entity with which you have the services agreement
 * Description of the service rendered and/or reference to your agreement
 
