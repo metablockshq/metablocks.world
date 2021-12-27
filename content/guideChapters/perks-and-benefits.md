@@ -14,3 +14,5 @@ Every member of the Meta Blocks team is entitled to the following perks:
 You don't need any permission to make the purchase of books or games. Just purchase what you like and add the charges to your invoice. Also add the receipt of the item you purchased to the email.
 
 If your books are purchased in digital format, ping on #general channel so we can maintain a library of books that we have.
+
+NOTE: The benefits are not applicable during the trial period.
