@@ -57,12 +57,27 @@ The indexing service has the following end-points:
 
 TODO: Define this API is defined in more detail, with parameters and responses in a separate chapter.
 
+## NFT wrap program
 
-## NFT exchange service
+The NFT wrap program takes an existing NFT, and returns a wrapped NFT with same attributes as the NFT that was wrapped. This is useful for integrating existing projects upgradeable via the Meta Blocks protocol.
 
-* For pfp projects to get a 3moji compatible drop
+Assume that you are the creator of a pfp project - Mutant Monkeys. Your project has a limited supply of 6879 monkeys with 7 attributes. After the initial mint, you discover the Meta Blocks protocol and want to make your monkeys upgradable.
 
-\-- FUTURE --
+There are two ways to go about this:
+
+### 1. Integrating with 3moji universe
+
+You can use the NFT wrap program to accept the Monkey NFT, and return a 3moji accessory that represents the Monkey NFT, but can be worn by the 3moji avatar. For example, your monkey can become a mask that 3moji avatar can wear.
+
+### 2. Creating your own universe from scratch 
+
+You can use the NFT wrap program to create a base NFT. The you can create a completely new universe, with upgrades that are applicable to your Monkeys.
+
+The NFT wrap program is a bi-directional bridge. You can create wrapped versions of NFTs by storing originals. And can retrieve the original by sending the wrapped version back.
+
+*\-- FUTURE --*
+*NOTE: The following aspects of the protocol are out of scope of the first launch*
+*\-------------*
 
 ## Meta NFT generation
 
@@ -76,4 +91,4 @@ This meta NFT lets you visualise the combination of assets stored in the univers
 
 ## Lending service
 
-* Can be handled at the psuedo level
+The Meta Blocks contract stores all the NFTs are users deposits in an escrow. If a user has a rare NFT, she can choose to lend it to the community and earn passive income on their assets. The lending service works by transferring the ownership of the NFT at the meta NFT level to some other user of the Meta Blocks platform. The original NFT is left untouched, safe in the escrow contract. And can be withdrawn by the rightful owner when the lending period expires. This greatly reduces lending risks.
