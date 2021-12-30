@@ -3,7 +3,7 @@ publishedOn: 2021-12-27T18:37:58.613Z
 title: "Why Do We Need to Upgrade NFTs? "
 subTitle: "The benefits of upgrading NFTs without burning or modifying NFTs "
 featured: true
-heroImg: /img/content/posts/why-upgrade-nfts_.png
+heroImg: /img/content/posts/why-upgrade-nfts_-1-.png
 slug: why-upgrade-nfts
 tags:
   - blockchain
