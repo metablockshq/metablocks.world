@@ -7,6 +7,8 @@ heroImg: /img/content/posts/why-upgrade-nfts_-1-.png
 slug: why-upgrade-nfts
 tags:
   - blockchain
+relatedSlugs:
+  - clay-bricks-vs-legos
 author: sarthakkhurana
 ---
 A few days ago, I spoke to the founder of one of the biggest PFP NFT projects on Solana and they asked me:
