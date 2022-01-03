@@ -30,6 +30,7 @@ module.exports = {
       /nt/,
       /yt/,
       /w-auto/,
+      /shiki/,
     ],
   },
   // got default extractor from Tailwind
