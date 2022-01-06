@@ -1,6 +1,7 @@
 ---
 publishedOn: 2021-12-24T20:01:31.426Z
 title: "The Next Generation of NFTs "
+subTitle: "The Future of NFTs is Dynamic, Composable and Upgradeable "
 featured: false
 heroImg: /img/content/posts/legos-vs-clay-bricks-hero.jpg
 slug: the-next-generation-of-nfts
@@ -10,10 +11,32 @@ relatedSlugs:
   - lets-start-with-blocks
 author: sarthakkhurana
 ---
-Draft 
+The NFT Craze of 2021 has turned the eyes of the world to NFTs and digital ownership. While 2021 was a successful cultural movement that brought the concept of digital ownership to mainstream media, the questions is "What's next?"
 
-Via Into the Metaverse 
+The influx of PFP projects in the later half of 2021 is a testament to the fact that "6900 Pictures of Sci-Fi Cats" isn't cutting it anymore. If you're a part of any NFT server on Discord, I'm sure you must recieve dozens of DMs about an "exciting new project". 
 
-NFTs have surged in popularity over the past few months, but have largely remained static. The next generation of NFTs, powered by oracles, will be dynamic - flexible, adaptable, and capable of responding to external cues and data to level up their capabilities. This talk will review how NFTs have progressed over time, where they're going next, and how new use cases made possible by oracle connectivity stand to revolutionize the sector. Bio: Stephen Fluin is the Head of Developer Relations at Chainlink Labs, bringing over six years of developer advocacy experience to the role. He joined Chainlink Labs after four years at Google, where he was a Developer Relations Lead, and also spent time as a Developer Advocate at Trello. In his role as Head of Developer Relations, Stephen oversees relationships with the far-reaching community building with Chainlink. This includes oversight of developer toolkits, resources, bootcamps, hackathons, and conferences.
+The "Mona Lisa(s)" and "The Last Supper(s)" of the NFT world have already made their mark in hisotry, now we need to look forward.  
 
-https://twitter.com/stephenfluin
+## What's the next generation of NFTs? What's the Future of NFTs? 
+
+NFTs have surged in popularity, but have largely remained static. [Stephen Fluin](https://twitter.com/stephenfluin) of [Chainlink Labs](https://chain.link/) took the stage at "Enter the Metaverse" conference to talk about the future of NFTs. 
+
+> The next generation of NFTs, will be dynamic - flexible, adaptable, and capable of responding to external cues and data to level up their capabilities.
+
+Examples of upgrading NFTs 
+
+SolSoldiers 
+
+Genopets
+
+CloneX
+
+PenguLove 
+
+Aquisition Royale
+
+Async Art 
+
+The next generation of NFTs is dynamic, composable and upgradeable. However, the few rare projects (including the ones that aren't mentioned abouve) that are working on upgradeable NFTs are using proprietary solutions to make their NFTs dynamic. 
+
+If every new project in the future has build a proprietary to make their NFTs dynamic, it would be as if each generation of hamanity had to rediscover the fire by themselves.
