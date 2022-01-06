@@ -39,4 +39,4 @@ Async Art
 
 The next generation of NFTs is dynamic, composable and upgradeable. However, the few rare projects (including the ones that aren't mentioned abouve) that are working on upgradeable NFTs are using proprietary solutions to make their NFTs dynamic. 
 
-If every new project in the future has build a proprietary to make their NFTs dynamic, it would be as if each generation of hamanity had to rediscover the fire by themselves.
+If every new project in the future has build a proprietary to make their NFTs dynamic, it would be as if each generation of hamanity had to rediscover the fire by themselves. We'd be millenniums behind as a species!
