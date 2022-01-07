@@ -1,9 +1,9 @@
 ---
-publishedOn: 2021-12-24T20:01:31.426Z
+publishedOn: 2022-01-06T20:01:31.426Z
 title: "The Next Generation of NFTs "
 subTitle: "The Future of NFTs is Dynamic, Composable and Upgradeable "
 featured: true
-heroImg: https://pbs.twimg.com/media/FICOvklVQAALStI?format=jpg&name=large
+heroImg: /img/content/posts/the-future-of-nfts-1-.png
 slug: next-generation-of-nfts
 tags:
   - blockchain
