@@ -4,7 +4,7 @@ title: "Join the Brotherhood of Meta Knights "
 subTitle: "An Exclusive NFT Reward Program for Active Community Members "
 isPublished: true
 emailInputTitle: Enter your best email
-emailBgColor: "#367856"
+emailBgColor: "#ffe6e5"
 ---
 ![](/img/content/campaigns/the-future-of-nfts.png)
 
@@ -12,7 +12,11 @@ emailBgColor: "#367856"
 
 ### How many Meta Knights NFTs are you giving away?
 
-We're giving away 25 Meta Knight NFTs at "The Future of NFTs" Twitter Space. 
+We're giving away 10 Meta Knight NFTs at "The Future of NFTs" Twitter Space. 
+
+### How will the winners be selected?
+
+Winners will be selected on a "first come first serve" basis. 
 
 ### How to enter the giveaway?
 
