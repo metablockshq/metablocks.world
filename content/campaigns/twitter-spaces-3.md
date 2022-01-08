@@ -1,11 +1,13 @@
 ---
-slug: twitter-spaces-3
+slug: the-future-of-nfts
 title: "Join the Brotherhood of Meta Knights "
 subTitle: "An Exclusive NFT Reward Program for Active Community Members "
 isPublished: true
 emailInputTitle: Enter your best email
 emailBgColor: "#367856"
 ---
+![](/img/content/campaigns/the-future-of-nfts.png)
+
 *FREQUENTLY ASKED QUESTIONS*
 
 ### How many Meta Knights NFTs are you giving away?
