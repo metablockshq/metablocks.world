@@ -1,7 +1,7 @@
 ---
 slug: the-future-of-nfts
-title: "Join the Brotherhood of Meta Knights "
-subTitle: "An Exclusive NFT Reward Program for Active Community Members "
+title: The Future of NFTs
+subTitle: Join the Brotherhood of Meta Knights as we Step into the Future of NFTs
 isPublished: true
 emailInputTitle: Enter your best email
 emailBgColor: "#ffe6e5"
