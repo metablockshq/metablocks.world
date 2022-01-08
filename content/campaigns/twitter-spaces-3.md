@@ -17,3 +17,5 @@ We're giving away 25 Meta Knight NFTs at "The Future of NFTs" Twitter Space.
 * Enter your email address 
 * Join our [Discord](https://discord.com/invite/meta-blocks) 
 * Follow us on [Twitter](https://twitter.com/MetaBlocksHQ)
+
+https://twitter.com/MetaBlocksHQ/status/1468580113163776003
