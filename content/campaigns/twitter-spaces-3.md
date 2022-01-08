@@ -1,5 +1,5 @@
 ---
-slug: Twitter-Spaces-3
+slug: twitter-spaces-3
 title: "Join the Brotherhood of Meta Knights "
 subTitle: "An Exclusive NFT Reward Program for Active Community Members "
 isPublished: true
