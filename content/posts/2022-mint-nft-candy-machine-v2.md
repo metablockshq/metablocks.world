@@ -53,7 +53,7 @@ cd ~/Desktop
 git clone git@github.com:metaplex-foundation/metaplex.git
 ```
 
-You should see the following files in the newly created \`metaplex\` folder:
+You should see the following files in the newly created `metaplex` folder:
 
 ![](/img/content/posts/screenshot-2022-01-24-at-6.51.15-pm.png)
 *Screenshot of the files inside the Metaplex folder*
