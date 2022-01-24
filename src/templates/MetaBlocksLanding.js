@@ -50,7 +50,7 @@ const { gleamLink } = config;
 const Button = ({ label, onClick = () => {} }) => (
   <a
     className="link br-pill ph3 pv2 mb2 dib white bg-light-red b f3"
-    href="#"
+    href="/campaigns/website-waitlist"
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
@@ -65,7 +65,10 @@ const CTA = ({ containerClassName = "", onClick }) => {
   return (
     <div className={`${containerClassName}`}>
       <div className="mb2 i">Get started now!</div>
-      <Button label="Join waitlist" onClick={() => history.push("/waitlist")} />
+      <Button
+        label="Join waitlist"
+        onClick={() => history.push("/campaigns/website-waitlist")}
+      />
     </div>
   );
 };
