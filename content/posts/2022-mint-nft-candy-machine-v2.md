@@ -48,13 +48,13 @@ Metaplex offers a suite of tools and smart contracts (programs) that will ease t
 
 Open the terminal app on your computer. \`cd\` into a directory where you want to store the Metaplex related code. In my case this will be \`~/Desktop\`. Then clone the repository:
 
-\`\``bash
+```bash
 
 cd ~/Desktop
 
 git clone git@github.com:metaplex-foundation/metaplex.git
 
-\`\``
+```
 
 You should see the following files in the newly created \`metaplex\` folder:
 
@@ -64,9 +64,9 @@ You should see the following files in the newly created \`metaplex\` folder:
 
 ### Step 2.2: Build Metaplex CLI code
 
-We have the code but it's not usable yet. We need to fetch its dependancies and compile it. The Metaplex package comes with multiple packages, but we only care about \`cli\`.  To do this, goto the \`js/packages/cli\` folder inside \`metaplex\`, and execute the following commands:
+We have the code but it's not usable yet. We need to fetch its dependancies and compile it. The Metaplex package comes with multiple packages, but we only care about `cli`.  To do this, goto the `js/packages/cli` folder inside `metaplex`, and execute the following commands:
 
-\`\``bash
+```bash
 
 cd packages/cli # we only need to work with CLI
 
@@ -74,9 +74,9 @@ yarn # installs all dependencies
 
 yarn build # compile typescript code to node
 
-\`\``
+```
 
-This will create a folder named \`build\` in the \`cli\` folder. If you run \`node ./build/candy-machine-v2-cli.js\`, you should see the following output:
+This will create a folder named `build` in the `cli` folder. If you run `node ./build/candy-machine-v2-cli.js`, you should see the following output:
 
 ![](/img/content/posts/screenshot-2022-01-24-at-7.00.13-pm.png)
 
