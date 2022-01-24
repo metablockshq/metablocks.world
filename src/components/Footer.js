@@ -93,6 +93,9 @@ const Meta = () => (
     <a href="https://discord.gg/YUJq9kW3RV" className="dib mr2 underline">
       Discord
     </a>
+     <a href="https://www.reddit.com/r/MetaBlocks/" className="dib mr2 underline">
+      Reddit
+    </a>
   </div>
 );
 
