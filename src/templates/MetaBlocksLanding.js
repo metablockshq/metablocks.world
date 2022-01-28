@@ -487,9 +487,9 @@ const Landing = () => {
     <Shell>
       <Hero openSignupDialog={() => {}} />
       <IntroAndDemo posts={recentPosts} />
-      <HowItWorks />
-      <UseCases />
-      <DataNotRenders />
+      {/* <HowItWorks />
+          <UseCases />
+          <DataNotRenders /> */}
     </Shell>
   );
 };
