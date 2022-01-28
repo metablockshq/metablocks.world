@@ -346,7 +346,7 @@ After running this command, you should see 5 NFTs in your wallet. Make sure you 
 
 ![](/img/content/posts/minted-assets-in-wallet.png)
 
-*NFTs show up in slope wallet*
+*NFTs show up in Slope wallet*
 
 ## Next steps
 
