@@ -3,7 +3,7 @@ publishedOn: 2022-01-24T12:39:06.938Z
 title: How to mint an NFT using Candy Machine V2 [scripts included]
 subTitle: Scripts and code to make you a pro NFT maker in the Solana eco-system
 featured: false
-heroImg: /img/content/posts/legos-vs-clay-bricks-hero.jpg
+heroImg: /img/content/posts/mint-nft-cm-v2-cover.jpg
 slug: mint-nft-candy-machine-v2
 tags:
   - nft
