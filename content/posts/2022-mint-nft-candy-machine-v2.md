@@ -334,6 +334,12 @@ minted 5 tokens
 mint_multiple_tokens finished
 ```
 
+After running this command, you should see 5 NFTs in your wallet. Make sure you switch the network to devnet:
+
+![](/img/content/posts/screenshot-2022-01-28-at-8.07.18-pm.png)
+
+*NFTs show up in slope wallet*
+
 ## Next steps
 
 Now you have minted your awesome NFT collection. You can sell them, build a community around them, or keep them in your wallet forever.
