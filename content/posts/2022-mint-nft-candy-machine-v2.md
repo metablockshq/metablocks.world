@@ -30,6 +30,8 @@ Minting an NFT is the process of creating a token, freezing its maximum supply t
 
 By the end of this tutorial, you will have 5 NFTs on the Solana devnet and a website to run a sale. We will also add a script to mint NFTs to your wallet via the CLI.
 
+*The cover image was created using graphics from [Candy Machine Vectors by Vecteezy](https://www.vecteezy.com/free-vector/candy-machine) and [Monkeys Vector by Brgfx on Freepik](https://www.freepik.com/vectors/heart)*
+
 ### Step 1: Prep your images
 
 We are going to build an upgradable NFT project on top of the Meta Blocks protocol. We have created these 5 images that can be joined together. This collection will be called "Tara".
