@@ -2,12 +2,13 @@
 publishedOn: 2022-01-24T12:39:06.938Z
 title: How to mint an NFT using Candy Machine V2 [includes code]
 subTitle: Scripts and code to make you a pro ape NFT maker in the Solana ecosystem
-featured: false
+featured: true
 heroImg: /img/content/posts/mint-nft-cm-v2-cover.jpg
 slug: mint-nft-candy-machine-v2
 tags:
   - nft
   - metaplex
+  - candy-machine
 relatedSlugs:
   - lets-start-with-blocks
   - next-generation-of-nfts
@@ -40,7 +41,7 @@ We are going to build an upgradable NFT project on top of the Meta Blocks protoc
 
 You use this guide, even if don't plan to be upgradable via Meta Blocks protocol. The process for minting a Meta Blocks compatible collection is the same as minting a normal NFT collection.
 
-You can download these images in zip format here:
+You can download these images [here](https://gist.github.com/shivekkhurana/69b7dd768fefa6781bf4833dbd61527c#file-image-files-md).
 
 ## Step 2: Setup Metaplex locally
 
@@ -91,7 +92,9 @@ Since we have five assets, we need five configuration files. According to Metapl
 * 3.png, 3.json for Tara Top Green and 
 * 4.png , 4.json for Tara Top Purple
 
-### Step 3.1: Create a folder called `tara` and `tara/assets` in `metaplex/js/packages/cli`:
+### Step 3.1: Create a folder for Tara project
+
+We will create two folders called `tara` and `tara/assets` in `metaplex/js/packages/cli`:
 
 ```bash
 cd ~/Desktop/metaplex/js/packages/cli
@@ -99,6 +102,8 @@ mkdir tara
 cd tara
 mkdir assets
 ```
+
+`assets` folder stores on-chain assets and the `tara` folder will be used to store keys and config. This is just our personal preference. These folder names can be anything.
 
 ### Step 3.2: Move 5 "Tara" images to the `tara/assets` folder
 
@@ -198,21 +203,22 @@ The important keys to change are:
 * `price`: price of each NFT in SOL
 * `solTreasuryAccount`: public address that receives the funds from sales
 
-To get more info about each key value pair, refer to this document <https://docs.metaplex.com/candy-machine-v2/configuration>
+To get more info about each key value pair, refer to the official Metaplex documen at <https://docs.metaplex.com/candy-machine-v2/configuration>
 
 ## Step 5: Generate a keypair for uploading these assets
 
 We need a Solana wallet to make contract calls to create these NFTs. Let's create one in `js/packages/cli/tara`:
 
-````bash
-solana-keygen new --outfile keypair.json```
+```bash
+solana-keygen new --outfile keypair.json
+```
 
 We are working on the devnet at the moment, so make sure that your network is set to devnet
 
 ```bash
 solana config set --url https://api.devnet.solana.com
 solana config get # will show the current config
-````
+```
 
 Finally, you need some SOL to pay gas. You can request some using airdrop:
 
@@ -338,7 +344,7 @@ mint_multiple_tokens finished
 
 After running this command, you should see 5 NFTs in your wallet. Make sure you switch the network to devnet:
 
-![](/img/content/posts/screenshot-2022-01-28-at-8.07.18-pm.png)
+![](/img/content/posts/minted-assets-in-wallet.png)
 
 *NFTs show up in slope wallet*
 
