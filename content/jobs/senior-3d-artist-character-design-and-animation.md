@@ -1,36 +1,33 @@
 ---
-title: "Senior 3d Artist: Character Design and Animation"
-slug: senior-3d-artist
+title: 3D Animator (Contract)
+slug: 3d-animator
 isPublished: true
-isFullTime: true
+isFullTime: false
 emoji: 👩🏼‍🎨
-intro: ""
+intro: >-
+  Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy
+  accessories that you like and trade them on secondary marketplaces.
+
+
+  We're looking for a 3D Animator who will create 4-6 animated marketing shorts using our existing models.
 responsibilities: >-
-  * Build the base layers for Meta Blocks universe including meshes, rigging,
-  lighting and texturing
+  * Create storyboards in conjunction with the marketing team and the lead 3D
+  artist
 
-  * Build dynamic poses that will be used as stickers
-
-  * Build drops that coherently work with base layers and other items
-
-  * Build open source meshes for third party artists
-
-  * Create the necessary documentation for third party artists
+  * Create 4-6 short videos/ GIFs per week
 
   * Collaborate with artists from other NFT projects to bring partnerships to life
-
-  * Define the design language of Meta Blocks
 requirements: >-
-  * At least 3 years of experience as a 3D artist
+  
 
-  * Delivered at least 1 major project spanning across modelling, rigging, texturing and lighting
+  * At least 2 years of experience as a 3D character artist
 
-  * The ability to lead and define the art style of the project
+  * The ability to work collaboratively with the lead 3D artist
 
   * Creative vision
 
   * Strong focus on the quality of work and attention to detail
 
-  * Nice to have: Experience in the gaming and/or VFX industry
-applyLink: https://forms.gle/BEvgyjTGrbYNVisF7
+  * Nice to have: Experience in the gaming and/or VFX industry. Knowledge of Blockchain tech
+applyLink: https://forms.gle/szXm8UzB2qSQwKiv5
 ---
