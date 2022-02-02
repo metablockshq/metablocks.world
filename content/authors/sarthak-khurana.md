@@ -2,7 +2,8 @@
 slug: sarthakkhurana
 name: Sarthak Khurana 🔮
 twitter: knighton_bloke
-profilePicture: /img/content/authors/ahhranjh_400x400.jpeg
+medium: https://medium.com/@sarthak_khurana
+profilePicture: /img/content/authors/per.png
 shortBio: Co-founder Meta Blocks
 ---
 Hey there 🤙 I'm creating Meta Blocks along with my brother [Shivek](https://metablocks.world/authors/shivekkhurana).
@@ -17,7 +18,7 @@ I've been working in the marketing space for almost 5 years with a focus on grow
 
 In early 2021, I joined prePO, a DeFi protocol that lets users invest in Pre IPO companies like SpaceX. As the first marketing hire and a community and marketing specialist, I scaled the community and engagement by 10929%. 
 
-I'm 19 and I dropped out after high school to work full time in the blockchain industry. 
+I'm 20 and I dropped out after high school to work full time in the blockchain industry. 
 
 # Contact me
 
