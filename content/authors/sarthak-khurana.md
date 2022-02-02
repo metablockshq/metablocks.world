@@ -2,7 +2,8 @@
 slug: sarthakkhurana
 name: Sarthak Khurana 🔮
 twitter: knighton_bloke
-profilePicture: /img/content/authors/ahhranjh_400x400.jpeg
+medium: https://medium.com/@sarthak_khurana
+profilePicture: /img/content/authors/per.png
 shortBio: Co-founder Meta Blocks
 ---
 Hey there 🤙 I'm creating Meta Blocks along with my brother [Shivek](https://metablocks.world/authors/shivekkhurana).
