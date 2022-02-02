@@ -18,7 +18,7 @@ I've been working in the marketing space for almost 5 years with a focus on grow
 
 In early 2021, I joined prePO, a DeFi protocol that lets users invest in Pre IPO companies like SpaceX. As the first marketing hire and a community and marketing specialist, I scaled the community and engagement by 10929%. 
 
-I'm 19 and I dropped out after high school to work full time in the blockchain industry. 
+I'm 20 and I dropped out after high school to work full time in the blockchain industry. 
 
 # Contact me
 
