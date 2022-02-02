@@ -4,12 +4,8 @@ slug: 3d-animator
 isPublished: true
 isFullTime: false
 emoji: 👩🏼‍🎨
-intro: >-
-  Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy
-  accessories that you like and trade them on secondary marketplaces.
-
-
-  We're looking for a 3D Animator who will create 4-6 animated marketing shorts using our existing models.
+intro: We're looking for a 3D Animator who will create 4-6 animated marketing
+  shorts using our existing models.
 responsibilities: >-
   * Create storyboards in conjunction with the marketing team and the lead 3D
   artist
