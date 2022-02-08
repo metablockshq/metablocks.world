@@ -17,7 +17,9 @@ author: shivekkhurana
 ---
 “What’s up, block?” is our update aggregation for partners and friends.
 
-It has been almost a month since we wrote this, our product is taking shape but one of our tech decisions set us back by 2 weeks 😌. We deployed the smart contract to devnet on 6th of January, 2022. While writing docs for the contract, we realised that it had a flaw. 
+It has been almost a month since we wrote this, our product is taking shape but one of our tech decisions set us back by 2 weeks 😌. We deployed the smart contract to devnet on 6th of January, 2022. While writing docs for the contract, we realised that it had a flaw. This problem deserves a section of its own.
+
+## Bad:
 
 When a user deposited an NFT, the contract assumed that the client (web app) will maintain the address of the deposited NFT. This address is required to withdraw the NFT. If you don't know the address, you would not know which NFT to withdraw. This assumption caused a poor DX because storing the address could be tricky. And worse, if you loose the address, getting the NFT back from the contract will be problematic.
 
