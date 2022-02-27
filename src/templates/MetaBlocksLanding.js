@@ -13,8 +13,6 @@ import config from "../config";
 
 import heroIllustration from "../images/genft/hero-character-on-lounge-chair.png";
 
-import rightArrowDoodle from "../images/icons/right-arrow-doodle.png";
-import writingHand from "../images/emoji/writing-hand.png";
 import howMint from "../images/genft/how-mint.png";
 import howDrop from "../images/genft/how-drop.png";
 import howGenerate from "../images/genft/how-generate.png";

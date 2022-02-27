@@ -16,8 +16,11 @@ const NavItem = ({ l }) => {
           <img src={l.icon} className="mr2" style={{ height: 32 }} />
         </div>
       )}
-      {l.emoji && <span className="mr1">{l.emoji}</span>}
+
       <div className="f4">{l.label}</div>
+      {l.count && (
+        <span className="ml2 bg-green white b br4 ph2 pv1">{l.count}</span>
+      )}
     </div>
   );
 };
@@ -39,13 +42,11 @@ const BaseNav = ({ backgroundColor, leftItem, links, rightItem }) => {
       style={{ left: "50%", transform: "translateX(-50%)" }}
     >
       <div
-        className="flex pv2 justify-between items-center"
+        className="pa4 bb b--black-10 flex pv2 justify-between items-center w-100 center"
         style={{
-          backgroundColor: backgroundColor || "rgba(255, 255, 255, 0.64)",
+          backgroundColor: backgroundColor || "rgba(0, 0, 0, 0.64)",
           backdropFilter: "saturate(180%) blur(5px)",
           height: 48,
-          paddingLeft: "5%",
-          paddingRight: "5%",
         }}
       >
         {leftItem}
@@ -104,13 +105,19 @@ const BaseLeftItem = () => (
   </NavLink>
 );
 
-const metaBlocksLinks = [
+const metaBlocksLinks = (jobsCount) => [
   {
     label: "Discord",
     to: { pathname: discordInviteLink },
     // icon: phoneChat,
     targetBlank: true,
+
+    hidden: true,
     emoji: "💬",
+  },
+  {
+    label: "Docs",
+    to: "/guides/protocol",
   },
   {
     label: "Twitter",
@@ -127,6 +134,8 @@ const metaBlocksLinks = [
   {
     label: "Tokenomics",
     to: "/tokenomics",
+
+    hidden: true,
     emoji: "💹",
   },
   {
@@ -143,11 +152,13 @@ const metaBlocksLinks = [
     label: "Careers",
     to: "/careers",
     emoji: "💼",
+    count: jobsCount,
   },
   {
     label: "Contact",
     to: "/contact",
     emoji: "☎️",
+    hidden: true,
   },
   {
     label: "Join waitlist",
@@ -160,11 +171,11 @@ const metaBlocksLinks = [
   },
 ];
 
-const MainNav = () => {
+const MainNav = ({ jobsCount }) => {
   return (
     <BaseNav
       backgroundColor="rgba(255, 255, 255, 0.8)"
-      links={metaBlocksLinks.filter((l) => !l.hidden)}
+      links={metaBlocksLinks(jobsCount).filter((l) => !l.hidden)}
       leftItem={<BaseLeftItem />}
     />
   );

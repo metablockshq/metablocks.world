@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import colors from "../utils/colors";
-import hatMan from "../images/hat-man.svg";
 
 const Column = ({ header, links }) => {
   return (
@@ -93,7 +92,10 @@ const Meta = () => (
     <a href="https://discord.gg/YUJq9kW3RV" className="dib mr2 underline">
       Discord
     </a>
-     <a href="https://www.reddit.com/r/MetaBlocks/" className="dib mr2 underline">
+    <a
+      href="https://www.reddit.com/r/MetaBlocks/"
+      className="dib mr2 underline"
+    >
       Reddit
     </a>
   </div>
@@ -129,21 +131,7 @@ const Cloudflare = () => (
   </div>
 );
 
-const Freepik = () => (
-  <div className="mt1">
-    <img src={hatMan} style={{ height: 20 }} className="nb1" />
-    Hat man graphic made by{" "}
-    <a
-      href="https://www.freepik.com/free-vector/people-avatar-collection_4501741.htm"
-      className="underline"
-    >
-      Freepik
-    </a>
-    .
-  </div>
-);
-
-const Footer = ({ attributeFreepik }) => (
+const Footer = ({}) => (
   <div className="flex flex-column flex-row-ns w-90 justify-between center pt4 pb5 mt4">
     <div>
       <div className="o-80 f6">© 2021</div>

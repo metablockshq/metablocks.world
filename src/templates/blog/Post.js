@@ -11,9 +11,6 @@ import Nav from "../../components/Nav";
 import PostCard from "../../components/PostCard";
 import str from "../../utils/string";
 import img from "../../utils/image";
-import plant from "../../images/plant.png";
-import fbIcon from "../../images/icons/fb.svg";
-import twitterIcon from "../../images/icons/twitter.svg";
 import Markdown from "../../components/Markdown";
 
 const Related = ({ relatedPosts }) => {
@@ -77,16 +74,6 @@ const ShareButton = ({ link, children }) => (
     {children}
   </div>
 );
-
-const Share = ({ title, url }) => {
-  return (
-    <div className="flex">
-      <ShareButton link={shareUrls.twitter(url, `${title} by @shivek_khurana`)}>
-        <img className="block" src={twitterIcon} alt="" />
-      </ShareButton>
-    </div>
-  );
-};
 
 const AuthorImage = ({ profilePicture, name }) => {
   const optimizedPaths = img.getOptimizedPaths(profilePicture);

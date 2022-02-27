@@ -313,7 +313,7 @@ export default {
 
     const allPostsByYear = byPublishYear(allPosts);
 
-    const recentPosts = R.take(8, allPosts);
+    const recentPosts = R.take(4, allPosts);
 
     //
     const sitePages = getSitePages(content);
@@ -339,8 +339,11 @@ export default {
     return [
       {
         path: "/",
-        template: "src/templates/MetaBlocksLanding.js",
-        getData: () => ({ recentPosts, tags: topTags(allPosts, 5) }),
+        template: "src/templates/Landing.js",
+        getData: () => ({
+          recentPosts,
+          jobs: jobsWithoutContents(content),
+        }),
       },
       {
         path: "/gleam-thank-you",
