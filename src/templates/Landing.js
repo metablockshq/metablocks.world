@@ -68,11 +68,10 @@ function ActionLink({ title, href }) {
 const Feature = ({ icon, title, subTitle, comingSoon }) => {
   return (
     <div
-      className="flex flex-column justify-between ba b--black-10 br4 pa4 mb5"
+      className="tw-w-full md:tw-w-[48%] flex flex-column justify-between ba b--black-10 br4 pa4 tw-mb-8 md:tw-mb-16"
       style={{
         backgroundColor: "rgba(255, 255, 255, 0.64)",
         backdropFilter: "blur(10px)",
-        width: "48%",
       }}
     >
       <div>
@@ -85,28 +84,24 @@ const Feature = ({ icon, title, subTitle, comingSoon }) => {
         <h3 className="mv0 f3">{title}</h3>
         <p className="f4 gray">{subTitle}</p>
       </div>
-      <div className="flex items-center b underline pointer">
-        Learn more
-        <img
+
+      {/* <div className="flex items-center b underline pointer">
+          Learn more
+          <img
           src={rightPointingHand}
           className="ml2"
           style={{ height: "1.4rem" }}
-        />
-      </div>
+          />
+          </div> */}
     </div>
   );
 };
 
 const Features = () => {
   return (
-    <div className="w-60 center">
-      <div style={{ height: "32rem" }} className="tc mt5">
-        <img src={bubbleImg} />
-      </div>
-      <div
-        style={{ marginTop: "-24rem" }}
-        className="flex flex-wrap justify-between"
-      >
+    <div className="tw-w-10/12 lg:tw-w-8/12 center">
+      <img src={bubbleImg} className="tw-mx-auto" />
+      <div className="flex flex-wrap justify-between tw-mt-[-20rem] sm:tw-mt-[-32rem] md:tw-mt-[-40rem]">
         {features.map((f) => (
           <Feature key={f.title} {...f} />
         ))}
@@ -136,7 +131,7 @@ const IconicHeading = ({ title, subTitle, imgSrc, showBorder }) => {
 const Jobs = ({ jobs }) => {
   return (
     <div className="">
-      <div style={{ height: "0rem" }} className="tc mt5">
+      <div style={{ height: "0rem" }} className="tc">
         <img src={blueBubble} />
       </div>
 
@@ -167,21 +162,21 @@ const JoinDiscord = ({}) => {
 
 const Hero = () => {
   return (
-    <div className="w-90 w-60-m w-60-l center flex items-center mv6">
-      <div className="w-60 center">
-        <h1 className="mv0 f1 f-subheadline-m f-subheadline-l">
-          Application layer for your NFTs
+    <div className="tw-w-10/12 md:tw-w-8/12 lg:tw-w-7/12 center tw-flex tw-flex-col-reverse md:tw-flex-row items-center mv5">
+      <div className="tw-w-100 md:tw-w-7/12 center">
+        <h1 className="tw-text-3xl md:tw-text-5xl lg:tw-text-6xl xl:tw-text-7xl tw-font-bold">
+          Build NFTs that compose
         </h1>
-        <p className="mv3 f3 lh-copy mid-gray">
+        <p className="mv3 tw-text-xl md:tw-text-2xl lh-copy mid-gray">
           Meta Blocks help you build immersive NFT apps. With our open source
           tools, you can build NFTs that can upgrade and decay progmatically.
         </p>
-        <ActionLink title="Build on Meta Blocks" href="/docs" />
+        <ActionLink title="Start integrating" href="/guides/protocol" />
       </div>
-      <div className="flex flex-grow w-40">
+      <div className="flex flex-grow tw-w-4/12">
         <img
-          style={{ height: "24rem", objectFit: "contain" }}
-          className="w-100"
+          style={{ objectFit: "contain" }}
+          className="w-100 tw-h-80 lg:tw-h-96"
           alt="3D shapes filling and transparent cup"
           src={wardrobe}
         />
@@ -215,10 +210,10 @@ const PostCard = ({ post }) => {
   return (
     <Link to={`/blog/${post.data.slug}`}>
       <div className="flex justify-between pv3 bb b--black-10 grow">
-        <div className="w-20">
-          <img src={optimizedPaths.w80} className="br3" />
+        <div className="tw-w-3/12">
+          <img src={optimizedPaths.w240} className="br3" />
         </div>
-        <div className="w-75">
+        <div className="tw-w-8/12 md:tw-w-8/12">
           <h4 className="f4 mv0 normal lh-copy">{post.data.title}</h4>
           <h5 className="f5 mb0 mt2 lh-copy normal black-60">
             {post.data.subTitle}
@@ -235,7 +230,7 @@ const PostCard = ({ post }) => {
 
 const PostList = ({ posts }) => {
   return (
-    <div className="w-40">
+    <div className="w-11/12 md:tw-w-6/12">
       <IconicHeading
         title="Recent Posts"
         subTitle="Our thougts, ideas and updates for the fam"
@@ -245,6 +240,9 @@ const PostList = ({ posts }) => {
       {posts.map((p) => (
         <PostCard post={p} key={p.data.slug} />
       ))}
+      <div className="tw-mt-8">
+        <ActionLink title="More posts" href="/blog" />
+      </div>
     </div>
   );
 };
@@ -257,9 +255,9 @@ const Landing = () => {
       <Hero />
       <Features />
 
-      <div className="w-60 center flex justify-between">
+      <div className="tw-w-10/12 md:tw-w-9/12 center tw-flex tw-flex-col md:tw-flex-row md:tw-justify-between tw-mt-12">
         <PostList posts={recentPosts} />
-        <div className="w-50 mt6">
+        <div className="tw-w-full md:tw-w-5/12 mt4 mt6-l">
           <Jobs jobs={jobs} />
           <JoinDiscord />
         </div>
