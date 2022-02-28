@@ -156,6 +156,7 @@ const metaBlocksLinks = [
     // why is this needed?
     activeClassName: "x",
     emoji: "🤍",
+    hidden: true,
   },
 ];
 

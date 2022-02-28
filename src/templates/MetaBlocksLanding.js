@@ -118,7 +118,7 @@ const Hero = ({ openSignupDialog }) => (
         className="vh-50-l mt2 mt0-ns"
         alt="Character sitting on a lounge chair with laptop"
       />
-      <CTA containerClassName="nt2 mb3" onClick={openSignupDialog} />
+      {/* <CTA containerClassName="nt2 mb3" onClick={openSignupDialog} /> */}
     </div>
   </div>
 );
