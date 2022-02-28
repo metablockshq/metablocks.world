@@ -136,7 +136,7 @@ const SignupDialog = ({ title, subTitle, campaignId, bgColor, emailLabel }) => {
           />
 
           <button
-            className="w-auto link br-pill ph3 pv2 mb2 dib white bg-light-red b ba b--white"
+            className="w-auto link br-pill ph3 pv2 mb2 dib white tw-bg-red-500 b ba b--white"
             onClick={saveEmail}
             type="submit"
             disabled={loading}

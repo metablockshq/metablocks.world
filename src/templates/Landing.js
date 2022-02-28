@@ -177,7 +177,7 @@ const Hero = () => {
         <img
           style={{ objectFit: "contain" }}
           className="w-100 tw-h-80 lg:tw-h-96"
-          alt="3D shapes filling and transparent cup"
+          alt="3d mold of a man with accessories like laptop and phone"
           src={wardrobe}
         />
       </div>

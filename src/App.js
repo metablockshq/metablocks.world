@@ -96,9 +96,9 @@ const App = () => {
     <Root>
       <Favicons />
       <SEO
-        title="Meta Blocks - NFT Evolution Protocol"
-        subTitle="Meta Blocks is an NFT Evolution Protocol that lets you build up your NFTs, buy accessories that you like and trade them on secondary marketplaces."
-        heroImg="/img/genft/og.png"
+        title="Meta Blocks - Build NFTs that compose"
+        subTitle="Meta Blocks help you build immersive NFT apps. With our open source tools, you can build NFTs that can upgrade and decay progmatically."
+        heroImg="/img/mbk/og.png"
         tags="meta blocks, meta blocks world, solana, ignition hackathon, nfts, nft evolution"
       />
 
