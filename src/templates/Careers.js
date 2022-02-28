@@ -37,13 +37,19 @@ const perksMd = `
 const Job = ({ job }) => {
   return (
     <Link to={`/jobs/${job.slug}`}>
-      <div className="ba pa3 br3 b--black-10 mb3 flex justify-between items-center">
+      <div
+        className="ba pa3 br3 b--black-10 mb3 flex justify-between items-center"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.64)",
+          backdropFilter: "blur(10px)",
+        }}
+      >
         <div className="flex items-center">
           <span className="f3 mr2">{job.emoji}</span>
           {job.title}
         </div>
-        <div className="bg-black white br2 f6 pa1">
-          {job.isFullTime ? "Full Time" : "Contract"}
+        <div className="bg-black white br2 f6 pa1 ml4">
+          {job.isFullTime ? "Permanent" : "Contract"}
         </div>
       </div>
     </Link>
@@ -78,4 +84,4 @@ const Careers = () => {
 };
 
 export default Careers;
-export { introMd, perksMd, whyUsMd, whatAreWeLikeMd };
+export { introMd, perksMd, whyUsMd, whatAreWeLikeMd, Job };

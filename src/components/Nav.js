@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { Link, NavLink, useLocation, useHistory } from "react-router-dom";
 import Dropdown from "react-dropdown";
+import Headroom from "react-headroom";
 
 import SignupDialog from "../components/SignupDialog";
 import config from "../config";
@@ -16,8 +17,11 @@ const NavItem = ({ l }) => {
           <img src={l.icon} className="mr2" style={{ height: 32 }} />
         </div>
       )}
-      {l.emoji && <span className="mr1">{l.emoji}</span>}
+
       <div className="f4">{l.label}</div>
+      {l.count && (
+        <span className="ml2 bg-green white b br4 ph2 pv1">{l.count}</span>
+      )}
     </div>
   );
 };
@@ -34,18 +38,13 @@ const BaseNav = ({ backgroundColor, leftItem, links, rightItem }) => {
   const history = useHistory();
 
   return (
-    <nav
-      className="fixed w-100 z-1 db top-0"
-      style={{ left: "50%", transform: "translateX(-50%)" }}
-    >
+    <nav className="w-100 z-1 db top-0">
       <div
-        className="flex pv2 justify-between items-center"
+        className="pa4 bb b--black-10 flex pv2 justify-between items-center w-100 center"
         style={{
-          backgroundColor: backgroundColor || "rgba(255, 255, 255, 0.64)",
+          backgroundColor: backgroundColor || "rgba(0, 0, 0, 0.64)",
           backdropFilter: "saturate(180%) blur(5px)",
           height: 48,
-          paddingLeft: "5%",
-          paddingRight: "5%",
         }}
       >
         {leftItem}
@@ -53,8 +52,11 @@ const BaseNav = ({ backgroundColor, leftItem, links, rightItem }) => {
           {links.map((l) => (
             <NavLink
               key={l.label}
-              activeClassName={l.activeClassName || "bb b--green"}
-              className={`ml4 bb bw2 b--white-05 ${l.restingClassName || ""}`}
+              activeClassName={
+                l.activeClassName ||
+                "br3 tw-bg-gradient-to-r tw-from-teal-100 tw-to-rose-100"
+              }
+              className={`ph2 ${l.restingClassName || ""}`}
               to={l.to}
               target={l.targetBlank && "_blank"}
               onClick={
@@ -104,13 +106,19 @@ const BaseLeftItem = () => (
   </NavLink>
 );
 
-const metaBlocksLinks = [
+const metaBlocksLinks = (jobsCount) => [
   {
     label: "Discord",
     to: { pathname: discordInviteLink },
     // icon: phoneChat,
     targetBlank: true,
+
+    hidden: true,
     emoji: "💬",
+  },
+  {
+    label: "Docs",
+    to: "/guides/protocol",
   },
   {
     label: "Twitter",
@@ -127,6 +135,8 @@ const metaBlocksLinks = [
   {
     label: "Tokenomics",
     to: "/tokenomics",
+
+    hidden: true,
     emoji: "💹",
   },
   {
@@ -143,11 +153,13 @@ const metaBlocksLinks = [
     label: "Careers",
     to: "/careers",
     emoji: "💼",
+    count: jobsCount,
   },
   {
     label: "Contact",
     to: "/contact",
     emoji: "☎️",
+    hidden: true,
   },
   {
     label: "Join waitlist",
@@ -160,13 +172,25 @@ const metaBlocksLinks = [
   },
 ];
 
-const MainNav = () => {
+const MainNav = ({ jobsCount }) => {
   return (
-    <BaseNav
-      backgroundColor="rgba(255, 255, 255, 0.8)"
-      links={metaBlocksLinks.filter((l) => !l.hidden)}
-      leftItem={<BaseLeftItem />}
-    />
+    <Headroom>
+      <div className="tw-p-3 tw-text-center tw-bg-gradient-to-r tw-from-slate-800 tw-to-slate-600 tw-text-white">
+        Looking for the upgradable avatars?{" "}
+        <span className="">Meta Blocks Avatars are now called 3moji.</span>
+        <Link
+          className="tw-ml-4 tw-font-bold tw-underline tw-underline-offset-4"
+          to="/blog/meta-blocks-avatars-are-now-3moji"
+        >
+          Learn more
+        </Link>
+      </div>
+      <BaseNav
+        backgroundColor="rgba(255, 255, 255, 0.8)"
+        links={metaBlocksLinks(jobsCount).filter((l) => !l.hidden)}
+        leftItem={<BaseLeftItem />}
+      />
+    </Headroom>
   );
 };
 

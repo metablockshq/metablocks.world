@@ -126,7 +126,7 @@ const GuideContent = ({
               />
             )}
             <div className={`f-headline ${heroImg ? "nt5" : ""}`}>{emoji}</div>
-            <h1>
+            <h1 className="tw-text-4xl tw-font-bold">
               {chapterNumber && (
                 <span className="black-60 mr2">{chapterNumber}. </span>
               )}

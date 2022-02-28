@@ -18,33 +18,49 @@ const transform = {
       el.props.hasOwnProperty("alt") &&
       el.props.hasOwnProperty("src");
     return (
-      <p className={`georgia center ${isElImg ? "tc" : "w-90 w-80-m w-50-l"}`}>
+      <p
+        className={`tw-my-6 georgia center ${
+          isElImg ? "tc" : "w-90 w-80-m w-50-l"
+        }`}
+      >
         {children}
       </p>
     );
   },
   // pre: ({props, children}) => <div className="w-90 w-80-m w-50-l center"><pre {...props}>{children}</pre></div>,
   h1: ({ children }) => (
-    <h1 className="w-90 w-80-m w-50-l center">{children}</h1>
+    <h1 className="w-90 w-80-m w-50-l tw-text-4xl tw-font-bold tw-mt-8 tw-mb-3 center">
+      {children}
+    </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="w-90 w-80-m w-50-l center">{children}</h2>
+    <h2 className="w-90 w-80-m w-50-l tw-text-3xl tw-font-bold tw-mt-8 tw-mb-3 center">
+      {children}
+    </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="w-90 w-80-m w-50-l center">{children}</h3>
+    <h3 className="w-90 w-80-m w-50-l tw-text-2xl tw-font-bold tw-mt-8 tw-mb-3 center">
+      {children}
+    </h3>
   ),
   hr: ({ children }) => (
     <hr className="w-90 w-80-m w-60-l center">{children}</hr>
   ),
   ul: ({ children }) => (
-    <ul className="w-90 w-80-m w-50-l center">{children}</ul>
+    <ul className="w-90 w-80-m w-50-l center tw-list-disc tw-pl-4">
+      {children}
+    </ul>
   ),
   ol: ({ children }) => (
-    <ol className="w-90 w-80-m w-50-l center">{children}</ol>
+    <ol className="w-90 w-80-m w-50-l center tw-list-decimal tw-pl-4">
+      {children}
+    </ol>
   ),
   li: ({ children }) => <li className="georgia mb3">{children}</li>,
   blockquote: ({ children }) => (
-    <blockquote className="georgia i f3">{children}</blockquote>
+    <blockquote className="georgia i f3 tw-py-8 tw-px-16">
+      {children}
+    </blockquote>
   ),
   a: ({ href, children }) => {
     if (href.startsWith("https://gist.github.com")) {
