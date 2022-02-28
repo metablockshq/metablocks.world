@@ -13,6 +13,11 @@ relatedSlugs:
   - clay-bricks-vs-legos
 author: shivekkhurana
 ---
+tl;dr;
+> Meta Blocks upgradable avatar system is now called **[3moji](https://3moji.app)**. Meta Blocks is now only a protocol for building composable NFTs.
+
+## Backstory
+
 Meta Blocks started in September 2021 as an upgradable avatars system. We thought that NFTs today don't have any utility post-mint. By upgrading NFTs, we could use them like a web3 avatar system. This web3 avatar system could replace Bitmoji and Memoji and let users "own" their avatars. Since NFTs hold real world value, anything your avatar wore would be actually valuable.
 
 We realised that NFTs are the wrong level of abstraction to build apps on. Our goal was to add utility to NFTs, by making them easy to integrate in games, metaverses and apps.
@@ -25,9 +30,8 @@ In order to align our success with that of the broader Solana community, we have
 
 > Meta Blocks is an open-source protocol and SDK to build composable NFTs. 3moji is web3 avatars app built on top of Meta Blocks.
 
-Going forward, Meta Blocks will focus on developers, with upgradable NFTs being the flagship offering.\
+Going forward, Meta Blocks will focus on developers, with upgradable NFTs being the flagship offering.
 3moji will focus on the artistic side of things.
-
 
 
 ## How does this affect you?
