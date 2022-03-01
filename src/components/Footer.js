@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import colors from "../utils/colors";
+import img from "../utils/image";
 
 const Column = ({ header, links }) => {
   return (
@@ -131,18 +132,24 @@ const Cloudflare = () => (
   </div>
 );
 
-const Footer = ({}) => (
-  <div className="flex flex-column flex-row-ns w-90 justify-between center pt4 pb5 mt4">
-    <div>
-      <div className="o-80 f6">© 2021</div>
-      <div className="b f3 mt1">Meta Blocks</div>
+const Footer = ({}) => {
+  const optimizedPaths = img.getOptimizedPaths("/img/mbk/logo.png");
+  return (
+    <div className="flex flex-column flex-row-ns w-90 justify-between center pt4 pb5 mt4">
+      <div className="tw-flex tw-items-center">
+        <img src={optimizedPaths.w80} alt="Meta Blocks Logo" />
+        <div className="tw-ml-3">
+          <div className="o-80 tw-text-slate f6">© 2021</div>
+          <div className="b f3">Meta Blocks</div>
+        </div>
+      </div>
+      <div className="tl tr-ns mt4 mt0-ns o-80 f6 f5-ns">
+        <Meta />
+        <OpenSite />
+        <Cloudflare />
+      </div>
     </div>
-    <div className="tl tr-ns mt4 mt0-ns o-80 f6 f5-ns">
-      <Meta />
-      <OpenSite />
-      <Cloudflare />
-    </div>
-  </div>
-);
+  );
+};
 
 export default Footer;
