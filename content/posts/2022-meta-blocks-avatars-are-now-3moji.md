@@ -3,7 +3,7 @@ publishedOn: 2022-02-27T14:18:18.468Z
 title: Meta Blocks avatars are now called 3moji
 subTitle: ""
 featured: false
-heroImg: /img/content/posts/metablocks-split.jpg
+heroImg: /img/content/posts/mbk-split.jpg
 slug: meta-blocks-avatars-are-now-3moji
 tags:
   - meta-blocks
