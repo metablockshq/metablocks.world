@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation, useHistory } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import Headroom from "react-headroom";
 
+import img from "../utils/image";
 import SignupDialog from "../components/SignupDialog";
 import config from "../config";
 import colors from "../utils/colors";
@@ -100,11 +101,19 @@ const BaseNav = ({ backgroundColor, leftItem, links, rightItem }) => {
   );
 };
 
-const BaseLeftItem = () => (
-  <NavLink to="/" className="b f5 f4-ns dib">
-    Meta Blocks
-  </NavLink>
-);
+const BaseLeftItem = () => {
+  const optimizedPaths = img.getOptimizedPaths("/img/mbk/logo.png");
+  return (
+    <NavLink to="/" className="b f5 f4-ns dib tw-flex tw-items-center">
+      <img
+        src={optimizedPaths.w80}
+        className="tw-mr-2 tw-h-10"
+        alt="Meta Blocks Logo"
+      />
+      Meta Blocks
+    </NavLink>
+  );
+};
 
 const metaBlocksLinks = (jobsCount) => [
   {
