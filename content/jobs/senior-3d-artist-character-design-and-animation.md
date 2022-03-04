@@ -1,7 +1,7 @@
 ---
 title: 3D Animator (Contract)
 slug: 3d-animator
-isPublished: false
+isPublished: true
 isFullTime: false
 emoji: 👩🏼‍🎨
 intro: We're looking for a 3D Animator who will create 4-6 animated marketing
