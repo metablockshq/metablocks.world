@@ -1,7 +1,7 @@
 ---
 title: "Social Media Manager "
 slug: "social-media-manager "
-isPublished: false
+isPublished: true
 isFullTime: true
 emoji: 🤳
 intro: 3moji is an upgradeable and composable NFT avatar project system where
