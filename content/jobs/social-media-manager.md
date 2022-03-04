@@ -1,6 +1,6 @@
 ---
-title: "Social Media Manager "
-slug: "social-media-manager "
+title: Social Media Manager
+slug: social-media-manager
 isPublished: true
 isFullTime: true
 emoji: 🤳
