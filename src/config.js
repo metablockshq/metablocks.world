@@ -1,5 +1,5 @@
 const config = {
-  discordInviteLink: "https://discord.gg/YUJq9kW3RV",
+  discordInviteLink: "https://discord.gg/QSCxQAc8rM",
   twitterLink: "https://twitter.com/MetaBlocksHQ",
   devpostLink:
     "https://devpost.com/software/meta-blocks-nft-evolution-protocol",
