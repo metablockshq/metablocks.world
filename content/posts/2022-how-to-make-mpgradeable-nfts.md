@@ -1,10 +1,10 @@
 ---
 publishedOn: 2022-03-13T14:38:01.834Z
-title: "How to Make Upgradeable NFTs "
+title: How to Make Upgradeable NFTs
 subTitle: ""
 featured: true
 heroImg: /img/content/posts/how-to-make-upgradeable-nfts.png
-slug: "how-to-make-upgradeable-nfts "
+slug: how-to-make-upgradeable-nfts
 tags:
   - blockchain
 relatedSlugs:
