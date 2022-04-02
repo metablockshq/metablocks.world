@@ -22,3 +22,13 @@ This month, we also onboarded Alex Cowan, whom I used to work with at prePO.io, 
 * Launched [3moji](https://3moji.app/) site 
 * Solidifed a launch plan for 3moji 
 * Partnered with multiple projects and DAOs to distribute whitelist tokens.
+* A handful of the most popular NFT projects in the Solana space are creating 3moji compatible drops. Themed drops is what I'm personally most stoked for. 
+* Created a token distributor system to fairly distribute white list spots. 
+
+
+
+## The Bad:
+
+* Our progress speed has been slightly slower than we want 
+
+In the coming month, we hope to publically announce all the exciting stuff we're working on BTS. Until next time~
