@@ -1,5 +1,5 @@
 ---
-chapterNumber: 3
+chapterNumber: 4
 emoji: 🪐
 title: Creating a Universe
 slug: creating-a-universe

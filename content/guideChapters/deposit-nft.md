@@ -1,5 +1,5 @@
 ---
-chapterNumber: 4
+chapterNumber: 5
 emoji: 📥
 title: Deposit an NFT
 slug: deposit-nft
