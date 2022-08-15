@@ -86,7 +86,7 @@ This is a PDA(Program Derived Address) , this address is used to deposit and wit
 * User gets a receipt NFT in turn for depositing the NFT into the vault. The receipt NFT is generated using the receipt mint that is generated previously. This receipt NFT is `frozen` by default to prevent the transfer of receipt nfts.
   
 
-
+---
 
 
 
