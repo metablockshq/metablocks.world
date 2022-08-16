@@ -71,9 +71,9 @@ import { depositNft } from '@kyraa/metablocks';
 
 Users can deposit their NFTs for upgrading their NFTs, it could be done with `depositNft`.
 
-1. Once the user deposit's the NFT, in-return the User gets a receiptNFT as an acknowledgement for depositing the NFT.
+* Once the user deposit's the NFT, in-return the User gets a receiptNFT as an acknowledgement for depositing the NFT.
 
-2. A Meta NFT is generated. This NFT is the final combined NFT of the NFTs that you have deposited into the Metablocks program.
+* A Meta NFT is generated. This NFT is the final combined NFT of the NFTs that you have deposited into the Metablocks program.
 
 ```typescript
 const args: GroupedDepositNftApiArgs = {
@@ -92,7 +92,7 @@ const args: GroupedDepositNftApiArgs = {
 await depositNft(args);
 ```
 
---- 
+
 
 
 ## How is an NFT stored in a universe?
