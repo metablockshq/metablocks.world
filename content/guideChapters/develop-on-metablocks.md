@@ -1,6 +1,6 @@
 ---
 chapterNumber: 7
-emoji: 📥
+emoji: 👷‍♂️
 title: Develop on metablocks
 slug: develop-on-metablocks
 guideSlug: protocol
