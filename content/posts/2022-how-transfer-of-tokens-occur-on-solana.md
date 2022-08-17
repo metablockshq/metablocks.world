@@ -19,7 +19,7 @@ relatedSlugs:
 author: srinivasvalekar
 ---
 
-In this tutorial, we will look how tokens(especially NFT) are transferred programmatically on Solana using **Anchor framework**.
+Understand how spl-tokens tokens transfer work in Solana using **Anchor framework**.
 
 ## Prerequisites
 
@@ -122,7 +122,7 @@ ATA is generated using
 * A **mint key** 
 * Token program ID and Associated Token Program ID. These two are standard programs that are deployed on Solana.
 
-Once we have the **ATA** generated on the client, this ATA could be passed to an anchor instruction to transfer a generated **mint** in the `rust` code using a `mint_to` instruction or `transfer` instruction. (We will discuss about the differences between these two in the next guide)
+Now in the rust code, use `mint_to` or `transfer` instruction to transfer any mint to an ATA. (We will discuss about the differences between these two in the next guide)
 
 The `mint_to` instruction from token program ([link](https://spl.solana.com/token)) could be used to transfer the minted token to an associated token account. 
 
