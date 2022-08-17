@@ -34,18 +34,18 @@ This guide requires you to have following installed
 
 ## Outcome
 
-By the end of this guide, you should be able to understand how NFTs could be transferred in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/metablocks-program-library/blob/main/nft-vault/programs/nft-vault/src/lib.rs) to dive directly into the code.
+By the end of this guide, you should be able to understand how NFTs transfer work in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/metablocks-program-library/blob/main/nft-vault/programs/nft-vault/src/lib.rs) to dive directly into the code.
 
 
 ## Understanding about SPL-Tokens
 
 Transferring a NFT to any accounts, an **associated token account** needs to generated for a wallet where we would like to transfer the NFT.
 
-However, before dweling into how to transfer NFTs, there are a few things one should understand conceptually. 
+However, before dwelling into how to transfer NFTs, there are a few things one should understand conceptually. 
 
 
 ### Create a Mint 
-You could think of `mint` as a metadata about NFT that is being trasferred to an account. A mint could be initialized in a context. In `Anchor Framework` the struct could be passed a context. 
+You could think of `mint` as a metadata about NFT that is being transferred to an account. A mint could be initialised in a context. In `Anchor Framework` the struct could be passed a context. 
 
 `anchor_spl` needs to be imported into the project. This could be added in `cargo.toml` file.
 
