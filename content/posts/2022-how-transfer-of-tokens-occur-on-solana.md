@@ -82,7 +82,7 @@ pub struct InitMint<'info> {
 
 ```
 
-Anchor framework provides with `spl` token implementation of its own. This could be used to `mint` an account.
+Anchor framework provides with spl-token implementation of its own. Use it to mint an account.
 
 
 ### Transfer the Minted NFT token
