@@ -10,6 +10,7 @@ As we have seen on how Metablocks protocol works in the previous \`Architecture\
 
 You can think of every deposited NFT as a component of your main character. All the deposited NFTs together constitute the \`meta NFT\`. The \`meta NFT\` combines the metadata of all component NFTs.
 
+(For more details - please go through this - [@kyraa/metablocks](https://github.com/metablockshq/kyraa) )
 
 ## How is an NFT stored in a universe?
 

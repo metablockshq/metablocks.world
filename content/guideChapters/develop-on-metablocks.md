@@ -8,6 +8,8 @@ guideSlug: protocol
 
 You can interact with Metablocks protocol using \`@kyraa/metablocks\` package. 
 
+(For more details - please go through this - [@kyraa/metablocks](https://github.com/metablockshq/kyraa) )
+
 
 # Interacting with Metablocks Protocol using @kyraa/metablocks library
 
