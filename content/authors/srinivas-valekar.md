@@ -1,6 +1,6 @@
 ---
 slug: srinivasvalekar
-name: Srinivas Valekar 
+name: Srinivas Valekar 👨‍💻
 twitter: SrinivasValekar
 github: valekar
 profilePicture: /img/content/authors/rengoku.jpeg
