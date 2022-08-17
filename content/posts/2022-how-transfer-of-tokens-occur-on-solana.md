@@ -117,7 +117,7 @@ const AssociatedTokenAccount = async (
 
 ```
 
-ATA is generated using 
+Generate ATA using 
 * Any **public key**
 * A **mint key** 
 * Token program ID and Associated Token Program ID. These two are standard programs that are deployed on Solana.
