@@ -41,7 +41,7 @@ By the end of this guide, you should be able to understand how NFTs transfer wor
 
 The spl-tokens need **associated token accounts** for storing them. You can derive an associated token account using a public address. This public address is usually a wallet address.  
 
-However, before dwelling into how to transfer NFTs, there are a few things one should understand conceptually. 
+Let us discuss how to transfer NFTs below. 
 
 
 ### Create a Mint 
@@ -152,6 +152,6 @@ With this, the NFT mint is minted into the payer associated token account.
 
 ## Next Steps
 
-Next we will discuss about difference between `mint_to` and `transfer` instruction from `spl_token` library 
+In the next section, we will discuss about difference between `mint_to` and `transfer` instructions. 
 
 If you are building a richer application, or want NFTs that can upgrade overtime, checkout the [Meta Blocks protocol](https://metablocks.world/guides/protocol).
