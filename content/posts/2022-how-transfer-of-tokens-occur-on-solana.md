@@ -39,7 +39,7 @@ By the end of this guide, you should be able to understand how NFTs transfer wor
 
 ## Understanding about SPL-Tokens
 
-Transferring a NFT to any accounts, an **associated token account** needs to be generated for a wallet where we would like to transfer the NFT.
+The spl-tokens need **associated token accounts** for storing them. You can derive an associated token account using a public address. This public address is usually a wallet address.  
 
 However, before dwelling into how to transfer NFTs, there are a few things one should understand conceptually. 
 
