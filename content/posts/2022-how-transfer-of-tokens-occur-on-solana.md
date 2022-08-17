@@ -39,7 +39,7 @@ By the end of this guide, you should be able to understand how NFTs transfer wor
 
 ## Understanding about SPL-Tokens
 
-Transferring a NFT to any accounts, an **associated token account** needs to generated for a wallet where we would like to transfer the NFT.
+Transferring a NFT to any accounts, an **associated token account** needs to be generated for a wallet where we would like to transfer the NFT.
 
 However, before dwelling into how to transfer NFTs, there are a few things one should understand conceptually. 
 
@@ -54,7 +54,7 @@ anchor-spl = "^0.25.0"
 ```
 
 
-In the rust program you do the following to initialize a mint account with the **PDA** generated mint address.
+In the rust program you can do the following to initialise a **mint account** with the **PDA** generated **mint address**.
 
 ```rust
 
