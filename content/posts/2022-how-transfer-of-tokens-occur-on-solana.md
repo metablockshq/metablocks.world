@@ -3,7 +3,7 @@ publishedOn: 2022-08-17T12:39:06.938Z
 title: How transfer of tokens/NFTs occur between accounts in Solana?[programmatically]
 subTitle: Understand how NFTs are transferred between accounts in solana
 featured: true
-heroImg: /img/content/posts/sol.webp
+heroImg: /img/content/posts/solana-feature1.jpeg
 slug: how-transfer-of-tokens-occur-on-solana
 tags:
   - nft
