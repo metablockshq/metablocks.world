@@ -3,19 +3,20 @@ publishedOn: 2022-08-17T12:39:06.938Z
 title: How transfer of tokens/NFTs occur between accounts in Solana?[programmatically]
 subTitle: Understand how NFTs are transferred between accounts in solana
 featured: true
-heroImg: /img/content/posts/mint-nft-cm-v2-cover.jpg
+heroImg: /img/content/posts/sol.webp
 slug: how-transfer-of-tokens-occur-on-solana
 tags:
   - nft
   - metaplex
   - candy-machine
+  - developer
 relatedSlugs:
   - lets-start-with-blocks
   - next-generation-of-nfts
   - clay-bricks-vs-legos
   - the-metaverse-belongs-to-you
   - why-upgrade-nfts
-author: shivekkhurana
+author: srinivasvalekar
 ---
 
 In this tutorial, we will look how tokens(especially NFT) are transferred programmatically on Solana using **Anchor framework**.
@@ -60,7 +61,7 @@ In the rust program you do the following to initialize a mint account with the *
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token};
 
-
+....
 
 #[derive(Accounts)]
 pub struct InitMint<'info> {
@@ -123,6 +124,10 @@ ATA is generated using
 
 Once we have the **ATA** generated on the client, this ATA could be passed to an anchor instruction to transfer a generated **mint** in the `rust` code using a `mint_to` instruction or `transfer` instruction. (We will discuss about the differences between these two in the next guide)
 
+The `mint_to` instruction from token program ([link](https://spl.solana.com/token)) could be used to transfer the minted token to an associated token account. 
+
+In the below code, this code could be achieved via a **CPI** call in an instruction.   
+
 ```rust
 use anchor_spl::token::{self};
 
@@ -137,6 +142,9 @@ let cpi_context = CpiContext::new(
     },
 );
 token::mint_to(cpi_context, 1)
+
+....
+
 ```
 
 With this, the NFT mint is minted into the payer associated token account. 
