@@ -3,20 +3,19 @@ publishedOn: 2022-08-17T12:39:06.938Z
 title: How transfer of tokens/NFTs occur between accounts in Solana?[programmatically]
 subTitle: Understand how NFTs are transferred between accounts in solana
 featured: true
-heroImg: /img/content/posts/sol.webp
+heroImg: /img/content/posts/mint-nft-cm-v2-cover.jpg
 slug: how-transfer-of-tokens-occur-on-solana
 tags:
   - nft
   - metaplex
   - candy-machine
-  - developer
 relatedSlugs:
   - lets-start-with-blocks
   - next-generation-of-nfts
   - clay-bricks-vs-legos
   - the-metaverse-belongs-to-you
   - why-upgrade-nfts
-author: srinivasvalekar
+author: shivekkhurana
 ---
 
 In this tutorial, we will look how tokens(especially NFT) are transferred programmatically on Solana using **Anchor framework**.
