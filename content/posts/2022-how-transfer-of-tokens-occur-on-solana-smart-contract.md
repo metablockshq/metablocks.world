@@ -22,7 +22,7 @@ Let us walk through on how to transfer tokens in Solana using **Anchor framework
 
 ## Outcome
 
-By the end of this guide, you should be able to understand how tokens could be transferred in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/tutorial-create-token-mint) to dive directly into the code.
+By the end of this guide, you should be able to understand how to mint and transfer tokens between accounts in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/tutorial-create-token-mint) to dive directly into the code.
 
 ## What is an SPL-token?
 
@@ -173,21 +173,21 @@ impl Vault {
 
 In the above code, 6 accounts are passed.
 
-1 An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs.
+1) An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs.
 
 We setting other metadata fields like `mint::authority` and `mint::freeze_authority` to `payer`. We are setting `mint::decimals` to `0` for easy demonstration purpose. You could set the value to any number as you like-to.
 
-2 `payer` is the one who is paying for calling `create_mint` instruction(discussed in next section). The account is a `signer` account and is set to `mut`.
+2) `payer` is the one who is paying for calling `create_mint` instruction. The account is a `signer` account and is set to `mut`.
 
-3 We must pass `system_program` as well while invoking any instruction in solana program. This helps creating accounts. Refer [this](https://docs.solana.com/developing/runtime-facilities/programs#system-program) to know more.   
+3) We must pass `system_program` as well while invoking any instruction in solana program. This helps creating accounts. Refer [this](https://docs.solana.com/developing/runtime-facilities/programs#system-program) to know more.   
 
-4 `token_program` account is passed for interacting with `token-program`.
+4) `token_program` account is for interacting with `token-program`.
 
-5 `rent` account is passed as well as this will be used by `token-program` during mint account creation.
+5) `rent` account is used by `token-program` during mint account creation.
 
-6 `vault` account is a PDA generated account. It is used for storing the state of the program. `Vault` struct is passed into the account generic where actual state is stored. We will have to pass in the space as well. To calculate the space for storing please refer [this](https://book.anchor-lang.com/anchor_references/space.html).
+6) `vault` account is a PDA generated account. It is used for storing the state of the program. `Vault` struct is passed into the account generic where actual state is stored. We will have to pass in the space as well. To calculate the space for storing please refer [this](https://book.anchor-lang.com/anchor_references/space.html).
 
-7 The `Vault` struct stores the state of the program. We will store bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
+7) The `Vault` struct stores the state of the program. We will store bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
 
 
 ### How to create an instruction? 
@@ -221,7 +221,7 @@ We will write `tests` for calling the the `create_mint` instruction.
 
 This is same as calling an instruction from the client side. 
 
-In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts and then pass these as arguments while calling the `create_mint` instruction.
+In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts, to pass these as arguments while calling the `create_mint` instruction.
 
 
 Import the necessary libraries in the `spl-token.ts` test file.
@@ -436,26 +436,26 @@ pub struct TransferMint<'info> {
  
 So here is what's happening the `TransferMint` context
 
-1 We have used the same `spl_token_mint` account. However, we are not instantiating this time. We use the `spl_token_mint_bump` that was stored in `Vault` state previously.
+1) We have used the same `spl_token_mint` account. However, we are not instantiating this time. We use the `spl_token_mint_bump` that was stored in `Vault` state previously.
 
-2 We get the `vault` account again by using stored `bump` from the `Vault` state
+2) We get the `vault` account again by using stored `bump` from the `Vault` state
 
-3 This time, we are passing an ATA for minting the `spl_token_mint` into the `payer_mint_ata` account. We are setting `associated_token::mint` to `spl_token_mint` and `associated_token::authority` to `payer` account.
+3) This time, we are passing an ATA for minting the `spl_token_mint` into the `payer_mint_ata` account. We are setting `associated_token::mint` to `spl_token_mint` and `associated_token::authority` to `payer` account.
 
-4 We are passing the `payer` account from which the program deducts payment
+4) We are passing the `payer` account from which the program deducts payment
 
-5 `token_program` account is same as before
+5) `token_program` account is same as before
 
-6 `system_program` account is same as described in the previously
+6) `system_program` account is same as described in the previously
 
-7 `rent` account is same as previously. Here we are passing rent for creating `associated token account` 
+7) `rent` account is same as previously. Here we are passing rent for creating `associated token account` 
 
-8 `associated_token_program` account is passed for creating ATA. 
+8) `associated_token_program` account is passed for creating ATA. 
 
 
 We will now create an instruction `transfer_mint` to transfer the `spl_token_mint` into an ATA.
 
-We use the `mint_to` instruction from `token_program` and do a cross program invocation (CPI) to call an instruction of an another program. Learn more about this [here](https://book.anchor-lang.com/anchor_in_depth/CPIs.html) 
+We use the `mint_to` instruction from `token_program`. We will call the instruction via cross program invocation (CPI) to another program. Learn more about this [here](https://book.anchor-lang.com/anchor_in_depth/CPIs.html) 
 
 ```rust
     pub fn transfer_mint(ctx : Context<TransferMint>) -> Result<()> {
