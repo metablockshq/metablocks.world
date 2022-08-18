@@ -1,6 +1,6 @@
 ---
 publishedOn: 2022-08-18T00:43:44.071Z
-title: How transferring of tokens work in Solana Programmatically - Part 2
+title: How transferring of tokens work in Solana smaart contract  - Part 2
 subTitle: "Get to know how MintTo and Transfer spl-token operations work in
   solana using anchor framework "
 featured: false
@@ -29,6 +29,13 @@ We looked at `mint_to` operation of anchor's \`anchor_spl\` library. Now, let us
 ## Outcome
 By the end of this guide, you should be able to understand when to `mint_to` operation and when to use `transfer` operation. Here is the [github_repo]() of the sample anchor codebase
 
+### Mint_to operation
+We use `mint_to` function when we create a new token mint. For instance, let us create a new `mint` and transfer it to an associated token account using `mint_to` operation.
 
+**Create a mint**
+```rust 
+
+
+```
 
 
