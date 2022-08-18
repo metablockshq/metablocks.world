@@ -1,6 +1,6 @@
 ---
 publishedOn: 2022-08-18T00:43:44.071Z
-title: How transferring of tokens work in Solana smaart contract  - Part 2
+title: How transferring of tokens work in Solana smart contract  - Part 2
 subTitle: "Get to know how MintTo and Transfer spl-token operations work in
   solana using anchor framework "
 featured: false
