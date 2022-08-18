@@ -87,7 +87,7 @@ Also replace the address in `Anchor.toml` file of the project
 
 Now let us create a `Mint` in the program.
 
-## Create a Mint
+## How to create a mint?
 
 You could think of `mint` as a metadata about a token that is being transferred to an account. A mint could be initialised in a context. In anchor framework the struct is passed as a context. 
 
@@ -104,6 +104,8 @@ anchor-spl = "^0.25.0"
 Generally in Solana, any accounts that involve in the modification of state, are passed from the client side. This is done for parallel execution of programs. Refer [this](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192) article from Anatoly Yakovenko  
 
 It becomes easier in to access these `accounts` using anchor framework. Pass these accounts as context parameter to an instruction.
+
+### How to create a context ? 
 
 A `struct` can be defined as a context in an anchor program. Let us look at how this could be achieved. 
 
@@ -186,6 +188,26 @@ We setting other metadata fields like `mint::authority` and `mint::freeze_author
 
 7. The `Vault` struct stores the state of the program. We will store bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
 
+
+### How to create an instruction? 
+
+Above created `context` is passed as an argument to an instruction. An instruction is a function where we could achieve a set of described procedure. This is usually a state change in the Solana blockchain. Any executed instruction is [Turing](https://en.wikipedia.org/wiki/Turing_completeness#:~:text=In%20colloquial%20usage%2C%20the%20terms,purpose%20computer%20or%20computer%20language) complete.
+
+
+Let us create an instruction which accepts the `context` as a parameter.
+
+```rust
+ pub fn create_mint(ctx: Context<CreateMint>) -> Result<()> {
+      let vault = &mut ctx.accounts.vault;
+      vault.authority = ctx.accounts.payer.key();
+      vault.spl_token_mint_bump = *ctx.bumps.get("spl_token_mint").unwrap();
+      vault.bump = *ctx.bumps.get("vault").unwrap();
+      Ok(())
+ }
+
+``` 
+
+In the instruction above, we are storing the `bumps` and other state values into the `Vault` state. 
 
 
 ```rust
