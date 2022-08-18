@@ -156,13 +156,14 @@ pub struct CreateMint<'info> {
 
 // Store the state 
 #[account]
-pub struct Vault { // ---> 7
+pub struct Vault {
     bump : u8, //1
-    authority : Pubkey //32
+    authority : Pubkey, //32
+    spl_token_mint : Pubkey //32
 }
 
-impl Vault { // ---> 8
-    pub const LEN: usize = 1 + 32;
+impl Vault {
+    pub const LEN: usize = 1 + 32 + 32;
 }
 
 ```
@@ -181,7 +182,7 @@ We setting other metadata fields like `mint::authority` and `mint::freeze_author
 
 5. `rent` account is passed as well as this will be used by `token-program` during mint account creation.
 
-6. `vault` account is     
+6. `vault` account is a PDA generated account. It is used for storing the state of the program. `Vault` struct is passed into the account generic where actual state is stored. We will have to pass in the space as well. To calculate the space for storing please refer [this](https://book.anchor-lang.com/anchor_references/space.html)   
 
 
 
