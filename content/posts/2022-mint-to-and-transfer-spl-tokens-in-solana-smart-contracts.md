@@ -1,6 +1,8 @@
 ---
 publishedOn: 2022-08-18T03:27:24.736Z
 title: How transferring of tokens work in Solana smart contract  - Part 2
+subTitle: Learn how to use `mint_to` and `transfer instructions in solana using
+  Anchor Framework
 featured: false
 heroImg: /img/content/posts/solanashape2-full.png
 slug: mint-to-and-transfer-spl-tokens-in-solana-smart-contracts
