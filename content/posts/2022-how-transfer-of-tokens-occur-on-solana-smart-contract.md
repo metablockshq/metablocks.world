@@ -324,10 +324,10 @@ To test, run the command
 anchor test
 bash
 ```
+You should be able to see the output as below. Now, we have successfully created a `mint` and tested it out.
+
 
 [image_7]
-
-You should be able to see the output as below. By this, we have successfully created a `mint` and tested it out.
 
 
 ### Transfer the Minted token
