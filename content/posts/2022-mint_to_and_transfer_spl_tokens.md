@@ -88,9 +88,9 @@ As we can see above, we perform a **CPI** call to the [token program](https://sp
 
 ### Transfer operation
 
+Suppose if an user wants to stake a token into an escrow, then we use `transfer` operation. 
+ 
 **CPI call**
-
-Suppose if a user wants to stake a token into a vault account (escrow account), then we use `transfer` operation.
 
 ```rust
 use anchor_spl::token::{self};
@@ -100,47 +100,22 @@ use anchor_spl::token::{self};
 let cpi_context = CpiContext::new(
     self.token_program.to_account_info(),
     token::Transfer {
-        from: self.payer_ata.to_account_info(), //ATA holding tokens
-        to: self.vault_ata.to_account_info(), // ATA of vault 
-        authority: self.payer.to_account_info(), // one who is transferring tokens
+        mint: self.mint.to_account_info(),
+        to: self.payer_ata.to_account_info(),
+        authority: self.payer.to_account_info(),
     },
 );
-token::transfer(cpi_context, 1) // 
+token::mint_to(cpi_context, 1)
 
 ...
 
 ``` 
 
-**CPI Call with signer**
+## Next Steps
 
-Now suppose if the user wants to unstake the staked tokens, then, tokens are transferred from `vault associated token account` to `payer associated token account`. 
+Next we will discuss about other operations like `burn` and `freeze`.
 
-But we already know that `vault associated token account` is an escrow account. Hence we need signer seeds. With the signer seeds, we perform **CPI** call to token program to unstake the tokens.
-
-```rust
-...
-
-let bump = ctx.accounts.vault.bump;
-let seeds = &[b"vault".as_ref(), &[bump]];
-let signer_seeds =  &[&seeds[..]];
-
-let cpi_ctx = CpiContext::new_with_signer(
-            self.token_program.to_account_info(),
-            token::Transfer {
-                from: self.vault_ata.clone().to_account_info(),
-                to: self.payer_ata.to_account_info(),
-                authority: self.payer.to_account_info(),
-            },
-            signer_seeds,
-        );
-        token::transfer(cpi_ctx, 1)
-
-...
-
-```
-
-
-
+If you are building a richer application, or want NFTs that can upgrade overtime, checkout the [Meta Blocks protocol](https://metablocks.world/guides/protocol).
 
 
 
