@@ -61,7 +61,7 @@ pub struct InitMint<'info> {
 ```
 
 ### Mint_to operation
-We use `mint_to` function when we create a new token mint for the first time. This operation is usually done by the admins or an escrow program. 
+We use `mint_to` function when we create a new token mint for the first time. This operation is usually done by the admins or an escrow program.  
 
  
 
