@@ -85,7 +85,6 @@ Also replace the address in `Anchor.toml` file of the project
 
 [image_4]
 
----
 
 Now let us create a `Mint` in the program.
 
@@ -213,7 +212,6 @@ Let us create an instruction which accepts the `context` as a parameter.
 
 In the instruction above, we are storing the `bumps` and other state values into the `Vault` state.
 
----
 
 ### How to call the `create_mint` instruction from the client side? 
 
@@ -332,7 +330,6 @@ You should be able to see the output as below. Now, we have successfully created
 
 [image_7]
 
----
 
 ## How to transfer the Minted token to an account? 
 
