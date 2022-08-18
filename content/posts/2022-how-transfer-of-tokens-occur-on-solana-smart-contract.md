@@ -22,7 +22,7 @@ Let us walk through on how to transfer tokens in Solana using **Anchor framework
 
 ## Outcome
 
-By the end of this guide, you should be able to understand how tokens could be transferred in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/metablocks-program-library/blob/main/nft-vault/programs/nft-vault/src/lib.rs) to dive directly into the code.
+By the end of this guide, you should be able to understand how tokens could be transferred in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/tutorial-create-token-mint) to dive directly into the code.
 
 ## What is an SPL-token?
 
