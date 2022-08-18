@@ -88,7 +88,28 @@ As we can see above, we perform a **CPI** call to the [token program](https://sp
 
 ### Transfer operation
 
+Suppose if an user wants to stake a token into an escrow, then we use `transfer` operation. 
+ 
+**CPI call**
 
+```rust
+use anchor_spl::token::{self};
+
+...
+
+let cpi_context = CpiContext::new(
+    self.token_program.to_account_info(),
+    token::Transfer {
+        mint: self.mint.to_account_info(),
+        to: self.payer_ata.to_account_info(),
+        authority: self.payer.to_account_info(),
+    },
+);
+token::mint_to(cpi_context, 1)
+
+...
+
+``` 
 
 
 
