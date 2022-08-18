@@ -383,8 +383,16 @@ Now, back in the rust `lib.rs` file, we will write a `transfer` context and then
 
 We create another `struct` for passing the called `TransferMint` for creating a context for `transfer_mint` (more about this in the next section). 
 
-First import the additional functions from `token` library
+First update the imports from `token` library
 
+```rust
+use anchor_spl::{token::{self, Mint, Token, TokenAccount}, associated_token::AssociatedToken};
+```
+
+Next create the `TransferMint` context.
+
+
+```rust
 // Transfer mint context
 #[derive(Accounts)]
 pub struct TransferMint<'info> {
@@ -416,36 +424,103 @@ pub struct TransferMint<'info> {
     #[account(mut)]
     pub payer: Signer<'info>, // ---> 4
 
-    pub system_program: Program<'info, System>, // ---> 4
-    pub token_program: Program<'info, Token>,   // ---> 5
+    pub system_program: Program<'info, System>, // ---> 5
+    pub token_program: Program<'info, Token>,   // ---> 6
     
-    pub rent: Sysvar<'info, Rent>, // ---> 6
+    pub rent: Sysvar<'info, Rent>, // ---> 7
 
-    pub associated_token_program : Program<'info, AssociatedToken>  // ---> 7
+    pub associated_token_program : Program<'info, AssociatedToken>  // ---> 8
 
 }
-```rust
-
 ``` 
  
+So here is what's happening the `TransferMint` context
+
+1. We have used the same `spl_token_mint` account. However, we are not instantiating this time. We use the `spl_token_mint_bump` that was stored in `Vault` state previously.
+
+2. We get the `vault` account again by using stored `bump` from the `Vault` state
+
+3. This time, we are passing an ATA for minting the `spl_token_mint` into the `payer_mint_ata` account. We are setting `associated_token::mint` to `spl_token_mint` account and `associated_token::authority` to `payer` account.
+
+4. We are passing the `payer` account from which the program deducts payment
+
+5. `token_program` account is same as before
+
+6. `system_program` account is same as described in the previously
+
+7. `rent` account is same as previously. Here we are passing rent for creating `associated token account` 
+
+8. `associated_token_program` account is passed for creating ATA. 
+
+
+We will now create an instruction `transfer_mint` to transfer the `spl_token_mint` into an ATA.
+
+We use the `mint_to` instruction from `token_program` and do a cross program invocation (CPI) to call an instruction of an another program. Learn more about this [here](https://book.anchor-lang.com/anchor_in_depth/CPIs.html) 
 
 ```rust
-use anchor_spl::token::{self};
-
-...
-
-let cpi_context = CpiContext::new(
-    self.token_program.to_account_info(),
-    token::MintTo {
-        mint: self.mint.to_account_info(),
-        to: self.payer_ata.to_account_info(),
-        authority: self.payer.to_account_info(),
-    },
-);
-token::mint_to(cpi_context, 1)
+    pub fn transfer_mint(ctx : Context<TransferMint>) -> Result<()> {
+        let cpi_context = CpiContext::new(
+            ctx.accounts.token_program.to_account_info(),
+            token::MintTo {
+                mint: ctx.accounts.spl_token_mint.to_account_info(),
+                to: ctx.accounts.payer_mint_ata.to_account_info(),
+                authority: ctx.accounts.payer.to_account_info(),
+            },
+        );
+        token::mint_to(cpi_context, 1)?; // we are minting 1 token to 
+        Ok(())
+    }
 ```
 
-With this, the spl-token mint is minted into the payer associated token account. 
+With this, the `spl_token_mint` is minted into the `payer_mint_ata` account.
+
+ 
+Let us test this out by writing another test case in `spl-token.ts` file. Let's update the file like it shown below.
+
+```typescript
+// add this block into the describe block of the test file
+it("should mint the spl-token-mint to payer_mint_ata", async () => {
+    const [splTokenMint, _1] = await findSplTokenMintAddress();
+
+    const [vaultMint, _2] = await findVaultAddress();
+
+    const [payerMintAta, _3] = await findAssociatedTokenAccount(
+      payer.publicKey,
+      splTokenMint
+    );
+
+    const tx = await program.methods
+      .transferMint()
+      .accounts({
+        splTokenMint: splTokenMint,
+        vault: vaultMint,
+        associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+        tokenProgram: TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+        payerMintAta: payerMintAta,
+        payer: payer.publicKey,
+      })
+      .signers([payer])
+      .rpc();
+
+    console.log("Your transaction signature", tx);
+  });
+
+```
+
+Run the command 
+```bash
+anchor test
+```
+
+After this, you should be able to see the result like below.
+
+[image_8]
+
+
+That's it! We have learnt how to create a new `mint` and `transfer` it to an account. 
+
+
 
 ## Next Steps
 
