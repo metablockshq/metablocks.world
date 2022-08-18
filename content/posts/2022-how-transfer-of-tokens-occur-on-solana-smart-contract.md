@@ -143,8 +143,9 @@ pub struct CreateMint<'info> {
     pub rent: Sysvar<'info, Rent>, // ---> 5
 }
 
-
 ```
+
+
 
 In Solana it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID 
 
