@@ -115,7 +115,7 @@ use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token};
 ``` 
 
-Then define a context(`struct`) for accessing these instructions.
+Then, define a context(`struct`) for accessing these instructions. The `CreateMint` struct is decorated with `#[derive(Accounts)]` which helps in deserialisation of accounts described in this `struct`
 
 ```rust
 #[derive(Accounts)]
@@ -145,9 +145,18 @@ pub struct CreateMint<'info> {
 
 ```
 
+In the above code, 5 accounts are passed.
+
+1. An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs.
+
+We setting other metadata fields like `mint::authority` and `mint::freeze_authority` to `payer`. We are setting `mint::decimals` to `0` for easy demonstration purpose. You could set the value to any number as you like-to.
+
+2. `payer` is the one who is paying for calling `create_mint` instruction(discussed in next section). The account is a `signer` account and is set to `mut`.
+
+3.  
 
 
-In Solana it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID 
+
 
 
 ```rust
