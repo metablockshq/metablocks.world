@@ -103,6 +103,48 @@ anchor-spl = "^0.25.0"
 
 Generally in Solana, any accounts that involve in the modification of state, are passed from the client side. This is done for parallel execution of programs. Refer [this](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192) article from Anatoly Yakovenko  
 
+It becomes easier in to access these `accounts` using anchor framework. Pass these accounts as context parameter to an instruction.
+
+A `struct` can be defined as a context in an anchor program. Let us look at how this could be achieved. 
+
+
+Fist import the dependencies
+
+```rust 
+use anchor_lang::prelude::*;
+use anchor_spl::token::{Mint, Token};
+``` 
+
+Then define a context(`struct`) for accessing these instructions.
+
+```rust
+#[derive(Accounts)]
+pub struct CreateMint<'info> {
+    #[account(
+        init,
+         seeds = [
+            b"spl-token-vault".as_ref(),
+         ],
+        bump,
+        payer = payer,
+        mint::authority = payer,
+        mint::decimals = 0,
+        mint::freeze_authority = payer
+    )]
+    pub spl_token_mint: Account<'info, Mint>, // ---> 1 
+
+    #[account(mut)]
+    pub payer: Signer<'info>, // ---> 2
+
+    pub system_program: Program<'info, System>, // ---> 3
+
+    pub token_program: Program<'info, Token>, // ---> 4
+    // this is required for spl token mint
+    pub rent: Sysvar<'info, Rent>, // ---> 5
+}
+
+
+```
 
 In Solana it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID 
 
