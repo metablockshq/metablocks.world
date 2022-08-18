@@ -29,7 +29,7 @@ We looked at `mint_to` operation of anchor's \`anchor_spl\` library. Now, let us
 ## Outcome
 By the end of this guide, you should be able to understand when to `mint_to` operation and when to use `transfer` operation. Here is the [github_repo]() of the sample anchor codebase
 
-Before performing any spl_token related operations let us first create a new token mint for the demonstration purpose. 
+For demonstration, let us first create a new token mint. 
 
 **Create a new mint**
 ```rust
