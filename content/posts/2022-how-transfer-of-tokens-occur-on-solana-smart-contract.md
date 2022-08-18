@@ -221,16 +221,92 @@ This is same as calling an instruction from the client side.
 In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts and then pass these as arguments while calling the `create_mint` instruction.
 
 
-
-Import the necessary libraries in the test file
+Import the necessary libraries in the `spl-token.ts` test file.
 
 ```typescript
 import * as anchor from "@project-serum/anchor";
 import { Program } from "@project-serum/anchor";
 import { SplToken } from "../target/types/spl_token";
+import { PublicKey } from "@solana/web3.js";
+import idl from "../target/idl/spl_token.json";
+```
+
+Then we will find two PDA addresses like below
+
+```typescript
+
+// pda for spl-token-mint account
+export const findSplTokenMintAddress = async () => {
+  return await PublicKey.findProgramAddress(
+    [Buffer.from("spl-token-mint")],
+    new PublicKey(idl.metadata.address)
+  );
+};
+
+// pda for vault account
+export const findVaultAddress = async () => {
+  return await PublicKey.findProgramAddress(
+    [Buffer.from("vault")],
+    new PublicKey(idl.metadata.address)
+  );
+};
+
+```
+
+Add some `sols` before calling the instruction. Hence, let's call the below method before calling any instructions in the `spl-token.ts` test file. 
+
+```typescript
+export const addSols = async (
+  provider: Provider,
+  wallet: anchor.web3.PublicKey,
+  amount = 1 * anchor.web3.LAMPORTS_PER_SOL
+) => {
+  await provider.connection.confirmTransaction(
+    await provider.connection.requestAirdrop(wallet, amount),
+    "confirmed"
+  );
+};
+
 ```
 
 
+And we will call the `create_mint` from the test file like below. 
+
+```test
+describe("spl-token", () => {
+  const provider = anchor.AnchorProvider.env();
+  // Configure the client to use the local cluster.
+  anchor.setProvider(provider);
+
+  const payer = anchor.web3.Keypair.generate();
+
+  before("Add sols to wallet ", async () => {
+    await addSols(provider, payer.publicKey); // add some sols before calling test cases
+  });
+
+  const program = anchor.workspace.SplToken as Program<SplToken>;
+
+  it("Spl token is initialized!", async () => {
+    const [splTokenMint, _1] = await findSplTokenMintAddress();
+
+    const [vaultMint, _2] = await findVaultAddress();
+
+    const tx = await program.methods
+      .createMint()
+      .accounts({
+        splTokenMint: splTokenMint,
+        vault: vaultMint,
+        payer: payer.publicKey,
+        tokenProgram: TOKEN_PROGRAM_ID,
+        systemProgram: SystemProgram.programId,
+      })
+      .signers([payer])
+      .rpc();
+    console.log("Your transaction signature", tx);
+  });
+});
+
+```
  
 
 
