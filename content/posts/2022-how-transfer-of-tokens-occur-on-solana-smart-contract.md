@@ -202,6 +202,8 @@ Let us create an instruction which accepts the `context` as a parameter.
       vault.authority = ctx.accounts.payer.key();
       vault.spl_token_mint_bump = *ctx.bumps.get("spl_token_mint").unwrap();
       vault.bump = *ctx.bumps.get("vault").unwrap();
+      vault.spl_token_mint = ctx.accounts.spl_token_mint.key();
+
       Ok(())
  }
 
@@ -308,6 +310,11 @@ describe("spl-token", () => {
 
 ```
  
+
+To test, run the command 
+```bash
+bash
+```
 
 
 ```rust
