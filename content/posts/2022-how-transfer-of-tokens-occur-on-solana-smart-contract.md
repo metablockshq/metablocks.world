@@ -1,6 +1,6 @@
 ---
 publishedOn: 2022-08-18T03:13:57.930Z
-title: How to transfer tokens between accounts in Solana smart contract ? - Part 1
+title: How to transfer tokens between accounts in Solana smart contract ?
 subTitle: Understand how spl-tokens are transferred between accounts in solana
   using anchor framework
 featured: false
@@ -18,6 +18,21 @@ author: srinivasvalekar
 ---
 Let us walk through on how to transfer tokens in Solana using **Anchor framework**.
 
+## Outcome
+
+By the end of this guide, you should be able to understand how tokens could be transferred in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/metablocks-program-library/blob/main/nft-vault/programs/nft-vault/src/lib.rs) to dive directly into the code.
+
+
+## What is an SPL-token?
+
+Solana blockchain tokens are called as SPL-tokens. SPL-Tokens are created using [token-program](https://spl.solana.com/token). 
+
+To create an SPL-Token, two steps must be followed, 
+* Create a mint (If the mint is not existing)
+* Transfer a mint (to an associated token account(ATA))
+
+Let us create SPL-Token in Anchor framework.
+
 ## Prerequisites
 
 This guide requires you to have following installed
@@ -27,16 +42,8 @@ This guide requires you to have following installed
 * Last but not the least - you should have installed **Anchor Framework**  - Please follow this [link](https://book.anchor-lang.com/getting_started/installation.html#anchor)
 * Typescript on the client side. (**Anchor Framework** generates a client code as well)
 
-## Outcome
-
-By the end of this guide, you should be able to understand how tokens could be transferred in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/metablocks-program-library/blob/main/nft-vault/programs/nft-vault/src/lib.rs) to dive directly into the code.
 
 
-## Understanding about SPL-Tokens
-
-Transfer any spl-tokens to wallet by creating an **associated token account ATA**. It involves two simple process, 
-* Create a mint (If the mint is not existing)
-* Transfer a mint (to an associated token account)
 
 
 ### Create a Mint 
