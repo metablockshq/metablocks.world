@@ -207,7 +207,31 @@ Let us create an instruction which accepts the `context` as a parameter.
 
 ``` 
 
-In the instruction above, we are storing the `bumps` and other state values into the `Vault` state. 
+In the instruction above, we are storing the `bumps` and other state values into the `Vault` state.
+
+
+### How to call the `create_mint` instruction from the client side? 
+
+We will write `tests` for calling the the `create_mint` instruction. 
+
+[image_6]
+
+This is same as calling an instruction from the client side. 
+
+In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts and then pass these as arguments while calling the `create_mint` instruction.
+
+
+
+Import the necessary libraries in the test file
+
+```typescript
+import * as anchor from "@project-serum/anchor";
+import { Program } from "@project-serum/anchor";
+import { SplToken } from "../target/types/spl_token";
+```
+
+
+ 
 
 
 ```rust
