@@ -19,7 +19,7 @@ author: srinivasvalekar
 ---
 In the previous [guide](), we have looked at how to `mint` and transfer it to an Associated token account of a wallet. 
 
-We looked at `mint_to` operation of anchor's \`anchor_spl\` library. Now, let us go through different two different operations that \`anchor_spl\` library provides us.
+We looked at `mint_to` operation of anchor's \`anchor_spl\` library. Now, let us go two different operations that \`anchor_spl\` library provides us to move an spl-token between accounts.
 
 ## Prerequisites
 * Make sure that you have installed rust - Follow this [link]() for more info.
@@ -29,8 +29,7 @@ We looked at `mint_to` operation of anchor's \`anchor_spl\` library. Now, let us
 ## Outcome
 By the end of this guide, you should be able to understand when to `mint_to` operation and when to use `transfer` operation. Here is the [github_repo]() of the sample anchor codebase
 
-### Mint_to operation
-We use `mint_to` function when we create a new token mint. For instance, let us create a new `mint` and transfer it to an associated token account using `mint_to` operation.
+Before performing any spl_token related operations let us first create a new token mint for the demonstration purpose. 
 
 **Create a new mint**
 ```rust
@@ -60,5 +59,12 @@ pub struct InitMint<'info> {
 }
 
 ```
+
+### Mint_to operation
+We use `mint_to` function when we create a new token mint for the first time. This operation is usually done by the admins or an escrow program. 
+
+ 
+
+
 
 
