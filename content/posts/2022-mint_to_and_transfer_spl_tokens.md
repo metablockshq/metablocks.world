@@ -63,7 +63,30 @@ pub struct InitMint<'info> {
 ### Mint_to operation
 We use `mint_to` function when we create a new token mint for the first time. This operation is usually done by the admins or an escrow program.  
 
- 
+We require **associated token account (ATA)** to transfer a created mint. (Please follow the previous to understand more about associated token accounts )
+
+```rust
+use anchor_spl::token::{self};
+
+...
+
+let cpi_context = CpiContext::new(
+    self.token_program.to_account_info(),
+    token::MintTo {
+        mint: self.mint.to_account_info(),
+        to: self.payer_ata.to_account_info(),
+        authority: self.payer.to_account_info(),
+    },
+);
+token::mint_to(cpi_context, 1)
+
+...
+
+```  
+
+As we can see above, we perform a **CPI** call to the [token program](https://spl.solana.com/token) operation. 
+
+
 
 
 
