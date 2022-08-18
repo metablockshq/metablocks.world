@@ -32,9 +32,32 @@ By the end of this guide, you should be able to understand when to `mint_to` ope
 ### Mint_to operation
 We use `mint_to` function when we create a new token mint. For instance, let us create a new `mint` and transfer it to an associated token account using `mint_to` operation.
 
-**Create a mint**
-```rust 
+**Create a new mint**
+```rust
 
+use anchor_lang::prelude::*;
+use anchor_spl::token::{Mint, Token};
+
+...
+
+#[derive(Accounts)]
+pub struct InitMint<'info> {
+    #[account(
+        init_if_needed,
+         seeds = [
+            b"Mint".as_ref(),
+         ],
+        bump,
+        payer = payer, // payer is the one who is invoking this context
+        mint::authority = payer,
+        mint::decimals = 0, // zero decimals for the new mint
+        mint::freeze_authority = payer // here freeze authority is the payer
+    )]
+    pub mint: Box<Account<'info, Mint>>,
+
+...
+
+}
 
 ```
 
