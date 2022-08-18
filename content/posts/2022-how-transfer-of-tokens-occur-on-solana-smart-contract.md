@@ -16,18 +16,19 @@ relatedSlugs:
   - lets-start-with-blocks
 author: srinivasvalekar
 ---
+
 Let us walk through on how to transfer tokens in Solana using **Anchor framework**.
 
 ## Outcome
 
 By the end of this guide, you should be able to understand how tokens could be transferred in **anchor framework**. Please refer this [github link](https://github.com/metablockshq/metablocks-program-library/blob/main/nft-vault/programs/nft-vault/src/lib.rs) to dive directly into the code.
 
-
 ## What is an SPL-token?
 
 Solana blockchain tokens are called as SPL-tokens. SPL-Tokens are created using [token-program](https://spl.solana.com/token). 
 
 To create an SPL-Token, two steps must be followed, 
+
 * Create a mint (If the mint is not existing)
 * Transfer a mint (to an associated token account(ATA))
 
@@ -42,24 +43,72 @@ This guide requires you to have following installed
 * Last but not the least - you should have installed **Anchor Framework**  - Please follow this [link](https://book.anchor-lang.com/getting_started/installation.html#anchor)
 * Typescript on the client side. (**Anchor Framework** generates a client code as well)
 
+## Create an anchor Project
+
+### 1. Run 
+
+```bash
+anchor init spl-token
+```
+
+This will initialise a project like this below.
+
+[image 1]
+
+Open in your favourite editor and start doing the changes. 
+
+### 2. Run the below command
+```bash
+anchor test
+``` 
+This will install all dependencies of the project.
 
 
+### 3. Change Program ID
+Usually it is a good idea to change the ProgramID of the program. Get the public address of the `spl-token` program by running the following command
+
+```bash 
+solana-keygen pubkey target/deploy/spl_token-keypair.json
+```
+
+This will give you the output as below
+
+[image 2]
+  
+
+Replace `29iiLtNregFkwH4n4K95GrKYcGUGC3F6D5thPE2jWQQs` in `declare_id` of `lib.rs` file
+
+[image_3]
+
+Also replace the address in `Anchor.toml` file of the project 
+
+[image_4]
 
 
-### Create a Mint 
-You could think of `mint` as a metadata about a token that is being transferred to an account. A mint could be initialised in a context. In `Anchor Framework` the struct could be passed a context. 
+Now let us create a `Mint` in the program.
 
-`anchor_spl` needs to be imported into the project. This could be added in `cargo.toml` file.
+## Create a Mint
+
+You could think of `mint` as a metadata about a token that is being transferred to an account. A mint could be initialised in a context. In anchor framework the struct is passed as a context. 
+
+
+First let's import `anchor_spl` into the project so that we can create a mint. Add below in your `cargo.toml` file. And run `anchor test` or `anchor build` to check if everything is working fine. 
 
 ```toml
 anchor-spl = "^0.25.0"
 ```
 
+[image_5]
 
-In the rust program you do the following to initialise a mint account with the **PDA** generated mint address.
+
+Generally in Solana, any accounts that involve in the modification, are passed from the client side. (This is done for parallel programming)
+
+ for Create a context(struct) in the program. 
+
+In Solana it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID 
+
 
 ```rust
-
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token};
 
@@ -83,11 +132,9 @@ pub struct InitMint<'info> {
 ...
 
 }
-
 ```
 
 Anchor framework provides with `spl` token implementation of its own. This could be used to `mint` an account.
-
 
 ### Transfer the Minted token
 
@@ -100,7 +147,6 @@ Now that we have a minted an spl-token, it is time to understand about **Associa
 The given code is an example ATA generation using **PDA** method in **typescript** on the client side.
 
 ```typescript
-
 import {PublicKey} from "@solana/web3.js"
 import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
@@ -118,10 +164,10 @@ const AssociatedTokenAccount = async (
    ASSOCIATED_TOKEN_PROGRAM_ID  
   );
 };
-
 ```
 
 ATA is generated using 
+
 * Any **public key**
 * A **mint key** 
 * Token program ID and Associated Token Program ID. These two are standard programs that are deployed on Solana.
@@ -145,7 +191,6 @@ token::mint_to(cpi_context, 1)
 ```
 
 With this, the spl-token mint is minted into the payer associated token account. 
-
 
 ## Next Steps
 
