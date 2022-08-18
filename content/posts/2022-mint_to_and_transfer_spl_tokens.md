@@ -5,7 +5,7 @@ subTitle: "Get to know how MintTo and Transfer spl-token operations work in
   solana using anchor framework "
 featured: false
 heroImg: /img/content/posts/solanashape2-full.png
-slug: mint_to_and_transfer_spl_tokens
+slug: mint-to-and-transfer-spl-tokens
 tags:
   - blockchain
   - nft
@@ -85,6 +85,8 @@ token::mint_to(cpi_context, 1)
 ```  
 
 As we can see above, we perform a **CPI** call to the [token program](https://spl.solana.com/token) operation. 
+
+### Transfer operation
 
 
 
