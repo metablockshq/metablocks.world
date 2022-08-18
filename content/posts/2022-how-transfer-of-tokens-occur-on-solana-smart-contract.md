@@ -123,7 +123,7 @@ pub struct CreateMint<'info> {
     #[account(
         init,
          seeds = [
-            b"spl-token-vault".as_ref(),
+            b"spl-token-mint".as_ref(),
          ],
         bump,
         payer = payer,
@@ -131,21 +131,43 @@ pub struct CreateMint<'info> {
         mint::decimals = 0,
         mint::freeze_authority = payer
     )]
-    pub spl_token_mint: Account<'info, Mint>, // ---> 1 
+    pub spl_token_mint: Account<'info, Mint>, // ---> 1
 
     #[account(mut)]
     pub payer: Signer<'info>, // ---> 2
 
     pub system_program: Program<'info, System>, // ---> 3
-
-    pub token_program: Program<'info, Token>, // ---> 4
+    pub token_program: Program<'info, Token>,   // ---> 4
     // this is required for spl token mint
     pub rent: Sysvar<'info, Rent>, // ---> 5
+
+    #[account(
+        init, 
+        space = 8 + Vault::LEN,
+        seeds = [
+            b"vault"
+        ],
+        bump,
+        payer = payer 
+    )]
+    pub vault : Account<'info, Vault>, // ---> 6
+}
+
+
+// Store the state 
+#[account]
+pub struct Vault { // ---> 7
+    bump : u8, //1
+    authority : Pubkey //32
+}
+
+impl Vault { // ---> 8
+    pub const LEN: usize = 1 + 32;
 }
 
 ```
 
-In the above code, 5 accounts are passed.
+In the above code, 6 accounts are passed.
 
 1. An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs.
 
@@ -153,7 +175,13 @@ We setting other metadata fields like `mint::authority` and `mint::freeze_author
 
 2. `payer` is the one who is paying for calling `create_mint` instruction(discussed in next section). The account is a `signer` account and is set to `mut`.
 
-3.  
+3. We must pass `system_program` as well while invoking any instruction in solana program. This helps creating accounts. Refer [this](https://docs.solana.com/developing/runtime-facilities/programs#system-program) to know more.   
+
+4. `token_program` account is passed for interacting with `token-program`.
+
+5. `rent` account is passed as well as this will be used by `token-program` during mint account creation.
+
+6. `vault` account is     
 
 
 
