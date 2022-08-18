@@ -304,6 +304,14 @@ describe("spl-token", () => {
       })
       .signers([payer])
       .rpc();
+
+    const vaultData = await program.account.vault.fetch(vaultMint);
+
+    assert(
+      vaultData.splTokenMint.toString() === splTokenMint.toString(),
+      "The spl token mint should be same"
+    );
+
     console.log("Your transaction signature", tx);
   });
 });
@@ -313,8 +321,13 @@ describe("spl-token", () => {
 
 To test, run the command 
 ```bash
+anchor test
 bash
 ```
+
+[image_7]
+
+You should be able to see the output as below. By this, we have successfully created a `mint` and tested it out.
 
 
 ```rust
