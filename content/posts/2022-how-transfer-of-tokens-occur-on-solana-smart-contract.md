@@ -101,9 +101,8 @@ anchor-spl = "^0.25.0"
 [image_5]
 
 
-Generally in Solana, any accounts that involve in the modification, are passed from the client side. (This is done for parallel programming)
+Generally in Solana, any accounts that involve in the modification, are passed from the client side. This is done for parallel execution of programs. Refer [this](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192) article from Anatoly Yakovenko  
 
- for Create a context(struct) in the program. 
 
 In Solana it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID 
 
