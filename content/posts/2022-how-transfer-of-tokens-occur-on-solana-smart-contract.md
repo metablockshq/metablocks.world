@@ -79,8 +79,6 @@ This will give you the output as below
 
 
 
-
-
 Replace `29iiLtNregFkwH4n4K95GrKYcGUGC3F6D5thPE2jWQQs` in `declare_id` of `lib.rs` file
 
 ![](/img/content/posts/image_3.png "Code")
@@ -162,18 +160,6 @@ pub struct CreateMint<'info> {
     pub vault : Account<'info, Vault>, // ---> 6
 }
 
-// Store the state 
-#[account]
-pub struct Vault { //  ---> 7
-    bump : u8, //1
-    spl_token_mint_bump:u8, // 1
-    authority : Pubkey, //32
-    spl_token_mint : Pubkey //32
-}
-
-impl Vault {
-    pub const LEN: usize =1 + 1 + 32 + 32;
-}
 ```
 
 In the above code, 6 accounts are passed.
@@ -187,7 +173,26 @@ We setting other metadata fields like `mint::authority` and `mint::freeze_author
 4. `token_program` account is for interacting with `token-program`.
 5. `rent` account is used by `token-program` during mint account creation.
 6. `vault` account is a PDA generated account. It is used for storing the state of the program. `Vault` struct is passed into the account generic where actual state is stored. We will have to pass in the space as well. To calculate the space for storing please refer [this](https://book.anchor-lang.com/anchor_references/space.html).
-7. The `Vault` struct stores the state of the program. We will store bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
+
+We are passing `Vault` with `vault` account. To store the state of a program, a `struct` could be defined as follows
+
+```rust
+// Store the state 
+#[account]
+pub struct Vault {
+    bump : u8, //1
+    spl_token_mint_bump:u8, // 1
+    authority : Pubkey, //32
+    spl_token_mint : Pubkey //32
+}
+
+impl Vault {
+    pub const LEN: usize =1 + 1 + 32 + 32;
+}
+```
+
+
+The `Vault` struct stores bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
 
 ### How to create an instruction?
 
@@ -207,7 +212,20 @@ Let us create an instruction which accepts the `context` as a parameter.
  }
 ```
 
-In the instruction above, we are storing the `bumps` and other state values into the `Vault` state.
+In the instruction above, we are storing the `bumps` and other state values into the `Vault` state. 
+
+Now let us run the below command
+
+```bash
+anchor test
+```
+
+The `anchor test` command does the following operations
+1) It runs `cargo build-bpf` command to generate `bytecode` of the program
+2) It generates Interface Definition Language(IDL) as.
+3) It runs `ts-mocha` command to run the test written in `spl-token.ts` file. So let us discuss about it in the next section.
+
+
 
 ### How to call the `create_mint` instruction from the client side?
 
@@ -228,7 +246,7 @@ import * as anchor from "@project-serum/anchor";
 import { Program } from "@project-serum/anchor";
 import { SplToken } from "../target/types/spl_token";
 import { PublicKey } from "@solana/web3.js";
-import idl from "../target/idl/spl_token.json";
+import idl from "../target/idl/spl_token.json"; // this generated when we run anchor test command
 ```
 
 Then we will find two PDA addresses like below
