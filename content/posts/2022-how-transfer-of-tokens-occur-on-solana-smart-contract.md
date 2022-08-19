@@ -688,6 +688,6 @@ That's it! We have learnt how to create a new `mint` and `transfer` it to any ac
 
 ## Next Steps
 
-Next, we will discuss about difference between `mint_to` and `transfer` instruction from `spl_token` library 
+Next, we will discuss about other operations like `burn`, `thaw` and `freeze` instruction from `spl_token` library 
 
 If you are building a richer application, or want NFTs that can upgrade overtime, checkout the [Meta Blocks protocol](https://metablocks.world/guides/protocol).
