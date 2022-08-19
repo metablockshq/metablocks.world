@@ -17,7 +17,6 @@ relatedSlugs:
 author: srinivasvalekar
 canonicalUrl: " "
 ---
-
 Let us walk through on how to transfer tokens in Solana using **Anchor framework**.
 
 ## Outcome
@@ -46,7 +45,7 @@ This guide requires you to have following installed
 
 ## Create an anchor Project
 
-### 1. Run 
+### 1. Run
 
 ```bash
 anchor init spl-token
@@ -54,36 +53,44 @@ anchor init spl-token
 
 This will initialise a project like this below.
 
-[image 1]
+![anchor_init](/img/content/posts/blog_post_1.png "Initialize Project")
 
 Open in your favourite editor and start doing the changes. 
 
 ### 2. Run the below command
+
 ```bash
 anchor test
-``` 
+```
+
 This will install all dependencies of the project.
 
-
 ### 3. Change Program ID
+
 Usually it is a good idea to change the ProgramID of the program. Get the public address of the `spl-token` program by running the following command
 
-```bash 
+```bash
 solana-keygen pubkey target/deploy/spl_token-keypair.json
 ```
 
 This will give you the output as below
 
-[image 2]
-  
+![solana-keygen](/img/content/posts/blog_image_2.png "Public Key generation")
+
+
+
+
 
 Replace `29iiLtNregFkwH4n4K95GrKYcGUGC3F6D5thPE2jWQQs` in `declare_id` of `lib.rs` file
 
-[image_3]
+![](/img/content/posts/image_3.png "Code")
+
+
 
 Also replace the address in `Anchor.toml` file of the project 
 
-[image_4]
+![program_id](/img/content/posts/image_4.png "Program ID")
+
 
 
 Now let us create a `Mint` in the program.
@@ -92,31 +99,30 @@ Now let us create a `Mint` in the program.
 
 You could think of `mint` as a metadata about a token that is being transferred to an account. A mint could be initialised in a context. In anchor framework the struct is passed as a context. 
 
-
 First let's import `anchor_spl` into the project so that we can create a mint. Add below in your `cargo.toml` file. And run `anchor test` or `anchor build` to check if everything is working fine. 
 
 ```toml
 anchor-spl = "^0.25.0"
 ```
 
-[image_5]
+![tome file](/img/content/posts/image_5.png "Toml ")
+
 
 
 Generally in Solana, any accounts that involve in the modification of state, are passed from the client side. This is done for parallel execution of programs. Refer [this](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192) article from Anatoly Yakovenko  
 
 It becomes easier in to access these `accounts` using anchor framework. Pass these accounts as context parameter to an instruction.
 
-### How to create a CreateMint context ? 
+### How to create a CreateMint context ?
 
 A `struct` can be defined as a context in an anchor program. Let us look at how this could be achieved. 
 
-
 First import the dependencies
 
-```rust 
+```rust
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token};
-``` 
+```
 
 Then, define a context(`struct`) for accessing these instructions. The `CreateMint` struct is decorated with `#[derive(Accounts)]`.  This helps in deserialisation of accounts described in this `struct`
 
@@ -168,32 +174,24 @@ pub struct Vault { //  ---> 7
 impl Vault {
     pub const LEN: usize =1 + 1 + 32 + 32;
 }
-
 ```
 
 In the above code, 6 accounts are passed.
 
-1) An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs.
+1. An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs.
 
 We setting other metadata fields like `mint::authority` and `mint::freeze_authority` to `payer`. We are setting `mint::decimals` to `0` for easy demonstration purpose. You could set the value to any number as you like-to.
 
-2) `payer` is the one who is paying for calling `create_mint` instruction. The account is a `signer` account and is set to `mut`.
+2. `payer` is the one who is paying for calling `create_mint` instruction. The account is a `signer` account and is set to `mut`.
+3. We must pass `system_program` as well while invoking any instruction in solana program. This helps creating accounts. Refer [this](https://docs.solana.com/developing/runtime-facilities/programs#system-program) to know more.   
+4. `token_program` account is for interacting with `token-program`.
+5. `rent` account is used by `token-program` during mint account creation.
+6. `vault` account is a PDA generated account. It is used for storing the state of the program. `Vault` struct is passed into the account generic where actual state is stored. We will have to pass in the space as well. To calculate the space for storing please refer [this](https://book.anchor-lang.com/anchor_references/space.html).
+7. The `Vault` struct stores the state of the program. We will store bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
 
-3) We must pass `system_program` as well while invoking any instruction in solana program. This helps creating accounts. Refer [this](https://docs.solana.com/developing/runtime-facilities/programs#system-program) to know more.   
-
-4) `token_program` account is for interacting with `token-program`.
-
-5) `rent` account is used by `token-program` during mint account creation.
-
-6) `vault` account is a PDA generated account. It is used for storing the state of the program. `Vault` struct is passed into the account generic where actual state is stored. We will have to pass in the space as well. To calculate the space for storing please refer [this](https://book.anchor-lang.com/anchor_references/space.html).
-
-7) The `Vault` struct stores the state of the program. We will store bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
-
-
-### How to create an instruction? 
+### How to create an instruction?
 
 Above created `context` is passed as an argument to an instruction. An instruction is a function where we could achieve a set of described procedure. This is usually a state change in the Solana blockchain. Any executed instruction is [Turing](https://en.wikipedia.org/wiki/Turing_completeness#:~:text=In%20colloquial%20usage%2C%20the%20terms,purpose%20computer%20or%20computer%20language) complete.
-
 
 Let us create an instruction which accepts the `context` as a parameter.
 
@@ -207,22 +205,21 @@ Let us create an instruction which accepts the `context` as a parameter.
 
       Ok(())
  }
-
-``` 
+```
 
 In the instruction above, we are storing the `bumps` and other state values into the `Vault` state.
 
-
-### How to call the `create_mint` instruction from the client side? 
+### How to call the `create_mint` instruction from the client side?
 
 We will write `tests` for calling the the `create_mint` instruction. 
 
-[image_6]
+![test file](/img/content/posts/image_6.png "Test File")
+
+
 
 This is same as calling an instruction from the client side. 
 
 In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts, to pass these as arguments while calling the `create_mint` instruction.
-
 
 Import the necessary libraries in the `spl-token.ts` test file.
 
@@ -232,13 +229,11 @@ import { Program } from "@project-serum/anchor";
 import { SplToken } from "../target/types/spl_token";
 import { PublicKey } from "@solana/web3.js";
 import idl from "../target/idl/spl_token.json";
-
 ```
 
 Then we will find two PDA addresses like below
 
 ```typescript
-
 // pda for spl-token-mint account
 export const findSplTokenMintAddress = async () => {
   return await PublicKey.findProgramAddress(
@@ -254,7 +249,6 @@ export const findVaultAddress = async () => {
     new PublicKey(idl.metadata.address)
   );
 };
-
 ```
 
 Add some `sols` before calling the instruction. Hence, let's call the below method before calling any instructions in the `spl-token.ts` test file. 
@@ -270,7 +264,6 @@ export const addSols = async (
     "confirmed"
   );
 };
-
 ```
 
 And we will call the `create_mint` from the test file like below. 
@@ -316,22 +309,22 @@ describe("spl-token", () => {
     console.log("Your transaction signature", tx);
   });
 });
-
 ```
- 
 
 To test, run the command 
+
 ```bash
 anchor test
 bash
 ```
+
 You should be able to see the output as below. Now, we have successfully created a `mint` and tested it out.
 
+![testing 1](/img/content/posts/image_7.png "First test")
 
-[image_7]
 
 
-## How to transfer the Minted token to an account? 
+## How to transfer the Minted token to an account?
 
 Before transferring an `spl_token_mint` to an account, it is time to understand about Associated Token Account (ATA). 
 
@@ -343,8 +336,8 @@ The `spl_token_mint` can only be transferred to ATA.
 
 Following code is an example ATA generation using `PublicKey.findProgramAddress` in  `@solana/web3.js` library.
 
-
 ### Add find ATA to test file
+
 Add the following in the `spl-token.ts` test file.
 
 ```typescript
@@ -390,7 +383,6 @@ use anchor_spl::{token::{self, Mint, Token, TokenAccount}, associated_token::Ass
 
 Next create the `TransferMint` context.
 
-
 ```rust
 // Transfer mint context
 #[derive(Accounts)]
@@ -431,26 +423,18 @@ pub struct TransferMint<'info> {
     pub associated_token_program : Program<'info, AssociatedToken>  // ---> 8
 
 }
-``` 
- 
+```
+
 So here is what's happening the `TransferMint` context
 
-1) We have used the same `spl_token_mint` account. However, we are not instantiating this time. We use the `spl_token_mint_bump` that was stored in `Vault` state previously.
-
-2) We get the `vault` account again by using stored `bump` from the `Vault` state
-
-3) This time, we are passing an ATA for minting the `spl_token_mint` into the `payer_mint_ata` account. We are setting `associated_token::mint` to `spl_token_mint` and `associated_token::authority` to `payer` account.
-
-4) We are passing the `payer` account from which the program deducts payment
-
-5) `token_program` account is same as before
-
-6) `system_program` account is same as described in the previously
-
-7) `rent` account is same as previously. Here we are passing rent for creating `associated token account` 
-
-8) `associated_token_program` account is passed for creating ATA. 
-
+1. We have used the same `spl_token_mint` account. However, we are not instantiating this time. We use the `spl_token_mint_bump` that was stored in `Vault` state previously.
+2. We get the `vault` account again by using stored `bump` from the `Vault` state
+3. This time, we are passing an ATA for minting the `spl_token_mint` into the `payer_mint_ata` account. We are setting `associated_token::mint` to `spl_token_mint` and `associated_token::authority` to `payer` account.
+4. We are passing the `payer` account from which the program deducts payment
+5. `token_program` account is same as before
+6. `system_program` account is same as described in the previously
+7. `rent` account is same as previously. Here we are passing rent for creating `associated token account` 
+8. `associated_token_program` account is passed for creating ATA. 
 
 We will now create an instruction `transfer_mint` to transfer the `spl_token_mint` into an ATA.
 
@@ -473,7 +457,6 @@ We use the `mint_to` instruction from `token_program`. We will call the instruct
 
 With this, the `spl_token_mint` is minted into the `payer_mint_ata` account.
 
- 
 Let us test this out by writing another test case in `spl-token.ts` file. Let's update the file like it shown below.
 
 ```typescript
@@ -504,17 +487,19 @@ it("should mint the spl-token-mint to payer_mint_ata", async () => {
 
     console.log("Your transaction signature", tx);
   });
-
 ```
 
 Run the command 
+
 ```bash
 anchor test
 ```
 
 After this, you should be able to see the result like below.
 
-[image_8]
+![test cases](/img/content/posts/image_8.png "Two test cases")
+
+
 
 ## How to transfer a token to other account?
 
@@ -522,7 +507,7 @@ So far, we have created a mint and minted it to an account. But how to transfer 
 
 It also involves the same process. Create a `TransferTokenToAnother` context and create an instruction `transfer_token_to_another` to achieve the end goal.
 
-### How to create a `TransferTokenToAnother` context? 
+### How to create a `TransferTokenToAnother` context?
 
 Below is the `struct` that we define for transferring a `spl_token_mint` token to other account.
 
@@ -576,33 +561,20 @@ pub struct TransferTokenToAnother<'info> {
     pub another_account : AccountInfo<'info> // ---> 10
 
 }
-
 ```
 
-
-1) We pass the `spl_token_mint` account without any `mut` or `init` decoration.
-
-2) We pass the `vault`. This can be used for security purpose.
-
-3) `payer_mint_ata` account from which we are transferring token to another ata
-
-4) `payer` signer who is transferring the token
-
-5) `system_program` account for executing the instruction.
- 
-6) `token_program` account used for performing `transfer` operation
-
-7) `init` decorator uses `rent` account for creating account
-
-8) We are creating a new ata account. Hence we pass `associated_token_program` 
-
-9) `another_mint_ata` account to which we transfer the token.
-
-10) `another_account` account is the owner of `another_mint_ata`
-  
+1. We pass the `spl_token_mint` account without any `mut` or `init` decoration.
+2. We pass the `vault`. This can be used for security purpose.
+3. `payer_mint_ata` account from which we are transferring token to another ata
+4. `payer` signer who is transferring the token
+5. `system_program` account for executing the instruction.
+6. `token_program` account used for performing `transfer` operation
+7. `init` decorator uses `rent` account for creating account
+8. We are creating a new ata account. Hence we pass `associated_token_program` 
+9. `another_mint_ata` account to which we transfer the token.
+10. `another_account` account is the owner of `another_mint_ata`
 
 Create a `transfer_token_to_another` instruction for transferring a token.
-
 
 ```rust
     pub fn transfer_token_to_another(ctx : Context<TransferTokenToAnother>) -> Result<()> {
@@ -617,8 +589,6 @@ Create a `transfer_token_to_another` instruction for transferring a token.
         token::transfer(cpi_context, 1)?;
         Ok(())
     }
-
-
 ```
 
 Time to test the `transfer_token_to_another` instruction.
@@ -666,25 +636,19 @@ We will test case in `spl-token.ts`. Add the following in your test file.
       console.log(err);
     }
   });
-
 ```
 
 Run the command 
+
 ```bash
 anchor test
 ```
 
 Then the output should be a success as shown below.
 
-[image_9]
-
-
-
-
+![test cases](/img/content/posts/image_9.png "Final Test File")
 
 That's it! We have learnt how to create a new `mint` and `transfer` it to any accounts. 
-
-
 
 ## Next Steps
 
