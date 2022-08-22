@@ -458,7 +458,7 @@ We use the `mint_to` instruction from `token_program`. We will call the instruct
                 authority: ctx.accounts.payer.to_account_info(),
             },
         );
-        token::mint_to(cpi_context, 1)?; // we are minting 1 token to 
+        token::mint_to(cpi_context, 10)?; // we are minting 10 tokens
         Ok(())
     }
 ```
@@ -674,6 +674,8 @@ So, far we have understood how minting and transfer work. In the next sections w
 
 A `freeze` operation is done on a token account. This is so to prevent the `transfer` of tokens. 
 
+Only `spl_token_mint` authority can perform this action. Hence only `payer` can perform this action.
+
 This also involves the same process. 
 
 1. Create a `FreezeToken` context  
@@ -718,11 +720,10 @@ pub struct FreezeTokenAccount<'info> {
     pub system_program: Program<'info, System>, // ---> 5
     pub token_program: Program<'info, Token>,   // ---> 6
     
-    pub rent: Sysvar<'info, Rent>, // ---> 6
+    pub rent: Sysvar<'info, Rent>, // ---> 7
 
-    pub associated_token_program : Program<'info, AssociatedToken>,  // ---> 9
+    pub associated_token_program : Program<'info, AssociatedToken>,  // ---> 8
 
-}
 }
 ```
 
@@ -769,7 +770,7 @@ Since we are calling `token::freeze_account` function from another program, we n
 To test this out, let us add a test case in the spl-token.ts` test file.
 
 ```typescript
-  it("should freeze token account of another wallet ", async () => {
+  it("should freeze token account of payer wallet ", async () => {
     try {
       const [splTokenMint, _1] = await findSplTokenMintAddress();
 
@@ -810,9 +811,287 @@ anchor test
 
 You should be able to pass the test as seen below.
 
-![](/img/content/posts/image_10.png)
+![](/img/content/posts/image_10.png "image_10")
+
+After freezing a token, how can one unfreeze a token account? Now us look at it in the following section.
+
+## How to `Thaw` (unfreeze) an account ?
+
+A `thaw` operation is done on a token account to unfreeze a `frozen` account. Only `spl_token_mint` authority can perform this action. Hence only `payer` can perform this action.
+
+This also involves the below process. 
+
+1. Create a `UnfreezeTokenAccount` context  
+2. Then write an instruction for freezing the token.
+
+Let's create a `UnfreezeTokenAccount` context using the `struct`
+
+```rust
+// Unfreeze token account
+#[derive(Accounts)]
+pub struct UnfreezeTokenAccount<'info> {
+    #[account(
+        mut,
+         seeds = [
+            b"spl-token-mint".as_ref(),
+         ],
+        bump = vault.spl_token_mint_bump,
+    )]
+    pub spl_token_mint: Account<'info, Mint>, // ---> 1
+
+    #[account(
+        seeds = [
+            b"vault"
+        ],
+        bump = vault.bump, // --> 2
+    )]
+    pub vault : Account<'info, Vault>, 
+
+    #[account(mut)]
+    pub payer : Signer<'info>, // ---> 3
 
 
+    #[account(
+        mut,
+        associated_token::mint = spl_token_mint,
+        associated_token::authority = payer
+    )]
+    pub payer_mint_ata: Box<Account<'info, TokenAccount>>,  // --> 4
+
+    pub system_program: Program<'info, System>, // ---> 5
+    pub token_program: Program<'info, Token>,   // ---> 6
+    
+    pub rent: Sysvar<'info, Rent>, // ---> 7
+
+    pub associated_token_program : Program<'info, AssociatedToken>,  // ---> 8
+}
+```
+
+1. We pass the `spl_token_mint` account without any `mut` or `init` decoration.
+2. We pass the vault. Again, this can be used for security purpose.
+3. We pass `payer` as the `signer` this time. 
+4. We pass `payer_mint_ata` where we want to `freeze` the account.
+5. `system_program` account for executing the instruction.
+6. `token_program` account used for performing `freeze` operation
+7. `rent` might have to passed as we are using `associated_token_program`
+8. `associated_token_program` account is passed for creating ATA.
+
+We will now create an instruction `unfreeze_token_account` to unfreeze the token account.
+
+Let's update the import in `lib.rs` file.
+
+```rust
+use anchor_spl::{token::{self, Mint, Token, TokenAccount, FreezeAccount, ThawAccount}, associated_token::AssociatedToken};
+```
+
+Add the `unfreeze_token_account` instruction.
+
+```rust
+    pub fn unfreeze_token_account(ctx : Context<UnfreezeTokenAccount>) -> Result<()> {
+        let cpi_context = CpiContext::new(
+            ctx.accounts.token_program.to_account_info(),
+            ThawAccount {
+                account : ctx.accounts.payer_mint_ata.to_account_info(),
+                mint : ctx.accounts.spl_token_mint.to_account_info(),
+                authority : ctx.accounts.payer.to_account_info()
+            },
+        );
+        token::thaw_account(cpi_context)?;
+        Ok(())
+    }
+```
+
+Add a test case in `spl-token.ts` to test unfreeze instruction.
+
+```typescript
+  it("should unfreeze token account of payer wallet ", async () => {
+    try {
+      const [splTokenMint, _1] = await findSplTokenMintAddress();
+
+      const [vaultMint, _2] = await findVaultAddress();
+
+      const [payerMintAta, _3] = await findAssociatedTokenAccount(
+        payer.publicKey,
+        splTokenMint
+      );
+
+      const tx = await program.methods
+        .unfreezeTokenAccount()
+        .accounts({
+          splTokenMint: splTokenMint,
+          vault: vaultMint,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+          payerMintAta: payerMintAta,
+          rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          payer: payer.publicKey,
+        })
+        .signers([payer])
+        .rpc();
+
+      console.log("Your transaction signature", tx);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+```
+
+Run the command 
+
+```bash
+anchor test
+```
+
+You should see a successful test run.
+
+![](/img/content/posts/image_11.png "image_11")
+
+Suppose, if there arises a need to destroy a minted token, how do we achieve that? In the next section we will go through `burning` a token.
+
+## How to `burn` tokens ?
+
+We use `burn` instruction from `token_program` to destroy minted tokens. Again, only spl_token_mint` authority can perform this action.
+
+Let us follow the 2-step process to `burn` a token.
+
+1. Create a `BurnToken` context
+2. Write a `burn_token` instruction to perform `burn` action.
+
+### How to create a `BurnToken` context ?
+
+Create a `BurnToken` context using the `struct` in `lib.rs` file. 
+
+In this code, we burn a token from `payer_mint_ata` account.  
+
+```rust
+// Burn token 
+#[derive(Accounts)]
+pub struct BurnToken<'info> {
+    #[account(
+        mut,
+         seeds = [
+            b"spl-token-mint".as_ref(),
+         ],
+        bump = vault.spl_token_mint_bump,
+    )]
+    pub spl_token_mint: Account<'info, Mint>, // ---> 1
+
+    #[account(
+        seeds = [
+            b"vault"
+        ],
+        bump = vault.bump, // --> 2
+    )]
+    pub vault : Account<'info, Vault>, 
+
+    #[account(mut)]
+    pub payer : Signer<'info>, // ---> 3
+
+
+    #[account(
+        mut,
+        associated_token::mint = spl_token_mint,
+        associated_token::authority = payer
+    )]
+    pub payer_mint_ata: Box<Account<'info, TokenAccount>>,  // --> 4
+
+    pub system_program: Program<'info, System>, // ---> 5
+    pub token_program: Program<'info, Token>,   // ---> 6
+    
+    pub rent: Sysvar<'info, Rent>, // ---> 7
+
+    pub associated_token_program : Program<'info, AssociatedToken>,  // ---> 8
+}
+```
+
+1. We pass the `spl_token_mint` account without any `mut` or `init` decoration.
+2. We pass the `vault`. Again, this can be used for security purpose.
+3. We pass `payer` as the `signer` this time. 
+4. We pass `payer_mint_ata` where we want to `freeze` the account.
+5. `system_program` account for executing the instruction.
+6. `token_program` account used for performing `freeze` operation
+7. `rent` might have to passed as we are using `associated_token_program`
+8. `associated_token_program` account is passed for creating ATA.
+
+With this context, we can invoke a `burn` instruction.
+
+### How to create a `Burn` instruction ?
+
+We use the `burn` instruction from `token_program` to burn tokens. A `CPI` call is made to `token_program` to achieve this.
+
+Let us first update the import in `lib.rs` file
+
+```rust
+use anchor_spl::{token::{self, Mint, Token, TokenAccount, FreezeAccount, ThawAccount, Burn}, associated_token::AssociatedToken};
+```
+
+Add `burn_token` instruction.
+
+```rust
+    pub fn burn_token(ctx : Context<BurnToken>) -> Result<()> {
+        let cpi_context = CpiContext::new(
+            ctx.accounts.token_program.to_account_info(),
+            Burn {
+                from : ctx.accounts.payer_mint_ata.to_account_info(),
+                mint : ctx.accounts.spl_token_mint.to_account_info(),
+                authority : ctx.accounts.payer.to_account_info()
+            },
+        );
+        token::burn(cpi_context, 1)?; // we burn 1 token 
+        Ok(())
+    }
+```
+
+We burn 1 token from `payer_mint_ata` account.
+
+To test this, let's us write a test case in `spl-token.ts` file. 
+
+Add the following test case in `describe` block
+
+```typescript
+  it("should burn a token of payer wallet ", async () => {
+    try {
+      const [splTokenMint, _1] = await findSplTokenMintAddress();
+
+      const [vaultMint, _2] = await findVaultAddress();
+
+      const [payerMintAta, _3] = await findAssociatedTokenAccount(
+        payer.publicKey,
+        splTokenMint
+      );
+
+      const tx = await program.methods
+        .burnToken()
+        .accounts({
+          splTokenMint: splTokenMint,
+          vault: vaultMint,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+          payerMintAta: payerMintAta,
+          rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          payer: payer.publicKey,
+        })
+        .signers([payer])
+        .rpc();
+
+      console.log("Your transaction signature", tx);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+```
+
+Run the test command
+
+```bash
+anchor test
+```
+
+With that, we should see the below output with a successfully executed transaction.
+
+![](/img/content/posts/image_12.png "image_12")
 
 That's it! We have learnt how to create a new `mint` and `transfer` it to any accounts. 
 
