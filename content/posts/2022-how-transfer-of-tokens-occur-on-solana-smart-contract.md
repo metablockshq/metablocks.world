@@ -811,7 +811,7 @@ anchor test
 
 You should be able to pass the test as seen below.
 
-![](/img/content/posts/image_10.png "image_10")
+![](/img/content/posts/image_10_new.png "image_10")
 
 After freezing a token, how can one unfreeze a token account? Now us look at it in the following section.
 
@@ -945,7 +945,7 @@ anchor test
 
 You should see a successful test run.
 
-![](/img/content/posts/image_11.png "image_11")
+![](/img/content/posts/image_11_new.png "image_11")
 
 Suppose, if there arises a need to destroy a minted token, how do we achieve that? In the next section we will go through `burning` a token.
 
@@ -1093,10 +1093,10 @@ With that, we should see the below output with a successfully executed transacti
 
 ![](/img/content/posts/image_12.png "image_12")
 
-That's it! We have learnt how to create a new `mint` and `transfer` it to any accounts. 
+That's it! We have learnt how to create a new `mint`,`transfer`, `freeze`, `thaw` and `burn` it to any accounts. 
 
 ## Next Steps
 
-Next, we will discuss about other operations like `burn`, `thaw` and `freeze` instruction from `spl_token` library 
+Next, we will discuss about other operations like `approve`, `set_authority` and doing a `CPI` call with a signer seed phrase.
 
 If you are building a richer application, or want NFTs that can upgrade overtime, checkout the [Meta Blocks protocol](https://metablocks.world/guides/protocol).
