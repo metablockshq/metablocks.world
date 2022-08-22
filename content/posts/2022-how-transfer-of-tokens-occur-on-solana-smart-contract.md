@@ -77,19 +77,13 @@ This will give you the output as below
 
 ![solana-keygen](/img/content/posts/blog_image_2.png "Public Key generation")
 
-
-
 Replace `29iiLtNregFkwH4n4K95GrKYcGUGC3F6D5thPE2jWQQs` in `declare_id` of `lib.rs` file
 
 ![](/img/content/posts/image_3.png "Code")
 
-
-
 Also replace the address in `Anchor.toml` file of the project 
 
 ![program_id](/img/content/posts/image_4.png "Program ID")
-
-
 
 Now let us create a `Mint` in the program.
 
@@ -104,8 +98,6 @@ anchor-spl = "^0.25.0"
 ```
 
 ![tome file](/img/content/posts/image_5.png "Toml ")
-
-
 
 Generally in Solana, any accounts that involve in the modification of state, are passed from the client side. This is done for parallel execution of programs. Refer [this](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192) article from Anatoly Yakovenko  
 
@@ -159,7 +151,6 @@ pub struct CreateMint<'info> {
     )]
     pub vault : Account<'info, Vault>, // ---> 6
 }
-
 ```
 
 In the above code, 6 accounts are passed.
@@ -191,7 +182,6 @@ impl Vault {
 }
 ```
 
-
 The `Vault` struct stores bumps and authority of who initialised this program. Later, you can use this to secure your program by restricting the access to the instructions. Stored `bumps` are used later for deriving `PDA` addresses in other instructions.
 
 ### How to create an instruction?
@@ -221,11 +211,10 @@ anchor test
 ```
 
 The `anchor test` command does the following operations
-1)  It runs `cargo build-bpf` command to generate `bytecode` of the program
-2) It generates Interface Definition Language(IDL) as.
-3) It runs `ts-mocha` command to run the test written in `spl-token.ts` file. So let us discuss about it in the next section.
 
-
+1. It runs `cargo build-bpf` command to generate `bytecode` of the program
+2. It generates Interface Definition Language(IDL) as.
+3. It runs `ts-mocha` command to run the test written in `spl-token.ts` file. So let us discuss about it in the next section.
 
 ### How to call the `create_mint` instruction from the client side?
 
@@ -233,13 +222,11 @@ We will write `tests` for calling the the `create_mint` instruction.
 
 ![test file](/img/content/posts/image_6.png "Test File")
 
-
-
 This is same as calling an instruction from the client side. 
 
 **Preparations**
 
-1) In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts, to pass these as arguments while calling the `create_mint` instruction.
+1. In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts, to pass these as arguments while calling the `create_mint` instruction.
 
 Import the necessary libraries in the `spl-token.ts` test file.
 
@@ -251,7 +238,7 @@ import { PublicKey } from "@solana/web3.js";
 import idl from "../target/idl/spl_token.json"; // this generated when we run anchor test command
 ```
 
-2) Then we will find two PDA addresses like below
+2. Then we will find two PDA addresses like below
 
 ```typescript
 // pda for spl-token-mint account
@@ -271,7 +258,7 @@ export const findVaultAddress = async () => {
 };
 ```
 
-3) Add some `sols` before calling the instruction. Hence, let's call the below method before calling any instructions in the `spl-token.ts` test file. 
+3. Add some `sols` before calling the instruction. Hence, let's call the below method before calling any instructions in the `spl-token.ts` test file. 
 
 ```typescript
 export const addSols = async (
@@ -287,8 +274,8 @@ export const addSols = async (
 ```
 
 **Writing the test case**
-First, let us add a `before` block and add some sols to the `payer` wallet.
 
+First, let us add a `before` block and add some sols to the `payer` wallet.
 
 ```typescript
 describe("spl-token", () => {
@@ -333,21 +320,17 @@ And we will call the `create_mint` from the test file like below.
 
     console.log("Your transaction signature", tx);
   });
-
 ```
 
 To test, run the command 
 
 ```bash
 anchor test
-bash
 ```
 
 You should be able to see the output as below. Now, we have successfully created a `mint` and tested it out.
 
 ![testing 1](/img/content/posts/image_7.png "First test")
-
-
 
 ## How to transfer the Minted token to an account?
 
@@ -524,8 +507,6 @@ After this, you should be able to see the result like below.
 
 ![test cases](/img/content/posts/image_8.png "Two test cases")
 
-
-
 ## How to transfer a token to other account?
 
 So far, we have created a mint and minted it to an account. But how to transfer the mint to other accounts?
@@ -618,13 +599,27 @@ Create a `transfer_token_to_another` instruction for transferring a token.
 
 Time to test the `transfer_token_to_another` instruction.
 
+Let us first create anotherWallet and add it to the root of the test case.
+
+```typescript
+const anotherWallet = anchor.web3.Keypair.generate();
+```
+
+And add some sols to the wallet using `addSols` function in `before` function block.
+
+```typescript
+  before("Add sols to wallet ", async () => {
+    await addSols(provider, payer.publicKey);
+    await addSols(provider, anotherWallet.publicKey); // add sols to another wallet 
+  });
+```
+
 We will test case in `spl-token.ts`. Add the following in your test file.
 
 ```typescript
   it("should transfer 1 token from payer_mint_ata to another_mint_ata", async () => {
     try {
-      const anotherWallet = anchor.web3.Keypair.generate();
-
+      
       const [splTokenMint, _1] = await findSplTokenMintAddress();
 
       const [vaultMint, _2] = await findVaultAddress();
@@ -672,6 +667,152 @@ anchor test
 Then the output should be a success as shown below.
 
 ![test cases](/img/content/posts/image_9.png "Final Test File")
+
+So, far we have understood how minting and transfer work. In the next sections we will discuss about other operations like `freeze`, `thaw` and `burn` operations.
+
+## How to freeze a token account ?
+
+A `freeze` operation is done on a token account. This is so to prevent the `transfer` of tokens. 
+
+This also involves the same process. 
+
+1. Create a `FreezeToken` context  
+2. Then write an instruction for freezing the token.
+
+### How to create a `FreezeTokenAccount` context ?
+
+Let's create a `FreezeTokenAccount` context using the `struct`
+
+```rust
+// Freeze token account
+#[derive(Accounts)]
+pub struct FreezeTokenAccount<'info> {
+    #[account(
+        mut,
+         seeds = [
+            b"spl-token-mint".as_ref(),
+         ],
+        bump = vault.spl_token_mint_bump,
+    )]
+    pub spl_token_mint: Account<'info, Mint>, // ---> 1
+
+    #[account(
+        seeds = [
+            b"vault"
+        ],
+        bump = vault.bump, // --> 2
+    )]
+    pub vault : Account<'info, Vault>, 
+
+    #[account(mut)]
+    pub payer : Signer<'info>, // ---> 3
+
+
+    #[account(
+        mut,
+        associated_token::mint = spl_token_mint,
+        associated_token::authority = payer
+    )]
+    pub payer_mint_ata: Box<Account<'info, TokenAccount>>,  // --> 4
+
+    pub system_program: Program<'info, System>, // ---> 5
+    pub token_program: Program<'info, Token>,   // ---> 6
+    
+    pub rent: Sysvar<'info, Rent>, // ---> 6
+
+    pub associated_token_program : Program<'info, AssociatedToken>,  // ---> 9
+
+}
+}
+```
+
+1. We pass the `spl_token_mint` account without any `mut` or `init` decoration.
+2. We pass the vault. Again, this can be used for security purpose.
+3. We pass `payer` as the `signer` this time. 
+4. We pass `payer_mint_ata` where we want to `freeze` the account.
+5. `system_program` account for executing the instruction.
+6. `token_program` account used for performing `freeze` operation
+7. `rent` might have to passed as we are using `associated_token_program`
+8. `associated_token_program` account is passed for creating ATA.
+
+We will now create an instruction `freeze_token_account` to freeze the token ATA account.
+
+Let's update the import in `lib.rs` file.
+
+```rust
+use anchor_spl::{token::{self, Mint, Token, TokenAccount, FreezeAccount}, associated_token::AssociatedToken};
+```
+
+Then we add the instruction.
+
+```rust
+    pub fn freeze_token_account(ctx : Context<FreezeTokenAccount>) -> Result<()> {
+        let cpi_context = CpiContext::new(
+            ctx.accounts.token_program.to_account_info(),
+            FreezeAccount {
+                account : ctx.accounts.payer_mint_ata.to_account_info(),
+                mint : ctx.accounts.spl_token_mint.to_account_info(),
+                authority : ctx.accounts.payer.to_account_info()
+            },
+        );
+        token::freeze_account(cpi_context)?;
+        Ok(())
+    }
+```
+
+As we can see above, we are doing a `CPI` call to token program to freeze the `payer_mint_ata` account. 
+
+The signature of `freeze_account` function is that is requires us to pass `FreezeAccount` struct as context. 
+
+Since we are calling `token::freeze_account` function from another program, we need to create a `CPI context` by using `CpiContext::new` function.
+
+To test this out, let us add a test case in the spl-token.ts` test file.
+
+```typescript
+  it("should freeze token account of another wallet ", async () => {
+    try {
+      const [splTokenMint, _1] = await findSplTokenMintAddress();
+
+      const [vaultMint, _2] = await findVaultAddress();
+
+      const [payerMintAta, _3] = await findAssociatedTokenAccount(
+        payer.publicKey,
+        splTokenMint
+      );
+
+      const tx = await program.methods
+        .freezeTokenAccount()
+        .accounts({
+          splTokenMint: splTokenMint,
+          vault: vaultMint,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+          payerMintAta: payerMintAta,
+          rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+          payer: payer.publicKey,
+        })
+        .signers([payer])
+        .rpc();
+
+      console.log("Your transaction signature", tx);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+```
+
+Now run the command 
+
+```bash
+anchor test
+```
+
+You should be able to pass the test as seen below.
+
+![](/img/content/posts/image_10.png)
+
+
 
 That's it! We have learnt how to create a new `mint` and `transfer` it to any accounts. 
 
