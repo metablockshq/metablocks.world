@@ -221,7 +221,7 @@ anchor test
 ```
 
 The `anchor test` command does the following operations
-1) It runs `cargo build-bpf` command to generate `bytecode` of the program
+1)  It runs `cargo build-bpf` command to generate `bytecode` of the program
 2) It generates Interface Definition Language(IDL) as.
 3) It runs `ts-mocha` command to run the test written in `spl-token.ts` file. So let us discuss about it in the next section.
 
@@ -237,7 +237,9 @@ We will write `tests` for calling the the `create_mint` instruction.
 
 This is same as calling an instruction from the client side. 
 
-In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts, to pass these as arguments while calling the `create_mint` instruction.
+**Preparations**
+
+1) In the `context` struct we are creating two PDA accounts(`spl_token_mint` and `vault`). Hence on the client side, we need to find PDAs for these two accounts, to pass these as arguments while calling the `create_mint` instruction.
 
 Import the necessary libraries in the `spl-token.ts` test file.
 
@@ -249,7 +251,7 @@ import { PublicKey } from "@solana/web3.js";
 import idl from "../target/idl/spl_token.json"; // this generated when we run anchor test command
 ```
 
-Then we will find two PDA addresses like below
+2) Then we will find two PDA addresses like below
 
 ```typescript
 // pda for spl-token-mint account
@@ -269,7 +271,7 @@ export const findVaultAddress = async () => {
 };
 ```
 
-Add some `sols` before calling the instruction. Hence, let's call the below method before calling any instructions in the `spl-token.ts` test file. 
+3) Add some `sols` before calling the instruction. Hence, let's call the below method before calling any instructions in the `spl-token.ts` test file. 
 
 ```typescript
 export const addSols = async (
@@ -284,23 +286,28 @@ export const addSols = async (
 };
 ```
 
-And we will call the `create_mint` from the test file like below. 
+**Writing the test case**
+First, let us add a `before` block and add some sols to the `payer` wallet.
+
 
 ```typescript
 describe("spl-token", () => {
   const provider = anchor.AnchorProvider.env();
   // Configure the client to use the local cluster.
   anchor.setProvider(provider);
-
+  const program = anchor.workspace.SplToken as Program<SplToken>;
   const payer = anchor.web3.Keypair.generate();
 
   before("Add sols to wallet ", async () => {
     await addSols(provider, payer.publicKey); // add some sols before calling test cases
   });
+});
+```
 
-  const program = anchor.workspace.SplToken as Program<SplToken>;
+And we will call the `create_mint` from the test file like below. 
 
-  it("Spl token is initialized!", async () => {
+```typescript
+ it("Spl token is initialized!", async () => {
     const [splTokenMint, _1] = await findSplTokenMintAddress();
 
     const [vaultMint, _2] = await findVaultAddress();
@@ -326,7 +333,7 @@ describe("spl-token", () => {
 
     console.log("Your transaction signature", tx);
   });
-});
+
 ```
 
 To test, run the command 
