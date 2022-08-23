@@ -1,7 +1,7 @@
 ---
 title: Getting started with token program using Anchor Framework in Solana
 slug: anchor
-isPublished: false
+isPublished: true
 emoji: 👩🏼‍🎨
 ---
 In this series of chapters, you will understand how to use token program in anchor framework.
