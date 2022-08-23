@@ -1,5 +1,5 @@
 ---
-title: Getting started with token program using Anchor Framework in Solana
+title: Token Program in Anchor
 slug: anchor
 isPublished: true
 emoji: 👩🏼‍🎨
