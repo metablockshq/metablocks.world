@@ -22,5 +22,5 @@ This guide requires you to have following installed
 
 * Rust CLI - Following this [link](https://www.rust-lang.org/tools/install) for installing in your machine
 * You should have installed `Solana` in your machine - Please follow this [link](https://docs.solana.com/cli/install-solana-cli-tools)
-* Last but not the least - you should have installed **Anchor Framework**  - Please follow this [link](https://book.anchor-lang.com/getting_started/installation.html#anchor)
-* Typescript on the client side. (**Anchor Framework** generates a client code as well)
+* You should have installed **Anchor Framework**  - Please follow this [link](https://book.anchor-lang.com/getting_started/installation.html#anchor)
+* Typescript on the client side. (Anchor Framework generates a client code as well)
