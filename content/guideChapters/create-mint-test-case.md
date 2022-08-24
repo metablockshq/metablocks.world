@@ -10,7 +10,7 @@ guideSlug: anchor
 ---
 ## Outline
 
-Let us continue where we left. In this chapter, we will write a proper test case to test the `Create Mint` instruction.
+Let us continue where we left. In this chapter, we will write a proper test case to test the `Create Mint` instruction. The final result can be referred [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%203%20-%20Create%20Mint%20with%20Test%20Case)
 
 ```bash
 anchor test
@@ -36,10 +36,12 @@ Import the necessary libraries in the `spl-token.ts` test file.
 
 ```typescript
 import * as anchor from "@project-serum/anchor";
-import { Program } from "@project-serum/anchor";
+import { Program, Provider } from "@project-serum/anchor";
 import { SplToken } from "../target/types/spl_token";
-import { PublicKey } from "@solana/web3.js";
+import { PublicKey, SystemProgram } from "@solana/web3.js";
+import {TOKEN_PROGRAM_ID} from "@solana/spl-token";
 import idl from "../target/idl/spl_token.json"; // this generated when we run anchor test command
+import { assert } from "chai";
 ```
 
 2. Then we will find two PDA addresses like below
