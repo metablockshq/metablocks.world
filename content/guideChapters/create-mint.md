@@ -10,7 +10,7 @@ guideSlug: anchor
 ---
 ## Outline
 
-In this chapter, we will go through on how to create new mint. The final outcome of this chapter could be found [here](<>)
+In this chapter, we will go through on how to create new mint. The final outcome of this chapter could be found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%203%20-%20Create%20Mint)
 
 You could think of `mint` as a metadata about a token that is being transferred to an account. A mint could be initialised in a context. In anchor framework the struct is passed as a context. 
 
