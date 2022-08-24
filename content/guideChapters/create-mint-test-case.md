@@ -10,7 +10,7 @@ guideSlug: anchor
 ---
 ## Outline
 
-Let us continue where we left. In this chapter, we will write a proper test case to test the `Create Mint` instruction. The final result can be referred [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%203%20-%20Create%20Mint%20with%20Test%20Case)
+Let us continue where we left. In this chapter, we will write a proper test case to test the `Create Mint` instruction. The final result can be referred [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%204%20-%20Create%20Mint%20with%20Test%20Case)
 
 ```bash
 anchor test
