@@ -1,7 +1,7 @@
 ---
 chapterNumber: 1
 emoji: 👨‍💻
-title: Spl Tokens
+title: Prerequisites
 slug: spl-tokens
 tags:
   - blockchain
