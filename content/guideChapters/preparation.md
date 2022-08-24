@@ -52,10 +52,12 @@ Also replace the address in `Anchor.toml` file of the project
 
 ### 4. Backup the `deploy program keypair`.
 
-In the `target/deploy` , there is  `spl-token-keypair.json`. Let us back this up. Later, we will use the same `keypair` to deploy to `devnet`
+In the `target/deploy` , there is  `spl_token-keypair.json`. Let us back this up. Later, we will use the same `keypair` to deploy to `devnet`
 
 Let's copy this to `env` folder in the project folder. You should be able to see something like this.
 
 ![](/img/content/guide-chapters/image_env.png "Environment keypair")
+
+**WARNING** :  **For the demonstration purpose we have exposed the `spl_token-keypair.json` in the `env` folder. It is advisable to keep this a secret!**
 
 With this we are ready to create our first mint. In the next chapter, will look at creating a new mint
