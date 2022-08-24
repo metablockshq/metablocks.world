@@ -1,7 +1,7 @@
 ---
 chapterNumber: 2
 emoji: 👩‍🎨
-title: Prepare environment
+title: Initialise Environment
 subTitle: Let's prepare our working environment.
 slug: preparation
 tags:
@@ -49,5 +49,13 @@ Replace `29iiLtNregFkwH4n4K95GrKYcGUGC3F6D5thPE2jWQQs` in `declare_id` of `lib.r
 Also replace the address in `Anchor.toml` file of the project 
 
 ![](/img/content/guide-chapters/image_4.png "toml file")
+
+### 4. Backup the `deploy program keypair`.
+
+In the `target/deploy` , there is  `spl-token-keypair.json`. Let us back this up. Later, we will use the same `keypair` to deploy to `devnet`
+
+Let's copy this to `env` folder in the project folder. You should be able to see something like this.
+
+![](/img/content/guide-chapters/image_env.png "Environment keypair")
 
 With this we are ready to create our first mint. In the next chapter, will look at creating a new mint
