@@ -172,4 +172,4 @@ Then the output should be a success as shown below.
 
 ![](/img/content/guide-chapters/image_9.png "transfer_token_success")
 
-So, far we have understood how minting and transfer work. In the next sections we will discuss about other operations like `freeze` operation.
+So, far we have understood how minting and transfer work. In the next sections we will discuss about freezing a token account.
