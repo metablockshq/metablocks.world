@@ -16,7 +16,12 @@ Therefore, the prerequisite to `thaw` instruction is that the token account is f
 
 The final outcome of this chapter can be found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%208%20-%20Unfreeze%20Token%20Accounts)
 
-**NOTE: For the demonstration purpose, we will retain only `create_mint`, `transfer_mint` and `freeze_token_account` instructions. So remove all the instructions and contexts that are not required.**  
+
+## Prerequisite
+
+For the demonstration purpose, we will retain only `create_mint`, `transfer_mint` and `freeze_token_account` instructions. 
+
+So remove `transfer_token_to_another` instruction, `TransferTokenToAnother` context and test case in `spl-token.ts` that are not required 
 
 ## How to `Thaw` (unfreeze) an account ?
 
