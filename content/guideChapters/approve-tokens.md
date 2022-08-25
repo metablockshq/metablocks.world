@@ -2,7 +2,7 @@
 chapterNumber: 11
 emoji: 👩🏼‍🎨
 title: Approve tokens to an account
-subTitle: Understand how to delegate tokens to another token account
+subTitle: Understand how to delegate tokens to another authority account
 slug: approve-tokens
 tags:
   - blockchain
