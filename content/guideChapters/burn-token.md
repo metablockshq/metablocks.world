@@ -16,7 +16,21 @@ In this chapter we will look at most used functionality of `token` program.
 
 By the end of this chapter, you should know be able `burn` tokens from token account. The final outcome of this chapter is found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%209%20-%20Burn%20Tokens)  
 
-**NOTE: For the demonstration purpose, we will retain only `create_mint` and `transfer_mint` instructions. So remove all the instructions and contexts that are not required.** 
+
+## Prerequisite
+
+For the demonstration purpose, we will retain only `create_mint`, `transfer_mint` instructions. 
+
+So the remove the following
+1. `freeze_token_account` instruction
+2. `unfreeze_token_account` instruction
+3. `transfer_token_to_another` instruction
+4. `TransferTokenToAnother` context
+5. `UnfreezeTokenAccount` context
+6. `FreezeTokenAccount` context
+
+And remove test cases related to them.
+
 
 ## How to `burn` tokens ?
 
