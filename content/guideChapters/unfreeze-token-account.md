@@ -19,9 +19,7 @@ The final outcome of this chapter can be found [here](https://github.com/metablo
 
 ## Prerequisite
 
-For the demonstration purpose, we will retain only `create_mint`, `transfer_mint` and `freeze_token_account` instructions. 
-
-So remove `transfer_token_to_another` instruction, `TransferTokenToAnother` context and test case related to it in `spl-token.ts` 
+For the demonstration purpose, we will be using the previous chapter's repo. You can clone the [repo](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%207%20-%20Freeze%20Token%20Accounts) for getting started. 
 
 ## How to `Thaw` (unfreeze) an account ?
 
