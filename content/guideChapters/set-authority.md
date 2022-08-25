@@ -1,8 +1,8 @@
 ---
 chapterNumber: 10
 emoji: 👩🏼‍🎨
-title: Change authority for token mint
-subTitle: Understand how to change authority for token mint
+title: Change authority for accounts
+subTitle: Understand how to change authority for accounts
 slug: set-authority
 tags:
   - blockchain
@@ -269,10 +269,130 @@ Next, we will look at `AccountOwner` authority type.
 
 This is used in the cases where we want to delegate token account  ownership to another authority.
 
-In the following code example, we will transfer the `payer_mint_ata` to `another_mint_ata` account.
+In the following code example, we will transfer the `payer_mint_ata` authority to `another_authority` account.
 
+We will follow the 2-step process again.
+
+1) Create a `SetAccountOwnerAuthority` context.
+2) Create a `set_account_owner` instruction.
+ 
+
+### Step-1 : Create a `SetAccountOwnerAuthority` context.
+
+Let create the context as below. 
+
+```rust
+// Set Account Owner Authority context
+#[derive(Accounts)]
+pub struct SetAccountOwnerAuthority<'info> {
+    #[account(
+        mut,
+         seeds = [
+            b"spl-token-mint".as_ref(),
+         ],
+        bump = vault.spl_token_mint_bump,
+    )]
+    pub spl_token_mint: Account<'info, Mint>, // ---> 1
+
+    #[account(
+        seeds = [
+            b"vault"
+        ],
+        bump = vault.bump, // --> 2
+    )]
+    pub vault: Account<'info, Vault>,
+
+    #[account(mut)]
+    pub payer: Signer<'info>, // ---> 3
+
+    #[account(
+        mut,
+        associated_token::mint = spl_token_mint,
+        associated_token::authority = payer
+    )]
+    pub payer_mint_ata: Account<'info, TokenAccount>, // ---> 4
+
+    pub another_authority: Signer<'info>, // ---> 5
+
+    pub system_program: Program<'info, System>, // ---> 6
+    pub token_program: Program<'info, Token>,   // ---> 7
+}
+```
+1) We pass `spl_token_mint` account. This is used by `payer_mint_ata` account
+2) We `vault` account as it contains `spl_token_mint_bump` value
+3) `payer` account is the original authority of `payer_mint_ata`
+4) `payer_mint_ata` account authority is passed to `another_authority`
+5) `another_authority` account to which we are passing the authority to
+6) `system_program` to manage accounts
+7) We invoke `set_authority` instruction of `token_program` through CPI.
 
  
+Let us create an instruction to achieve this.
+
+```rust
+    pub fn set_account_owner_authority(ctx: Context<SetAccountOwnerAuthority>) -> Result<()> {
+        let cpi_context = CpiContext::new(
+            ctx.accounts.token_program.to_account_info(),
+            token::SetAuthority {
+                current_authority: ctx.accounts.payer.to_account_info(),
+                account_or_mint: ctx.accounts.payer_mint_ata.to_account_info(),
+            },
+        );
+        token::set_authority(
+            cpi_context,
+            AuthorityType::AccountOwner, // authority type is AccountOwner
+            Some(ctx.accounts.another_authority.key()),
+        )?;
+        Ok(())
+    }
+```
+
+As you can above, we have set the `AuthorityType` to `AccountOwner`.
+
+Write a test in `spl-token.ts` to test the instruction.
+
+```typescript
+ //set account owner to another wallet test
+  it("should set account owner of payer_mint_ata to another wallet ", async () => {
+    try {
+      const [splTokenMint, _1] = await findSplTokenMintAddress();
+
+      const [vaultMint, _2] = await findVaultAddress();
+
+      const [payerMintAta, _3] = await findAssociatedTokenAccount(
+        payer.publicKey,
+        splTokenMint
+      );
+      const tx = await program.methods
+        .setAccountOwnerAuthority()
+        .accounts({
+          splTokenMint: splTokenMint,
+          vault: vaultMint,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+          payerMintAta: payerMintAta,
+          payer: payer.publicKey,
+          anotherAuthority: anotherWallet.publicKey,
+        })
+        .signers([payer, anotherWallet])
+        .rpc();
+
+      console.log("Your transaction signature", tx);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+```
+
+Run the following command to test 
+
+```bash
+anchor test
+```
+
+You should be able to see the following output.
+
+[account_owner_success]
 
 
 
