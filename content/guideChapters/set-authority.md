@@ -23,8 +23,7 @@ We will look at each of these authority type and understand how to perform these
 
 The outcome of this chapter is found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%2010%20-%20Set%20Authority)
 
-**NOTE: For the demonstration purpose, we have retained only `create_mint` and `transfer_mint` instructions. So remove all the instructions and contexts that are not required. **
-
+**NOTE: For the demonstration purpose, we will retain only `create_mint` and `transfer_mint` instructions. So remove all the instructions and contexts that are not required.** 
 
 ## How to set authority for token mints ?
 
@@ -145,11 +144,7 @@ anchor test
 
 You should be able to see the following output.
 
-
-
 ![](/img/content/guide-chapters/set_mint_tokens_authority_success.png "set_mint_tokens_authority_success")
-
-
 
 Now we will look at how to change the `FreezeAccount` authority.
 
@@ -263,8 +258,6 @@ anchor test
 You should be able to see the following
 
 ![](/img/content/guide-chapters/set_freeze_authority_success.png "set_freeze_authority_success")
-
-
 
 Next, we will look at `AccountOwner` authority type.
 
@@ -395,8 +388,6 @@ anchor test
 You should be able to see the following output.
 
 ![](/img/content/guide-chapters/account_owner_success.png "set_account_owner_success")
-
-
 
 Next we will look at `CloseAccount` Authority type.
 
@@ -536,6 +527,5 @@ anchor test
 You should be able to see the following after running the command.
 
 ![](/img/content/guide-chapters/set_close_account_success.png "set_close_account_success")
-
 
 That's it for `SetAuthority` functionality. In the next chapter we will look at `approve` instruction for delegating tokens to another account.
