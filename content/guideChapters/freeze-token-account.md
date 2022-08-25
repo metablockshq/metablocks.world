@@ -14,6 +14,12 @@ Sometimes it would be necessary to freeze a token account. In this chapter, we w
 
 The final outcome of this chapter is found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%207%20-%20Freeze%20Token%20Accounts)
 
+## Prerequisite
+
+For the demonstration purpose, we will retain only `create_mint` and `transfer_mint` instructions. 
+
+So remove `transfer_token_to_another` instruction, `TransferTokenToAnother` context and test case related to it in `spl-token.ts`  
+
 ## How to freeze a token account ?
 
 A `freeze` operation is done on a token account. This is so to prevent the `transfer` of tokens. 
@@ -68,7 +74,6 @@ pub struct FreezeTokenAccount<'info> {
 
     pub associated_token_program : Program<'info, AssociatedToken>,  // ---> 8
 }
-
 ```
 
 1. We pass the `spl_token_mint` account without any `mut` or `init` decoration.
@@ -155,6 +160,6 @@ anchor test
 
 You should be able to pass the test as seen below.
 
-![](/img/content/guide-chapters/image_10_new.png "freeze_account_success")
+![](/img/content/guide-chapters/freeze_account_success.png "freeze_account_success")
 
 Alright, in the next chapter let's learn to unfreeze a token account using `thaw` instruction from `token` program
