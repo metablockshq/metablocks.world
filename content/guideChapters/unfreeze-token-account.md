@@ -21,7 +21,7 @@ The final outcome of this chapter can be found [here](https://github.com/metablo
 
 For the demonstration purpose, we will retain only `create_mint`, `transfer_mint` and `freeze_token_account` instructions. 
 
-So remove `transfer_token_to_another` instruction, `TransferTokenToAnother` context and test case in `spl-token.ts` that are not required 
+So remove `transfer_token_to_another` instruction, `TransferTokenToAnother` context and test case related to it in `spl-token.ts` 
 
 ## How to `Thaw` (unfreeze) an account ?
 
