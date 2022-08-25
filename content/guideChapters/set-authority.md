@@ -395,8 +395,156 @@ You should be able to see the following output.
 [account_owner_success]
 
 
+Next we will look at `CloseAccount` Authority type.
 
+
+
+## How to set a CloseAccount Authority for a token account ? 
+
+We can set a Close Account authority for a token account. For the below example, we will set the `another_mint_ata` close authority to `payer` as authority. 
+
+We use this authority to close and transfer remaining `lamports` to the authority account.
+
+
+Let us follow the 2-step process to achieve our goal
+
+1) Create a `CloseAccountAuthority` context
+2) Create an instruction `close_account_authority` 
+
+### Step-1 : Create a `CloseAccountAuthority` context. 
+
+To create a `CloseAccountAuthority` context, we will create a `struct` in the `lib.rs` file as below.
+
+```rust
+// Set Close Account Authority context
+#[derive(Accounts)]
+pub struct SetCloseAccountAuthority<'info> {
+    #[account(
+        mut,
+         seeds = [
+            b"spl-token-mint".as_ref(),
+         ],
+        bump = vault.spl_token_mint_bump,
+    )]
+    pub spl_token_mint: Account<'info, Mint>, // ---> 1
+
+    #[account(
+        seeds = [
+            b"vault"
+        ],
+        bump = vault.bump, // --> 2
+    )]
+    pub vault: Account<'info, Vault>,
+
+    #[account(mut)]
+    pub payer: Signer<'info>, // ---> 3
+
+    #[account(
+        init,
+        associated_token::mint = spl_token_mint,
+        associated_token::authority = another_authority,
+        payer = payer
+       
+    )]
+    pub another_mint_ata: Account<'info, TokenAccount>, // ---> 4
+
+    pub another_authority: Signer<'info>, // ---> 5
+
+    pub system_program: Program<'info, System>, // ---> 6
+    pub token_program: Program<'info, Token>,   // ---> 7
+
+    pub associated_token_program : Program<'info, AssociatedToken>, // ---> 8,
+
+    pub rent: Sysvar<'info, Rent>, // ---> 9
+}
+
+```
+
+
+1) We pass `spl_token_mint` account. 
+2) We `vault` account as it contains `spl_token_mint_bump` value
+3) `payer` account pays `another_mint_ata` account creation.
+4) `another_mint_ata` account from which we want to transfer close authority to payer
+5) `another_authority` account. We use this to create `another_mint_ata` account.
+6) `system_program` to manage accounts
+7) We invoke `set_authority` instruction of `token_program` through CPI.
+8) `associated_token_account` is for creating `another_mint_ata` account
+9) `rent` used by `system_program` to create a new account. 
+
+Let us create an instruction to set close authority on `another_mint_ata`.
+
+
+```rust
+    pub fn set_close_account_authority(ctx: Context<SetCloseAccountAuthority>) -> Result<()> {
+        let cpi_context = CpiContext::new(
+            ctx.accounts.token_program.to_account_info(),
+            token::SetAuthority {
+                current_authority: ctx.accounts.another_authority.to_account_info(),
+                account_or_mint: ctx.accounts.another_mint_ata.to_account_info(),
+            },
+        );
+        token::set_authority(
+            cpi_context,
+            AuthorityType::CloseAccount,
+            Some(ctx.accounts.payer.key()),
+        )?;
+        Ok(())
+    }
+
+```
+
+In the above instruction we are setting `CloseAccount` authority to `payer`.
+
+We write the test case for this to test in `spl-token.ts` file.
+
+```typescript
+it("should set close account authority of another_mint_ata to payer wallet", async () => {
+    try {
+      const [splTokenMint, _1] = await findSplTokenMintAddress();
+
+      const [vaultMint, _2] = await findVaultAddress();
+
+      const [another_mint_ata, _3] = await findAssociatedTokenAccount(
+        anotherWallet.publicKey,
+        splTokenMint
+      );
+      const tx = await program.methods
+        .setCloseAccountAuthority()
+        .accounts({
+          splTokenMint: splTokenMint,
+          vault: vaultMint,
+          tokenProgram: TOKEN_PROGRAM_ID,
+          associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
+          systemProgram: SystemProgram.programId,
+          anotherMintAta: another_mint_ata,
+          payer: payer.publicKey,
+          anotherAuthority: anotherWallet.publicKey,
+          rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+        })
+        .signers([payer, anotherWallet])
+        .rpc();
+
+      console.log("Your transaction signature", tx);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+``` 
+
+Let us run the test case by running the following command
+
+```bash
+anchor test
+```
+
+You should be able to see the following after running the command.
+
+[close_account_success]
+
+
+That's it for `SetAuthority` functionality. In the next chapter we will look at `approve` instruction for delegating tokens to another account.
 
  
+
 
 
