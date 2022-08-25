@@ -13,6 +13,7 @@ guideSlug: anchor
 We will understand on how to transfer authority to others. 
 
 The are totally 4 types of authorities 
+
 1. Mint Tokens - Authority to mint new tokens
 2. Freeze Accounts - Authority to freeze any account associated with the Mint
 3. Account Owner - Owner of a given token account
@@ -22,16 +23,18 @@ We will look at each of these authority type and understand how to perform these
 
 The outcome of this chapter is found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%2010%20-%20Set%20Authority)
 
+**NOTE: For the demonstration purpose, we have retained only `create_mint` and `transfer_mint` instructions. So remove all the instructions and contexts that are not required. **
 
 
-## How to set authority for token mints ? 
+## How to set authority for token mints ?
 
 It's is a 2-step process.
-1) Create a `SetMintTokenAuthority` context
-2) Create a set_mint_token_authority  instruction 
 
+1. Create a `SetMintTokenAuthority` context
+2. Create a set_mint_token_authority  instruction 
 
 ### Step-1 : Create a `SetMintTokenAuthority` context
+
 Let us create a set mint token authority like below. We will transfer the mint token authority to `anotherAuthority`. And we pass that account as `Signer` in the context.
 
 ```rust
@@ -65,19 +68,19 @@ pub struct SetMintTokenAuthority<'info> {
 
     pub rent: Sysvar<'info, Rent>, // ---> 7
 }
-
 ```
 
-1) We pass `spl_token_mint` account. We are changing this mint's authority
-2) We `vault` account as it contains `spl_token_mint_bump` value
-3) `payer` account is the original authority of `spl_token_mint`
-4) `another_authority` account to which we are passing the authority to
-5) `system_program` to manage accounts
-6) We invoke `set_authority` instruction of `token_program` through CPI.
+1. We pass `spl_token_mint` account. We are changing this mint's authority
+2. We `vault` account as it contains `spl_token_mint_bump` value
+3. `payer` account is the original authority of `spl_token_mint`
+4. `another_authority` account to which we are passing the authority to
+5. `system_program` to manage accounts
+6. We invoke `set_authority` instruction of `token_program` through CPI.
 
 Let us create an instruction to change the authority.
 
 Import the following dependencies
+
 ```rust
 use anchor_lang::prelude::*;
 use anchor_spl::token::spl_token::instruction::AuthorityType;
@@ -104,14 +107,13 @@ And add the following instruction.
         )?;
         Ok(())
     }
-
 ```
 
 With this instruction above, it is easy to change the authority. We use `AuthorityType::MintTokens` to change the authority. Let us test this out.
 
 In the `spl-token.ts` file add the following test case 
 
-```typescript 
+```typescript
 //set mint authority to another wallet test
   it("should set mint authority to anotherWallet", async () => {
     const [splTokenMint, _1] = await findSplTokenMintAddress();
@@ -133,7 +135,7 @@ In the `spl-token.ts` file add the following test case
 
     console.log("Your transaction signature", tx);
   });
-``` 
+```
 
 And run the following command
 
@@ -143,12 +145,15 @@ anchor test
 
 You should be able to see the following output.
 
-[set_mint_tokens_authority_success]
+
+
+![](/img/content/guide-chapters/set_mint_tokens_authority_success.png "set_mint_tokens_authority_success")
+
 
 
 Now we will look at how to change the `FreezeAccount` authority.
 
-## How to set Freeze Authority for an account ? 
+## How to set Freeze Authority for an account ?
 
 If we observe carefully, when we created `mint` instruction and created `spl_token_mint` we had set the freeze authority to `payer`. 
 
@@ -157,16 +162,15 @@ Now let us change that to `another authority`.
 Again, it is a 2-step process.
 
 It's is a 2-step process.
-1) Create a `SetFreezeAccountAuthority` context
-2) Create a set_freeze_account_authority instruction 
 
+1. Create a `SetFreezeAccountAuthority` context
+2. Create a set_freeze_account_authority instruction 
 
 ### Step-1 : Create a `SetFreezeAccountAuthority` context
 
 We create `SetFreezeAccountAuthorityContext` as below.
 
 ```rust
-
 // Set Freeze Account Authority context
 #[derive(Accounts)]
 pub struct SetFreezeAccountAuthority<'info> {
@@ -197,12 +201,12 @@ pub struct SetFreezeAccountAuthority<'info> {
 }
 ```
 
-1) We pass `spl_token_mint` account. We are changing freeze authority for this mint
-2) We `vault` account as it contains `spl_token_mint_bump` value
-3) `payer` account is the original authority of `spl_token_mint`
-4) `another_authority` account to which we are passing the authority to
-5) `system_program` to manage accounts
-6) We invoke `set_authority` instruction of `token_program` through CPI.
+1. We pass `spl_token_mint` account. We are changing freeze authority for this mint
+2. We `vault` account as it contains `spl_token_mint_bump` value
+3. `payer` account is the original authority of `spl_token_mint`
+4. `another_authority` account to which we are passing the authority to
+5. `system_program` to manage accounts
+6. We invoke `set_authority` instruction of `token_program` through CPI.
 
 Let us create an instruction to change the authority.
 
@@ -248,7 +252,6 @@ Let's test this out using the following test case. Write the test case in `spl-t
 
     console.log("Your transaction signature", tx);
   });
-
 ```
 
 Run the following command 
@@ -257,13 +260,13 @@ Run the following command
 anchor test
 ```
 
-You should be able to see the following 
+You should be able to see the following
 
-[set_freeze_authority_success]
+![](/img/content/guide-chapters/set_freeze_authority_success.png "set_freeze_authority_success")
+
 
 
 Next, we will look at `AccountOwner` authority type.
-
 
 ### How to set `AccountOwner` authority to a token account?
 
@@ -273,9 +276,8 @@ In the following code example, we will transfer the `payer_mint_ata` authority t
 
 We will follow the 2-step process again.
 
-1) Create a `SetAccountOwnerAuthority` context.
-2) Create a `set_account_owner` instruction.
- 
+1. Create a `SetAccountOwnerAuthority` context.
+2. Create a `set_account_owner` instruction.
 
 ### Step-1 : Create a `SetAccountOwnerAuthority` context.
 
@@ -318,15 +320,15 @@ pub struct SetAccountOwnerAuthority<'info> {
     pub token_program: Program<'info, Token>,   // ---> 7
 }
 ```
-1) We pass `spl_token_mint` account. This is used by `payer_mint_ata` account
-2) We `vault` account as it contains `spl_token_mint_bump` value
-3) `payer` account is the original authority of `payer_mint_ata`
-4) `payer_mint_ata` account authority is passed to `another_authority`
-5) `another_authority` account to which we are passing the authority to
-6) `system_program` to manage accounts
-7) We invoke `set_authority` instruction of `token_program` through CPI.
 
- 
+1. We pass `spl_token_mint` account. This is used by `payer_mint_ata` account
+2. We `vault` account as it contains `spl_token_mint_bump` value
+3. `payer` account is the original authority of `payer_mint_ata`
+4. `payer_mint_ata` account authority is passed to `another_authority`
+5. `another_authority` account to which we are passing the authority to
+6. `system_program` to manage accounts
+7. We invoke `set_authority` instruction of `token_program` through CPI.
+
 Let us create an instruction to achieve this.
 
 ```rust
@@ -392,26 +394,24 @@ anchor test
 
 You should be able to see the following output.
 
-[account_owner_success]
+![](/img/content/guide-chapters/account_owner_success.png "set_account_owner_success")
+
 
 
 Next we will look at `CloseAccount` Authority type.
 
-
-
-## How to set a CloseAccount Authority for a token account ? 
+## How to set a CloseAccount Authority for a token account ?
 
 We can set a Close Account authority for a token account. For the below example, we will set the `another_mint_ata` close authority to `payer` as authority. 
 
 We use this authority to close and transfer remaining `lamports` to the authority account.
 
-
 Let us follow the 2-step process to achieve our goal
 
-1) Create a `CloseAccountAuthority` context
-2) Create an instruction `close_account_authority` 
+1. Create a `CloseAccountAuthority` context
+2. Create an instruction `close_account_authority` 
 
-### Step-1 : Create a `CloseAccountAuthority` context. 
+### Step-1 : Create a `CloseAccountAuthority` context.
 
 To create a `CloseAccountAuthority` context, we will create a `struct` in the `lib.rs` file as below.
 
@@ -457,22 +457,19 @@ pub struct SetCloseAccountAuthority<'info> {
 
     pub rent: Sysvar<'info, Rent>, // ---> 9
 }
-
 ```
 
-
-1) We pass `spl_token_mint` account. 
-2) We `vault` account as it contains `spl_token_mint_bump` value
-3) `payer` account pays `another_mint_ata` account creation.
-4) `another_mint_ata` account from which we want to transfer close authority to payer
-5) `another_authority` account. We use this to create `another_mint_ata` account.
-6) `system_program` to manage accounts
-7) We invoke `set_authority` instruction of `token_program` through CPI.
-8) `associated_token_account` is for creating `another_mint_ata` account
-9) `rent` used by `system_program` to create a new account. 
+1. We pass `spl_token_mint` account. 
+2. We `vault` account as it contains `spl_token_mint_bump` value
+3. `payer` account pays `another_mint_ata` account creation.
+4. `another_mint_ata` account from which we want to transfer close authority to payer
+5. `another_authority` account. We use this to create `another_mint_ata` account.
+6. `system_program` to manage accounts
+7. We invoke `set_authority` instruction of `token_program` through CPI.
+8. `associated_token_account` is for creating `another_mint_ata` account
+9. `rent` used by `system_program` to create a new account. 
 
 Let us create an instruction to set close authority on `another_mint_ata`.
-
 
 ```rust
     pub fn set_close_account_authority(ctx: Context<SetCloseAccountAuthority>) -> Result<()> {
@@ -490,7 +487,6 @@ Let us create an instruction to set close authority on `another_mint_ata`.
         )?;
         Ok(())
     }
-
 ```
 
 In the above instruction we are setting `CloseAccount` authority to `payer`.
@@ -529,7 +525,7 @@ it("should set close account authority of another_mint_ata to payer wallet", asy
       console.log(err);
     }
   });
-``` 
+```
 
 Let us run the test case by running the following command
 
@@ -539,12 +535,7 @@ anchor test
 
 You should be able to see the following after running the command.
 
-[close_account_success]
+![](/img/content/guide-chapters/set_close_account_success.png "set_close_account_success")
 
 
 That's it for `SetAuthority` functionality. In the next chapter we will look at `approve` instruction for delegating tokens to another account.
-
- 
-
-
-
