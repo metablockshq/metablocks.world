@@ -18,7 +18,9 @@ The final outcome of this chapter is found [here](https://github.com/metablocksh
 
 For the demonstration purpose, we will retain only `create_mint` and `transfer_mint` instructions. 
 
-So remove `transfer_token_to_another` instruction, `TransferTokenToAnother` context and test case related to it in `spl-token.ts`  
+So remove `transfer_token_to_another` instruction, `TransferTokenToAnother` context and test case related to it in `spl-token.ts` 
+
+Or you can clone the [Chapter - 5 repo](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%205%20-%20Transfer%20New%20Mint) for getting started immediately
 
 ## How to freeze a token account ?
 
