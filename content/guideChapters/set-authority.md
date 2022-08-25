@@ -120,6 +120,22 @@ And add the following instruction.
 
 With this instruction above, it is easy to change the authority. We use `AuthorityType::MintTokens` to change the authority. Let us test this out.
 
+Before proceeding to write test cases, do make sure that you have added `anotherWallet` as another wallet in the describe block.
+
+```typescript
+  const anotherWallet = anchor.web3.Keypair.generate(); // newly created another wallet
+```
+
+And add some sols to it in the `before` block of the test file
+
+```typescript
+ before("Add sols to wallet ", async () => {
+    await addSols(provider, payer.publicKey); // add some sols before calling test cases
+    await addSols(provider, anotherWallet.publicKey); // add sols to another wallet
+  });
+
+```
+
 In the `spl-token.ts` file add the following test case 
 
 ```typescript
