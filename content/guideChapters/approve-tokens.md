@@ -18,9 +18,11 @@ Now, in this chapter we will delegate around 5 tokens to `another_mint_ata` toke
 
 `another_mint_ata` is an associated token account created from `another_authority`
 
+The final outcome of this project is found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%2011%20-%20Approve%20Tokens)
+
 ## Prerequisites
 
-We wont' require authority related instructions from previous chapter, so we use [Chapter - 5 repo](<>) for the demonstration purpose. 
+We won't require authority related instructions from previous chapter, so we use [Chapter - 5 repo](<>) for the demonstration purpose. 
 
 ## How to `Approve` tokens to another account ?
 
@@ -101,7 +103,7 @@ In the `approve_tokens` instruction, we are approving 5 tokens from `payer_mint_
 
 Now let us test the above instruction by writing a test in `spl-token.ts` file.
 
-Do make sure that you have added `anotherWallet` as another wallet in the describe block.
+Before proceeding to write test cases, do make sure that you have added `anotherWallet` as another wallet in the describe block.
 
 ```typescript
   const anotherWallet = anchor.web3.Keypair.generate(); // newly created another wallet
