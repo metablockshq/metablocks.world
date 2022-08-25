@@ -33,6 +33,8 @@ So the remove the following from the previous chapter
 
 And remove test case related to it.
 
+Or you could clone the [Chapter - 5 repo](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%205%20-%20Transfer%20New%20Mint) for getting started.
+
 ## How to set authority for token mints ?
 
 It's is a 2-step process.
