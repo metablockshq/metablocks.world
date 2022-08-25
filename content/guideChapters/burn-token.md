@@ -16,6 +16,8 @@ In this chapter we will look at most used functionality of `token` program.
 
 By the end of this chapter, you should know be able `burn` tokens from token account. The final outcome of this chapter is found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%209%20-%20Burn%20Tokens)  
 
+**NOTE: For the demonstration purpose, we will retain only `create_mint` and `transfer_mint` instructions. So remove all the instructions and contexts that are not required.** 
+
 ## How to `burn` tokens ?
 
 We use `burn` instruction from `token_program` to destroy minted tokens. Again, only spl_token_mint` authority can perform this action.
@@ -158,4 +160,4 @@ anchor test
 
 With that, we should see the below output with a successfully executed transaction.
 
-![](/img/content/guide-chapters/image_12.png "burn_token_success")
+![](/img/content/guide-chapters/burn_token_success.png "burn_token_success")
