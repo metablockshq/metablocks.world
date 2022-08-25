@@ -23,7 +23,15 @@ We will look at each of these authority type and understand how to perform these
 
 The outcome of this chapter is found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%2010%20-%20Set%20Authority)
 
-**NOTE: For the demonstration purpose, we will retain only `create_mint` and `transfer_mint` instructions. So remove all the instructions and contexts that are not required.** 
+## Prerequisite
+
+For the demonstration purpose, we will retain only `create_mint`, `transfer_mint` instructions. 
+
+So the remove the following from the previous chapter
+1. `burn_token` instruction
+2. `BurnToken` context
+
+And remove test case related to it.
 
 ## How to set authority for token mints ?
 
