@@ -14,7 +14,9 @@ guideSlug: anchor
 
 Therefore, the prerequisite to `thaw` instruction is that the token account is frozen.
 
-The final outcome of this chapter can be found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%208%20-%20Unfreeze%20Token%20Accounts) 
+The final outcome of this chapter can be found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%208%20-%20Unfreeze%20Token%20Accounts)
+
+**NOTE: For the demonstration purpose, we will retain only `create_mint`, `transfer_mint` and `freeze_token_account` instructions. So remove all the instructions and contexts that are not required.**  
 
 ## How to `Thaw` (unfreeze) an account ?
 
@@ -146,6 +148,6 @@ anchor test
 
 You should see a successful test run.
 
-![](/img/content/guide-chapters/image_11_new.png "thaw_account_success")
+![](/img/content/guide-chapters/thaw_account_success.png "thaw_account_success")
 
 In the chapter, we will focus on `burning` tokens.
