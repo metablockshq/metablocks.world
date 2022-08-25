@@ -31,6 +31,8 @@ So the remove the following
 
 And remove test cases related to them.
 
+Or you can clone the [Chapter-5 repo](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%205%20-%20Transfer%20New%20Mint) for getting started immediately. 
+
 
 ## How to `burn` tokens ?
 
