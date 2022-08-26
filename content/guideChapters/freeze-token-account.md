@@ -30,10 +30,10 @@ Only `spl_token_mint` authority can perform this action. Hence only `payer` can 
 
 This also involves the same process. 
 
-1. Create a `FreezeToken` context  
-2. Then write an instruction for freezing the token.
+1. Create a `FreezeTokenAccount` context  
+2. Then write an instruction `freeze_token_account` for freezing the token.
 
-### How to create a `FreezeTokenAccount` context ?
+### Step-1: Create a `FreezeTokenAccount` context ?
 
 Let's create a `FreezeTokenAccount` context using the `struct`
 
@@ -95,7 +95,7 @@ Let's update the import in `lib.rs` file.
 use anchor_spl::{token::{self, Mint, Token, TokenAccount, FreezeAccount}, associated_token::AssociatedToken};
 ```
 
-Then we add the instruction.
+### Step-2 : Then we add the `freeze_token_account` instruction.
 
 ```rust
     pub fn freeze_token_account(ctx : Context<FreezeTokenAccount>) -> Result<()> {
