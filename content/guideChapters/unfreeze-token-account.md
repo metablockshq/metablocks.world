@@ -30,7 +30,7 @@ This also involves the below process.
 1. Create a `UnfreezeTokenAccount` context  
 2. Then write an instruction for freezing the token.
 
-Let's create a `UnfreezeTokenAccount` context using the `struct`
+### Step-1 : Let's create a `UnfreezeTokenAccount` context using the `struct`
 
 ```rust
 // Unfreeze token account
@@ -84,13 +84,15 @@ pub struct UnfreezeTokenAccount<'info> {
 
 We will now create an instruction `unfreeze_token_account` to unfreeze the token account.
 
-Let's update the import in `lib.rs` file.
+### Step-2 : Update the imports.
+
+First, let us update the import `lib.rs`
 
 ```rust
 use anchor_spl::{token::{self, Mint, Token, TokenAccount, FreezeAccount, ThawAccount}, associated_token::AssociatedToken};
 ```
 
-Add the `unfreeze_token_account` instruction.
+ Add the `unfreeze_token_account` instruction.
 
 ```rust
     pub fn unfreeze_token_account(ctx : Context<UnfreezeTokenAccount>) -> Result<()> {
