@@ -43,7 +43,7 @@ Let us follow the 2-step process to `burn` a token.
 1. Create a `BurnToken` context
 2. Write a `burn_token` instruction to perform `burn` action.
 
-### How to create a `BurnToken` context ?
+### Step-1 : Create a `BurnToken` context ?
 
 Create a `BurnToken` context using the `struct` in `lib.rs` file. 
 
@@ -101,7 +101,7 @@ pub struct BurnToken<'info> {
 
 With this context, we can invoke a `burn` instruction.
 
-### How to create a `Burn` instruction ?
+### Step-2 : Create a `burn_token` instruction ?
 
 We use the `burn` instruction from `token_program` to burn tokens. A `CPI` call is made to `token_program` to achieve this.
 
