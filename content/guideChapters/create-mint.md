@@ -12,9 +12,9 @@ guideSlug: anchor
 
 In this chapter, we will go through on how to create new mint. The final outcome of this chapter could be found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%203%20-%20Create%20Mint)
 
-You could think of `mint` as a metadata about a token that is being transferred to an account. A mint could be initialised in a context. In anchor framework the struct is passed as a context. 
+You could think of `mint` as a metadata about a token that is being transferred to an account. A mint could be initialised in a context. In anchor framework the `struct` is passed as a context. 
 
-First let's import `anchor_spl` into the project so that we can create a mint. Add below in your `cargo.toml` file. And run `anchor test` or `anchor build` to check if everything is working fine. 
+First let's import `anchor_spl` into the project so that we can create a mint. Add below in your `cargo.toml` file and run `anchor test` or `anchor build` to check if everything is working fine. 
 
 ```toml
 anchor-spl = "^0.25.0"
@@ -78,9 +78,7 @@ pub struct CreateMint<'info> {
 
 In the above code, 6 accounts are passed.
 
-1. An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs.
-
-We setting other metadata fields like `mint::authority` and `mint::freeze_authority` to `payer`. We are setting `mint::decimals` to `0` for easy demonstration purpose. You could set the value to any number as you like-to.
+1. An `spl_token_mint` account is created. In Solana, it is recommended to derive the account addresses using Program Derived Addresses (PDA). They are a deterministically generated address based on the program ID. Please refer [this](https://www.brianfriel.xyz/understanding-program-derived-addresses/) to know more about PDAs. We setting other metadata fields like `mint::authority` and `mint::freeze_authority` to `payer`. We are setting `mint::decimals` to `0` for easy demonstration purpose. You could set the value to any number as you like-to.
 
 2. `payer` is the one who is paying for calling `create_mint` instruction. The account is a `signer` account and is set to `mut`.
 3. We must pass `system_program` as well while invoking any instruction in solana program. This helps creating accounts. Refer [this](https://docs.solana.com/developing/runtime-facilities/programs#system-program) to know more.   
