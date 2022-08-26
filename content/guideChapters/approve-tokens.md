@@ -72,7 +72,9 @@ pub struct ApptoveTokens<'info> {
 }
 ```
 
-And add the following imports 
+### Step-2 : Create an instruction `approve_tokens`
+
+First, add the following imports into `lib.rs` file 
 
 ```rust
 use anchor_lang::prelude::*;
