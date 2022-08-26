@@ -9,7 +9,7 @@ guideSlug: anchor
 ---
 ## Outline
 
-It is a necessary operation to transfer tokens between accounts. Use `transfer` instruction of `token` program. 
+It is a necessary operation to transfer tokens between accounts. Use `transfer` instruction of `token` program to perform transfer operation. 
 
 The final outcome of this chapter could be found [here](https://github.com/metablockshq/spl-token-chapters/tree/main/Chapter%206%20-%20Transfer%20Tokens)
 
