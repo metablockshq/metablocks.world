@@ -11,10 +11,9 @@ guideSlug: anchor
 
 Solana blockchain tokens are called as SPL-tokens. SPL-Tokens are created using [token-program](https://spl.solana.com/token). 
 
-Even though the native there is a way to create/transfer and manipulate spl-tokens using the solana native program, it is easier to use to do the same using **Anchor Framework**
+Even though  there is a native way to create/transfer and manipulate spl-tokens using the solana native program, it is easier to use to do the same using **Anchor Framework**
 
 In this series, we will use `Anchor Framework` extensively to understand the concepts.
-
 
 ## Prerequisites
 
