@@ -40,7 +40,7 @@ Or you could clone the [Chapter - 5 repo](https://github.com/metablockshq/spl-to
 It's is a 2-step process.
 
 1. Create a `SetMintTokenAuthority` context
-2. Create a set_mint_token_authority  instruction 
+2. Create a `set_mint_token_authority` instruction 
 
 ### Step-1 : Create a `SetMintTokenAuthority` context
 
@@ -85,6 +85,8 @@ pub struct SetMintTokenAuthority<'info> {
 4. `another_authority` account to which we are passing the authority to
 5. `system_program` to manage accounts
 6. We invoke `set_authority` instruction of `token_program` through CPI.
+
+### Step-2 : Create a `set_mint_token_authority` instruction
 
 Let us create an instruction to change the authority.
 
@@ -185,7 +187,7 @@ Again, it is a 2-step process.
 It's is a 2-step process.
 
 1. Create a `SetFreezeAccountAuthority` context
-2. Create a set_freeze_account_authority instruction 
+2. Create a `set_freeze_account_authority` instruction 
 
 ### Step-1 : Create a `SetFreezeAccountAuthority` context
 
@@ -228,6 +230,8 @@ pub struct SetFreezeAccountAuthority<'info> {
 4. `another_authority` account to which we are passing the authority to
 5. `system_program` to manage accounts
 6. We invoke `set_authority` instruction of `token_program` through CPI.
+
+### Step-2: Create a `set_freeze_account_authority` instruction 
 
 Let us create an instruction to change the authority.
 
@@ -347,6 +351,8 @@ pub struct SetAccountOwnerAuthority<'info> {
 5. `another_authority` account to which we are passing the authority to
 6. `system_program` to manage accounts
 7. We invoke `set_authority` instruction of `token_program` through CPI.
+
+### Step-2 : Create a `set_account_owner` instruction.
 
 Let us create an instruction to achieve this.
 
@@ -485,6 +491,9 @@ pub struct SetCloseAccountAuthority<'info> {
 7. We invoke `set_authority` instruction of `token_program` through CPI.
 8. `associated_token_account` is for creating `another_mint_ata` account
 9. `rent` used by `system_program` to create a new account. 
+
+
+### Step-2 : Create an instruction `close_account_authority`
 
 Let us create an instruction to set close authority on `another_mint_ata`.
 
