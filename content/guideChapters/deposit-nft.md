@@ -1,8 +1,8 @@
 ---
-chapterNumber: 5
+chapterNumber: 10
 emoji: 📥
-title: Deposit an NFT
-slug: deposit-nft
+title: How deposits work
+slug: how-deposits-work
 guideSlug: protocol
 ---
 

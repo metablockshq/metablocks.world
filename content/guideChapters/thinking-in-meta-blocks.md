@@ -12,7 +12,7 @@ This is good enough to store things that never change: like a lease, a marriage 
 
 ## Why do we need to upgrade NFTs?
 
-One important use-case of digital ownership emerges in the field of digital games. Players start with a character, and then play (or pay) to advance their characters. The advancement could be a special skill, a weapon, a skin or access to special levels. These advancements are valuable because it represents the time spent mastering a particular game. These upgrades are true non-fungible assets. But it's hard to map them to NFTs because the current NFT standards are not designed for evolution.
+One important use-case of digital ownership emerges in the field of digital games. Players start with a character, and then play (or pay) to advance their characters. The advancement could be a special skill, a weapon, a skin or access to special levels. These advancements are valuable because it represents the time spent mastering a particular game. These upgrades are true non-fungible assets. But it's hard to map these true non-fungible assets to NFTs because, the current NFT standards are not designed for evolution.
 
 The similar reasoning can also be applied to metaverses, ie. digital online spaces that allow interaction. In the case of metaverses, the upgrades might include evolution of your avatar or surroundings over time.
 
@@ -36,3 +36,5 @@ Traditional NFTs can be upgraded by changing the metadata of the token. This app
 > Attribute or Metadata updates are a one way street and potentially harmful. What happens if a smart contract bug accidentally wipes the metadata on your NFT? 
 
 The attribute upgrades are also not tradable on the existing infrastructure. By considering components to be NFTs that never change, it becomes easier to "compose" characters.
+
+In the next chapter we'll understand the upgrade model and introduce some protocol specific terminology.

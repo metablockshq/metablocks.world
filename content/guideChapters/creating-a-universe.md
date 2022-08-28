@@ -21,35 +21,26 @@ The easiest way to create a universe, is to head over to <https://universes.meta
 
 ## Universe Creation via program call
 
-It's highly unlikely that you'd need to create a Universe pragmatically. This section exists to better understand the functioning of the Universe. 
+You can also create a universe on the fly using the Kyraa SDK. Start by importing the dependancies:
 
-To create a universe, an RPC call is made to the on-chain program. This is how it looks like on the client side:
-
-```javascript
-const tx = await program.rpc.createUniverse(
-  bump,
-  name,
-  description,
-  websiteUrl, {
-    accounts: {
-      universe: universeKey,
-      payer: wallet.publicKey,
-      universeAuthority: wallet.publicKey,
-      systemProgram: web3.SystemProgram.programId
-    },
-    signers: []
-  }
-)
+```typescript
+import { createUniverse } from '@kyraa/metablocks';
 ```
 
-* `name`, `description` and `websiteUrl` are provided by the user in the UI
-* `wallet` is the connected wallet (Phantom, Sollet etc) of the person trying to create the Universe
-* `universeKey`: TODO- add explanation
-* `bump`: TODO- add explanation
-* An empty `singer`'s list signify that only the connected wallet needs to sign the transaction
+To create an universe, all you need is below argument to be passed to the `createUniverse` method
+
+```typescript
+const args = {
+  name: 'sample name',
+  description: ' sample description',
+  websiteUrl: 'http://your-sample.website.url',
+  connection: connection,
+  wallet: dummyWallet,
+};
+
+const tx = await createUniverse(args);
+```
+
+The `connection` and the `wallet` objects can be collected from React hooks exposed by `kyraa/solana`. Check the Kyraa SDK chapter for more details.
 
 On successfully sign and broadcast, this transaction creates a Universe for the signing wallet. The images that can be added in the UI are not on-chain, hence not a part of this transaction. 
-
-## Universe Index
-
-Meta Blocks maintains a private index of all the Universes created on the protocol. This index is used to list the Universes at <https://universes.metablocks.world>. TODO: Open source indexing service.

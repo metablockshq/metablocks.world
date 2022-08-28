@@ -14,15 +14,19 @@ Any project that implements upgradation of NFTs is called a Universe. This could
 
 If an existing NFT project like [Solarmy](https://www.solarmy.io/), decides to make their NFTs upgradable using the Meta Blocks standard, then that will be a separate universe.
 
-A universe's state is public. All items in a universe should be "compatible" with each other. For example, assume that there are three items in a gaming universe: a base character, a skin, and a weapon. Then the universe should have some rendering system, that can show these three NFTs together on the same character. More on composability later in the docs.
+A universe's state is public. All items in a universe should be "compatible" with each other. For example, if there are three items in a gaming universe: a base character, a skin, and a weapon. Then the universe should have some rendering system, that can show these three NFTs together on the same character.
 
 Meta Blocks stores a user's NFTs in an escrow contract. And returns a meta (or wrapped) version of the combination of NFTs. This meta NFT represents all the NFTs you have sent to the escrow. 
 
 Each NFT a user sends to the contract is stored against the user's wallet and the universe's wallet. If you are familiar with the concept of "composite keys" in SQL, then the universe public key and the user public key together act as a composite key to the escrow that stores a user's NFTs.
 
-## Depositing NFTs
+## Component vs Meta NFT
 
-In order to upgrade your NFTs, you need to deposit a base NFT in the universe. The base initialises the on-chain program. The base is special because it's the first NFT you send to the escrow. When you send a base to a universe, you get your own escrow account in the universe.
+A component NFT is a Metaplex standard compatible NFT that can be deposited in the Meta Blocks program. A meta NFT is a combination of all component NFTs deposited in the program. One meta NFT has many component NFTs.
+
+## Depositing component NFTs
+
+In order to upgrade your NFTs, you need to deposit a base NFT in the universe. The base initialises the on-chain program. The base is special because it's the first NFT you send to the escrow. When a wallet sends a base to a universe,  it gets a unique escrow account in the universe.
 
 All subsequent upgrades are sent to the same escrow. This process is called "depositing NFTs". All the NFTs held in an escrow together make the meta NFT.
 
@@ -30,65 +34,32 @@ If you are a user of 5 universes on Meta Blocks, then you will have 5 escrow acc
 
 Universes can read the escrow contract and build utility on top of it. For example, the [3moji](https://3moji.app) universe generates various stickers of your avatar, depending on the NFTs you own.
 
-There is no limit to the number of NFTs you can store in a universe. You can send any NFT token to any universe. However, an NFT might not show up in the application if it is not related to the universe. For example, if you send a 3moji NFT to a gaming universe, it might not work. It will work only if the the gamin universe has written an application that can consume the 3moji NFT.  
+There is no limit to the number of NFTs you can store in a universe. You can send any NFT token to any universe. However, an NFT might not show up in the application if it is not related to the universe. For example, if you send a 3moji NFT to a gaming universe, it might not work. It will work only if the the gaming universe has written an application that can consume the 3moji NFT.  
 
-When you deposit an NFT to the universe, an off-chain service combines all the NFTs you have saved, to create a meta NFT. This meta NFT is owned by the Meta Blocks contract. NOTE: Meta NFTs are a work in progress.
+When you deposit an NFT to the universe, an off-chain service combines all the NFTs you have saved, to create a meta NFT. This meta NFT is owned by the Meta Blocks contract and cannot be transferred by the user.
 
-## Withdrawing NFTs
+You also receive a receipt NFT when you make a deposit. This receipt is non-transferrable. The receipt can be used to redeem the original NFT from the contract.
 
-When you deposit an upgrade NFT, you transfer the ownership of the NFT to the Meta Blocks program. The program is written in a way that only the original depositor and request the NFT back and only to the address they NFT originally came from. This makes it impossible for bad actors to seize control of your NFTs.
+## Withdrawing component NFTs
 
-You can get back the upgrade NFT by calling the withdraw function. This will return the NFT stored on chain to your wallet. This will also upgrade the meta NFT to not have the NFT that was withdrawn.  
+When you deposit an NFT, you transfer the ownership of the NFT to the Meta Blocks program. In return, the program gives you a receipt NFT back. The program is written in a way that only the original depositor and request the NFT back and only to the address they NFT originally came from. This makes it impossible for bad actors to seize control of your NFTs.
+
+You can get back the original NFT by calling the withdraw function. This will return the NFT stored on chain to your wallet. This will also upgrade the meta NFT to not have the NFT that was withdrawn.
 
 Once an NFT is withdrawn, you can trade it on any NFT marketplace.
 
-## Indexing service
+## Rendering upgrades to images
 
-To provide utility from the NFTs you own, an application (universe) needs to read your current state. This will eventually be on-chain using the Meta NFTs (check Meta NFT generation section below). For now, this is done by relying on a central indexer that reads the state of the universe. 
+After depositing or withdrawing an NFT, the meta NFT changes its metadata. This updated metadata reflects all the component NFTs of a meta NFT.
 
-The indexing service is open source. You can run it on your infrastructure, or use our hosted version.
+But the preview image needs a rendering service for upgrades, because image manipulation cannot be done on chain.
 
-The indexing service has the following end-points:
+To solve this problem, we use a centralised system. 
 
-* GET /universes : List all universes registered in the Meta Blocks contract
-* GET /universes/:uni-wallet-address: Get the details of universe with whose public key is \`:uni-wallet-address\`
-* GET /universes/:uni-wallet-address/escrows: Get a list of all escrow accounts in a universe. The \`id\` of the escrow account is the public key of the wallet the escrow belongs to.
-* GET /universe/:uni-wallet-address/escrows/:user-wallet-address: Get all NFTs for user `:user-wallet-address` in the universe with id `:uni-wallet-address`
+*NOTE: In future when there is a viable keeper network on Solana, we'll dissolve this centralised system and deploy the upgrade programs on the keeper network.*
 
-TODO: Define this API is defined in more detail, with parameters and responses in a separate chapter.
+When the first NFT is deposited in the universe, the program expects a meta NFT metadata url. This metadata is the Metaplex JSON for the meta NFT. This currently points to a centralised service hosted by Meta Blocks. When an upgrade is done on-chain, the centralised service updates this metadata, and re-renders the images.
 
-## NFT wrap program
+Since the meta NFT already points to this centralised metadata, the upgrades are reflected as soon as the client fetches the meta NFT again.
 
-The NFT wrap program takes an existing NFT, and returns a wrapped NFT with same attributes as the NFT that was wrapped. This is useful for integrating existing projects upgradeable via the Meta Blocks protocol.
-
-Assume that you are the creator of a pfp project - Mutant Monkeys. Your project has a limited supply of 6879 monkeys with 7 attributes. After the initial mint, you discover the Meta Blocks protocol and want to make your monkeys upgradable.
-
-There are two ways to go about this:
-
-### 1. Integrating with 3moji universe
-
-You can use the NFT wrap program to accept the Monkey NFT, and return a 3moji accessory that represents the Monkey NFT, but can be worn by the 3moji avatar. For example, your monkey can become a mask that 3moji avatar can wear.
-
-### 2. Creating your own universe from scratch 
-
-You can use the NFT wrap program to create a base NFT. The you can create a completely new universe, with upgrades that are applicable to your Monkeys.
-
-The NFT wrap program is a bi-directional bridge. You can create wrapped versions of NFTs by storing originals. And can retrieve the original by sending the wrapped version back.
-
-*\-- FUTURE --*
-*NOTE: The following aspects of the protocol are out of scope of the first launch*
-*\-------------*
-
-## Meta NFT generation
-
-All the NFTs in a universe combined, denote your avatar in that universe. For the sake of application, this combination can be read using the Indexing service. But the indexer runs off-chain. In order to not rely on centralised services, the Meta Blocks platform will create a meta NFT and send it to your wallet.
-
-The meta NFT is controlled by the Meta Blocks program (TODO: confirm if this is correct). Each time you deposit or withdraw and NFT to a universe, the meta NFT is modified to reflect the state of the universe.
-
-You might loose your NFTs stored in the escrow if you transfer this meta NFT to someone. (TODO: Confirm the implications).
-
-This meta NFT lets you visualise the combination of assets stored in the universe, right in your wallet. It also acts as an on-chain index, and removes the dependancy on the Indexing service, to read a user's state in a universe.
-
-## Lending service
-
-The Meta Blocks contract stores all the NFTs are users deposits in an escrow. If a user has a rare NFT, she can choose to lend it to the community and earn passive income on their assets. The lending service works by transferring the ownership of the NFT at the meta NFT level to some other user of the Meta Blocks platform. The original NFT is left untouched, safe in the escrow contract. And can be withdrawn by the rightful owner when the lending period expires. This greatly reduces lending risks.
+User's can use our centralised service or create their own. Please contact us if you'd like to use our centralised service for metadata updates.
