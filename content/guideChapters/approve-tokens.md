@@ -160,7 +160,7 @@ Run the following command to test
 anchor test
 ```
 
-The test should pass and you should see something like this 
+The test should pass and you should see something like this-
 
 ![](/img/content/guide-chapters/approve_tokens_success.png "approve_tokens_success")
 
