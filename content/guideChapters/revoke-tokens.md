@@ -140,5 +140,3 @@ You should be able to see the following output.
 ![](/img/content/guide-chapters/revoke_tokens_success.png "revoke_tokens_success")
 
 With this we have understood how to revoke any approved (delegated) tokens.
-
- 
