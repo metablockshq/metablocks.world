@@ -1,5 +1,5 @@
 ---
-chapterNumber: 10
+chapterNumber: 11
 emoji: 📥
 title: How deposits work
 slug: how-deposits-work

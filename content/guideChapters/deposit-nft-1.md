@@ -9,6 +9,8 @@ After creating a `universe`, the next step is to deposit NFTs.
 
 Every deposited NFT is a component of your meta NFT. The meta NFT combines the metadata of all component NFTs.
 
+The combination requires you to add some configuration to the metadata of each NFT, in the form of `mbkSchema`. This schema helps with storage and re-rendering of the meta NFT. More on this in the chapter `Meta Blocks Schema`.
+
 ## How is an NFT stored in a universe?
 
 The following steps occur when a wallet deposits an NFT in a universe for the first time:
@@ -23,7 +25,7 @@ A developer only needs to call one function to deposit. To learn more about the 
 
 ## Depositing NFTs into a universe
 
-Since the contract will generate a receipt and a meta NFT, the deposit function expects a URI for the metadata of the receipt and NFTs. You can create these metadata files yourself or use our hosted service to create the metadata. # TODO: Add a section on how to use our service. 
+Since the contract will generate a receipt and a meta NFT, the deposit function expects a URI for the metadata of the receipt and meta NFTs. You can create these metadata files yourself or use our hosted service to create the metadata. # TODO: Add a section on how to use our service. 
 
 Assuming you have a system to generate these metadata URLs, you can call the deposit function as follows:
 
