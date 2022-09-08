@@ -22,7 +22,8 @@ The final outcome of this project is found [here](https://github.com/metablocksh
 
 ## Prerequisites
 
-We won't require authority related instructions from previous chapter, so we use [Chapter - 5 repo](<>) for the demonstration purpose. 
+We won't require authority related instructions from previous chapter, so we use Chapter - 5 repo for the demonstration purpose. 
+> TODO: Link to chapter 5 repo
 
 ## How to `Approve` tokens to another account ?
 

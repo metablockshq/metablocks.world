@@ -52,7 +52,7 @@ function ActionLink({ title, href }) {
 
   return (
     <div className="flex items-center">
-      {href.startsWith("https://metablocks.world") ? (
+      {href?.startsWith("https://metablocks.world") ? (
         <Link to={href} className={className}>
           {title} ➔
         </Link>

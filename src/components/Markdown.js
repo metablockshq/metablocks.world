@@ -4,6 +4,7 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import convert from "htmr";
 
 import "./markdown.css";
+import str from "../utils/string";
 
 const getId = (href) => {
   const parts = href.split("/");
@@ -63,14 +64,17 @@ const transform = {
     </blockquote>
   ),
   a: ({ href, children }) => {
-    if (href?.startsWith("https://gist.github.com")) {
+    if (!str.isString(href)) {
+      throw new Error(`href '${href}' is invalid`);
+    }
+    if (href.startsWith("https://gist.github.com")) {
     }
     // we only want to embed status, not twitter profiles
-    if (href?.startsWith("https://twitter.com") && href.includes("/status/")) {
+    if (href.startsWith("https://twitter.com") && href.includes("/status/")) {
       const id = getId(href);
       return <TwitterVideoEmbed id={id} />;
     }
-    if (href?.startsWith("https://youtu.be")) {
+    if (href.startsWith("https://youtu.be")) {
       const id = getId(href);
       return (
         <LiteYouTubeEmbed
