@@ -63,14 +63,14 @@ const transform = {
     </blockquote>
   ),
   a: ({ href, children }) => {
-    if (href.startsWith("https://gist.github.com")) {
+    if (href?.startsWith("https://gist.github.com")) {
     }
     // we only want to embed status, not twitter profiles
-    if (href.startsWith("https://twitter.com") && href.includes("/status/")) {
+    if (href?.startsWith("https://twitter.com") && href.includes("/status/")) {
       const id = getId(href);
       return <TwitterVideoEmbed id={id} />;
     }
-    if (href.startsWith("https://youtu.be")) {
+    if (href?.startsWith("https://youtu.be")) {
       const id = getId(href);
       return (
         <LiteYouTubeEmbed
