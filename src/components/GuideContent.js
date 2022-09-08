@@ -106,6 +106,7 @@ const GuideContent = ({
   heroImg,
   chapterNumber,
   title,
+  subTitle,
   index,
   emoji,
   slug,
@@ -132,6 +133,7 @@ const GuideContent = ({
               )}
               {title}
             </h1>
+            {subTitle && <h2>{subTitle}</h2>}
           </div>
           <Markdown contents={contents} />
           <NextPrevious index={index} slug={slug} guideSlug={guideSlug} />

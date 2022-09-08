@@ -10,7 +10,10 @@ import GuideContent from "../components/GuideContent";
 import colors from "../utils/colors";
 
 const Guide = () => {
-  const { title, slug, heroImg, emoji, index, contents } = useRouteData();
+  const { title, subTitle, slug, heroImg, emoji, index, contents } =
+    useRouteData();
+
+  console.log({ title, subTitle });
 
   return (
     <React.Fragment>
@@ -23,6 +26,7 @@ const Guide = () => {
           index={index}
           heroImg={heroImg}
           contents={contents}
+          subTitle={subTitle}
         />
       </Shell>
     </React.Fragment>
