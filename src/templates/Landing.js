@@ -52,14 +52,14 @@ function ActionLink({ title, href }) {
 
   return (
     <div className="flex items-center">
-      {href?.startsWith("https://metablocks.world") ? (
-        <Link to={href} className={className}>
-          {title} ➔
-        </Link>
-      ) : (
+      {href?.startsWith("https://") ? (
         <a href={href} target="_blank" className={className}>
           {title} ➔
         </a>
+      ) : (
+        <Link to={href} className={className}>
+          {title} ➔
+        </Link>
       )}
     </div>
   );
@@ -141,7 +141,7 @@ const Jobs = ({ jobs }) => {
         imgSrc={cup}
       />
       {jobs.map((j) => (
-        <Job job={j} />
+        <Job key={j.slug} job={j} />
       ))}
     </div>
   );

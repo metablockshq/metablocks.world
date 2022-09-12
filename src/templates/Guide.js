@@ -13,8 +13,6 @@ const Guide = () => {
   const { title, subTitle, slug, heroImg, emoji, index, contents } =
     useRouteData();
 
-  console.log({ title, subTitle });
-
   return (
     <React.Fragment>
       <SEO title={`Guide / ${emoji} ${title}`} />

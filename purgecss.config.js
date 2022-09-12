@@ -31,6 +31,7 @@ module.exports = {
       /yt/,
       /w-auto/,
       /shiki/,
+      /markdown/,
     ],
   },
   // got default extractor from Tailwind
