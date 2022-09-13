@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import clx from "classnames";
+
+import { MainNavContext } from "./Nav";
 
 const Guide = ({ data }) => (
   <NavLink
@@ -31,8 +34,16 @@ const Chapter = ({ data }) => (
 );
 
 const GuideIndex = ({ className, index }) => {
+  const { mainNavPinned } = useContext(MainNavContext);
+
   return (
-    <div className={`fixed br b--black-10 ${className ? className : ""}`}>
+    <div
+      className={clx(
+        `tw-fixed tw-left-0 br b--black-10 ${className ? className : ""}`,
+        { "tw-top-0": !mainNavPinned },
+        { "tw--mt-16": mainNavPinned }
+      )}
+    >
       <div className="flex items-center">
         <Guide data={index.guide.data} />
       </div>

@@ -20,7 +20,7 @@ const transform = {
       el.props.hasOwnProperty("src");
     return (
       <p
-        className={`tw-my-6 georgia center ${
+        className={`tw-my-6 tw-font-sans-serif center ${
           isElImg ? "tc" : "w-90 w-80-m w-50-l"
         }`}
       >
@@ -57,9 +57,9 @@ const transform = {
       {children}
     </ol>
   ),
-  li: ({ children }) => <li className="georgia mb3">{children}</li>,
+  li: ({ children }) => <li className="tw-font-sans-serif mb3">{children}</li>,
   blockquote: ({ children }) => (
-    <blockquote className="georgia i f3 tw-py-8 tw-px-16">
+    <blockquote className="tw-font-sans-serif i f3 tw-py-8 tw-px-16">
       {children}
     </blockquote>
   ),

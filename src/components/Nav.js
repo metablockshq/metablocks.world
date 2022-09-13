@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import { Link, NavLink, useLocation, useHistory } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import Headroom from "react-headroom";
@@ -181,9 +181,14 @@ const metaBlocksLinks = (jobsCount) => [
   },
 ];
 
+const MainNavContext = createContext();
+
 const MainNav = ({ jobsCount }) => {
+  // sometimes, there might not be a NavContext wrapping the main nav, so we need a default value for such cases
+  const { onPin, onUnpin } = useContext(MainNavContext) || {};
+
   return (
-    <Headroom>
+    <Headroom onPin={onPin} onUnpin={onUnpin}>
       <div className="tw-p-3 tw-text-center tw-bg-gradient-to-r tw-from-slate-800 tw-to-slate-600 tw-text-white">
         Looking for the upgradable avatars?{" "}
         <span className="">Meta Blocks Avatars are now called 3moji.</span>
@@ -219,4 +224,4 @@ const TokenomicsNav = ({ rightItem }) => (
   <BaseNav links={[]} leftItem={<TokenomicsLeftItem />} />
 );
 
-export { MainNav, TokenomicsNav };
+export { MainNav, TokenomicsNav, MainNavContext };

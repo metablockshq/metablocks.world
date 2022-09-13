@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { MainNav } from "./Nav";
+import { MainNav, MainNavContext } from "./Nav";
 import Footer from "./Footer";
 import SolanaBadge from "./SolanaBadge";
 import colors from "../utils/colors";
 
 const Shell = ({ attributeFreepik, children }) => {
   const { pathname } = useLocation();
+
+  const [mainNavPinned, setMainNavPinned] = useState(true);
+  const onPin = () => setMainNavPinned(true);
+  const onUnpin = () => setMainNavPinned(false);
 
   // scroll to top of page when pathname changes
   // but not in dev mode, because it leads to bad DX
@@ -18,14 +22,15 @@ const Shell = ({ attributeFreepik, children }) => {
   }, [pathname]);
 
   return (
-    <div className="">
+    <MainNavContext.Provider value={{ mainNavPinned, onPin, onUnpin }}>
       <MainNav />
+
       <div className="pt5" style={{ minHeight: "60vh" }}>
         {children}
       </div>
       <Footer />
       <SolanaBadge />
-    </div>
+    </MainNavContext.Provider>
   );
 };
 

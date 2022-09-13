@@ -117,7 +117,7 @@ const GuideContent = ({
     <React.Fragment>
       <div className="flex w-100">
         <GuideIndex className="w-20" index={index} />
-        <div className="w-80 ml4">
+        <div className="w-100 tw-ml-40 md:tw-ml-32 lg:tw-ml-16">
           <div className="w-90 w-80-m w-50-l center">
             {heroImg && (
               <img
