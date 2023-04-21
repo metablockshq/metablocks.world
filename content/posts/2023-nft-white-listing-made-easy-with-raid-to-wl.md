@@ -21,6 +21,14 @@ A new NFT whitelisting tool is changing the game. By leveraging the power of soc
 
 In this article, we will explore the Raid to WL tool, and its features, compare it with traditional methods, and how it is simplifying the WL grind for NFT enthusiasts.
 
+## T﻿L;DR
+
+* Meta Blocks' new NFT whitelisting tool called Raid to WL is simplifying the traditional whitelisting process for NFT enthusiasts by leveraging the power of social media. 
+* By engaging with an NFT project's Twitter account, users can easily get on the whitelist. 
+* The Raid to WL tool has caught fire and gained close to 4,000 new followers and Discord members within a week of launching in our case study project
+* It reduces the acquisition cost of a project by up to 97% while increasing the quality of new community members. 
+* The tool costs $100 for the pre-mint lifetime of a project, which is significantly lower than the average cost of traditional whitelisting methods.
+
 ## P﻿relude: The world before Raid to WL
 
 At the beginning of fall 2022, our partner project 3moji started its marketing. Following the meta of the time, they went the trodden and proven path, hired a collab manager who distributed WLs to alpha groups, and worked with influencers who raffled WL spots to the project for a hefty fee. 
@@ -63,14 +71,16 @@ The Riad to WL tool was a huge success. It significantly brought down the acquis
 
 Once we knew Raid to WL was a success, we knew we had to give it out to other projects too! Let's be honest, the collab, application, and grind meta is getting too old and inviting flippers. 
 
-The Raid to WL tool cost $100, for the pre-mint lifetime of a project. $0.02
+The Raid to WL tool cost $100, for the pre-mint lifetime of a project. 
 
 Let's compare that cost to the average cost of a typical WL distribution method. 
 
 Considering you hire 2 collab managers, each costing approximately $350 a month, for 2 months, and you use 10 influencers to promote your NFT project, each costing around $200, the total lands in the vicinity of $3400. 
 
-If you plan to sell around 5000 NFTs, which is above average collection size, you'll be spending around $0.68 per acquisition. 
+If you plan to sell around 5000 NFTs, which is above average collection size, you'll be spending around **$0.68** per acquisition. 
 
-However, if you use the Raid to WL tool, you'll be spending just $0.02 per acquisition, a staggering 97% less than the traditional methods. Not to mention the fact the users you acquire via Raid to WL are much more engaged. 
+![](/img/content/posts/customer-acquisition-cost-comparison.png)
 
-If you'd like to use Meta Block's Raid to WL tool, then book a free consultation call with us or drop us an email at hello@metablocks.world, including the website and social links of your project.
+However, if you use the Raid to WL tool, you'll be spending just **$0.02** per acquisition, a staggering 97% less than the traditional methods. Not to mention the fact the users you acquire via Raid to WL are much more engaged. 
+
+If you'd like to use Meta Block's Raid to WL tool, then [book a free consultation call](https://zcal.co/sarthakkhurana) with us or drop us an email at hello@metablocks.world, including the website and social links of your project.
