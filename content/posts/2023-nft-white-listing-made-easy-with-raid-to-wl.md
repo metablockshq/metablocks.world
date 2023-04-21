@@ -21,7 +21,7 @@ A new NFT whitelisting tool is changing the game. By leveraging the power of soc
 
 In this article, we will explore the Raid to WL tool, and its features, compare it with traditional methods, and how it is simplifying the WL grind for NFT enthusiasts.
 
-P﻿relude: The world before Raid to WL
+## P﻿relude: The world before Raid to WL
 
 At the beginning of fall 2022, our partner project 3moji started its marketing. Following the meta of the time, they went the trodden and proven path, hired a collab manager who distributed WLs to alpha groups, and worked with influencers who raffled WL spots to the project for a hefty fee. 
 
@@ -31,7 +31,7 @@ The second thing 3moji realized was the fact that the acquisition cost was too h
 
 On the other hand, those who are genuinely interested in the project, but don't have the time to grind for WL, are left on the outskirts. 
 
-E﻿nter Raid to WL tool 
+## E﻿nter Raid to WL tool 
 
 When we realized this problem with our partner project, we were tasked to come up with a tool to distribute WL at a fraction of the cost, increase engagement at the same time and lastly, reduce barriers to entry, aka the WL grind. 
 
@@ -47,7 +47,7 @@ https://twitter.com/3mojiHQ/status/1582433006735659008
 
 Notice carefully that added a link to our dashboard, where anyone could claim their WL. Once it was retweeted by an individual, it was seen by everyone who was following them, thus creating a network effect. 
 
-The Results of our Raid to WL Tool
+## The Results of our Raid to WL Tool
 
 Our gamble was right, the network effect worked and our Raid to WL tool caught fire. We did absolutely no alpha or influencer marketing for the tool, just a simple Tweet on our Twitter and asked a few of our friends to use the tool. The results were astonishing! 
 
@@ -59,7 +59,7 @@ Within a week of launching the Raid to WL tool, we gained close to 4000 new foll
 
 The Riad to WL tool was a huge success. It significantly brought down the acquisition cost of 3moji, while increasing the quality of the new community members pouring in, since they had been to 3moji's and knew what 3moji was building. 
 
-Raid to WL Tool for Your Project
+## Raid to WL Tool for Your Project
 
 Once we knew Raid to WL was a success, we knew we had to give it out to other projects too! Let's be honest, the collab, application, and grind meta is getting too old and inviting flippers. 
 
@@ -72,7 +72,5 @@ Considering you hire 2 collab managers, each costing approximately $350 a month,
 If you plan to sell around 5000 NFTs, which is above average collection size, you'll be spending around $0.68 per acquisition. 
 
 However, if you use the Raid to WL tool, you'll be spending just $0.02 per acquisition, a staggering 97% less than the traditional methods. Not to mention the fact the users you acquire via Raid to WL are much more engaged. 
-
-CTA and Onboarding 
 
 If you'd like to use Meta Block's Raid to WL tool, then book a free consultation call with us or drop us an email at hello@metablocks.world, including the website and social links of your project.
