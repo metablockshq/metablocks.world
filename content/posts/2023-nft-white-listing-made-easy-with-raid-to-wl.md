@@ -4,7 +4,7 @@ title: "NFT White Listing Made Easy with Raid to WL: A Success Story"
 subTitle: How 3moji Gained Over 5k Organic Followers and Discord Members with
   our Raid to WL
 featured: true
-heroImg: /img/content/posts/mbk-split.jpg
+heroImg: /img/content/posts/raid-to-wl.png
 slug: NFT-White-Listing-Made-Easy-with-Raid-to-WL
 tags:
   - blockchain
