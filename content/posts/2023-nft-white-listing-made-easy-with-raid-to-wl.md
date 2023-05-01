@@ -39,7 +39,7 @@ The second thing 3moji realized was the fact that the acquisition cost was too h
 
 On the other hand, those who are genuinely interested in the project, but don't have the time to grind for WL, are left on the outskirts. 
 
-## E﻿nter Raid to WL tool 
+## E﻿nter Raid to WL tool
 
 When we realized this problem with our partner project, we were tasked to come up with a tool to distribute WL at a fraction of the cost, increase engagement at the same time and lastly, reduce barriers to entry, aka the WL grind. 
 
@@ -71,7 +71,7 @@ The Riad to WL tool was a huge success. It significantly brought down the acquis
 
 Once we knew Raid to WL was a success, we knew we had to give it out to other projects too! Let's be honest, the collab, application, and grind meta is getting too old and inviting flippers. 
 
-The Raid to WL tool cost $100, for the pre-mint lifetime of a project. 
+The Raid to WL tool is **free to use for the first 250 sign-ups**, followed by a **lifetime cost of $100** for a project. 
 
 Let's compare that cost to the average cost of a typical WL distribution method. 
 
