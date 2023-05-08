@@ -71,7 +71,7 @@ The Riad to WL tool was a huge success. It significantly brought down the acquis
 
 Once we knew Raid to WL was a success, we knew we had to give it out to other projects too! Let's be honest, the collab, application, and grind meta is getting too old and inviting flippers. 
 
-The Raid to WL tool is **free to use for the first 250 sign-ups**, followed by a **lifetime cost of $100** for a project. 
+The Raid to WL tool is **free to use for the first 250 sign-ups**, followed by a small life time cost. 
 
 Let's compare that cost to the average cost of a typical WL distribution method. 
 
